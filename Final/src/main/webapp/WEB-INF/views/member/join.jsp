@@ -134,6 +134,9 @@ $(document).ready(function() {
 
 </script>
 
+<c:import url="/WEB-INF/views/layout/header.jsp" />
+
+
 <form action="/member/join" name="joinForm" method="POST" onsubmit="return inputCheck()">
 		<!-- 아이디 -->
 		<div class="form-group">
