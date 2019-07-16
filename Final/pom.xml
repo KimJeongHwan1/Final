@@ -8,12 +8,71 @@
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
-		<java-version>1.6</java-version>
-		<org.springframework-version>3.1.1.RELEASE</org.springframework-version>
+		<java-version>1.8</java-version>
+		<org.springframework-version>5.1.8.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
+		<!-- ojdbc6를 위한 repository설정 -->
+	<!-- <properties>와 <dependencies>사이에 적을 것 -->
+	<repositories>
+		<repository>
+			<id>oracle</id>
+			<url>http://maven.jahia.org/maven2</url>
+		</repository>
+	</repositories>
+
 	<dependencies>
+	
+		<!--  Commons Fileupload 1.4  -->
+	<dependency>
+		<groupId>commons-fileupload</groupId>
+		<artifactId>commons-fileupload</artifactId>
+		<version>1.4</version>
+	</dependency>
+	
+	<!-- 마이바티스 쿼리 로그-->
+	<dependency>
+		<groupId>org.lazyluke</groupId>
+		<artifactId>log4jdbc-remix</artifactId>
+		<version>0.2.4</version>
+	</dependency>
+	
+	<!-- jackson databind -->
+	<dependency>
+	    <groupId>com.fasterxml.jackson.core</groupId>
+	    <artifactId>jackson-databind</artifactId>
+	    <version>2.9.7</version>
+	</dependency>
+	
+	<!-- ojdbc6 -->
+	<dependency>
+		<groupId>com.oracle</groupId>
+		<artifactId>ojdbc6</artifactId>
+		<version>12.1.0.2</version>
+	</dependency>
+	
+	<!-- 마이바티스 스프링 2.0.1 -->
+	<dependency>
+	    <groupId>org.mybatis</groupId>
+	    <artifactId>mybatis-spring</artifactId>
+	    <version>2.0.1</version>
+	</dependency>
+	
+	<!-- 마이바티스 3.5.1 -->
+	<dependency>
+	    <groupId>org.mybatis</groupId>
+	    <artifactId>mybatis</artifactId>
+	    <version>3.5.1</version>
+	</dependency>
+	
+	<!-- 스프링 jdbc -->
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-jdbc</artifactId>
+	    <version>${org.springframework-version}</version>
+	</dependency>
+	
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
