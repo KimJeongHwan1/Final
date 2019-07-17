@@ -1,7 +1,8 @@
 package web.controller;
 
-import javax.servlet.http.HttpSession;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,16 +12,23 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+
 import web.dto.Member;
+import web.dto.UserImg;
+
 import web.service.face.MemberService;
 
 @Controller
 public class MemberController {
 	
+
 	//로그 라이브러리 객체
 		private static final Logger logger
 		= LoggerFactory.getLogger(MemberController.class);
-
+  
+  @Autowired ServletContext context;
 	@Autowired MemberService memberService;
 	
 	@RequestMapping(value="/member/main", method=RequestMethod.GET)
@@ -59,7 +67,7 @@ public class MemberController {
 	@RequestMapping(value="/member/login", method=RequestMethod.GET)
 	public void login() {
 		logger.info("로그인 폼");
-		
+
 	}
 
 	@RequestMapping(value="/member/login", method=RequestMethod.POST)
@@ -97,16 +105,61 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="/member/logout", method=RequestMethod.GET)
-	public String logout(
-			HttpSession session //세션 객체
-			) {
-		
-		//세션 초기화
+	public String logout(HttpSession session) {
 		session.invalidate();
 		
-		//메인 페이지로 리다이렉트
-		return "redirect:/member/main";
+		return "redirect:" + "/member/main";
 	}
+	
+	@RequestMapping(value="/member/updateInfo", method=RequestMethod.GET)
+	public void updateInfo(HttpSession session, Model model) {
+		
+		String loginid = (String)session.getAttribute("loginid");
+		logger.info(loginid);
+		
+		Member member = memberService.selectMemberInfo(loginid);
+		logger.info(member.toString());
+		
+		model.addAttribute("member", member);
+		
+		int member_code = memberService.getMember_code(loginid);
+		
+		if(memberService.selectImgCheck(member_code)) {
+			UserImg userImg = memberService.selectImg(member_code);
+			logger.info(userImg.toString());
+			model.addAttribute("img", userImg);
+		} else {
+			model.addAttribute("img", "not_img");
+		}
+		
+	}
+	
+	@RequestMapping(value="/member/updateInfo", method=RequestMethod.POST)
+	public String updateInfoProc(
+			Member member,
+			@RequestParam(value="file")MultipartFile fileupload, HttpSession session) {
+		
+		String loginid = (String)session.getAttribute("loginid");
+		logger.info(member.toString());
+		logger.info(fileupload.getOriginalFilename());
+		
+		int member_code = memberService.getMember_code(loginid);
+		
+		memberService.updateInfo(member);
+		
+		memberService.imgsave(fileupload, context, member_code);
+		return "redirect:"+"/member/updateInfo";
+		
+	}
+	
+	@RequestMapping(value="/member/updatePw", method=RequestMethod.GET)
+	public void updatePw() {
+		
+		
+	}
+	
+	@RequestMapping(value="/member/main", method=RequestMethod.GET)
+	public void main() {
 	
 	
 }

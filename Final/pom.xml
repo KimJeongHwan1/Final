@@ -13,14 +13,17 @@
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
+
 		<!-- ojdbc6를 위한 repository설정 -->
 	<!-- <properties>와 <dependencies>사이에 적을 것 -->
+
 	<repositories>
 		<repository>
 			<id>oracle</id>
 			<url>http://maven.jahia.org/maven2</url>
 		</repository>
 	</repositories>
+
 
 	<dependencies>
 	

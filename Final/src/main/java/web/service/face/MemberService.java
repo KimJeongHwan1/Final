@@ -1,8 +1,23 @@
 package web.service.face;
 
+import javax.servlet.ServletContext;
+
+import org.springframework.web.multipart.MultipartFile;
+
 import web.dto.Member;
+import web.dto.UserImg;
+
 
 public interface MemberService {
+	
+	
+	public Boolean login(Member member);
+	public Member selectMemberInfo(String loginid);
+	public void updateInfo(Member member);
+	public int getMember_code(String loginid);
+	public void imgsave(MultipartFile file, ServletContext context, int member_code);
+	public boolean selectImgCheck(int member_code);
+	public UserImg selectImg(int member_code);
 	
 	/**
 	 * 회원가입
@@ -17,8 +32,6 @@ public interface MemberService {
 	 * @param loginData - 존재하는 사용자인지 확인할 데이터
 	 * @return boolean - 로그인 성공/실패
 	 */
-	public boolean login(Member member);
-
 	public Member getMember(Member member);
 
 	public boolean idCheck(Member member);
