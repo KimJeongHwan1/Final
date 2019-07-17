@@ -41,8 +41,4 @@
 <br><br>
 </div>
 
-
-</div>
-</div>
-
 <c:import url="/WEB-INF/views/layout/footer.jsp" />

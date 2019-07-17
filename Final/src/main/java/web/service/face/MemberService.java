@@ -12,7 +12,6 @@ public interface MemberService {
 	
 	
 	public Boolean login(Member member);
-	public Member selectMemberInfo(String loginid);
 	public void updateInfo(Member member);
 	public int getMember_code(String loginid);
 	public void imgsave(MultipartFile file, ServletContext context, int member_code);
@@ -35,5 +34,8 @@ public interface MemberService {
 	public Member getMember(Member member);
 
 	public boolean idCheck(Member member);
-
+	
+	public String pwCheck(String loginid);
+	public void updatePw(String member_pw, String loginid);
+	public void memberdelete(String member_id, int member_code);
 }

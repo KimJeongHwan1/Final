@@ -3,14 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
-<!-- jQuery 2.2.4 -->
-<script type="text/javascript"
- src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
-
-<!-- Bootstrap 3 -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<c:import url="/WEB-INF/views/layout/header.jsp" />
 
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
  <script>
@@ -134,7 +127,7 @@ $(document).ready(function() {
 
 </script>
 
-<c:import url="/WEB-INF/views/layout/header.jsp" />
+
 
 
 <form action="/member/join" name="joinForm" method="POST" onsubmit="return inputCheck()">
@@ -225,3 +218,5 @@ $(document).ready(function() {
 			</button>
 		</div>
 	</form>
+	
+<c:import url="/WEB-INF/views/layout/footer.jsp" />

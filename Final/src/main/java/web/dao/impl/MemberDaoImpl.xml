@@ -53,21 +53,33 @@
 	</delete>
 
 	<insert id="insertLogin" parameterType="web.dto.Member">
-		INSERT INTO member (member_code, member_id, member_pw, member_name, member_gender, member_birth, member_email, member_phone, member_address) 
-		VALUES (member_seq.nextval, #{member_id }, #{member_pw }, #{member_name }, #{member_gender }, #{member_birth }, #{member_email }, #{member_phone }, #{member_address })
+		INSERT INTO member (member_code, member_id, member_pw, member_name, member_gender, member_birth, member_email, member_phone, member_address, member_type) 
+		VALUES (member_seq.nextval, #{member_id }, #{member_pw }, #{member_name }, #{member_gender }, #{member_birth }, #{member_email }, #{member_phone }, #{member_address }, 1)
 	</insert> 
 	
 	<select id="selectCntLogin" parameterType="web.dto.Member" resultType="int">
-		SELECT COUNT(*) FROM member WHERE id = #{id } AND pw = #{pw }
+		SELECT COUNT(*) FROM member WHERE member_id = #{member_id } AND member_pw = #{member_pw }
 	</select> 
 	
 	<select id="selectByMember" parameterType="web.dto.Member" resultType="web.dto.Member">
 		SELECT * FROM member
-		WHERE id = #{id }
+		WHERE member_id = #{member_id }
 	</select>
   
 	<select id="joinCheckid" parameterType="web.dto.Member" resultType="int">
 		select count(*) from member where member_id = #{member_id }
 	</select> 
-
+	<select id="pwCheckDao" parameterType="String" resultType="String">
+		select member_pw from member where member_id = #{loginid }
+	</select> 
+	
+	<update id="updatePwDao" parameterType="web.dto.Member">
+		update member set member_pw = #{member_pw } where member_id = #{member_id }
+	</update> 
+	
+	
+	<delete id="memberdeleteDao" parameterType="String">
+		delete from member where member_id = #{member_id }
+	</delete> 
+	
 </mapper>
