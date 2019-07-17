@@ -1,9 +1,14 @@
 package web.controller;
 
 
+import java.io.IOException;
+
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.github.scribejava.core.model.OAuth2AccessToken;
+
 import web.dto.Member;
 import web.dto.UserImg;
 
@@ -22,7 +29,16 @@ import web.service.face.MemberService;
 
 @Controller
 public class MemberController {
+	
+	/* NaverLoginBO */
+	private NaverLoginBo naverLoginBO;
+	private String apiResult = null;
 
+	@Autowired
+	private void setNaverLoginBO(NaverLoginBo naverLoginBO) {
+		this.naverLoginBO = naverLoginBO;
+	}
+	
 
 	//로그 라이브러리 객체
 	private static final Logger logger
@@ -31,9 +47,66 @@ public class MemberController {
 	@Autowired ServletContext context;
 	@Autowired MemberService memberService;
 
+	
+	// 네이버로 로그인 했을 때
 	@RequestMapping(value="/member/main", method=RequestMethod.GET)
-	public void main() { }
+	public void main(Model model, 
+			@RequestParam String code, @RequestParam String state, HttpSession session)
+			throws IOException, ParseException { 
+		OAuth2AccessToken oauthToken;
+		oauthToken = naverLoginBO.getAccessToken(session, code, state);
+		
+		/** apiResult json 구조
+		{"resultcode":"00",
+		"message":"success",
+		"response":{"id":"33666449","nickname":"shinn****","age":"20-29","gender":"M","email":"shinn0608@naver.com","name":"\uc2e0\ubc94\ud638"}}
+		**/
 
+		
+		
+		
+		// 1. 로그인 사용자 정보를 읽어온다.
+		apiResult = naverLoginBO.getUserProfile(oauthToken); // String형식의 json데이터
+		
+		
+		// 2. String형식인 apiResult를 json형태로 바꿈
+		JSONParser parser = new JSONParser();
+		Object obj = parser.parse(apiResult);
+		JSONObject jsonObj = (JSONObject) obj;
+		
+		// 3. 데이터 파싱
+		// Top레벨 단계 _response 파싱
+		
+		JSONObject response_obj = (JSONObject) jsonObj.get("response");
+		
+		// response의 nickname값 파싱
+		String nickname = (String) response_obj.get("nickname");
+		String id = (String) response_obj.get("id");
+		String email = (String) response_obj.get("email");		
+		
+		System.out.println(nickname);
+		System.out.println(id);
+		System.out.println(email);
+		
+		
+		// 4.파싱 닉네임 세션으로 저장
+		
+		session.setAttribute("email", email);
+		session.setAttribute("nickname",nickname); //세션 생성
+		model.addAttribute("result", apiResult);
+		
+		
+	}
+	
+	
+	// 일반 로그인 했을때
+	@RequestMapping(value = "/member/main2", method = RequestMethod.GET) 
+	  public void main2() {
+	  
+	  
+	  }
+	
+	
 	@RequestMapping(value="/member/join", method=RequestMethod.GET)
 	public void join() { 
 		logger.info("회원가입 폼");
@@ -65,8 +138,19 @@ public class MemberController {
 	}
 
 	@RequestMapping(value="/member/login", method=RequestMethod.GET)
-	public void login() {
+	public void login(Model model, HttpSession session) {
 		logger.info("로그인 폼");
+		
+		/* 네이버아이디로 인증 URL을 생성하기 위하여 naverLoginBO클래스의 getAuthorizationUrl메소드 호출 */
+		String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
+		// https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=sE***************&
+		// redirect_uri=http%3A%2F%2F211.63.89.90%3A8090%2Flogin_project%2Fcallback&state=e68c269c-5ba9-4c31-85da-54c16c658125
+		
+		// System.out.println("네이버:" + naverAuthUrl);
+		
+		// 네이버
+		model.addAttribute("url", naverAuthUrl);
+		
 
 	}
 
@@ -91,7 +175,7 @@ public class MemberController {
 			session.setAttribute("nick", member.getMember_name());
 
 			//리다이렉트 URL 지정
-			redirectUrl = "/member/main";
+			redirectUrl = "/member/main2";
 
 		} else {
 			//로그인 실패
@@ -108,7 +192,7 @@ public class MemberController {
 	public String logout(HttpSession session) {
 		session.invalidate();
 
-		return "redirect:" + "/member/main";
+		return "redirect:" + "/member/login";
 	}
 
 	@RequestMapping(value="/member/updateInfo", method=RequestMethod.GET)
