@@ -208,26 +208,13 @@ public class MemberController {
 	
 	
 	@RequestMapping(value="/member/delete", method=RequestMethod.GET)
-	public void delete() {
-		
-	}
-	@RequestMapping(value="/member/memberdelete", method=RequestMethod.GET)
-	public void memberdelete(HttpSession session, Model model, String pw) {
-		
+	public void delete(HttpSession session, Model model) {
 		String loginid = (String) session.getAttribute("loginid");
 		
 		String loginpw = memberService.pwCheck(loginid);
-		logger.info("로그인 비밀번호     : " + loginpw);
-		logger.info("이전 비밀번호        : " + pw);
-
-		int num = 0;
-		if(loginpw.equals(pw)) {
-			num = 0; //탈퇴 성공		
-		} else {
-			num = 1; //탈퇴 실패
-		}
-		model.addAttribute("result", num);
+		model.addAttribute("logpw", loginpw);
 	}
+	
 	@RequestMapping(value="/member/resultdelete", method=RequestMethod.POST)
 	public String resultdelete(HttpSession session, Model model, String pw) {
 		String loginid = (String) session.getAttribute("loginid");
