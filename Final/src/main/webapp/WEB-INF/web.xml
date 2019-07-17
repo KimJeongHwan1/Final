@@ -3,7 +3,8 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 
-	<!--  POST 单捞磐 茄臂(UTF-8) 牢内爹 鞘磐  -->
+	<!--  POST 데이터 한글(UTF-8) 인코딩 필터  -->
+
 	<filter>
 		<filter-name>encodingFilter</filter-name>
 		<filter-class>

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
@@ -47,10 +47,12 @@
 	font-size: 25px;
 }
 
+
 </style>
 
 </head>
 <body>
+
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -61,7 +63,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#" id="title">요리Tong</a>
+      <a class="navbar-brand" href="/member/main" id="title">요리Tong</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -117,5 +119,3 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-
-
