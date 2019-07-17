@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 마이바티스 3 Mapper DOCTYPE -->
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="web.dao.face.BlackListDao">
+	
+	<select id="selectAllBlackList" parameterType="web.util.BlackListPaging" resultType="web.dto.BlackList" >
+		SELECT * FROM (SELECT rownum rnum, B.* from (
+			SELECT * FROM blacklist
+			ORDER BY black_report_date DESC
+		)B
+		ORDER BY rnum
+		)
+		WHERE rnum BETWEEN #{startNo } AND #{endNo }
+	</select>
+	
+	
+	<select id="selectCntAll" parameterType="map" resultType="int">
+		SELECT COUNT(*) FROM blacklist
+	</select>
+	
+	<select id="selectByBlack_no" parameterType="int" resultType="web.dto.BlackList">
+		SELECT * FROM blacklist
+		WHERE black_no = #{black_no }
+	</select>
+
+	<delete id="deleteBlackList" parameterType="int">
+		DELETE FROM blacklist
+		WHERE black_no = #{black_no }
+	</delete>
+
+	<delete id="blackDeleteByMember_code" parameterType="int">
+		DELETE FROM blacklist
+		WHERE member_code = #{member_code }
+	</delete>
+
+
+	<delete id="blackDeleteMember" parameterType="int">
+		DELETE FROM member
+		WHERE member_code = #{member_code }
+	</delete>
+
+	
+</mapper>
