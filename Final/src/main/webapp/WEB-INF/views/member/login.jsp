@@ -34,7 +34,25 @@
 
 <button id="login_btn">로그인</button>
 </form>
-<hr>
+
+<br>
+
+<!-- 네이버 로그인 -->
+<!-- 네이버 로그인 창으로 이동 -->
+<div id="naver_id_login" style="text-align:center"><a href="${url}">
+<img width="223" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/></a></div>
+<br>
+
+
+<!-- 카카오  -->
+<div class="form-group socialimage" id="kakaoBtn">
+	<a href="https://kauth.kakao.com/oauth/authorize?client_id=2909d1f1b5847336a148de1527285c03&redirect_uri=http://localhost:8088/member/main3&response_type=code">
+		<img id="socialimage" src="/resources/img/kakao_account_login_btn_medium_narrow.png" height="100%"/>
+			</a>
+		</div>
+
+
+
 
 <a href=""><span style="font-weight: bold;">아이디 찾기 또는 비밀번호 찾기</span></a><br><br>
 <a href=""><span style="font-weight: bold;">회원가입</span></a>

@@ -8,26 +8,12 @@
 <h1>테스트</h1>
 <hr>
 
-로그인 아이디 : ${loginid }<br><br>
-<a href="/member/login">로그인</a><br>
-<a href="/member/logout">로그아웃</a><br><br>
+네이버 닉네임 : ${nickname }<br><br>
+네이버 이메일 : ${email }<br>
+${result }
 
-
-<c:if test="${not login }">
-<a href="/member/login">정보수정</a><br><br>
-</c:if>
-<c:if test="${login }">
-<a href="/member/updateInfo">정보수정</a><br><br>
-</c:if>
-
-<a href="/member/join">회원가입</a><br>
-
-<c:if test="${not login }">
-<a href="/member/login">회원탈퇴</a><br><br>
-</c:if>
-<c:if test="${login }">
-<a href="/member/delete">회원탈퇴</a><br><br>
-</c:if>
+<br>
+<button type="button" onclick="location.href='/member/logout'">로그아웃</button>
 
 </body>
 </html>

@@ -56,6 +56,13 @@
 	<context:component-scan
 		base-package="com.hansol.www, web" />
 
+	
+	
+	<!-- 네이버 Class에 대한 bean설정 -->
+	<beans:bean id="naverLoginBO" class="web.controller.NaverLoginBo" />
+
+	
+
 
 
 </beans:beans>
