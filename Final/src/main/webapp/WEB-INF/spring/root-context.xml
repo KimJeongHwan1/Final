@@ -51,11 +51,6 @@
 	
 	<!-- 마이바티스 인터페이스 설정 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="web.dao.face" />
-	</bean>
-	
-	<!-- 마이바티스 인터페이스 설정 -->
-	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="web.dao.face"/>
 	</bean>
 	

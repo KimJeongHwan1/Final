@@ -30,5 +30,7 @@ public interface MemberDao {
 
 	public int joinCheckid(Member member);
 
-
+	public String pwCheckDao(String loginid);
+	public void updatePwDao(Member member);
+	public void memberdeleteDao(String member_id);
 }

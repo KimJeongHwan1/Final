@@ -30,12 +30,6 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public Member selectMemberInfo(String loginid) {
-
-		return memberDao.selectMemberInfoDao(loginid);
-	}
-
-	@Override
 	public void updateInfo(Member member) {
 		memberDao.updateInfoDao(member);
 
@@ -118,5 +112,27 @@ public class MemberServiceImpl implements MemberService {
 		}
 		return false;
 	}
+	
+	@Override
+	public String pwCheck(String loginid) {
+		return memberDao.pwCheckDao(loginid);
+	}
 
+	@Override
+	public void updatePw(String member_pw, String loginid) {
+		System.out.println(member_pw);
+		System.out.println(loginid);
+		
+		Member member = new Member();
+		member.setMember_id(loginid);
+		member.setMember_pw(member_pw);
+		memberDao.updatePwDao(member);
+	}
+
+	@Override
+	public void memberdelete(String member_id, int member_code) {
+		memberDao.deleteImg(member_code);
+		memberDao.memberdeleteDao(member_id);
+		
+	}
 }

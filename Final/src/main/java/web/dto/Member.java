@@ -4,16 +4,17 @@ import java.util.Date;
 public class Member {
 
 //	member_code NUMBER PRIMARY KEY,
-//  member_id VARCHAR2(200) NOT NULL,
-//  member_pw VARCHAR2(200) NOT NULL,
-//  member_name VARCHAR2(200) NOT NULL,
-//  member_gender VARCHAR2(30) NOT NULL,
-//  member_birth DATE NOT NULL,
-//  member_email VARCHAR2(200) NOT NULL,
-//  member_phone VARCHAR2(200) NOT NULL,
-//  member_address VARCHAR2(500) NOT NULL
+//    member_id VARCHAR2(200) NOT NULL,
+//    member_pw VARCHAR2(200) NOT NULL,
+//    member_name VARCHAR2(200) NOT NULL,
+//    member_gender VARCHAR2(30) NOT NULL,
+//    member_birth DATE NOT NULL,
+//    member_email VARCHAR2(200) NOT NULL,
+//    member_phone VARCHAR2(200) NOT NULL,
+//    member_address VARCHAR2(500) NOT NULL , 
+//    member_type NUMBER not null,
+//    member_group_no NUMBER
 
-	
 	private int member_code;
 	private String member_id;
 	private String member_pw;
@@ -23,14 +24,17 @@ public class Member {
 	private String member_email;
 	private String member_phone;
 	private String member_address;
-
+	private int member_type;
+	private int member_group_no;
+	
 	@Override
 	public String toString() {
 		return "Member [member_code=" + member_code + ", member_id=" + member_id + ", member_pw=" + member_pw
 				+ ", member_name=" + member_name + ", member_gender=" + member_gender + ", member_birth=" + member_birth
 				+ ", member_email=" + member_email + ", member_phone=" + member_phone + ", member_address="
-				+ member_address + "]";
+				+ member_address + ", member_type=" + member_type + ", member_group_no=" + member_group_no + "]";
 	}
+	
 	/**
 	 * @return the member_code
 	 */
@@ -136,10 +140,32 @@ public class Member {
 	/**
 	 * @param member_address the member_address to set
 	 */
-
 	public void setMember_address(String member_address) {
 		this.member_address = member_address;
 	}
-	
+	/**
+	 * @return the member_type
+	 */
+	public int getMember_type() {
+		return member_type;
+	}
+	/**
+	 * @param member_type the member_type to set
+	 */
+	public void setMember_type(int member_type) {
+		this.member_type = member_type;
+	}
+	/**
+	 * @return the member_group_no
+	 */
+	public int getMember_group_no() {
+		return member_group_no;
+	}
+	/**
+	 * @param member_group_no the member_group_no to set
+	 */
+	public void setMember_group_no(int member_group_no) {
+		this.member_group_no = member_group_no;
+	}
 
 }
