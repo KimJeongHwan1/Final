@@ -1,5 +1,4 @@
 package web.dto;
-
 import java.util.Date;
 
 public class Member {
@@ -13,6 +12,7 @@ public class Member {
 //  member_email VARCHAR2(200) NOT NULL,
 //  member_phone VARCHAR2(200) NOT NULL,
 //  member_address VARCHAR2(500) NOT NULL
+
 	
 	private int member_code;
 	private String member_id;
@@ -23,6 +23,7 @@ public class Member {
 	private String member_email;
 	private String member_phone;
 	private String member_address;
+
 	@Override
 	public String toString() {
 		return "Member [member_code=" + member_code + ", member_id=" + member_id + ", member_pw=" + member_pw
@@ -135,13 +136,10 @@ public class Member {
 	/**
 	 * @param member_address the member_address to set
 	 */
+
 	public void setMember_address(String member_address) {
 		this.member_address = member_address;
 	}
 	
-	
-	
-	
-	
-	
+
 }

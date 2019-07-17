@@ -15,6 +15,7 @@ import web.dto.Member;
 import web.dto.UserImg;
 import web.service.face.MemberService;
 
+
 @Service
 public class MemberServiceImpl implements MemberService {
 
@@ -98,10 +99,24 @@ public class MemberServiceImpl implements MemberService {
 		return memberDao.selectImgDao(member_code);
 	}
 
+	@Override
+	public void join(Member member) {
+		memberDao.insertLogin(member);
 
+	}
 
-
-
-
+	@Override
+	public Member getMember(Member member) {
+		return memberDao.selectByMember(member);
+	}
+	
+	@Override
+	public boolean idCheck(Member member) {
+		
+		if(memberDao.joinCheckid(member)>0){
+			return true;
+		}
+		return false;
+	}
 
 }

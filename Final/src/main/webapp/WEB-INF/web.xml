@@ -4,6 +4,7 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 
 	<!--  POST 데이터 한글(UTF-8) 인코딩 필터  -->
+
 	<filter>
 		<filter-name>encodingFilter</filter-name>
 		<filter-class>

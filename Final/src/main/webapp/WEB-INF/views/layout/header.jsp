@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,39 +18,104 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
+
 <style type="text/css">
-#header {
-	text-align: center;
-	background: black;
+
+#title {
+	color: white;
+	font-size: 20px;
 }
-#header h1 {
-	margin: 0;
-	padding: 30px 0;
+
+.navbar-form {
+
+	padding-right : 10px;
+}
+
+#bell {
+	font-size : 25px;
+}
+
+#cloud {
+	font-size : 25px;
+}
+
+#ssnav{
+	padding-right : 10px;
+}
+
+#mymenu {
+	font-size: 25px;
 }
 
 
-#footer {
-	text-align: center;
-	background: black;
-}
-#footer h1 {
-	margin: 0;
-	padding: 20px 0;
-}
-
-.container {
-	border-left: 1px solid #eee;
-	border-right: 1px solid #eee;
-}
 </style>
 
 </head>
 <body>
 
-<div id="header">
-	<h1><a href="/member/main" style="color: white;">SPRING</a></h1>
-</div>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#" id="title">요리Tong</a>
+    </div>
 
-<div class="wrap">
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li ><a href="#">Link1<span class="sr-only">(current)</span></a></li>
+        <li><a href="#">Link2</a></li>
+       	 <li><a href="#">Link3</a></li>
+       	  <li><a href="#">Link4</a></li>
+      </ul>
 
-<div class="container">
+     
+      <ul class="nav navbar-nav navbar-right" id="ssnav">
+        <li><a href="#"><span class="glyphicon glyphicon-cloud-upload" id="cloud"></span></a></li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-bell" id="bell"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li class="divider"></li>
+            <li><a href="#">4</a></li>
+          </ul>
+        </li>
+      
+      
+      
+      
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-align-justify" id="mymenu"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li class="divider"></li>
+            <li><a href="#">4</a></li>
+          </ul>
+        </li>
+      </ul>ㅇ
+      
+       <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="사진 인물 또는 그룹" />
+          
+        </div>
+        <button type="submit" class="btn btn-default">검색</button>
+      </form>
+      
+      
+      
+      
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
