@@ -1,10 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>    
+<c:import url="/WEB-INF/views/layout/beforeheader.jsp" />
 
 <style>
 
@@ -16,7 +15,7 @@
 	margin-left: 0px;
 		
 	width: 100%;
-	height: 950px;
+	height: 900px;
 } 
 
 
@@ -32,7 +31,7 @@
 	position: absolute;
 	color: white;
 	
-	top: 220px;
+	top: 240px;
 	left: 600px;
 	width: 100%;
 	margin: 0 auto;
@@ -44,7 +43,7 @@
 }
 
 
-#imageText div pre {
+#imageText div span {
 	
 	text-align: center;
 	position: absolute;
@@ -52,10 +51,10 @@
 	
 	top: 450px;
 	left: 450px;
-	width: 100%;
+	
 	margin: 0 auto;
 	
-	width: 50px;
+
 	height: 50px;
 	
 	font-size: 25px;
@@ -129,12 +128,10 @@ $(function(){
     <div class="slider_item last"><img src="/resources/img/main_04.jpg"/></div>
 </div>
 
-<div id="imageText">
+<div id="imageText" style="text-align: center;">
 	<div><h1> 참신한 생각이 필요하세요 ? </h1></div>
-	<div><pre> 요리통 커뮤니티에 참여하여 수백억 개의 사진과 2백만개의 그룹을 만나보세요. </pre></div>
-	<div><h1><button>가입</button></h1></div>
+	<div><span> 요리통 커뮤니티에 참여하여 수백억 개의 사진과 2백만개의 그룹을 만나보세요. </span></div>
+	<div><h1><button type="button" onclick="location.href='/member/join'">가입</button></h1></div>
 </div>
 
-
-</body>
-</html>
+<c:import url="/WEB-INF/views/layout/footer.jsp" />
