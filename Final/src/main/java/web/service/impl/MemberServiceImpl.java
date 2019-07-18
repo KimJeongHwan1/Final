@@ -135,4 +135,23 @@ public class MemberServiceImpl implements MemberService {
 		memberDao.memberdeleteDao(member_id);
 		
 	}
+
+	@Override
+	public String findId(String member_name, String member_email) {
+		Member member = new Member();
+		member.setMember_name(member_name);
+		member.setMember_email(member_email);
+		
+		return memberDao.IdFind(member);
+	}
+
+	@Override
+	public String findPw(String member_name, String member_id, String member_email) {
+		Member member = new Member();
+		member.setMember_name(member_name);
+		member.setMember_id(member_id);
+		member.setMember_email(member_email);
+		
+		return memberDao.PwFind(member);
+	}
 }

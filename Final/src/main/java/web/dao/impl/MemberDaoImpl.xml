@@ -22,7 +22,7 @@
 		set
 		member_name = #{member_name }, member_gender = #{member_gender }, member_birth = #{member_birth }, member_email = #{member_email }, 
 				member_phone = #{member_phone }, member_address = #{member_address }	
-	
+		where member_id = #{member_id }
 	</update>
 	
 	<insert id="insertImg"
@@ -82,4 +82,11 @@
 		delete from member where member_id = #{member_id }
 	</delete> 
 	
+	<select id="IdFind" parameterType="web.dto.Member" resultType="String">
+		select member_id from member where (member_name = #{member_name } and member_email = #{member_email })
+	</select> 
+	
+	<select id="PwFind" parameterType="web.dto.Member" resultType="String">
+		select member_pw from member where (member_name = #{member_name } and member_id = #{member_id } and member_email = #{member_email })
+	</select> 
 </mapper>
