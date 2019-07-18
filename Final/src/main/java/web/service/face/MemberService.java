@@ -38,4 +38,8 @@ public interface MemberService {
 	public String pwCheck(String loginid);
 	public void updatePw(String member_pw, String loginid);
 	public void memberdelete(String member_id, int member_code);
+	
+	public String findId(String member_name, String member_email);
+	public String findPw(String member_name, String member_id, String member_email);
+	
 }
