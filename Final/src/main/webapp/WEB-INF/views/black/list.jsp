@@ -1,14 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>    
-    
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<c:import url="/WEB-INF/views/layout/header.jsp" />
 
 <!-- jQuery 2.2.4 -->
 <script type="text/javascript"
@@ -19,17 +14,16 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
+<style type="text/css">
 
+
+</style>
 
 </head>
 <body>
 
-<h1>블랙 리스트 </h1>
+<h1><a href="/black/list" style="color: black;">블랙리스트</a></h1>
 <hr>
-
-
-
-
 
 
 <div class="list" style="width: 100%; " >
@@ -74,5 +68,4 @@
 
 <c:import url="/WEB-INF/views/layout/BlackListPaging.jsp" />
 
-</body>
-</html>
+<c:import url="/WEB-INF/views/layout/footer.jsp" />
