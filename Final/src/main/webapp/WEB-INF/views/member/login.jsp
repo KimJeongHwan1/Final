@@ -54,7 +54,9 @@
 
 
 
+
 <a href="/member/findIdPw"><span style="font-weight: bold;">아이디 찾기 또는 비밀번호 찾기</span></a><br><br>
+
 <a href="/member/join"><span style="font-weight: bold;">회원가입</span></a>
 <br><br>
 </div>

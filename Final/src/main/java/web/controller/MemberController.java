@@ -314,6 +314,7 @@ public class MemberController {
 		return url;
 	}
 	
+
 	@RequestMapping(value="/member/findIdPw", method=RequestMethod.GET)
 	public void findIdPw() {
 		
@@ -350,4 +351,5 @@ public class MemberController {
 		return "/member/findSuccessPw";
 				
 	}
+
 }

@@ -29,6 +29,8 @@
 <a href="/member/delete">회원탈퇴</a><br><br>
 </c:if>
 
+<a href="/member/mypage">마이페이지</a>
+
 </body>
 </html>
 
