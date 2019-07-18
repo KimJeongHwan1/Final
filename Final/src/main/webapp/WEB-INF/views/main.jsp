@@ -1,16 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    
+<c:import url="/WEB-INF/views/layout/beforeheader.jsp" />
 
 <style>
 
 
 
 #imagedisplay div img { 
+	
 	
 	padding-left: 0px;
 	margin-left: 0px;
@@ -120,6 +120,10 @@ $(function(){
 </script>
 
 </head>
+
+
+
+
 <body style="margin: 0px;">
 	
 <div id="imagedisplay">
