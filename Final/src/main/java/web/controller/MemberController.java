@@ -229,7 +229,7 @@ public class MemberController {
 		logger.info(fileupload.getOriginalFilename());
 		
 		int member_code = memberService.getMember_code(loginid);
-		
+		member.setMember_id(loginid);
 		memberService.updateInfo(member);
 		if(fileupload.getOriginalFilename().equals("")) {
 			
@@ -313,8 +313,41 @@ public class MemberController {
 		} 
 		return url;
 	}
+	
+	@RequestMapping(value="/member/findIdPw", method=RequestMethod.GET)
+	public void findIdPw() {
+		
+	}
+	
+	@RequestMapping(value="/member/findSuccessId", method=RequestMethod.GET)
+	public String findSuccessId(String id_name, String id_email, Model model) {
 
-
-
-
+		if(!(id_name).equals("") && !(id_email).equals("")) {
+			
+			String id = memberService.findId(id_name, id_email);
+		
+			logger.info("찾은 ID : " + id);
+			
+			model.addAttribute("id", id);
+		} 
+		
+		return "/member/findSuccessId";
+				
+	}
+	
+	@RequestMapping(value="/member/findSuccessPw", method=RequestMethod.GET)
+	public String findSuccessPw(String pw_name, String pw_id, String pw_email, Model model) {
+		
+		if(!(pw_name).equals("") && !(pw_id).equals("") && !(pw_email).equals("")) {
+			
+			String pw = memberService.findPw(pw_name, pw_id, pw_email);
+			
+			logger.info("찾은 PW : " + pw);
+			
+			model.addAttribute("pw", pw);
+		}
+		
+		return "/member/findSuccessPw";
+				
+	}
 }
