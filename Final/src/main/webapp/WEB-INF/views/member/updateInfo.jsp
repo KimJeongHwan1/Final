@@ -4,55 +4,18 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:import url="/WEB-INF/views/layout/header.jsp" />
+<c:import url="/WEB-INF/views/layout/memberside.jsp" />
  <!-- 캘린더 -->
 <script src="https://code.jquery.com/jquery-1.12.4.js"> </script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <style>
-#choose_menu{
-	border: 1px solid black;
-	float: left;
-	width: 20%;
-	height: 900px;
-}
-#choose_menu div{
-	height: 50px;
-}
-#choose_menu label{
-	font-size: 20px;
-	font-weight: bold;
-	margin-top: 10px;
-	margin-left: 15px;
-}
-#see_menu{
-	border: 1px solid black;
-	border-left: none;
-	float: left;
-	width: 80%;
-	height: 900px;
-}
+
 img{
 	margin-right: 100px;
 	width: 100px;
 	height: 100px;
-}
-#see_menu_menu{
-	margin: 0 auto;
-	width: 80%;
-}
-#see_menu_menu button{
-	text-align: center;
-}
-#see_menu_table tr{
-	margin-top: 30px;
-}
-#btn_div{
-	text-align: center;
-}
-#btn_div button{
-	width: 100px;
-	height: 30px;
 }
 </style>
 
@@ -101,14 +64,6 @@ $(document).ready(function(){
 		  	 });
 });
 </script>
-<br>
-<div id="choose_menu">
-<div style="width: 100%"><a href="/member/updateInfo"><label>프로필 편집</label></a></div>
-<div style="width: 100%"><a href="/member/updatePw"><label>비밀번호 변경</label></a></div>
-<div style="width: 100%"><a href=""><label>공개범위 및 보안</label></a></div>
-
-</div>
-
 <div id="see_menu">
 <div id="see_menu_menu">
 <form action="/member/updateInfo" method="post" enctype="multipart/form-data">

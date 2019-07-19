@@ -361,7 +361,7 @@ public class MemberController {
 		member.setMember_id(loginid);
 		
 		member = memberService.getMember(member);
-		logger.info(member.toString());
+		// logger.info(member.toString());
 		
 		model.addAttribute("member", member);
 		
