@@ -114,21 +114,21 @@ public class MemberController {
 
 	@RequestMapping(value="/member/join", method=RequestMethod.POST)
 	public String joinProc(Member member) {
-
+		
 		memberService.join(member); //회원가입 처리
-
-		return "redirect:/member/main"; //main페이지로 리다이렉트
+		logger.info("회원가입 : " + member.toString() ) ;
+		return "redirect:/member/main2"; //main2페이지로 리다이렉트
 
 	}
 
 	@RequestMapping(value="/member/idCheck", method=RequestMethod.GET)
-	public String idCheck(Member member, Model model) {
+	public String idCheck(String member_id, Model model) {
 
-		logger.info("아이디 : "+ member.toString());
+		logger.info("아이디 : "+ member_id);
 		int check = 0;
-		if(member.getMember_id().equals("")){
+		if(member_id.equals("")){
 			check = 0;
-		} else if(memberService.idCheck(member)) {
+		} else if(memberService.idCheck(member_id)) {
 			check = 0;
 		} else {
 			check = 1;

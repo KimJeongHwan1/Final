@@ -105,9 +105,9 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	@Override
-	public boolean idCheck(Member member) {
+	public boolean idCheck(String member_id) {
 		
-		if(memberDao.joinCheckid(member)>0){
+		if(memberDao.joinCheckid(member_id)>0){
 			return true;
 		}
 		return false;

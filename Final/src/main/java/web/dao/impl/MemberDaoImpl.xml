@@ -21,7 +21,7 @@
 		update member 
 		set
 		member_name = #{member_name }, member_gender = #{member_gender }, member_birth = #{member_birth }, member_email = #{member_email }, 
-				member_phone = #{member_phone }, member_address = #{member_address }	
+				member_phone = #{member_phone }, member_addressnum =  #{member_addressnum }, member_address = #{member_address }	
 		where member_id = #{member_id }
 	</update>
 	
@@ -53,8 +53,8 @@
 	</delete>
 
 	<insert id="insertLogin" parameterType="web.dto.Member">
-		INSERT INTO member (member_code, member_id, member_pw, member_name, member_gender, member_birth, member_email, member_phone, member_address, member_type) 
-		VALUES (member_seq.nextval, #{member_id }, #{member_pw }, #{member_name }, #{member_gender }, #{member_birth }, #{member_email }, #{member_phone }, #{member_address }, 1)
+		INSERT INTO member (member_code, member_id, member_pw, member_name, member_gender, member_birth, member_email, member_phone, member_addressnum, member_address, member_type) 
+		VALUES (member_seq.nextval, #{member_id }, #{member_pw }, #{member_name }, #{member_gender }, #{member_birth }, #{member_email }, #{member_phone }, #{member_addressnum }, #{member_address }, 1)
 	</insert> 
 	
 	<select id="selectCntLogin" parameterType="web.dto.Member" resultType="int">
@@ -66,7 +66,7 @@
 		WHERE member_id = #{member_id }
 	</select>
   
-	<select id="joinCheckid" parameterType="web.dto.Member" resultType="int">
+	<select id="joinCheckid" parameterType="String" resultType="int">
 		select count(*) from member where member_id = #{member_id }
 	</select> 
 	<select id="pwCheckDao" parameterType="String" resultType="String">
