@@ -28,7 +28,7 @@ public interface MemberDao {
 
 	public Member selectByMember(Member member);
 
-	public int joinCheckid(Member member);
+	public int joinCheckid(String member_id);
 
 	public String pwCheckDao(String loginid);
 	public void updatePwDao(Member member);

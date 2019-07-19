@@ -92,9 +92,9 @@ $(document).ready(function(){
 		    			// 조합형주소의 유무에 따라 양쪽에 괄호를 추가하여 최종 주소를 만든다.
 		    			fullAddr += (extraAddr !== '' ? ' ('+ extraAddr +')' : '');
 		    		}
-			
-		    		document.getElementById('member_address').value = data.zonecode; //5자리 새우편번호 사용
-					document.getElementById('member_address').value = data.zonecode+" "+fullAddr;
+					
+		    		document.getElementById('member_addressnum').value = data.zonecode; //5자리 새우편번호 사용
+					document.getElementById('member_address').value = fullAddr;
 			
 					document.getElementById('member_address').focus();    				
 		    	}}).open();
@@ -141,29 +141,14 @@ $(document).ready(function(){
 <tr>
 	<td><label style="width: 200px; margin-top: 30px; font-size: 25px; font-weight: 100;">주소</label> </td>
 	<td>
-		<textarea id="member_address" name="member_address" rows="2" cols="60" style="width: 400px; margin-top: 24px; resize: none;">${member.member_address }</textarea>
+		<input type="text" id="member_addressnum" name="member_addressnum" placeholder="우편번호" style="width: 400px; margin-top: 30px;" value="${member.member_addressnum }"><br>
+	 	<input type="text" id="member_address" name="member_address" placeholder="상세주소" style="width: 400px; margin-top: 10px;" value="${member.member_address }">
 	</td>
 	<td><button type="button" id="btnAddr" style="width: 45px; margin-top: 18px; margin-left: 10px; height: 35px;">검색</button></td>
 </tr>
 <tr>
-	<td><label style="width: 200px; margin-top: 30px; font-size: 25px; font-weight: 100;">생년월일</label> </td>
-	<td><input type="text" name="member_birth" id="member_Birth" style="width: 400px; height: 30px; margin-top: 24px;" value="<fmt:formatDate value="${member.member_birth }" pattern="yyyy/MM/dd" />"/>
-	
-	</td>
-</tr>
-<tr>
 	<td><label style="width: 200px; margin-top: 30px; font-size: 25px; font-weight: 100;">전화번호</label> </td>
 	<td><input type="text" name="member_phone" id="member_phone" style="width: 400px height: 30px; margin-top: 24px;" value="${member.member_phone }"/></td>
-</tr>
-<tr>
-	<td><label style="width: 200px; margin-top: 30px; font-size: 25px; font-weight: 100;">성별</label> </td>
-	<td>
-		<select style="width:200px;  height: 30px; margin-top: 24px;" id="member_gender" name="member_gender">
-	  		<option>${member.member_gender }</option>
-	  		<option>남</option>
-	 		<option>여</option>
-		</select>
-	</td>
 </tr>
 
 
@@ -175,10 +160,6 @@ $(document).ready(function(){
 </form>
 </div>
 
-</div>
-
-
-</div>
 </div>
 
 <c:import url="/WEB-INF/views/layout/footer.jsp" />
