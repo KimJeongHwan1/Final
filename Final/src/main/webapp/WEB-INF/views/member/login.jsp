@@ -43,15 +43,12 @@
 <img width="223" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/></a></div>
 <br>
 
-
 <!-- 카카오  -->
 <div class="form-group socialimage" id="kakaoBtn">
-	<a href="https://kauth.kakao.com/oauth/authorize?client_id=2909d1f1b5847336a148de1527285c03&redirect_uri=http://localhost:8088/member/main3&response_type=code">
+	<a href="https://kauth.kakao.com/oauth/authorize?client_id=286734fe70f9a68239874c82d0f2f0b8&redirect_uri=http://localhost:8088/member/main3&response_type=code">
 		<img id="socialimage" src="/resources/img/kakao_account_login_btn_medium_narrow.png" height="100%"/>
 			</a>
 		</div>
-
-
 
 
 
