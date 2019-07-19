@@ -29,7 +29,9 @@
 <a href="/member/delete">회원탈퇴</a><br><br>
 </c:if>
 
-<a href="/member/mypage">마이페이지</a>
+<a href="/tong/mypage">타임라인 마이페이지</a><br>
+
+<a href="/member/mypage">회원 마이페이지</a>
 
 </body>
 </html>
