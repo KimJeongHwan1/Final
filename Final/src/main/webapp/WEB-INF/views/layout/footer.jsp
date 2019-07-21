@@ -20,10 +20,10 @@
   <div class="container-fluid">
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul id="fotter-nav" class="nav navbar-nav">
-        <li><a href="#">요리Tong 소개</a></li>
-       	<li><a href="#">사용지침</a></li>
-        <li><a href="#">개인정보 보호정책</a></li>
-        <li><a href="#">이용약관</a></li>
+        <li><a href="/layout/intro">요리Tong 소개</a></li>
+       	<li><a href="/layout/rule">사용지침</a></li>
+        <li><a href="/layout/policy">개인정보 보호정책</a></li>
+        <li><a href="/layout/terms">이용약관</a></li>
       </ul>
       
     </div><!-- /.navbar-collapse -->
