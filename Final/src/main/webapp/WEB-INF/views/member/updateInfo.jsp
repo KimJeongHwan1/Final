@@ -8,8 +8,8 @@
  <!-- 캘린더 -->
 <script src="https://code.jquery.com/jquery-1.12.4.js"> </script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <style>
 
 img{
@@ -27,7 +27,7 @@ $(document).ready(function(){
 	    ,changeMonth: true
 	    ,monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12']
 	    ,dayNamesMin: ['일','월','화','수','목','금','토']
-	 });
+	});
 	
 	 $("#btnAddr").click(function(){
 		    new daum.Postcode({
@@ -56,10 +56,11 @@ $(document).ready(function(){
 		    			fullAddr += (extraAddr !== '' ? ' ('+ extraAddr +')' : '');
 		    		}
 					
-		    		document.getElementById('member_addressnum').value = data.zonecode; //5자리 새우편번호 사용
-					document.getElementById('member_address').value = fullAddr;
-			
-					document.getElementById('member_address').focus();    				
+
+					document.getElementById('member_addressnum').value = data.zonecode+" "+fullAddr;	
+					
+					document.getElementById('member_address').focus();    
+					
 		    	}}).open();
 		  	 });
 });

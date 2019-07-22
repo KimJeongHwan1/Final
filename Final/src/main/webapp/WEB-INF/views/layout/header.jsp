@@ -27,7 +27,6 @@
 }
 
 .navbar-form {
-
 	padding-right : 10px;
 }
 

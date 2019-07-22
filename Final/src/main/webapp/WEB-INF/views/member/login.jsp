@@ -23,8 +23,15 @@
 	border-radius: 5px;
 }
 </style>
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#code").hide();
+});
+</script>
 <br><br>
 <div id="login_div">
+<input type="text" value="abc" name="code" id="code"/>
+
 
 <span class="glyphicon glyphicon-home" style="font-size: 60px; margin-bottom: 40px; margin-top: 20px;"></span>
 <form action="/member/login" method="post">

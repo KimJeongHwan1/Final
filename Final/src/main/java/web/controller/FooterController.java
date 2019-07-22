@@ -14,8 +14,6 @@ public class FooterController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(FooterController.class);
 	
-	
-	
 	@RequestMapping(value = "/layout/intro", method = RequestMethod.GET)
 	public void intro() {
 		logger.info("인트로");
