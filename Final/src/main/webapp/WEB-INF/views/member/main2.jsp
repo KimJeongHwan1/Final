@@ -13,21 +13,13 @@
 <a href="/member/logout">로그아웃</a><br><br>
 
 
-<c:if test="${not login }">
-<a href="/member/login">정보수정</a><br><br>
-</c:if>
-<c:if test="${login }">
+
 <a href="/member/updateInfo">정보수정</a><br><br>
-</c:if>
 
 <a href="/member/join">회원가입</a><br>
 
-<c:if test="${not login }">
-<a href="/member/login">회원탈퇴</a><br><br>
-</c:if>
-<c:if test="${login }">
+
 <a href="/member/delete">회원탈퇴</a><br><br>
-</c:if>
 
 <a href="/tong/mypage">타임라인 마이페이지</a><br>
 

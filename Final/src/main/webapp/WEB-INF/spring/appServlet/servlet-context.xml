@@ -15,6 +15,34 @@
 	<!-- 어노테이션 기반으로 컴포넌트를 등록할 수 있게 된다 ( @Controller, @Service ) -->
 	<annotation-driven />
 
+	<!-- 인터셉터 설정 -->
+	<interceptors>
+		<!-- 정보수정 -->
+		<interceptor>
+			<mapping path="/member/updateInfo" />
+			<beans:bean class="web.intercepter.YoritongIntercepter"></beans:bean>
+		</interceptor>
+		
+		<!-- 회원탈퇴 -->
+		<interceptor>
+			<mapping path="/member/delete" />
+			<beans:bean class="web.intercepter.YoritongIntercepter"></beans:bean>
+		</interceptor>
+		
+		<!-- 타임라인 마이페이지 -->
+		<interceptor>
+			<mapping path="/tong/mypage" />
+			<beans:bean class="web.intercepter.YoritongIntercepter"></beans:bean>
+		</interceptor>
+		
+		<!-- 회원 마이페이지 -->
+		<interceptor>
+			<mapping path="/member/mypage" />
+			<beans:bean class="web.intercepter.YoritongIntercepter"></beans:bean>
+		</interceptor>
+
+	</interceptors>
+
 	<!-- GET으로 요청된 정적인 자원에 대한 매핑 -->
 	<!-- mapping URL에 대한 응답 자원의 location -->
 	<resources mapping="/resources/**" location="/resources/" />
@@ -56,12 +84,13 @@
 	<context:component-scan
 		base-package="com.hansol.www, web" />
 
-	
-	
-	<!-- 네이버 Class에 대한 bean설정 -->
-	<beans:bean id="naverLoginBO" class="web.controller.NaverLoginBo" />
 
-	
+
+	<!-- 네이버 Class에 대한 bean설정 -->
+	<beans:bean id="naverLoginBO"
+		class="web.controller.NaverLoginBo" />
+
+
 
 
 

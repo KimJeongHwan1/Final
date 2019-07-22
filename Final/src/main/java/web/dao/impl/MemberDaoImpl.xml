@@ -20,8 +20,8 @@
 		
 		update member 
 		set
-		member_name = #{member_name }, member_gender = #{member_gender }, member_birth = #{member_birth }, member_email = #{member_email }, 
-				member_phone = #{member_phone }, member_addressnum =  #{member_addressnum }, member_address = #{member_address }	
+		member_name = #{member_name }, member_email = #{member_email }, member_phone = #{member_phone },
+		member_addressnum =  #{member_addressnum }, member_address = #{member_address }	
 		where member_id = #{member_id }
 	</update>
 	
