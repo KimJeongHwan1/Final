@@ -1,7 +1,8 @@
 package web.dao.face;
 
-import web.dto.Member;
+import java.util.List;
 
+import web.dto.Member;
 import web.dto.UserImg;
 
 public interface MemberDao {
@@ -36,4 +37,8 @@ public interface MemberDao {
 	
 	public String IdFind(Member member);
 	public String PwFind(Member member);
+	
+	public List<Member> getUserList(String loginid);
+	
+	public String getUserId(int member_code);
 }

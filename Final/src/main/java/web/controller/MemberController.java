@@ -2,6 +2,7 @@ package web.controller;
 
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
@@ -16,7 +17,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -25,7 +25,6 @@ import com.github.scribejava.core.model.OAuth2AccessToken;
 
 import web.dto.Member;
 import web.dto.UserImg;
-
 import web.service.face.MemberService;
 
 @Controller
@@ -88,10 +87,10 @@ public class MemberController {
 		System.out.println(nickname);
 		System.out.println(id);
 		System.out.println(email);
-
+		
 
 		// 4.파싱 닉네임 세션으로 저장
-//		session.setAttribute("login", true);
+		session.setAttribute("login", true);
 		session.setAttribute("loginid", id);
 		session.setAttribute("email", email);
 		session.setAttribute("nickname",nickname); //세션 생성
@@ -102,12 +101,14 @@ public class MemberController {
 
 	// 일반 로그인 했을때
 	@RequestMapping(value = "/member/main2", method = RequestMethod.GET) 
-	public void main2() { }
-
-
-	@RequestMapping(value="/member/join", method=RequestMethod.GET)
-	public void join() { 
-		logger.info("회원가입 폼");
+	public void main2(HttpSession session, Model model) { 
+		
+		String loginid = (String) session.getAttribute("loginid");
+		
+		List<Member> list = memberService.getUseridList(loginid);
+		
+		model.addAttribute("list", list);
+		
 	}
 
 	@RequestMapping(value="/member/join", method=RequestMethod.POST)
@@ -118,7 +119,12 @@ public class MemberController {
 		return "redirect:/member/main2"; //main2페이지로 리다이렉트
 
 	}
-
+	
+	@RequestMapping(value="/member/join", method=RequestMethod.GET)
+	public void join() { 
+		logger.info("회원가입 폼");
+	}
+	
 	@RequestMapping(value="/member/idCheck", method=RequestMethod.GET)
 	public String idCheck(String member_id, Model model) {
 
@@ -263,11 +269,6 @@ public class MemberController {
 
 		String loginpw = memberService.pwCheck(loginid);
 
-		//		logger.info("로그인 비밀번호     : " + loginpw);
-		//		logger.info("이전 비밀번호        : " + member_pw0);
-		//		logger.info("현재 비밀번호        : " + member_pw1);
-		//		logger.info("현재 비밀번호 확인 : " + member_pw2);
-
 		int num = 0;
 
 		if((loginpw.equals(member_pw0)) && (member_pw1.equals(member_pw2))) {
@@ -393,8 +394,8 @@ public class MemberController {
 		String token = node.get("access_token").toString();
 
 		//세션에 담아준다.
-		session.setAttribute("token", token);
-		
+		session.setAttribute("loginid", token);
+		session.setAttribute("loginKakao", true);
 		return "redirect:"+"/member/main2";
 	}
 
@@ -405,7 +406,7 @@ public class MemberController {
 		//kakao restapi 객체 선언
 		kakao_restapi kr = new kakao_restapi();
 		//노드에 로그아웃한 결과값음 담아줌 매개변수는 세션에 잇는 token을 가져와 문자열로 변환
-		JsonNode node = kr.Logout(session.getAttribute("token").toString());
+		JsonNode node = kr.Logout(session.getAttribute("loginid").toString());
 
 		//결과 값 출력
 		System.out.println("로그인 후 반환되는 아이디 : " + node.get("id"));

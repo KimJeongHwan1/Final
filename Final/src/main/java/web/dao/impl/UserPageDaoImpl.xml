@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 마이바티스 3 Mapper DOCTYPE -->
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="web.dao.face.UserPageDao">
+	
+	<insert id="insertImg"
+		parameterType="web.dto.UserPage">
+			insert into UserPage( content_no, content_title, content, member_code, hit, like_index, tag, file_index, originname, storedname)
+			values( UserPage_seq.nextval, #{content_title }, #{content }, #{member_code }, 0, 0, #{tag }, 
+			UserPage_seq.nextval, #{originname }, #{storedname })
+		
+	</insert>
+	
+	<insert id="insertwriteInfo"
+		parameterType="web.dto.UserPage">
+			insert into UserPage( content_no, content_title, content, member_code, hit, like_index, tag, file_index, originname, storedname)
+			values( UserPage_seq.nextval, #{content_title }, #{content }, #{member_code }, 0, 0, #{tag }, 
+			0, 0, 0)
+	</insert>
+	
+	<select id="getwriteListDao"
+		resultType="web.dto.UserPage"
+		parameterType="web.dto.Member">
+		
+		select * from UserPage
+		where member_code = #{member_code }
+			
+	</select>
+	
+	<select id="selectByContentno"
+		resultType="web.dto.UserPage"
+		parameterType="web.dto.UserPage">
+		
+		select * from UserPage
+		where content_no = #{content_no }
+			
+	</select>
+		
+	<insert id="insertCommentDao"
+		parameterType="web.dto.Userpage_comment">
+			insert into Userpage_comment( comment_no, content, member_code, page_no)
+			values( Userpage_comm_seq.nextval, #{content }, #{member_code }, #{page_no })
+	</insert>
+	
+	<select id="selectCommentDao"
+		resultType="web.dto.Userpage_comment"
+		parameterType="int">
+		
+		select * from Userpage_comment
+		where page_no = #{page_no }
+		order by writtendate	
+	</select>
+	
+</mapper>
