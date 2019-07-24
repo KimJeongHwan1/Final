@@ -67,5 +67,3 @@
 
 
 <c:import url="/WEB-INF/views/layout/BlackListPaging.jsp" />
-
-<c:import url="/WEB-INF/views/layout/footer.jsp" />

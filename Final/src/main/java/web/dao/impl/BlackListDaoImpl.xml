@@ -42,6 +42,33 @@
 		DELETE FROM member
 		WHERE member_code = #{member_code }
 	</delete>
-
+	
+	<select id="selectByMember_id" parameterType="String" resultType="web.dto.MapAddress">
+		SELECT * FROM MapAddress
+		WHERE member_id = #{member_id }
+	
+	</select>
+	
+	<insert id="insertMap" parameterType="web.dto.MapAddress">
+		
+		INSERT INTO MapAddress(addno, address, member_id,x ,y)
+		VALUES(testaddress_seq.nextval, #{address }, #{member_id }, #{x }, #{y } )
+		
+	</insert>
+	
+	<update id="updateMap" parameterType="web.dto.MapAddress">
+		
+		UPDATE MapAddress set address = #{address }, x = #{x }, y = #{y }
+		where addno = #{addno }
+		
+	</update>
+	
+	<delete id="deleteMap" parameterType="web.dto.MapAddress" >
+		
+		DELETE FROM MapAddress
+		WHERE addno = #{addno } 
+	
+	</delete>
+	
 	
 </mapper>
