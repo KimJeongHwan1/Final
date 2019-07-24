@@ -1,5 +1,7 @@
 package web.service.face;
 
+import java.util.List;
+
 import javax.servlet.ServletContext;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -41,5 +43,6 @@ public interface MemberService {
 	
 	public String findId(String member_name, String member_email);
 	public String findPw(String member_name, String member_id, String member_email);
-	
+	public List<Member> getUseridList(String loginid);
+	public String getmember_id(int member_code);
 }

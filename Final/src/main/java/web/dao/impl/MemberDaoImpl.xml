@@ -88,5 +88,20 @@
 	
 	<select id="PwFind" parameterType="web.dto.Member" resultType="String">
 		select member_pw from member where (member_name = #{member_name } and member_id = #{member_id } and member_email = #{member_email })
-	</select> 
+	</select>
+	
+	<select id="getUserList" 
+		parameterType="String" 
+		resultType="web.dto.Member">
+		select * from member 
+		where member_id != #{loginid }
+	</select>
+	
+	<select id="getUserId" 
+		parameterType="int" 
+		resultType="String">
+		select member_id from member 
+		where member_code = #{member_code }
+	</select>
+	
 </mapper>

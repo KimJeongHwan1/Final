@@ -2,6 +2,7 @@ package web.service.impl;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.ServletContext;
@@ -153,5 +154,17 @@ public class MemberServiceImpl implements MemberService {
 		member.setMember_email(member_email);
 		
 		return memberDao.PwFind(member);
+	}
+	
+	@Override
+	public List<Member> getUseridList(String loginid) {
+		// TODO Auto-generated method stub
+		return memberDao.getUserList(loginid);
+	}
+
+	@Override
+	public String getmember_id(int member_code) {
+		// TODO Auto-generated method stub
+		return memberDao.getUserId(member_code);
 	}
 }

@@ -47,6 +47,7 @@
 	<!-- mapping URL에 대한 응답 자원의 location -->
 	<resources mapping="/resources/**" location="/resources/" />
 	<resources mapping="/upload/**" location="/upload/" />
+	<resources mapping="/uppage/**" location="/uppage/" />
 
 	<!-- jsp기반의 viewResolver -->
 	<beans:bean
