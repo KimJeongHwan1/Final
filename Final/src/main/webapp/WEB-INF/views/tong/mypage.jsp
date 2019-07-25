@@ -129,6 +129,25 @@ img{
 	width: 100px;
 	height: 30px;
 }
+.list_img{
+	width: 250px;
+	height: 200px;
+	margin: 0 auto;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+#user_write_div{
+	margin-left: 300px;
+	width: 1000px;
+}
+#user_write_list{
+	width: 280px;
+	text-align: center;
+	border: 1px solid black;
+	float: left;
+	margin-left: 50px;
+	margin-bottom: 50px;
+}
 </style>
 
 <div id="STATICMENU">
@@ -189,5 +208,11 @@ img{
 <hr>
 
 
+<div id="user_write_div">
 
+
+</div>
+
+
+<c:import url="/WEB-INF/views/layout/infiScroll.jsp" />
 <c:import url="/WEB-INF/views/layout/footer.jsp" />

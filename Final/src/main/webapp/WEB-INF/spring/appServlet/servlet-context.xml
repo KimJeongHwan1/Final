@@ -83,7 +83,7 @@
 	<!-- 컴포넌트를 스캔(검색 후 등록)할 패키지를 지정한다. -->
 	<!-- 여러 패키지를 등록할 때에는 ,로 구분한다. -->
 	<context:component-scan
-		base-package="com.hansol.www, web" />
+		base-package="com.yoritong.www, web" />
 
 
 
