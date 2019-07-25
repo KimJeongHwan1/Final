@@ -1,10 +1,9 @@
 package web.controller;
 
-import java.text.DateFormat;
-import java.util.Date;
-import java.util.Locale;
+import java.util.List;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -17,7 +16,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import web.dto.Member;
 import web.dto.UserImg;
+import web.dto.UserPage;
 import web.service.face.MemberService;
+import web.service.face.MyPageService;
+import web.util.Paging;
 
 /**
  * Handles requests for the application home page.
@@ -29,6 +31,7 @@ public class TongController {
 	
 	@Autowired ServletContext context;
 	@Autowired MemberService memberService;
+	@Autowired MyPageService mypageService;
 	
 	@RequestMapping(value="/tong/mypage", method=RequestMethod.GET)
 	public void mypage(HttpSession session, Model model, Member member) {
@@ -52,6 +55,31 @@ public class TongController {
 		} 
 
 		model.addAttribute("bool", memberService.selectImgCheck(member_code));
+		
+
+		
+	}
+	
+	@RequestMapping(value = "/tong/appendlist", method = RequestMethod.GET)
+	public void appendlist(HttpSession session, Model model, HttpServletRequest req, Member member) {
+		
+		String loginid = (String)session.getAttribute("loginid");
+		
+		member.setMember_id(loginid);
+		
+		member = memberService.getMember(member);
+		
+		Paging paging = mypageService.CurPage(req);
+		
+		req.setAttribute("paging", paging);
+		
+		
+		List<UserPage> MyPageList = mypageService.MyPageList(member);
+		
+//		logger.info(MyPageList.toString());
+		
+		model.addAttribute("mypagelist", MyPageList);
+		
 	}
 	
 }
