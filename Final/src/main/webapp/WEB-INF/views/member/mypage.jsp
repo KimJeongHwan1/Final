@@ -74,6 +74,7 @@ img{
 <tr>
 	<td><label style="width: 200px; margin-top: 30px; font-size: 25px; font-weight: 100;">주소</label> </td>
 	<td>
+		<!-- <label style="width: 400px; height: 30px; margin-top: 30px; font-weight: normal;">${member.member_addressnum }</label><br> -->
 		<label style="width: 400px; height: 30px; margin-top: 30px; font-weight: normal;">${member.member_address }</label>
 	</td>
 </tr>
