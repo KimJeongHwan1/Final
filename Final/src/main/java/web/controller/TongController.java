@@ -13,12 +13,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import web.dto.Member;
 import web.dto.UserImg;
 import web.dto.UserPage;
 import web.service.face.MemberService;
 import web.service.face.MyPageService;
+import web.service.face.UserPageService;
 import web.util.Paging;
 
 /**
@@ -32,6 +35,7 @@ public class TongController {
 	@Autowired ServletContext context;
 	@Autowired MemberService memberService;
 	@Autowired MyPageService mypageService;
+	@Autowired UserPageService userpageService;
 	
 	@RequestMapping(value="/tong/mypage", method=RequestMethod.GET)
 	public void mypage(HttpSession session, Model model, Member member) {
@@ -80,6 +84,29 @@ public class TongController {
 		
 		model.addAttribute("mypagelist", MyPageList);
 		
+	}
+	
+	@RequestMapping(value = "/tong/write", method = RequestMethod.GET)
+	public void write() {
+		
+	}
+	
+	@RequestMapping(value = "/tong/write", method = RequestMethod.POST)
+	public String writeProc(HttpSession session, UserPage userpage,
+			@RequestParam(value="file")MultipartFile fileupload) {
+		
+		String loginid = (String)session.getAttribute("loginid");
+		
+		int member_code = memberService.getMember_code(loginid);
+		userpage.setMember_code(member_code);
+		
+		if(fileupload.getOriginalFilename().equals("")) {
+			userpageService.insertwrite(userpage);
+		} else {
+			userpageService.imgsave(fileupload, context, userpage);
+		}
+		
+		return "redirect:"+"/tong/mypage";
 	}
 	
 }

@@ -99,6 +99,32 @@ img{
 	font-size: 40px;
 }
 </style>
+<!-- <!DOCTYPE html> -->
+<!-- <html> -->
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
+<title>KakaoStory Share Button Demo - Kakao JavaScript SDK</title>
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+
+</head>
+<body>
+<a href="javascript:shareStory()">
+<img src="https://developers.kakao.com/sdk/js/resources/story/icon_small.png"/>
+</a>
+<script type='text/javascript'>
+  //<![CDATA[
+    // 사용할 앱의 JavaScript 키를 설정해 주세요.
+    Kakao.init('YOUR APP KEY');
+    function shareStory() {
+      Kakao.Story.share({
+        url: 'http://localhost:8088/userpage/view?content_no=1',
+        text: '게시물 공유 #개발테스트 #공유 :)'
+      });
+    }
+  //]]>
+</script>
 <script type="text/javascript">
 $(document).ready(function() {
 	$("#write_btn").click(function() {
