@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import web.dao.face.MemberDao;
+import web.dto.Good;
 import web.dto.Member;
 import web.dto.UserImg;
 import web.service.face.MemberService;
@@ -166,5 +167,36 @@ public class MemberServiceImpl implements MemberService {
 	public String getmember_id(int member_code) {
 		// TODO Auto-generated method stub
 		return memberDao.getUserId(member_code);
+	}
+
+	@Override
+	public void saveGoodId(String member_id, int content_no) {
+		
+		Good good = new Good();
+		
+		good.setContent_no(content_no);
+		good.setMember_id(member_id);
+		
+		if(memberDao.saveGoodBlock(good)>0) {
+			
+			memberDao.deleteGood(member_id);
+			System.out.println("ㅎㅇ");
+			
+		} else {
+			
+			System.out.println(good);
+			memberDao.saveGoodId(good);
+		}
+		
+	}
+
+	@Override
+	public int saveGoodCount(int content_no) {
+		return memberDao.saveGoodcount(content_no);
+	}
+
+	@Override
+	public int goodCheck(Good good) {
+		return memberDao.saveGoodBlock(good);
 	}
 }

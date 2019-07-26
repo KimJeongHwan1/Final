@@ -101,6 +101,42 @@ img{
 </style>
 <script type="text/javascript">
 $(document).ready(function() {
+	
+	$("#good_btn").click(function() {
+		
+		$.ajax({
+			type: "get"
+			, url: "/userpage/good?content_no=${userpage.content_no}"
+			, data: { }
+			, dataType: "html"
+			, success: function( res ) {
+				$("#good_span").html(res);
+				console.log("성공");
+			}
+			, error: function() {
+				console.log("실패");
+			}
+		})
+		
+		$.ajax({
+			type: "get"
+			, url: "/userpage/goodbtn?content_no=${userpage.content_no}"
+			, data: { }
+			, dataType: "html"
+			, success: function( res ) {
+				$("#1").html(res);
+				console.log("성공");
+			}
+			, error: function() {
+				console.log("실패");
+			}
+		})
+	});	
+	
+	
+	
+	
+	
 	$("#write_btn").click(function() {
 		$.ajax({
 			type: "get"
@@ -265,7 +301,18 @@ $(document).ready(function() {
 
 <div id="hit_like_area">
 
-<span id="" class="glyphicon glyphicon-star-empty">좋아요 </span>
+
+<c:if test="${goodCheck == 1}">
+<button type="button" id="good_btn"><span id = "1" class="glyphicon glyphicon-star"></span></button>
+</c:if>
+<c:if test="${goodCheck == 0}">
+<button type="button" id="good_btn"><span id = "1" class="glyphicon glyphicon-star-empty"></span></button>
+</c:if>
+<span id="good"><span id="good_span">좋아요${good_no }</span></span>
+
+
+
+
 <span id="" class="glyphicon glyphicon-send">공유하기 </span>
 
 <br>

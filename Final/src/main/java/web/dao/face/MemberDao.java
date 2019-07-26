@@ -2,6 +2,7 @@ package web.dao.face;
 
 import java.util.List;
 
+import web.dto.Good;
 import web.dto.Member;
 import web.dto.UserImg;
 
@@ -41,4 +42,11 @@ public interface MemberDao {
 	public List<Member> getUserList(String loginid);
 	
 	public String getUserId(int member_code);
+	
+	
+	// 좋아요 
+	public int saveGoodBlock(Good good);
+	public int saveGoodcount(int content_no);
+	public void deleteGood(String member_id);
+	public void saveGoodId(Good good);
 }
