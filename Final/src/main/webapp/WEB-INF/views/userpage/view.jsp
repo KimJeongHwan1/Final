@@ -19,7 +19,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
 </head>
-
 <style>
 
 #main_div{
@@ -100,33 +99,6 @@ img{
 	font-size: 40px;
 }
 </style>
-
-<!-- <!DOCTYPE html> -->
-<!-- <html> -->
-<head>
-<meta charset="utf-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
-<title>KakaoStory Share Button Demo - Kakao JavaScript SDK</title>
-<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-
-</head>
-<body>
-<a href="javascript:shareStory()">
-<img src="https://developers.kakao.com/sdk/js/resources/story/icon_small.png"/>
-</a>
-<script type='text/javascript'>
-  //<![CDATA[
-    // 사용할 앱의 JavaScript 키를 설정해 주세요.
-    Kakao.init('YOUR APP KEY');
-    function shareStory() {
-      Kakao.Story.share({
-        url: 'http://localhost:8088/userpage/view?content_no=1',
-        text: '게시물 공유 #개발테스트 #공유 :)'
-      });
-    }
-  //]]>
-</script>
 <script type="text/javascript">
 $(document).ready(function() {
 	$("#write_btn").click(function() {
@@ -294,7 +266,7 @@ $(document).ready(function() {
 <div id="hit_like_area">
 
 <span id="" class="glyphicon glyphicon-star-empty">좋아요 </span>
-<span id="viewport" class="glyphicon glyphicon-send">공유하기 </span>
+<span id="" class="glyphicon glyphicon-send">공유하기 </span>
 
 <br>
 <span>조회수</span> ${userpage.hit }<br>
