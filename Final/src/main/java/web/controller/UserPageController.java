@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import web.dto.Good;
 import web.dto.Member;
 import web.dto.UserImg;
 import web.dto.UserPage;
@@ -86,7 +87,7 @@ public class UserPageController {
 	}
 	
 	@RequestMapping(value = "/userpage/view", method = RequestMethod.GET)
-	public void view(UserPage userpage, Model model) {
+	public void view(UserPage userpage, Model model, Good good, String member_id, HttpSession session) {
 		logger.info(userpage.toString());
 		
 		UserPage userPage = userpageService.selectUserpage(userpage);
@@ -113,6 +114,17 @@ public class UserPageController {
 		
 		int page_no = userPage.getContent_no();
 		
+		
+		// 좋아요 기능
+		
+		member_id = (String) session.getAttribute("loginid");
+		
+		good.setMember_id(member_id);
+		
+		int goodCheck = memberService.goodCheck(good);
+		model.addAttribute("goodCheck", goodCheck);
+		
+		
 		List list = userpageService.selectComment(page_no);
 		
 //		logger.info(list.toString());
@@ -128,6 +140,50 @@ public class UserPageController {
 		model.addAttribute("cocomentList", cocomentList);
 		
 	}
+
+	
+	@RequestMapping(value="/userpage/good", method=RequestMethod.GET)
+	public String recommend(int content_no, HttpSession session, Model model, Good good) {
+		
+		logger.info("좋아요 폼_좋아요 UP AND DOWN");
+		String member_id = (String) session.getAttribute("loginid");
+		
+		logger.info(member_id);
+		
+		memberService.saveGoodId( member_id, content_no);
+		
+		int goodnum = memberService.saveGoodCount(content_no);
+
+		
+		model.addAttribute("good_no", goodnum);
+		
+		good.setContent_no(content_no);
+		good.setMember_id(member_id);
+		
+		int goodcheck = memberService.goodCheck(good);
+
+		model.addAttribute("goodcheck", goodcheck);
+		return "/userpage/good";
+	}
+	
+	@RequestMapping(value="/userpage/goodbtn", method=RequestMethod.GET)
+	public String recobtn(int content_no, HttpSession session, Model model, Good good) {
+		logger.info("좋아요 폼_ 버튼이름 '좋아요' OR '좋아요취소'");
+		String userid = (String) session.getAttribute("loginid");
+		
+		good.setContent_no(content_no);
+		good.setMember_id(userid);
+		
+		int goodcheck = memberService.goodCheck(good);
+		logger.info(good.toString());
+		
+		model.addAttribute("goodcheck", goodcheck);
+		
+		
+		return "/userpage/goodbtn";
+	}
+	
+	
 	
 	@RequestMapping(value = "/userpage/viewComment", method = RequestMethod.GET)
 	public void viewComment(String comment, HttpSession session, int content_no, Model model) {

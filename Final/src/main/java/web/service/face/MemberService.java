@@ -6,6 +6,7 @@ import javax.servlet.ServletContext;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import web.dto.Good;
 import web.dto.Member;
 import web.dto.UserImg;
 
@@ -45,4 +46,10 @@ public interface MemberService {
 	public String findPw(String member_name, String member_id, String member_email);
 	public List<Member> getUseridList(String loginid);
 	public String getmember_id(int member_code);
+	
+	public void saveGoodId(String member_id, int content_no);
+	
+	public int saveGoodCount(int content_no);
+	
+	public int goodCheck(Good good);
 }
