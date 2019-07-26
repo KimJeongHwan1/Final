@@ -63,13 +63,12 @@
         <span class="icon-bar"></span>
       </button>
       <c:if test="${not login }">
-      	<a class="navbar-brand" href="/main" id="title">요리Tong</a>
-	  </c:if>
-	  
-	  <c:if test="${login }">
-      	<a class="navbar-brand" href="/member/main2" id="title">요리Tong</a>
-	  </c:if>
-
+      <a class="navbar-brand" href="/main" id="title">요리Tong</a>
+      </c:if>
+      <c:if test="${login }">
+      <a class="navbar-brand" href="/member/main2" id="title">요리Tong</a>
+      </c:if>
+ 
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->

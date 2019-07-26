@@ -4,10 +4,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <c:import url="/WEB-INF/views/layout/header.jsp" />
- <!-- 캘린더 -->
-<script src="https://code.jquery.com/jquery-1.12.4.js"> </script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
 function sample6_execDaumPostcode() {
@@ -46,15 +42,6 @@ function sample6_execDaumPostcode() {
 		}
 	}).open();
 }
-$(document).ready(function(){
-	$("#member_birth").datepicker({
-	    dateFormat: 'yy/mm/dd'
-	    ,changeYear: true
-	    ,changeMonth: true
-	    ,monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12']
-	    ,dayNamesMin: ['일','월','화','수','목','금','토']
-	});
-});
 </script>
 
 <script type="text/javascript">

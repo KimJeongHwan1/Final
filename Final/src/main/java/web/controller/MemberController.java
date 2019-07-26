@@ -116,7 +116,7 @@ public class MemberController {
 
 		memberService.join(member); //회원가입 처리
 		logger.info("회원가입 : " + member.toString() ) ;
-		return "redirect:/member/main2"; //main2페이지로 리다이렉트
+		return "redirect:/member/login"; //main2페이지로 리다이렉트
 
 	}
 	
