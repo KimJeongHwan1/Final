@@ -21,15 +21,6 @@ public interface BlackListDao {
 	public void blackDeleteByMember_code(int member_code);
 	
 	
-	// Map API 메소드
-	
-	public MapAddress selectByMember_id(String member_id );
-	
-	public void insertMap(MapAddress mapAddress);
-	
-	public void updateMap(MapAddress mapAddress);
-	
-	public void deleteMap(MapAddress mapAddress);
-	
+
 	
 }

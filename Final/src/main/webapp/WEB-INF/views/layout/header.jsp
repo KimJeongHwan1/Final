@@ -68,7 +68,7 @@
       <c:if test="${login }">
       <a class="navbar-brand" href="/member/main2" id="title">요리Tong</a>
       </c:if>
-      
+ 
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
