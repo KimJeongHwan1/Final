@@ -26,6 +26,10 @@
 
 <a href="/userpage/write">글쓰기</a><br><br>
 
+
+<a href="/black/list">블랙리스트</a><br><br>
+
+<a href="/map/mapInsert">맵api</a><br><br>
 <div id="useridList">
 <table>
 <c:forEach items="${list }" var="i">
