@@ -70,7 +70,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/member/main2" id="title">요리Tong</a>
+      <a class="navbar-brand" href="/main" id="title">요리Tong</a>
       <a class="navbar-brand" id="title"></a>
         <a class="navbar-brand" id="title"></a>
         <a class="navbar-brand" id="title"></a>
@@ -84,7 +84,7 @@
       </ul>
 
      
-      <button type="button" class="btn btn-default navbar-btn navbar-right">로그인</button>
+      <button type="button" class="btn btn-default navbar-btn navbar-right" onclick="location.href='/member/login'">로그인</button>
       
       
       
