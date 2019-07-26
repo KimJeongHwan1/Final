@@ -2,6 +2,7 @@ package web.controller;
 
 import javax.servlet.http.HttpSession;
 
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import web.dao.face.BlackListDao;
+import web.dao.face.MapDao;
 import web.dto.MapAddress;
 
 @Controller
@@ -18,7 +19,7 @@ public class MapController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MapController.class);
 	
-	@Autowired BlackListDao blackListDao;
+	@Autowired MapDao mapDao;
 	
 	@RequestMapping(value = "/map/map", method = RequestMethod.GET)
 	public void map( MapAddress map, Model model, HttpSession session, String x, String y, String address ) {
@@ -33,7 +34,7 @@ public class MapController {
 		logger.info(loginid);
 		
 		// addno을 추후 boardno으로 변경해야함
-		map = blackListDao.selectByMember_id(loginid);				
+		map = mapDao.selectByMember_id(loginid);				
 		
 		model.addAttribute("map", map);
 		
@@ -67,7 +68,7 @@ public class MapController {
 
 		mapAddress.setMember_id(loginid);
 		
-		blackListDao.insertMap(mapAddress);
+		mapDao.insertMap(mapAddress);
 		
 
 		return "redirect:/map/map";
@@ -96,7 +97,7 @@ public class MapController {
 		
 		mapAddress.setMember_id(loginid);
 		
-		blackListDao.updateMap(mapAddress);
+		mapDao.updateMap(mapAddress);
 
 		return "redirect:/map/map";
 		
@@ -118,7 +119,7 @@ public class MapController {
 
 		mapAddress.setMember_id(loginid);
 		
-		blackListDao.deleteMap(mapAddress);
+		mapDao.deleteMap(mapAddress);
 		
 
 		return "redirect:/map/mapInsert";
