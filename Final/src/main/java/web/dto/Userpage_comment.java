@@ -14,11 +14,12 @@ public class Userpage_comment {
 	private String content;
 	private Date writtendate;
 	private int member_code;
+	private String member_id;
 	private int page_no;
 	@Override
 	public String toString() {
 		return "Userpage_comment [comment_no=" + comment_no + ", content=" + content + ", writtendate=" + writtendate
-				+ ", member_code=" + member_code + ", page_no=" + page_no + "]";
+				+ ", member_code=" + member_code + ", member_id=" + member_id + ", page_no=" + page_no + "]";
 	}
 	/**
 	 * @return the comment_no
@@ -69,6 +70,18 @@ public class Userpage_comment {
 		this.member_code = member_code;
 	}
 	/**
+	 * @return the member_id
+	 */
+	public String getMember_id() {
+		return member_id;
+	}
+	/**
+	 * @param member_id the member_id to set
+	 */
+	public void setMember_id(String member_id) {
+		this.member_id = member_id;
+	}
+	/**
 	 * @return the page_no
 	 */
 	public int getPage_no() {
@@ -80,6 +93,7 @@ public class Userpage_comment {
 	public void setPage_no(int page_no) {
 		this.page_no = page_no;
 	}
+	
 	
 	
 }

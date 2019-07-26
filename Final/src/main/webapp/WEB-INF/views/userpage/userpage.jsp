@@ -177,15 +177,12 @@ img{
 
 <tr>
 	<c:if test="${bool == false }">
-		<td rowspan="2"><img src="${paceContext.request.contextPath}/resources/img/img4.jpg"/>
-<!-- 		<input type="file" name="file" id="file"/></td> -->
-		<td>${loginid }</td>
-		<td><button> <a href="/member/updateInfo">정보수정</a></button></td>
-		<td><button> <a href="/member/updateInfo">캘린더</a></button></td>	
-	</c:if>
-	
+		<td rowspan="2"><img src="${paceContext.request.contextPath}/resources/img/img4.jpg"/></td>
+		<td>${user_id }</td>
+	</c:if>	
 	<c:if test="${bool == true }">
-<!-- 		<td rowspan="2"></td> -->
+		<td rowspan="2"><img src="/upload/${img.storedname }"/></td>
+		<td>${user_id }</td>
 	</c:if>
 </tr>
 

@@ -5,11 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="/resources/ckeditor/ckeditor.js"></script>
-
-
-
-
 </head>
 <style>
 #write_div{
@@ -49,12 +44,7 @@
 </tr>
 <tr>
 	<td colspan="2">
-		<!-- <textarea  rows="20" cols="100" name="content"></textarea> -->
-		<textarea class="form-control" id="editor1" name="content"></textarea>
-		<script>		
-		CKEDITOR.replace('editor1' );
-		</script>
-		
+		<textarea rows="20" cols="100" name="content"></textarea>
 	</td>
 </tr>
 </table>

@@ -3,7 +3,9 @@ package web.dao.face;
 import java.util.List;
 
 import web.dto.Member;
+import web.dto.UserImg;
 import web.dto.UserPage;
+import web.dto.Userpage_cocomment;
 import web.dto.Userpage_comment;
 
 public interface UserPageDao {
@@ -15,6 +17,13 @@ public interface UserPageDao {
 	public UserPage selectByContentno(UserPage userpage);
 	public void insertCommentDao(Userpage_comment userComm);
 	
-	public List selectCommentDao(int page_no);
+	public List<Userpage_comment> selectCommentDao(int page_no);
+	
+	public List<UserImg> selectUserImgAllDao();
+	
+	public void insertCocommentDao(Userpage_cocomment cocoment);
+
+	public List<Userpage_cocomment> selectcocomentDao(int cocoment);
+	public List<Userpage_cocomment> selectcocomentAllDao();
 	
 }

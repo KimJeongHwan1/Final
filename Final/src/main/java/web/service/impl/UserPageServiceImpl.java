@@ -13,7 +13,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import web.dao.face.UserPageDao;
 import web.dto.Member;
+import web.dto.UserImg;
 import web.dto.UserPage;
+import web.dto.Userpage_cocomment;
 import web.dto.Userpage_comment;
 import web.service.face.UserPageService;
 
@@ -71,9 +73,27 @@ public class UserPageServiceImpl  implements UserPageService{
 		
 	}
 	@Override
-	public List selectComment(int page_no) {
+	public List<Userpage_comment> selectComment(int page_no) {
 		
 		return userpageDao.selectCommentDao(page_no);
 	}
+	@Override
+	public List<UserImg> selectUserImgAll() {
+		return userpageDao.selectUserImgAllDao();
+		
+	}
+	@Override
+	public void insertCocomment(Userpage_cocomment cocoment) {
+		
+		userpageDao.insertCocommentDao(cocoment);
+		
+	}
+	@Override
+	public List<Userpage_cocomment> selectcocoment(int cocoment) {
+		return userpageDao.selectcocomentDao(cocoment);
+	}
 	
+	public List<Userpage_cocomment> selectcocomentAll() {
+		return userpageDao.selectcocomentAllDao();
+	}
 }
