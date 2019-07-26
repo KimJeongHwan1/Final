@@ -180,7 +180,7 @@ img{
 <!-- 		<input type="file" name="file" id="file"/></td> -->
 		<td>${loginid }</td>
 		<td><button> <a href="/member/updateInfo">정보수정</a></button></td>
-		<td><button> <a href="/member/updateInfo">캘린더</a></button></td>	
+		<td><button> <a href="/tong/write">글쓰기</a></button></td>	
 	</c:if>
 	
 	<c:if test="${bool == true }">
