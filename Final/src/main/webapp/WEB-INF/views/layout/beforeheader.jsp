@@ -60,7 +60,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-inverse" style="margin:0;">
+<nav class="navbar navbar-inverse" style="margin:0; width: 1920px;">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">

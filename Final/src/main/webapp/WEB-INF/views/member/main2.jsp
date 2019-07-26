@@ -4,14 +4,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     
 <c:import url="/WEB-INF/views/layout/header.jsp" />
-
 <h1>테스트</h1>
 <hr>
 
 로그인 아이디 : ${loginid }<br><br>
 <a href="/member/login">로그인</a><br>
-<a href="/member/logout">로그아웃</a><br><br>
 
+<a href="/member/logout">로그아웃</a><br><br>
 
 
 <a href="/member/updateInfo">정보수정</a><br><br>
@@ -23,13 +22,20 @@
 
 <a href="/tong/mypage">타임라인 마이페이지</a><br>
 
-<a href="/member/mypage">회원 마이페이지</a>
+<a href="/member/mypage">회원 마이페이지</a><br><br>
 
-</body>
-</html>
+<a href="/userpage/write">글쓰기</a><br><br>
 
+<div id="useridList">
+<table>
+<c:forEach items="${list }" var="i">
 
-</body>
-</html>
+<tr>
+	<td><a href="/userpage/userpage?member_id=${i.member_id }">${i.member_code }</a></td>
+	<td>${i.member_id }</td>
+</tr>
+</c:forEach>
+</table>
 
+</div>
 <c:import url="/WEB-INF/views/layout/footer.jsp" />
