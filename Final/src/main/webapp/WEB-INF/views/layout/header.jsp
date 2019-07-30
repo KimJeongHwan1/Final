@@ -82,7 +82,7 @@
 
      
       <ul class="nav navbar-nav navbar-right" id="ssnav">
-        <li><a href="#"><span class="glyphicon glyphicon-cloud-upload" id="cloud"></span></a></li>
+        <li><a href="/userpage/write"><span class="glyphicon glyphicon-cloud-upload" id="cloud"></span></a></li>
         
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-bell" id="bell"></span></a>
@@ -96,19 +96,17 @@
         </li>
       
       
-      
-      
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-align-justify" id="mymenu"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
             <li class="divider"></li>
-            <li><a href="#">4</a></li>
+            <li><a href="/tong/mypage">타임라인</a></li>
+            <li class="divider"></li>
+            <li><a href="/member/mypage">정보수정</a></li>
+            <li><a href="/member/logout">로그아웃</a></li>
           </ul>
         </li>
-      </ul>ㅇ
+      </ul>
       
        <form class="navbar-form navbar-right" role="search">
         <div class="form-group">
