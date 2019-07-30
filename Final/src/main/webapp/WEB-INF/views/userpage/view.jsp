@@ -39,6 +39,11 @@ img{
 	width: 100%;
 	height: 400px;
 }
+#uploadImg{
+	width: 100%;
+	height: 400px;
+}
+
 #title_area{
 	width: 100%;
 }
@@ -185,7 +190,7 @@ $(document).ready(function() {
 
 
 <div id="main_div">
-<img src="/uppage/${userpage.storedname }"/>
+<img src="/uppage/${userpage.storedname }" id="uploadImg"/>
 
 </div>
 
