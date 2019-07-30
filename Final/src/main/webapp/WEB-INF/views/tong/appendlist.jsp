@@ -11,8 +11,8 @@
 <c:set var="sum" value="${n + m }"/>
 
 <div id="user_write_list">
-<img src="/uppage/${i.storedname }" id="file_img${sum }" class="list_img"><br>
-<script type="text/javascript">
+<a href="/mypage/view?content_no=${i.content_no }";	><img src="/uppage/${i.storedname }" id="file_img${sum }" class="list_img"></a><br>
+<!-- <script type="text/javascript">
 $(document).ready(function(){
 	$("#file_img${sum }").click(function(){
 		var popUrl = "/mypage/view?content_no=${i.content_no }";	//팝업창에 출력될 페이지 URL
@@ -22,7 +22,7 @@ $(document).ready(function(){
 		window.open(popUrl,"",popOption);
 	});
 });
-</script>
+</script> -->
 <span id="" class="glyphicon glyphicon-heart-empty"> ${i.hit } </span>
 <span id="" class="glyphicon glyphicon-pencil"> 댓글수 </span>
 <span id="" class="glyphicon glyphicon-star-empty"> ${i.like_index }  </span>
@@ -30,3 +30,12 @@ $(document).ready(function(){
 </div>
 </c:forEach>
 
+<div id ="container">
+<div id="mask"></div>
+<div class="window">
+<%-- 	<c:param name="boast_board_no" value="${i.boast_board_no }"/> --%>
+<%-- <c:import url="/board/boast/view"> --%>
+<%-- </c:import> --%>
+   <p style="text-align:center; background:#ffffff; padding:20px;"><a href="#" class="close">닫기X</a></p>
+</div>
+</div>
