@@ -161,10 +161,6 @@ img{
 			</tr>
 			
 			<tr>
-				<th><a href="/admin/board_1to1">그룹</a></th>
-			</tr>
-			
-			<tr>
 				<th><a href="/answer/list">즐겨찾기</a></th>
 			</tr>
 	</table>
@@ -184,7 +180,10 @@ img{
 	</c:if>
 	
 	<c:if test="${bool == true }">
-<!-- 		<td rowspan="2"></td> -->
+		<td rowspan="2"><img src="/upload/${img.storedname }"/></td>
+		<td>${loginid }</td>
+		<td><button> <a href="/member/updateInfo">정보수정</a></button></td>
+		<td><button> <a href="/tong/write">글쓰기</a></button></td>	
 	</c:if>
 </tr>
 
