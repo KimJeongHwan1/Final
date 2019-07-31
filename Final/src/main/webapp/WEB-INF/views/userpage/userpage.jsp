@@ -295,7 +295,7 @@ img{
 		<td>${user_id }</td>
 	</c:if>	
 	<c:if test="${bool == true }">
-		<td rowspan="2"><img src="/upload/${img.storedname } id="userprofilimg""/></td>
+		<td rowspan="2"><img src="/upload/${img.storedname }" id="userprofilimg"/></td>
 		<td>${user_id }</td>
 	</c:if>
 </tr>

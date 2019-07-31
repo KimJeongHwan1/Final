@@ -39,7 +39,11 @@
 <div id="ajax_cocoment_show" style="background-color: #F2F2F2">
 <c:set  var="cocon" value="0"/>
 <c:set  var="cocom" value="1"/>
+
+<c:set value="0" var="ccm1"/>
+<c:set value="1" var="ccm2"/>
 <c:forEach items="${cocomentList }" var="coco">
+<c:set value="${ccm1 + ccm2 }" var="ccmsum"/>
 
 <c:set var="cocosum" value="${cocon + cocom}"/>
 <span id="cocouserface${cocosum }" class="glyphicon glyphicon-user" style="font-size: 40px;"></span>
@@ -60,7 +64,35 @@
 
 ${coco.member_id }<br>
 ${coco.content }<br>
-<fmt:formatDate value="${coco.writtendate }" pattern="yyyy년 MM월 dd일 hh:mm:ss" /><br><br>
+<fmt:formatDate value="${coco.writtendate }" pattern="yyyy년 MM월 dd일 hh:mm:ss" />&nbsp;&nbsp;&nbsp;&nbsp;
+
+<c:if test="${loginid == coco.member_id }">
+<a href=""><span id="delete_coco_msg${ccmsum }">삭제</span></a><br><br>
+</c:if>
+<c:if test="${loginid != coco.member_id }">
+<br><br>
+</c:if>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#delete_coco_msg${ccmsum }").click(function() {
+		$.ajax({
+			type: "get"
+			, url: "/userpage/cocommDelete?cocomment_no=${coco.cocomment_no }"
+			, data:  {} 
+			, dataType: "html"
+			, success: function( res ) {
+				$("#delete_coco_msg${ccmsum }").html(res);
+				console.log("성공");
+			}
+			, error: function() {
+				console.log("실패");
+			}
+		});
+	});
+});
+</script>
+<c:set value="${cocosum }" var="ccm1"/>
 </c:forEach>
 </div>
 

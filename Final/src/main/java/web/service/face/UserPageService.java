@@ -31,4 +31,12 @@ public interface UserPageService {
 	public List<Userpage_cocomment> selectcocoment(int cocoment);
 	
 	public List<Userpage_cocomment> selectcocomentAll();
+	
+	public void deletecomment(Userpage_comment comment);
+	
+	public void deletecoComment(int cocomment_no);
+	
+	public List selectTag(String tag);
+	
+	public List headerSearchUserpage(String text);
 }

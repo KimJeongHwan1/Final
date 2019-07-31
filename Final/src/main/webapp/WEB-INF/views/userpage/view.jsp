@@ -7,6 +7,7 @@
 <html style="width: 100%">
 <head>
 <meta charset="UTF-8">
+
 <title>Insert title here</title>
 
 <!-- jQuery 2.2.4 -->
@@ -104,32 +105,8 @@ img{
 	font-size: 40px;
 }
 </style>
-<!-- <!DOCTYPE html> -->
-<!-- <html> -->
-<head>
-<meta charset="utf-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
-<title>KakaoStory Share Button Demo - Kakao JavaScript SDK</title>
-<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 
-</head>
-<body>
-<a href="javascript:shareStory()">
-<img src="https://developers.kakao.com/sdk/js/resources/story/icon_small.png"/>
-</a>
-<script type='text/javascript'>
-  //<![CDATA[
-    // 사용할 앱의 JavaScript 키를 설정해 주세요.
-    Kakao.init('YOUR APP KEY');
-    function shareStory() {
-      Kakao.Story.share({
-        url: 'http://localhost:8088/userpage/view?content_no=1',
-        text: '게시물 공유 #개발테스트 #공유 :)'
-      });
-    }
-  //]]>
-</script>
+
 <script type="text/javascript">
 $(document).ready(function() {
 	
@@ -163,11 +140,10 @@ $(document).ready(function() {
 			}
 		})
 	});	
-	
-	
-	
-	
-	
+});
+</script>
+<script type="text/javascript">
+$(document).ready(function() {
 	$("#write_btn").click(function() {
 		$.ajax({
 			type: "get"
@@ -201,7 +177,11 @@ $(document).ready(function() {
 <span class="glyphicon glyphicon-align-justify"></span>
 </div>
 <div id="tag_area">
-<a href="">#${userpage.tag }</a>
+<c:if test="${tagList !=null }">
+<c:forEach items="${tagList }" var="tag">
+	<a href="/userpage/tag?tag=${tag }"><span>#</span>${tag }</a>
+</c:forEach>
+</c:if>
 </div>
 
 <div id="comment_area_see">
@@ -248,30 +228,59 @@ $(document).ready(function() {
 ${i.member_id }<br>
 ${i.content }<br>
 <fmt:formatDate value="${i.writtendate }" pattern="yyyy년 MM월 dd일 hh:mm:ss" /> &nbsp;&nbsp;&nbsp;&nbsp;
-<label id="nextcomentwrite${sum }">댓글</label><br><br>
-	<script type="text/javascript">
-	$(document).ready(function() {
-		$("#show_cocoment_div${sum }").hide();
-// 		$("#cocoment_write_btn${sum }").hide();
-		
-		$("#nextcomentwrite${sum }").click(function() {
-	        var state = $('#show_cocoment_div${sum }').css('display');
-	        if(state == 'none'){
-	        	$("#show_cocoment_div${sum }").show();
-// 	        	$("#cocoment_write_btn${sum }").show();
-	        }else{
-	        	$("#show_cocoment_div${sum }").hide();
-// 	        	$("#cocoment_write_btn${sum }").hide();
-	        }
-		
+<label id="nextcomentwrite${sum }">댓글</label>&nbsp;&nbsp;&nbsp;&nbsp;
+
+<c:if test="${loginid == i.member_id }">
+<a href=""><span id="delete_msg${sum }">삭제</span></a><br><br>
+</c:if>
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#delete_msg${sum }").click(function() {
+		$.ajax({
+			type: "get"
+			, url: "/userpage/commDelete?page_no=${i.page_no }&&comment_no=${i.comment_no }"
+			, data:  {}
+			, dataType: "html"
+			, success: function( res ) {
+				$("#delete_msg${sum }").html(res);
+				console.log("성공");
+			}
+			, error: function() {
+				console.log("실패");
+			}
 		});
 	});
-	</script>
+});
+</script>
+
+<c:if test="${loginid != i.member_id }">
+<br><br>
+</c:if>
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#show_cocoment_div${sum }").hide();
+//	$("#cocoment_write_btn${sum }").hide();
+		
+	$("#nextcomentwrite${sum }").click(function() {
+	var state = $('#show_cocoment_div${sum }').css('display');
+	if(state == 'none'){
+	   	$("#show_cocoment_div${sum }").show();
+// 	   	$("#cocoment_write_btn${sum }").show();
+	} else {
+	   		$("#show_cocoment_div${sum }").hide();
+// 	   		$("#cocoment_write_btn${sum }").hide();
+		}	
+	});
+});
+</script>
 <div id="show_cocoment_div${sum }" style="background-color: #F2F2F2">
 
 <div id="ajax_cocoment_show${sum }" style="background-color: #F2F2F2">
 
+<c:set value="0" var="ccm1"/>
+<c:set value="1" var="ccm2"/>
 <c:forEach items="${cocomentList }" var="coco">
+<c:set value="${ccm1 + ccm2 }" var="ccmsum"/>
 <c:if test="${i.comment_no == coco.comment_no }">
 <c:set var="cocosum" value="${cocon + cocom}"/>
 <span id="cocouserface${cocosum }" class="glyphicon glyphicon-user"  style="font-size: 40px;"></span>
@@ -290,8 +299,35 @@ ${i.content }<br>
 
 ${coco.member_id }<br>
 ${coco.content }<br>
-<fmt:formatDate value="${coco.writtendate }" pattern="yyyy년 MM월 dd일 hh:mm:ss" /><br><br>
+<fmt:formatDate value="${coco.writtendate }" pattern="yyyy년 MM월 dd일 hh:mm:ss" />&nbsp;&nbsp;&nbsp;&nbsp;
+
+<c:if test="${loginid == coco.member_id }">
+<a href=""><span id="delete_coco_msg${ccmsum }">삭제</span></a><br><br>
 </c:if>
+<c:if test="${loginid != coco.member_id }">
+<br><br>
+</c:if>
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#delete_coco_msg${ccmsum }").click(function() {
+		$.ajax({
+			type: "get"
+			, url: "/userpage/cocommDelete?cocomment_no=${coco.cocomment_no }"
+			, data:  {} 
+			, dataType: "html"
+			, success: function( res ) {
+				$("#delete_coco_msg${ccmsum }").html(res);
+				console.log("성공");
+			}
+			, error: function() {
+				console.log("실패");
+			}
+		});
+	});
+});
+</script>
+</c:if>
+<c:set value="${cocosum }" var="ccm1"/>
 </c:forEach>
 
 </div>
