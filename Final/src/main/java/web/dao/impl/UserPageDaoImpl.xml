@@ -29,7 +29,7 @@
 
 		select * from UserPage
 		where member_code = #{member_code }
-
+		order by content_no desc
 	</select>
 
 	<select id="selectByContentno" resultType="web.dto.UserPage"
@@ -82,4 +82,29 @@
 		order by writtendate
 	</select>
 	
+	<delete id="deleteCommentDao"
+		parameterType="web.dto.Userpage_comment">
+	
+		delete from Userpage_comment where 1=1 and page_no = #{page_no } and member_id = #{member_id }  and comment_no = #{comment_no } 
+	</delete>
+	
+	<delete id="deletecoCommentDao"
+		parameterType="int">
+	
+		delete from userpage_cocomment where cocomment_no = #{cocomment_no }
+	</delete>
+	
+	<select id="selectTagDao"
+		resultType="web.dto.UserPage" parameterType="String">
+		select * from UserPage
+		where tag like '%'||#{tag }||'%'
+		order by content_no desc
+	</select>
+	
+	<select id="selectSearchHeader"
+		resultType="web.dto.UserPage" parameterType="String">
+		select * from UserPage
+		where content_title like '%'||#{text }||'%'
+		order by content_no desc
+	</select>
 </mapper>

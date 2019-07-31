@@ -96,4 +96,26 @@ public class UserPageServiceImpl  implements UserPageService{
 	public List<Userpage_cocomment> selectcocomentAll() {
 		return userpageDao.selectcocomentAllDao();
 	}
+	
+	@Override
+	public void deletecomment(Userpage_comment comment) {
+		System.out.println(comment);
+		userpageDao.deleteCommentDao(comment);
+		
+	}
+	@Override
+	public void deletecoComment(int cocomment_no) {
+		userpageDao.deletecoCommentDao(cocomment_no);
+		
+	}
+	@Override
+	public List selectTag(String tag) {
+		// TODO Auto-generated method stub
+		return userpageDao.selectTagDao(tag);
+	}
+	@Override
+	public List headerSearchUserpage(String text) {
+		// TODO Auto-generated method stub
+		return userpageDao.selectSearchHeader(text);
+	}
 }

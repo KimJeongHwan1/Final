@@ -108,9 +108,9 @@
         </li>
       </ul>
       
-       <form class="navbar-form navbar-right" role="search">
+      <form class="navbar-form navbar-right" role="search" action="/layout/search" method="post">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="사진 인물 또는 그룹" />
+          <input type="text" id="text" name="text" class="form-control" placeholder="사진 인물 또는 그룹" />
           
         </div>
         <button type="submit" class="btn btn-default">검색</button>

@@ -26,4 +26,11 @@ public interface UserPageDao {
 	public List<Userpage_cocomment> selectcocomentDao(int cocoment);
 	public List<Userpage_cocomment> selectcocomentAllDao();
 	
+	public void deleteCommentDao(Userpage_comment cocoment);
+
+	public void deletecoCommentDao(int cocomment_no);
+	
+	public List selectTagDao(String tag);
+	
+	public List selectSearchHeader(String text);
 }

@@ -48,8 +48,8 @@ public interface MemberService {
 	public String getmember_id(int member_code);
 	
 	public void saveGoodId(String member_id, int content_no);
-	
 	public int saveGoodCount(int content_no);
-	
 	public int goodCheck(Good good);
+	public List headerSearchMember(String text);
+//	public List headerSearchMemberImg(String text);
 }
