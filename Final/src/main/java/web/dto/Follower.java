@@ -1,67 +1,81 @@
 package web.dto;
 
 public class Follower {
-//	follower_code NUMBER primary key,
-//	follower_member VARCHAR(200), --회원 
-//	follower_id VARCHAR(200), -- 회원을 팔로워 하는 사람
-//	follower  NUMBER default 0 -- 팔로워 여부
+//	fwr_code NUMBER primary key,
+//	fwr_my_id VARCHAR(200), -- 회원
+//	fwr_my_code VARCHAR(200), -- 회원코드
+//	fwr_user_id VARCHAR(200), -- 회원을 팔로워 하는 사람
+//	fwr_user_code VARCHAR(200) -- 회원을 팔로워 하는 사람코드
 	
-	private int follower_code;
-	private int follower_member;
-	private String follower_id;
-	private int follower;
+	private int fwr_code;
+	private String fwr_my_id;
+	private int fwr_my_code;
+	private String fwr_user_id;
+	private int fwr_user_code;
 	@Override
 	public String toString() {
-		return "Follower [follower_code=" + follower_code + ", follower_member=" + follower_member + ", follower_id="
-				+ follower_id + ", follower=" + follower + "]";
+		return "Follower [fwr_code=" + fwr_code + ", fwr_my_id=" + fwr_my_id + ", fwr_my_code=" + fwr_my_code
+				+ ", fwr_user_id=" + fwr_user_id + ", fwr_user_code=" + fwr_user_code + "]";
 	}
 	/**
-	 * @return the follower_code
+	 * @return the fwr_code
 	 */
-	public int getFollower_code() {
-		return follower_code;
+	public int getFwr_code() {
+		return fwr_code;
 	}
 	/**
-	 * @param follower_code the follower_code to set
+	 * @param fwr_code the fwr_code to set
 	 */
-	public void setFollower_code(int follower_code) {
-		this.follower_code = follower_code;
+	public void setFwr_code(int fwr_code) {
+		this.fwr_code = fwr_code;
 	}
 	/**
-	 * @return the follower_member
+	 * @return the fwr_my_id
 	 */
-	public int getFollower_member() {
-		return follower_member;
+	public String getFwr_my_id() {
+		return fwr_my_id;
 	}
 	/**
-	 * @param follower_member the follower_member to set
+	 * @param fwr_my_id the fwr_my_id to set
 	 */
-	public void setFollower_member(int follower_member) {
-		this.follower_member = follower_member;
+	public void setFwr_my_id(String fwr_my_id) {
+		this.fwr_my_id = fwr_my_id;
 	}
 	/**
-	 * @return the follower_id
+	 * @return the fwr_my_code
 	 */
-	public String getFollower_id() {
-		return follower_id;
+	public int getFwr_my_code() {
+		return fwr_my_code;
 	}
 	/**
-	 * @param follower_id the follower_id to set
+	 * @param fwr_my_code the fwr_my_code to set
 	 */
-	public void setFollower_id(String follower_id) {
-		this.follower_id = follower_id;
+	public void setFwr_my_code(int fwr_my_code) {
+		this.fwr_my_code = fwr_my_code;
 	}
 	/**
-	 * @return the follower
+	 * @return the fwr_user_id
 	 */
-	public int getFollower() {
-		return follower;
+	public String getFwr_user_id() {
+		return fwr_user_id;
 	}
 	/**
-	 * @param follower the follower to set
+	 * @param fwr_user_id the fwr_user_id to set
 	 */
-	public void setFollower(int follower) {
-		this.follower = follower;
+	public void setFwr_user_id(String fwr_user_id) {
+		this.fwr_user_id = fwr_user_id;
+	}
+	/**
+	 * @return the fwr_user_code
+	 */
+	public int getFwr_user_code() {
+		return fwr_user_code;
+	}
+	/**
+	 * @param fwr_user_code the fwr_user_code to set
+	 */
+	public void setFwr_user_code(int fwr_user_code) {
+		this.fwr_user_code = fwr_user_code;
 	}
 	
 }

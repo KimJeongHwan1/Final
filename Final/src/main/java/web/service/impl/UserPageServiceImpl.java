@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import web.dao.face.UserPageDao;
+import web.dto.Following;
 import web.dto.Member;
 import web.dto.UserImg;
 import web.dto.UserPage;
@@ -117,5 +118,21 @@ public class UserPageServiceImpl  implements UserPageService{
 	public List headerSearchUserpage(String text) {
 		// TODO Auto-generated method stub
 		return userpageDao.selectSearchHeader(text);
+	}
+	@Override
+	public void Following(Following fwg) {
+		
+		if(userpageDao.followingCheck(fwg)>0) {
+			userpageDao.deleteFollowingDao(fwg);
+		} else {
+			userpageDao.insertFollowingDao(fwg);
+		}
+		
+		
+	}
+	@Override
+	public int checkFollowing(web.dto.Following fwg) {
+		// TODO Auto-generated method stub
+		return userpageDao.followingCheck(fwg);
 	}
 }

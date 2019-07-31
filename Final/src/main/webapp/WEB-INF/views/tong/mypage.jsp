@@ -282,14 +282,18 @@ img{
 <!-- 		<input type="file" name="file" id="file"/></td> -->
 		<td>${loginid }</td>
 		<td><button> <a href="/member/updateInfo">정보수정</a></button></td>
-		<td><button> <a href="/tong/write">글쓰기</a></button></td>	
+		<td><button> <a href="/tong/write">글쓰기</a></button></td>
+		<td><button type="button">팔로우</button></td>
+		<td><button type="button">팔로워</button></td>		
 	</c:if>
 	
 	<c:if test="${bool == true }">
 		<td rowspan="2"><img src="/upload/${img.storedname }"/></td>
 		<td>${loginid }</td>
 		<td><button> <a href="/member/updateInfo">정보수정</a></button></td>
-		<td><button> <a href="/tong/write">글쓰기</a></button></td>	
+		<td><button> <a href="/tong/write">글쓰기</a></button></td>
+		<td><button type="button">팔로우</button></td>
+		<td><button type="button">팔로워</button></td>		
 	</c:if>
 </tr>
 

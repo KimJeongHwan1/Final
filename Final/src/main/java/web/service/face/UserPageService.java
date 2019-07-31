@@ -6,6 +6,7 @@ import javax.servlet.ServletContext;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import web.dto.Following;
 import web.dto.Member;
 import web.dto.UserImg;
 import web.dto.UserPage;
@@ -39,4 +40,9 @@ public interface UserPageService {
 	public List selectTag(String tag);
 	
 	public List headerSearchUserpage(String text);
+	
+	public void Following(Following fwg);
+	
+	public int checkFollowing(Following fwg);
+	
 }
