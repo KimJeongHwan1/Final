@@ -11,7 +11,7 @@
 <c:set var="sum" value="${n + m }"/>
 
 <div id="user_write_list">
-<a href="/mypage/view?content_no=${i.content_no }";	><img src="/uppage/${i.storedname }" id="file_img${sum }" class="list_img"></a><br>
+<a href="/tong/tongview?content_no=${i.content_no }";	><img src="/uppage/${i.storedname }" id="file_img${sum }" class="list_img"></a><br>
 <!-- <script type="text/javascript">
 $(document).ready(function(){
 	$("#file_img${sum }").click(function(){

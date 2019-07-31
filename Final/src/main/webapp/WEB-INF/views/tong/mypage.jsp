@@ -7,6 +7,22 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	InitializeStaticMenu();
+	
+	$("#follow_btn").click(function(e){ 
+		$.ajax({
+			type: "get"
+			, url: "/userpage/following?user_id=${user_id }"
+			, data:	{}
+			, dataType: "html"
+			, success: function( res ) {
+				$("#follow_msg").html(res);
+				console.log("성공");
+			}
+			, error: function() {
+				console.log("실패");
+			}
+		});   
+	});
 });
 //////////////////////////네비게이션 바 //////////////////////////
 var stmnLEFT = 10; // 오른쪽 여백 
@@ -99,12 +115,6 @@ $("#mask").click(function () {
 });      
 
 });
-
-
-
-
-
-
 
 
 </script>
