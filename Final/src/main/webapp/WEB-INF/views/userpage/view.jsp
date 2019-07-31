@@ -103,6 +103,11 @@ img{
 #userface{
 	font-size: 40px;
 }
+#kakao{
+	height:6%;
+	width:6%;
+	
+}
 </style>
 
 <script type="text/javascript">
@@ -376,9 +381,43 @@ $(document).ready(function() {
 <span id="good"><span id="good_span">좋아요${good_no }</span></span>
 
 
-
-
-<span id="" class="glyphicon glyphicon-send">공유하기 </span>
+<span id="kakao1"><script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+<a href="javascript:shareStory()">
+<img id="kakao" src="https://developers.kakao.com/sdk/js/resources/story/icon_small.png"/>
+</a>
+<script type='text/javascript'>
+  //<![CDATA[
+    // 사용할 앱의 JavaScript 키를 설정해 주세요.
+    Kakao.init('YOUR APP KEY');
+    function shareStory() {
+      Kakao.Story.share({
+        url: 'http://localhost:8088/userpage/view?content_no=1',
+        text: '게시물 공유 #개발테스트 #공유 :)'
+      });
+    }
+  //]]>
+</script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#write_btn").click(function() {
+		$.ajax({
+			type: "get"
+			, url: "/userpage/viewComment?content_no=${userpage.content_no}"
+			, data:  $("#comment") 
+			, dataType: "html"
+			, success: function( res ) {
+				$("#userscomment").html(res);
+				console.log("성공");
+			}
+			, error: function() {
+				console.log("실패");
+			}
+		});
+		$('#comment').val('');
+	});
+});
+</script>공유하기
+ </span>
 
 <br>
 <span>조회수</span> ${userpage.hit }<br>
