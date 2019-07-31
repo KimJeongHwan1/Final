@@ -1,69 +1,81 @@
 package web.dto;
 
 public class Following {
-//	following_code NUMBER primary key,
-//	following_member VARCHAR(200), -- 회원
-//	following_id VARCHAR(200), -- 회원을 팔로잉 하는 사람
-//	following  NUMBER default 0); -- 팔로잉 여부
+//	fwg_code NUMBER primary key,
+//	fwg_user_id VARCHAR(200), -- 회원
+//	fwg_user_code VARCHAR(200), -- 회원코드
+//	fwg_you_id VARCHAR(200), -- 회원을 팔로잉 하는 사람
+//	fwg_you_code VARCHAR(200) -- 회원을 팔로잉 하는 사람코드
 	
-	private int following_code;
-	private int following_member;
-	private String following_id;
-	private int following;
-	
+	private int fwg_code;
+	private String fwg_user_id;
+	private int fwg_user_code;
+	private String fwg_you_id;
+	private int fwg_you_code;
 	@Override
 	public String toString() {
-		return "Following [following_code=" + following_code + ", following_member=" + following_member
-				+ ", following_id=" + following_id + ", following=" + following + "]";
-	}
-	
-	/**
-	 * @return the following_code
-	 */
-	public int getFollowing_code() {
-		return following_code;
+		return "Following [fwg_code=" + fwg_code + ", fwg_user_id=" + fwg_user_id + ", fwg_user_code=" + fwg_user_code
+				+ ", fwg_you_id=" + fwg_you_id + ", fwg_you_code=" + fwg_you_code + "]";
 	}
 	/**
-	 * @param following_code the following_code to set
+	 * @return the fwg_code
 	 */
-	public void setFollowing_code(int following_code) {
-		this.following_code = following_code;
+	public int getFwg_code() {
+		return fwg_code;
 	}
 	/**
-	 * @return the following_member
+	 * @param fwg_code the fwg_code to set
 	 */
-	public int getFollowing_member() {
-		return following_member;
+	public void setFwg_code(int fwg_code) {
+		this.fwg_code = fwg_code;
 	}
 	/**
-	 * @param following_member the following_member to set
+	 * @return the fwg_user_id
 	 */
-	public void setFollowing_member(int following_member) {
-		this.following_member = following_member;
+	public String getFwg_user_id() {
+		return fwg_user_id;
 	}
 	/**
-	 * @return the following_id
+	 * @param fwg_user_id the fwg_user_id to set
 	 */
-	public String getFollowing_id() {
-		return following_id;
+	public void setFwg_user_id(String fwg_user_id) {
+		this.fwg_user_id = fwg_user_id;
 	}
 	/**
-	 * @param following_id the following_id to set
+	 * @return the fwg_user_code
 	 */
-	public void setFollowing_id(String following_id) {
-		this.following_id = following_id;
+	public int getFwg_user_code() {
+		return fwg_user_code;
 	}
 	/**
-	 * @return the following
+	 * @param fwg_user_code the fwg_user_code to set
 	 */
-	public int getFollowing() {
-		return following;
+	public void setFwg_user_code(int fwg_user_code) {
+		this.fwg_user_code = fwg_user_code;
 	}
 	/**
-	 * @param following the following to set
+	 * @return the fwg_you_id
 	 */
-	public void setFollowing(int following) {
-		this.following = following;
+	public String getFwg_you_id() {
+		return fwg_you_id;
+	}
+	/**
+	 * @param fwg_you_id the fwg_you_id to set
+	 */
+	public void setFwg_you_id(String fwg_you_id) {
+		this.fwg_you_id = fwg_you_id;
+	}
+	/**
+	 * @return the fwg_you_code
+	 */
+	public int getFwg_you_code() {
+		return fwg_you_code;
+	}
+	/**
+	 * @param fwg_you_code the fwg_you_code to set
+	 */
+	public void setFwg_you_code(int fwg_you_code) {
+		this.fwg_you_code = fwg_you_code;
 	}
 	
 }

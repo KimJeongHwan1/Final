@@ -8,12 +8,25 @@
 <c:import url="/WEB-INF/views/layout/header.jsp" />
 
 
-
-
-
 <script type="text/javascript">
 $(document).ready(function() {
 	InitializeStaticMenu();
+	
+	$("#follow_btn").click(function(e){ 
+		$.ajax({
+			type: "get"
+			, url: "/userpage/following?user_id=${user_id }"
+			, data:	{}
+			, dataType: "html"
+			, success: function( res ) {
+				$("#follow_msg").html(res);
+				console.log("성공");
+			}
+			, error: function() {
+				console.log("실패");
+			}
+		});   
+	});
 });
 //////////////////////////네비게이션 바 //////////////////////////
 var stmnLEFT = 10; // 오른쪽 여백 
@@ -106,8 +119,6 @@ $("#mask").click(function () {
 });      
 
 });
-
-
 
 </script>
 
@@ -292,11 +303,15 @@ img{
 <tr>
 	<c:if test="${bool == false }">
 		<td rowspan="2"><img src="${paceContext.request.contextPath}/resources/img/img4.jpg" id="userprofilimg"/></td>
-		<td>${user_id }</td>
+		<td>${user_id }
+			<button id="follow_btn" style="margin-left: 100px;" type="button"><span id="follow_msg">팔로우</span></button>
+		</td>
 	</c:if>	
 	<c:if test="${bool == true }">
 		<td rowspan="2"><img src="/upload/${img.storedname }" id="userprofilimg"/></td>
-		<td>${user_id }</td>
+		<td>${user_id }
+			<button id="follow_btn" style="margin-left: 100px;" type="button" type="button"><span id="follow_msg">팔로우</span></button>
+		</td>
 	</c:if>
 </tr>
 

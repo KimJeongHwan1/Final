@@ -107,4 +107,25 @@
 		where content_title like '%'||#{text }||'%'
 		order by content_no desc
 	</select>
+	
+	<select id="followingCheck"
+		parameterType="web.dto.Following"
+		resultType="int">
+		
+		select count(*) from following
+		where fwg_user_id = #{fwg_user_id } and fwg_you_id = #{fwg_you_id }
+	</select>
+	
+	<insert id="insertFollowingDao"
+		parameterType="web.dto.Following">
+		insert into following( fwg_code, fwg_user_id, fwg_user_code, fwg_you_id, fwg_you_code)
+		values( following_code_seq.nextval, #{fwg_user_id }, #{fwg_user_code }, #{fwg_you_id }, #{fwg_you_code })
+	</insert>
+	
+	<delete id="deleteFollowingDao"
+		parameterType="web.dto.Following">
+	
+		delete from following where fwg_user_id = #{fwg_user_id } and fwg_you_id = #{fwg_you_id }
+	</delete>
+	
 </mapper>

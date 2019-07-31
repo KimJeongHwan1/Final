@@ -7,7 +7,6 @@
 <html style="width: 100%">
 <head>
 <meta charset="UTF-8">
-
 <title>Insert title here</title>
 
 <!-- jQuery 2.2.4 -->
@@ -105,7 +104,6 @@ img{
 	font-size: 40px;
 }
 </style>
-
 
 <script type="text/javascript">
 $(document).ready(function() {

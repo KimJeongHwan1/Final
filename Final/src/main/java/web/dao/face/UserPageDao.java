@@ -2,6 +2,7 @@ package web.dao.face;
 
 import java.util.List;
 
+import web.dto.Following;
 import web.dto.Member;
 import web.dto.UserImg;
 import web.dto.UserPage;
@@ -33,4 +34,9 @@ public interface UserPageDao {
 	public List selectTagDao(String tag);
 	
 	public List selectSearchHeader(String text);
+	
+	public int followingCheck(Following fwg);
+	public void insertFollowingDao(Following fwg);
+	public void deleteFollowingDao(Following fwg);
+	
 }

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import web.dto.Following;
 import web.dto.Good;
 import web.dto.Member;
 import web.dto.UserImg;
@@ -332,5 +333,28 @@ public class UserPageController {
 		logger.info(list.toString());
 
 		model.addAttribute("list", list);
+	}
+	
+	@RequestMapping(value = "/userpage/following", method = RequestMethod.GET)
+	public void following(String user_id, HttpSession session, Model model) {
+//		logger.info(user_id);
+		
+		String loginid = (String) session.getAttribute("loginid");
+		
+		int fwg_user_code = memberService.getMember_code(user_id);
+		int fwg_you_code = memberService.getMember_code(loginid);
+		
+		Following fwg = new Following();
+		fwg.setFwg_user_code(fwg_user_code);
+		fwg.setFwg_user_id(user_id);
+		
+		fwg.setFwg_you_code(fwg_you_code);
+		fwg.setFwg_you_id(loginid);
+		
+		userpageService.Following(fwg);
+		
+		int check = userpageService.checkFollowing(fwg);
+		
+		model.addAttribute("check", check);
 	}
 }
