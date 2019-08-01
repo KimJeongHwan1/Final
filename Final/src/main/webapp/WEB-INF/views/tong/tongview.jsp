@@ -3,20 +3,15 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<!DOCTYPE html>
-<html style="width: 100%">
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
 
 <!-- jQuery 2.2.4 -->
-<script type="text/javascript"
- src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+<!-- <script type="text/javascript" -->
+<!--  src="http://code.jquery.com/jquery-2.2.4.min.js"></script> -->
 
 <!-- Bootstrap 3 -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"> -->
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"> -->
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> -->
 
 <script type="text/javascript">
 $(document).ready(function() {
@@ -37,7 +32,7 @@ $(document).ready(function() {
 			}
 		});   
 	});
-
+});
 </script>
 
 <style type="text/css">
@@ -198,27 +193,6 @@ $(document).ready(function() {
 	});	
 });
 </script>
-<script type="text/javascript">
-$(document).ready(function() {
-	$("#write_btn").click(function() {
-		$.ajax({
-			type: "get"
-			, url: "/userpage/viewComment?content_no=${userpage.content_no}"
-			, data:  $("#comment") 
-			, dataType: "html"
-			, success: function( res ) {
-				$("#userscomment").html(res);
-				console.log("성공");
-			}
-			, error: function() {
-				console.log("실패");
-			}
-		});
-		$('#comment').val('');
-	});
-});
-</script>
-<body>
 
 
 <div id="main_div">
@@ -439,16 +413,16 @@ $(document).ready(function() {
 <img id="kakao" src="https://developers.kakao.com/sdk/js/resources/story/icon_small.png"/>
 </a>
 <script type='text/javascript'>
-  //<![CDATA[
-    // 사용할 앱의 JavaScript 키를 설정해 주세요.
-    Kakao.init('YOUR APP KEY');
-    function shareStory() {
-      Kakao.Story.share({
-        url: 'http://localhost:8088/userpage/view?content_no=1',
-        text: '게시물 공유 #개발테스트 #공유 :)'
-      });
-    }
-  //]]>
+//   //<![CDATA[
+//     // 사용할 앱의 JavaScript 키를 설정해 주세요.
+//     Kakao.init('b737021ce8920b6a7fdac62cfcfc837d');
+//     function shareStory() {
+//       Kakao.Story.share({
+//         url: 'http://localhost:8088/userpage/view?content_no=1',
+//         text: '게시물 공유 #개발테스트 #공유 :)'
+//       });
+//     }
+//   //]]>
 </script>
 <script type="text/javascript">
 $(document).ready(function() {
@@ -489,5 +463,3 @@ $(document).ready(function() {
 </div>
 
 
-</body>
-</html>
