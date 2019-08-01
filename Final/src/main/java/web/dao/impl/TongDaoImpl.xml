@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 마이바티스 3 Mapper DOCTYPE -->
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="web.dao.face.TongDao">
+
+	<select id="selectListFwgDao" 
+		resultType="web.dto.Following"
+		parameterType="String">
+
+		select * from Following
+		where fwg_you_id = #{loginid }
+		order by fwg_code
+	</select>
+	
+	
+	<select id="selectListFwrDao" 
+		resultType="web.dto.Following"
+		parameterType="String">
+
+		select * from Following
+		where fwg_user_id = #{loginid }
+		order by fwg_code
+	</select>
+	
+	<select id="selectTimeLine" 
+		resultType="String"
+		parameterType="String">
+
+		select fwg_user_id from Following
+		where fwg_you_id = #{loginid }
+		order by fwg_code
+	</select>
+	
+	<select id="userpageListDao" 
+		resultType="web.dto.UserPage"
+		parameterType="int">
+
+		select * from UserPage
+		where member_code = #{str }
+		order by content_no
+	</select>
+	
+</mapper>
