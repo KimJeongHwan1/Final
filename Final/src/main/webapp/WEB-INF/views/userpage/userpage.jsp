@@ -353,7 +353,7 @@ $(document).ready(function(){
 </script> -->
 <span id="" class="glyphicon glyphicon-heart-empty"> ${i.hit } </span>
 <span id="" class="glyphicon glyphicon-pencil"> 댓글수 </span>
-<span id="" class="glyphicon glyphicon-star-empty"> ${i.like_index }  </span>
+<span id="" class="glyphicon glyphicon-star-empty"> ${i.good }  </span>
 </div>
 <c:set var="n" value="${sum }"/>
 </c:forEach>

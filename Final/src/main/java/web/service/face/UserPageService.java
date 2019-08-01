@@ -45,4 +45,6 @@ public interface UserPageService {
 	
 	public int checkFollowing(Following fwg);
 	
+	public List<UserPage> getbestlist(Member member);
+	
 }

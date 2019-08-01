@@ -22,14 +22,20 @@
 <h1>베스트 게시판</h1>
 <hr><br>
 </div>
-
+<div>
+<c:set var="n" value="0"/>
+<c:set var="m" value="1"/>
+<c:forEach items="${list }" var="i">
+<c:set var="sum" value="${n + m }"/>
 <div id="list">
 	<div id="img">
-	<img src="${paceContext.request.contextPath}/htimg/abc.PNG" alt="htImg" width="70px;" height="70px;"></div>
-	<div id="content">내용1<br><br>
+	<img src="${paceContext.request.contextPath}/uppage/${i.storedname }" alt="htImg" width="70px;" height="70px;"></div>
+	<div id="content"><a href="/best/view?content_no=${i.content_no }">내용1</a><br><br>
 	상세내용</div><div style="clear: both;"></div>
 	<hr style="width: 40%; margin-left: 30%;">
 </div>
-
+<c:set var="n" value="${sum }"/>
+</c:forEach>
+</div>
 <c:import url="/WEB-INF/views/layout/paging.jsp" />
 <c:import url="/WEB-INF/views/layout/footer.jsp" />

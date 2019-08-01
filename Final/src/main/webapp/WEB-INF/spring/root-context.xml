@@ -44,7 +44,6 @@
 	 			<value>classpath:/mappers/**/*Mapper.xml</value>
 	 			<value>classpath:/web/dao/impl/**/*DaoImpl.xml</value>	
 	 			<value>classpath:/member/dao/impl/**/*DaoImpl.xml</value>
-	 				
 	 		</array>
 	 	</property>
 	 	 	
