@@ -99,6 +99,20 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-align-justify" id="mymenu"></span></a>
           <ul class="dropdown-menu" role="menu">
+			<tr>
+				<c:if test="${bool == false }">
+					<td rowspan="2"><img src="/resources/img/img4.jpg"/>
+			<!-- 		<input type="file" name="file" id="file"/></td> -->
+					<td>${loginid }</td>	
+				</c:if>
+				
+				<c:if test="${bool == true }">
+					<td rowspan="2"><img src="/upload/${img.storedname }"/></td>
+					<td>${loginid }</td>
+				</c:if>
+			</tr>
+			
+			</table>
             <li class="divider"></li>
             <li><a href="/tong/mypage">타임라인</a></li>
             <li class="divider"></li>
