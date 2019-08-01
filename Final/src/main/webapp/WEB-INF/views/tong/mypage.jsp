@@ -188,6 +188,13 @@ img{
 	height: 100px;
 	margin-left : 50px;
 }
+#myid{
+	margin-right: 50px;
+	width: 100px;
+	height: 100px;
+	margin-left : 50px;
+}
+
 #see_menu_menu2{
 
 	margin-left : 300px;
@@ -288,7 +295,7 @@ img{
 
 <tr>
 	<c:if test="${bool == false }">
-		<td rowspan="2"><img src="${paceContext.request.contextPath}/resources/img/img4.jpg"/>
+		<td rowspan="2"><img src="${paceContext.request.contextPath}/resources/img/img4.jpg" id="myid"/>
 <!-- 		<input type="file" name="file" id="file"/></td> -->
 		<td>${loginid }</td>
 		<td><button> <a href="/member/updateInfo">정보수정</a></button></td>
@@ -298,7 +305,7 @@ img{
 	</c:if>
 	
 	<c:if test="${bool == true }">
-		<td rowspan="2"><img src="/upload/${img.storedname }"/></td>
+		<td rowspan="2"><img src="/upload/${img.storedname }" id="myid"/></td>
 		<td>${loginid }</td>
 		<td><button> <a href="/member/updateInfo">정보수정</a></button></td>
 		<td><button> <a href="/tong/write">글쓰기</a></button></td>
@@ -325,6 +332,18 @@ img{
 </form>
 </div>
 <hr>
+
+
+<div id ="container">
+<div id="mask"></div>
+<div class="window">
+<%-- 	<c:param name="boast_board_no" value="${i.boast_board_no }"/> --%>
+<%-- <c:import url="/board/boast/view"> --%>
+<%-- </c:import> --%>
+   <p style="text-align:center; background:#ffffff; padding:20px;"><a href="#" class="close">닫기X</a></p>
+</div>
+</div>
+
 
 
 <div id="user_write_div">
