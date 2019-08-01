@@ -26,6 +26,7 @@ import web.dto.Userpage_cocomment;
 import web.dto.Userpage_comment;
 import web.service.face.MemberService;
 import web.service.face.MyPageService;
+import web.service.face.TongService;
 import web.service.face.UserPageService;
 import web.util.Paging;
 
@@ -41,6 +42,7 @@ public class TongController {
 	@Autowired MemberService memberService;
 	@Autowired MyPageService mypageService;
 	@Autowired UserPageService userpageService;
+	@Autowired TongService tongService;
 	
 	@RequestMapping(value="/tong/mypage", method=RequestMethod.GET)
 	public void mypage(HttpSession session, Model model, Member member) {
@@ -64,7 +66,15 @@ public class TongController {
 		} 
 
 		model.addAttribute("bool", memberService.selectImgCheck(member_code));
+		List fwgList = tongService.selectListFwg(loginid);
 		
+		model.addAttribute("fwgList", fwgList);
+		logger.info(fwgList.toString());
+		
+		List fwrList = tongService.selectListFwr(loginid);
+		
+		model.addAttribute("fwrList", fwrList);
+		logger.info(fwrList.toString());
 
 		
 	}
