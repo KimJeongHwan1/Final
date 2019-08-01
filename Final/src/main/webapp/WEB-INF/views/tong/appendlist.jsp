@@ -40,7 +40,8 @@ $(".openMask").click(function(e){
 	, url: $(this).attr("href")
  	, dataType: "html"
  	, success: function( h ) {
- 		console.log("s")
+//  		console.log("ssssssssssssssssssssssss")
+//  		console.log(h)
  		$(".window").html( h );
  	}
  	, error: function() {

@@ -4,15 +4,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
     
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+
+
 <!-- jQuery 2.2.4 -->
-<script type="text/javascript"src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+<!-- <script type="text/javascript"src="http://code.jquery.com/jquery-2.2.4.min.js"></script> -->
 
 <script type="text/javascript">
+
 var page = 1;	// 전역변수선언
 
 $('#boardlist').ready(function() {
@@ -44,5 +42,3 @@ function newPage() {
 }
 
 </script>
-</head>
-</html>

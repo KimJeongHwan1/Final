@@ -21,9 +21,10 @@ $(document).ready(function() {
 			, error: function() {
 				console.log("실패");
 			}
-		});   
-	});
+		});
+	})
 });
+
 //////////////////////////네비게이션 바 //////////////////////////
 var stmnLEFT = 10; // 오른쪽 여백 
 var stmnGAP1 = 0; // 위쪽 여백 
@@ -55,62 +56,7 @@ function InitializeStaticMenu() {
 //------------------
 
 
-//윈도우 팝업
-function wrapWindowByMask(){
-	 
-//화면의 높이와 너비를 구한다.
-var maskHeight = $(document).height();  
-var maskWidth = $(window).width();  
 
-//마스크의 높이와 너비를 화면 것으로 만들어 전체 화면을 채운다.
-$("#mask").css({"width":maskWidth,"height":maskHeight});  
-
-//애니메이션 효과 - 일단 0초동안 까맣게 됐다가 60% 불투명도로 간다.
-
-$("#mask").fadeIn(0);      
-$("#mask").fadeTo("slow",0.5);    
-
-//윈도우 같은 거 띄운다.
-$(".window").show();
-
-}
-
-$(document).ready(function(){
-//검은 막 띄우기
-$(".openMask").click(function(e){
-   e.preventDefault();
-
-   console.log($(this))
-   console.log($(this).attr("href"))
-   
-   $.ajax({
-  	type:"get"
-  	, url: $(this).attr("href")
-   	, dataType: "html"
-   	, success: function( h ) {
-   		console.log("s")
-   		$(".window").html( h );
-   	}
-   	, error: function() {
-   		console.log("e")
-   	}
-   });
-   
-   wrapWindowByMask();
-});
-
-
-//닫기 버튼을 눌렀을 때
-$(".window .close").click(function (e) {  
-   //링크 기본동작은 작동하지 않도록 한다.
-   e.preventDefault();  
-   $("#mask, .window").hide();  
-});       
-
-//검은 막을 눌렀을 때
-$("#mask").click(function () {  
-   $(this).hide();  
-   $(".window").hide();  
 
 });      
 
@@ -363,15 +309,15 @@ img{
 <hr>
 
 
-<div id ="container">
-<div id="mask"></div>
-<div class="window">
-<%-- 	<c:param name="boast_board_no" value="${i.boast_board_no }"/> --%>
-<%-- <c:import url="/board/boast/view"> --%>
-<%-- </c:import> --%>
-   <p style="text-align:center; background:#ffffff; padding:20px;"><a href="#" class="close">닫기X</a></p>
-</div>
-</div>
+<!-- <div id ="container"> -->
+<!-- <div id="mask"></div> -->
+<!-- <div class="window"> -->
+<%-- <%-- 	<c:param name="boast_board_no" value="${i.boast_board_no }"/> --%>
+<%-- <%-- <c:import url="/board/boast/view"> --%> 
+<%-- <%-- </c:import> --%> 
+<!--    <p style="text-align:center; background:#ffffff; padding:20px;"><a href="#" class="close">닫기X</a></p> -->
+<!-- </div> -->
+<!-- </div> -->
 
 <div id="following_list">
 <table>
