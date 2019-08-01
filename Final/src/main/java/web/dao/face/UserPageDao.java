@@ -26,7 +26,7 @@ public interface UserPageDao {
 
 	public List<Userpage_cocomment> selectcocomentDao(int cocoment);
 	public List<Userpage_cocomment> selectcocomentAllDao();
-	
+  
 	public void deleteCommentDao(Userpage_comment cocoment);
 
 	public void deletecoCommentDao(int cocomment_no);
@@ -38,5 +38,6 @@ public interface UserPageDao {
 	public int followingCheck(Following fwg);
 	public void insertFollowingDao(Following fwg);
 	public void deleteFollowingDao(Following fwg);
-	
+  
+  public List<UserPage> bestList( UserPage userpage ) ;
 }

@@ -15,12 +15,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * Handles requests for the application home page.
  */
 @Controller
-public class HTController {
+public class BestController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(HTController.class);
+	private static final Logger logger = LoggerFactory.getLogger(BestController.class);
 	
-	@RequestMapping(value = "/ht/list", method = RequestMethod.GET)
-	public void htlist() {
+	@RequestMapping(value = "/best/list", method = RequestMethod.GET)
+	public void bestlist() {
 		
 	}
 	

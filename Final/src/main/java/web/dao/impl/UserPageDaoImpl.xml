@@ -81,7 +81,7 @@
 		select * from Userpage_cocomment
 		order by writtendate
 	</select>
-	
+		
 	<delete id="deleteCommentDao"
 		parameterType="web.dto.Userpage_comment">
 	
@@ -128,4 +128,10 @@
 		delete from following where fwg_user_id = #{fwg_user_id } and fwg_you_id = #{fwg_you_id }
 	</delete>
 	
+	<select id="getwriteListDao" resultType="web.dto.UserPage"
+		parameterType="web.dto.Member">
+		select * from UserPage
+		where 
+	</select>
+
 </mapper>
