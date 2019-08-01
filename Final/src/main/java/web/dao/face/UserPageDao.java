@@ -26,4 +26,5 @@ public interface UserPageDao {
 	public List<Userpage_cocomment> selectcocomentDao(int cocoment);
 	public List<Userpage_cocomment> selectcocomentAllDao();
 	
+	public List<UserPage> bestList( UserPage userpage ) ;
 }

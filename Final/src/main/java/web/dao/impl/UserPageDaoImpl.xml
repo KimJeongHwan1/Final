@@ -82,4 +82,10 @@
 		order by writtendate
 	</select>
 	
+	<select id="getwriteListDao" resultType="web.dto.UserPage"
+		parameterType="web.dto.Member">
+		select * from UserPage
+		where 
+	</select>
+		
 </mapper>

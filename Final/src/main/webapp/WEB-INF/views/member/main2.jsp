@@ -30,6 +30,9 @@
 <a href="/black/list">블랙리스트</a><br><br>
 
 <a href="/map/mapInsert">맵api</a><br><br>
+
+<a href="/best/list">베스트 게시판</a><br><br>
+
 <div id="useridList">
 <table>
 <c:forEach items="${list }" var="i">
