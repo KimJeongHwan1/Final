@@ -9,19 +9,12 @@ public class UserPage {
 	private String content;
 	private int member_code;
 	private int hit;
-	private int like_index;
+	private int good;
 	private Date write_date;
 	private String tag;
 	private int file_index;
 	private String originname; 
 	private String storedname;
-	@Override
-	public String toString() {
-		return "UserPage [content_no=" + content_no + ", content_title=" + content_title + ", content=" + content
-				+ ", member_code=" + member_code + ", hit=" + hit + ", like_index=" + like_index + ", write_date="
-				+ write_date + ", tag=" + tag + ", file_index=" + file_index + ", originname=" + originname
-				+ ", storedname=" + storedname + "]";
-	}
 	public int getContent_no() {
 		return content_no;
 	}
@@ -52,11 +45,11 @@ public class UserPage {
 	public void setHit(int hit) {
 		this.hit = hit;
 	}
-	public int getLike_index() {
-		return like_index;
+	public int getGood() {
+		return good;
 	}
-	public void setLike_index(int like_index) {
-		this.like_index = like_index;
+	public void setGood(int good) {
+		this.good = good;
 	}
 	public Date getWrite_date() {
 		return write_date;
@@ -88,6 +81,14 @@ public class UserPage {
 	public void setStoredname(String storedname) {
 		this.storedname = storedname;
 	}
+	@Override
+	public String toString() {
+		return "UserPage [content_no=" + content_no + ", content_title=" + content_title + ", content=" + content
+				+ ", member_code=" + member_code + ", hit=" + hit + ", good=" + good + ", write_date=" + write_date
+				+ ", tag=" + tag + ", file_index=" + file_index + ", originname=" + originname + ", storedname="
+				+ storedname + "]";
+	}
+	
 	
 	
 }

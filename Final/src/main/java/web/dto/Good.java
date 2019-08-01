@@ -5,7 +5,7 @@ public class Good {
 	private int good_no;
 	private int member_code;
 	private String member_id;
-	private Boolean good;
+	private int good;
 	private int content_no;
 	@Override
 	public String toString() {
@@ -30,10 +30,10 @@ public class Good {
 	public void setMember_id(String member_id) {
 		this.member_id = member_id;
 	}
-	public Boolean getGood() {
+	public int getGood() {
 		return good;
 	}
-	public void setGood(Boolean good) {
+	public void setGood(int good) {
 		this.good = good;
 	}
 	public int getContent_no() {

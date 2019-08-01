@@ -9,7 +9,7 @@
 
 	<insert id="insertImg" parameterType="web.dto.UserPage">
 		insert into UserPage( content_no, content_title, content, member_code, hit,
-		like_index, tag, file_index, originname, storedname)
+		good, tag, file_index, originname, storedname)
 		values( UserPage_seq.nextval, #{content_title }, #{content }, #{member_code
 		}, 0, 0, #{tag },
 		UserPage_seq.nextval, #{originname }, #{storedname })
@@ -18,7 +18,7 @@
 
 	<insert id="insertwriteInfo" parameterType="web.dto.UserPage">
 		insert into UserPage( content_no, content_title, content, member_code, hit,
-		like_index, tag, file_index, originname, storedname)
+		good, tag, file_index, originname, storedname)
 		values( UserPage_seq.nextval, #{content_title }, #{content }, #{member_code
 		}, 0, 0, #{tag },
 		0, 0, 0)
@@ -128,10 +128,11 @@
 		delete from following where fwg_user_id = #{fwg_user_id } and fwg_you_id = #{fwg_you_id }
 	</delete>
 	
-	<select id="getwriteListDao" resultType="web.dto.UserPage"
+	 <select id="bestList" resultType="web.dto.UserPage"
 		parameterType="web.dto.Member">
 		select * from UserPage
-		where 
-	</select>
+		where good > 4 
+		order by good desc
+	</select> 
 
 </mapper>

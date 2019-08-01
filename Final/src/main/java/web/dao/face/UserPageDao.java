@@ -39,5 +39,5 @@ public interface UserPageDao {
 	public void insertFollowingDao(Following fwg);
 	public void deleteFollowingDao(Following fwg);
   
-  public List<UserPage> bestList( UserPage userpage ) ;
+  public List<UserPage> bestList(Member member) ;
 }

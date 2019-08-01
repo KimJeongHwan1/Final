@@ -135,4 +135,9 @@ public class UserPageServiceImpl  implements UserPageService{
 		// TODO Auto-generated method stub
 		return userpageDao.followingCheck(fwg);
 	}
+	
+	@Override
+	public List<UserPage> getbestlist(Member member) {
+		return userpageDao.bestList(member) ;
+	}
 }
