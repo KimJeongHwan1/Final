@@ -82,7 +82,7 @@
 
      
       <ul class="nav navbar-nav navbar-right" id="ssnav">
-        <li><a href="#"><span class="glyphicon glyphicon-cloud-upload" id="cloud"></span></a></li>
+        <li><a href="/userpage/write"><span class="glyphicon glyphicon-cloud-upload" id="cloud"></span></a></li>
         
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-bell" id="bell"></span></a>
@@ -96,23 +96,35 @@
         </li>
       
       
-      
-      
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-align-justify" id="mymenu"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
+			<tr>
+				<c:if test="${bool == false }">
+					<td rowspan="2"><img src="/resources/img/img4.jpg"/>
+			<!-- 		<input type="file" name="file" id="file"/></td> -->
+					<td>${loginid }</td>	
+				</c:if>
+				
+				<c:if test="${bool == true }">
+					<td rowspan="2"><img src="/upload/${img.storedname }"/></td>
+					<td>${loginid }</td>
+				</c:if>
+			</tr>
+			
+			</table>
             <li class="divider"></li>
-            <li><a href="#">4</a></li>
+            <li><a href="/tong/mypage">타임라인</a></li>
+            <li class="divider"></li>
+            <li><a href="/member/mypage">정보수정</a></li>
+            <li><a href="/member/logout">로그아웃</a></li>
           </ul>
         </li>
-      </ul>ㅇ
+      </ul>
       
-       <form class="navbar-form navbar-right" role="search">
+      <form class="navbar-form navbar-right" role="search" action="/layout/search" method="post">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="사진 인물 또는 그룹" />
+          <input type="text" id="text" name="text" class="form-control" placeholder="사진 인물 또는 그룹" />
           
         </div>
         <button type="submit" class="btn btn-default">검색</button>

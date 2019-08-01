@@ -7,6 +7,22 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	InitializeStaticMenu();
+	
+	$("#follow_btn").click(function(e){ 
+		$.ajax({
+			type: "get"
+			, url: "/userpage/following?user_id=${user_id }"
+			, data:	{}
+			, dataType: "html"
+			, success: function( res ) {
+				$("#follow_msg").html(res);
+				console.log("성공");
+			}
+			, error: function() {
+				console.log("실패");
+			}
+		});   
+	});
 });
 //////////////////////////네비게이션 바 //////////////////////////
 var stmnLEFT = 10; // 오른쪽 여백 
@@ -35,6 +51,90 @@ function InitializeStaticMenu() {
 	document.getElementById('STATICMENU').style.top = document.body.scrollTop + stmnBASE + 'px'; 
 	RefreshStaticMenu();
 }
+
+//------------------
+
+
+//윈도우 팝업
+function wrapWindowByMask(){
+	 
+//화면의 높이와 너비를 구한다.
+var maskHeight = $(document).height();  
+var maskWidth = $(window).width();  
+
+//마스크의 높이와 너비를 화면 것으로 만들어 전체 화면을 채운다.
+$("#mask").css({"width":maskWidth,"height":maskHeight});  
+
+//애니메이션 효과 - 일단 0초동안 까맣게 됐다가 60% 불투명도로 간다.
+
+$("#mask").fadeIn(0);      
+$("#mask").fadeTo("slow",0.5);    
+
+//윈도우 같은 거 띄운다.
+$(".window").show();
+
+}
+
+$(document).ready(function(){
+//검은 막 띄우기
+$(".openMask").click(function(e){
+   e.preventDefault();
+
+   console.log($(this))
+   console.log($(this).attr("href"))
+   
+   $.ajax({
+  	type:"get"
+  	, url: $(this).attr("href")
+   	, dataType: "html"
+   	, success: function( h ) {
+   		console.log("s")
+   		$(".window").html( h );
+   	}
+   	, error: function() {
+   		console.log("e")
+   	}
+   });
+   
+   wrapWindowByMask();
+});
+
+
+//닫기 버튼을 눌렀을 때
+$(".window .close").click(function (e) {  
+   //링크 기본동작은 작동하지 않도록 한다.
+   e.preventDefault();  
+   $("#mask, .window").hide();  
+});       
+
+//검은 막을 눌렀을 때
+$("#mask").click(function () {  
+   $(this).hide();  
+   $(".window").hide();  
+
+});      
+
+$('#following_list').hide();
+$('#fwg_List_btn').click(function(){
+    var state = $('#following_list').css('display');
+    if(state == 'none'){
+        $('#following_list').show();
+    }else{
+        $('#following_list').hide();
+    }
+});
+
+$('#follower_list').hide();
+$('#fwr_List_btn').click(function(){
+    var state = $('#follower_list').css('display');
+    if(state == 'none'){
+        $('#follower_list').show();
+    }else{
+        $('#follower_list').hide();
+    }
+});
+
+});
 
 
 </script>
@@ -108,6 +208,13 @@ img{
 	height: 100px;
 	margin-left : 50px;
 }
+#myid{
+	margin-right: 50px;
+	width: 100px;
+	height: 100px;
+	margin-left : 50px;
+}
+
 #see_menu_menu2{
 
 	margin-left : 300px;
@@ -148,6 +255,51 @@ img{
 	margin-left: 50px;
 	margin-bottom: 50px;
 }
+
+
+/* 윈도우 마스크 */
+.container {
+	border-left : 1px solid #eee;
+	border-right : 1px solid #eee;
+}
+
+
+/* 마스크 뛰우기 */
+#mask {  
+    position:absolute;  
+    z-index:9000;  
+    background-color:#000;  
+    display:none;  
+    left:0;
+    top:0;
+} 
+/* 팝업으로 뜨는 윈도우 css  */ 
+
+.window{
+    display: none;
+    position:absolute;  
+    left:36.5%;
+    top:50px;
+    margin-left: -500px;
+    width:1500px;
+    height:800px;
+    background-color:#FFF;
+    z-index:10000;
+    
+    overflow: scroll;
+ }
+
+#following_list{
+	position: fixed;
+	top: 190px;
+	left: 750px;
+}
+#follower_list{
+	position: fixed;
+	top: 190px;
+	left: 860px;
+}
+
 </style>
 
 <div id="STATICMENU">
@@ -158,10 +310,6 @@ img{
 			
 			<tr>
 				<th><a href="/admin/blacklist">태그 </a></th>
-			</tr>
-			
-			<tr>
-				<th><a href="/admin/board_1to1">그룹</a></th>
 			</tr>
 			
 			<tr>
@@ -176,15 +324,22 @@ img{
 
 <tr>
 	<c:if test="${bool == false }">
-		<td rowspan="2"><img src="${paceContext.request.contextPath}/resources/img/img4.jpg"/>
+		<td rowspan="2"><img src="${paceContext.request.contextPath}/resources/img/img4.jpg" id="myid"/>
 <!-- 		<input type="file" name="file" id="file"/></td> -->
 		<td>${loginid }</td>
 		<td><button> <a href="/member/updateInfo">정보수정</a></button></td>
-		<td><button> <a href="/tong/write">글쓰기</a></button></td>	
+		<td><button> <a href="/tong/write">글쓰기</a></button></td>
+		<td><button type="button" id="fwg_List_btn">팔로잉 목록</button></td>
+		<td><button type="button" id="fwr_List_btn">팔로워 목록</button></td>			
 	</c:if>
 	
 	<c:if test="${bool == true }">
-<!-- 		<td rowspan="2"></td> -->
+		<td rowspan="2"><img src="/upload/${img.storedname }" id="myid"/></td>
+		<td>${loginid }</td>
+		<td><button> <a href="/member/updateInfo">정보수정</a></button></td>
+		<td><button> <a href="/tong/write">글쓰기</a></button></td>
+		<td><button type="button" id="fwg_List_btn">팔로잉 목록</button></td>
+		<td><button type="button" id="fwr_List_btn">팔로워 목록</button></td>		
 	</c:if>
 </tr>
 
@@ -207,6 +362,37 @@ img{
 </div>
 <hr>
 
+
+<div id ="container">
+<div id="mask"></div>
+<div class="window">
+<%-- 	<c:param name="boast_board_no" value="${i.boast_board_no }"/> --%>
+<%-- <c:import url="/board/boast/view"> --%>
+<%-- </c:import> --%>
+   <p style="text-align:center; background:#ffffff; padding:20px;"><a href="#" class="close">닫기X</a></p>
+</div>
+</div>
+
+<div id="following_list">
+<table>
+<c:forEach items="${fwgList }" var="fwg">
+<tr>
+	<td><a href="/userpage/userpage?member_id=${fwg.fwg_user_id }">${fwg.fwg_user_id }</a></td>
+</tr>
+</c:forEach>
+</table>
+
+</div>
+
+<div id="follower_list">
+<table>
+<c:forEach items="${fwrList }" var="fwr">
+<tr>
+	<td> <a href="/userpage/userpage?member_id=${fwr.fwg_you_id }">${fwr.fwg_you_id }</a></td>
+</tr>
+</c:forEach>
+</table>
+</div>
 
 <div id="user_write_div">
 

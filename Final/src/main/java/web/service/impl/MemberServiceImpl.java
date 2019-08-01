@@ -199,4 +199,16 @@ public class MemberServiceImpl implements MemberService {
 	public int goodCheck(Good good) {
 		return memberDao.saveGoodBlock(good);
 	}
+	
+	@Override
+	public List headerSearchMember(String text) {
+		// TODO Auto-generated method stub
+		return memberDao.selectSearchHeader(text);
+	}
+
+//	@Override
+//	public List headerSearchMemberImg(String text) {
+//		// TODO Auto-generated method stub
+//		return memberDao.selectSearchImgHeader(text);
+//	}
 }

@@ -24,4 +24,10 @@ public class MainController {
 	}
 	
 	
+	
+	@RequestMapping(value="/calendar/calendar", method=RequestMethod.GET)
+	public void calendar() {
+		
+		
+	}
 }

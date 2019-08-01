@@ -49,4 +49,7 @@ public interface MemberDao {
 	public int saveGoodcount(int content_no);
 	public void deleteGood(String member_id);
 	public void saveGoodId(Good good);
+	
+	public List selectSearchHeader(String text);
+//	public List selectSearchImgHeader(String text);
 }
