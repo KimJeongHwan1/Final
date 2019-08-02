@@ -12,7 +12,8 @@ public interface TongDao {
 	
 	public List selectTimeLine(String loginid);
 	
-	public List userpageListDao(int str);
+	public List getcontent_noDao(int member_code);
 	
+	public List selectUserpageInfo(int content_no);
 	
 }

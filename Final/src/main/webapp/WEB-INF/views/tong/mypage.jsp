@@ -23,6 +23,26 @@ $(document).ready(function() {
 			}
 		});
 	})
+	
+	$('#following_list').hide();
+	$('#fwg_List_btn').click(function(){
+	    var state = $('#following_list').css('display');
+	    if(state == 'none'){
+	        $('#following_list').show();
+	    }else{
+	        $('#following_list').hide();
+	    }
+	});
+
+	$('#follower_list').hide();
+	$('#fwr_List_btn').click(function(){
+	    var state = $('#follower_list').css('display');
+	    if(state == 'none'){
+	        $('#follower_list').show();
+	    }else{
+	        $('#follower_list').hide();
+	    }
+	});
 });
 
 //////////////////////////네비게이션 바 //////////////////////////
@@ -52,37 +72,6 @@ function InitializeStaticMenu() {
 	document.getElementById('STATICMENU').style.top = document.body.scrollTop + stmnBASE + 'px'; 
 	RefreshStaticMenu();
 }
-
-//------------------
-
-
-
-
-});      
-
-$('#following_list').hide();
-$('#fwg_List_btn').click(function(){
-    var state = $('#following_list').css('display');
-    if(state == 'none'){
-        $('#following_list').show();
-    }else{
-        $('#following_list').hide();
-    }
-});
-
-$('#follower_list').hide();
-$('#fwr_List_btn').click(function(){
-    var state = $('#follower_list').css('display');
-    if(state == 'none'){
-        $('#follower_list').show();
-    }else{
-        $('#follower_list').hide();
-    }
-});
-
-});
-
-
 </script>
 
 <style type="text/css">
@@ -137,7 +126,6 @@ th{
 	text-align: left;
 /* 	height: 60%; */
 }
-<style>
 
 #choose_menu div{
 	height: 5px;

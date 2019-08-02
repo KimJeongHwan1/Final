@@ -12,17 +12,17 @@
 
 <a href="/member/logout">로그아웃</a><br><br>
 
-
-<a href="/member/updateInfo">정보수정</a><br><br>
-
 <a href="/member/join">회원가입</a><br>
-
 
 <a href="/member/delete">회원탈퇴</a><br><br>
 
-<a href="/tong/mypage">타임라인 마이페이지</a><br>
+<a href="/member/updateInfo">정보수정</a><br><br>
 
-<a href="/member/mypage">회원 마이페이지</a><br><br>
+<a href="/tong/mypage">마이페이지</a><br>
+
+<a href="/member/mypage">마이페이지 정보수정</a><br>
+
+<a href="/tong/timeLinePage">타임라인페이지</a><br><br>
 
 <a href="/userpage/write">글쓰기</a><br><br>
 
@@ -34,6 +34,7 @@
 <a href="/best/list">베스트 게시판</a><br><br>
 
 <div id="useridList">
+<span>유저 페이지</span>
 <table>
 <c:forEach items="${list }" var="i">
 

@@ -75,7 +75,7 @@ $(document).ready(function(){
 
 <span id="spanmsg1${sum }" class="glyphicon glyphicon-heart-empty"> ${i.hit } </span>
 <span id="spanmsg2${sum }" class="glyphicon glyphicon-pencil"> 댓글수 </span>
-<span id="spanmsg3${sum }" class="glyphicon glyphicon-star-empty"> ${i.like_index }  </span>
+<span id="spanmsg3${sum }" class="glyphicon glyphicon-star-empty"> ${i.good }  </span>
 </div>
 <c:set var="n" value="${sum }"/>
 </c:forEach>

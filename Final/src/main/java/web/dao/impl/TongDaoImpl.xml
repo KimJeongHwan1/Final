@@ -27,21 +27,29 @@
 	</select>
 	
 	<select id="selectTimeLine" 
-		resultType="String"
+		resultType="int"
 		parameterType="String">
 
-		select fwg_user_id from Following
+		select fwg_user_code from Following
 		where fwg_you_id = #{loginid }
 		order by fwg_code
 	</select>
+
+	<select id="getcontent_noDao" 
+		resultType="int"
+		parameterType="int">
+
+		select content_no from UserPage
+		where member_code = #{member_code }
+		order by content_no
+	</select>
 	
-	<select id="userpageListDao" 
+	<select id="selectUserpageInfo" 
 		resultType="web.dto.UserPage"
 		parameterType="int">
 
 		select * from UserPage
-		where member_code = #{str }
-		order by content_no
+		where content_no = #{content_no }
 	</select>
 	
 </mapper>

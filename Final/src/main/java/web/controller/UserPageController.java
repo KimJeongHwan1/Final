@@ -62,7 +62,7 @@ public class UserPageController {
 	}
 
 	@RequestMapping(value = "/userpage/userpage", method = RequestMethod.GET)
-	public void userpage(Member member, Model model) {
+	public void userpage(Member member, Model model, HttpSession session) {
 		logger.info(member.toString());
 
 		member = memberService.getMember(member);
@@ -86,6 +86,16 @@ public class UserPageController {
 		} 
 
 		model.addAttribute("bool", memberService.selectImgCheck(member_code));
+		
+		
+		String loginid = (String) session.getAttribute("loginid");
+		Following fwg = new Following();
+		fwg.setFwg_user_id(id);
+		fwg.setFwg_you_id(loginid);
+		
+		int check = userpageService.checkFollowing(fwg);
+		
+		model.addAttribute("check", check);
 	}
 
 	@RequestMapping(value = "/userpage/view", method = RequestMethod.GET)
