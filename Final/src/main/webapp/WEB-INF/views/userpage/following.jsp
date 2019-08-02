@@ -11,12 +11,12 @@
 <body>
 
 <c:if test="${check == 1 }">
-언팔로우
+팔로우
 </c:if>
 
 
 <c:if test="${check == 0 }">
-팔로우
+언팔로우
 </c:if>
 
 </body>

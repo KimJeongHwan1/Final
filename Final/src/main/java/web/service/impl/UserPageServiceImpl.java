@@ -131,7 +131,7 @@ public class UserPageServiceImpl  implements UserPageService{
 		
 	}
 	@Override
-	public int checkFollowing(web.dto.Following fwg) {
+	public int checkFollowing(Following fwg) {
 		// TODO Auto-generated method stub
 		return userpageDao.followingCheck(fwg);
 	}

@@ -12,5 +12,7 @@ public interface TongService {
 	
 	public List timeLinePage(String loginid);
 	
-	public List userpageList(int str);
+	public List getcontent_no(int member_code);
+	
+	public List getTimeLine(List list);
 }

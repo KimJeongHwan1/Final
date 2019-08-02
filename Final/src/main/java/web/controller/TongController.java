@@ -339,5 +339,32 @@ public class TongController {
 		model.addAttribute("check", check);
 	}
 	
-	
+	@RequestMapping(value = "/tong/timeLinePage", method = RequestMethod.GET)
+	public void timeLinePage(HttpSession session, Model model) {
+		
+		String loginid = (String) session.getAttribute("loginid");
+		
+		List list = tongService.timeLinePage(loginid);
+		logger.info(list.toString());
+		
+		List sum = new ArrayList();
+		List sum2 = new ArrayList();
+		int member_code = 0;
+		int num = 0;
+		
+		for(int i=0; i<list.size(); i++) {
+			member_code = (Integer) list.get(i);
+			sum = tongService.getcontent_no(member_code);
+			
+			for(int j=0; j<sum.size(); j++) {
+				sum2.add(num, sum.get(j));
+				num++;
+			}
+		}
+		logger.info(sum2.toString());
+		
+		List timeLine = tongService.getTimeLine(sum2);
+		
+		model.addAttribute("timeLine", timeLine);
+	}
 }

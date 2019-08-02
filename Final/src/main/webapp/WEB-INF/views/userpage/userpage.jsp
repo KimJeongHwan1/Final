@@ -301,13 +301,23 @@ img{
 	<c:if test="${bool == false }">
 		<td rowspan="2"><img src="${paceContext.request.contextPath}/resources/img/img4.jpg" id="userprofilimg"/></td>
 		<td>${user_id }
-			<button id="follow_btn" style="margin-left: 100px;" type="button"><span id="follow_msg">팔로우</span></button>
+			<c:if test="${check == 1 }">
+				<button id="follow_btn" type="button"><span id="follow_msg">팔로우</span></button>
+			</c:if>
+			<c:if test="${check == 0 }">
+				<button id="follow_btn" type="button"><span id="follow_msg">언팔로우</span></button>
+			</c:if>
 		</td>
 	</c:if>	
 	<c:if test="${bool == true }">
 		<td rowspan="2"><img src="/upload/${img.storedname }" id="userprofilimg"/></td>
 		<td>${user_id }
-			<button id="follow_btn" style="margin-left: 100px;" type="button" type="button"><span id="follow_msg">팔로우</span></button>
+			<c:if test="${check == 1 }">
+				<button id="follow_btn" type="button"><span id="follow_msg">팔로우</span></button>
+			</c:if>
+			<c:if test="${check == 0 }">
+				<button id="follow_btn" type="button"><span id="follow_msg">언팔로우</span></button>
+			</c:if>s
 		</td>
 	</c:if>
 </tr>

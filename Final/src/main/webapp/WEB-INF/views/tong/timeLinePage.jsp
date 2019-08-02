@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+	pageEncoding="UTF-8"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <c:import url="/WEB-INF/views/layout/header.jsp" />
 
 <style>
@@ -30,7 +30,7 @@
 <div id="user_write_div">
 <c:set var="n" value="0"/>
 <c:set var="m" value="1"/>
-<c:forEach items="${list }" var="i">
+<c:forEach items="${timeLine }" var="i">
 <c:set var="sum" value="${n + m }"/>
 <div id="user_write_list">
 <img src="/uppage/${i.storedname }" id="file_img${sum }" class="list_img"><br>
@@ -43,6 +43,5 @@
 </c:forEach>
 
 </div>
-
 
 <c:import url="/WEB-INF/views/layout/footer.jsp" />
