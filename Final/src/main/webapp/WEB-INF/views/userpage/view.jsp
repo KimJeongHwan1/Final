@@ -440,7 +440,7 @@ $(document).ready(function() {
 		$('#comment').val('');
 	});
 });
-</script>
+
 
 <br>
 <span>조회수</span> ${userpage.hit }<br>

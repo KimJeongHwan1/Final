@@ -12,6 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import web.dto.Member;
+import web.dto.UserImg;
 import web.service.face.MemberService;
 import web.service.face.UserPageService;
 
@@ -31,7 +33,7 @@ public class FooterController {
 		
 	}
 	
-
+<
 	
 	@RequestMapping(value = "/layout/search", method = RequestMethod.POST)
 	public void searchProc(String text, Model model) {
