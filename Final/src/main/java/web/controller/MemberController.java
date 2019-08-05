@@ -26,6 +26,9 @@ import com.github.scribejava.core.model.OAuth2AccessToken;
 import web.dto.Member;
 import web.dto.UserImg;
 import web.service.face.MemberService;
+import web.service.face.MyPageService;
+import web.service.face.TongService;
+import web.service.face.UserPageService;
 
 @Controller
 public class MemberController {
@@ -49,7 +52,9 @@ public class MemberController {
 
 	@Autowired ServletContext context;
 	@Autowired MemberService memberService;
-
+	@Autowired MyPageService mypageService;
+	@Autowired UserPageService userpageService;
+	@Autowired TongService tongService;
 
 	// 네이버로 로그인 했을 때
 	@RequestMapping(value="/member/main", method=RequestMethod.GET)
@@ -352,15 +357,15 @@ public class MemberController {
 	}
 
 	@RequestMapping(value="/member/mypage", method=RequestMethod.GET)
-	public void mypage(HttpSession session, Model model, Member member) {
+	public void mypage(HttpSession session, Model model, Member member ) {
 
 		String loginid = (String)session.getAttribute("loginid");
-		logger.info(loginid);
-
+		//logger.info(loginid);
+		
 		member.setMember_id(loginid);
 
 		member = memberService.getMember(member);
-		// logger.info(member.toString());
+		//logger.info(member.toString());
 
 		model.addAttribute("member", member);
 
@@ -368,11 +373,24 @@ public class MemberController {
 
 		if(memberService.selectImgCheck(member_code)) {
 			UserImg userImg = memberService.selectImg(member_code);
-			logger.info(userImg.toString());
+			//logger.info(userImg.toString());
 			model.addAttribute("img", userImg);
 		} 
 
 		model.addAttribute("bool", memberService.selectImgCheck(member_code));
+		
+		int following = tongService.following_Cnt(loginid) ;
+		model.addAttribute( "following" , following ) ;
+		
+		int follower = tongService.follower_Cnt(loginid) ;
+		model.addAttribute( "follower" , follower ) ;
+		
+		int comment = tongService.comment_Cnt(loginid) ;
+		model.addAttribute( "comment" , comment ) ;
+		
+		int list = tongService.list_Cnt(member_code) ;
+		model.addAttribute( "list" , list ) ;
+		
 	}	
 
 
