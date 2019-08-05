@@ -188,10 +188,13 @@ public class UserPageController {
 
 		good.setMember_id(member_id);
 
-		//		int goodCheck = memberService.goodCheck(good);
-		//		model.addAttribute("goodCheck", goodCheck);
-
-
+		int goodCheck = memberService.goodCheck(good);
+		model.addAttribute("goodCheck", goodCheck);
+		
+		int goodnum = memberService.saveGoodCount(userpage.getContent_no());
+				
+		model.addAttribute("good_no", goodnum);
+		
 		List list = userpageService.selectComment(page_no);
 
 		//		logger.info(list.toString());
@@ -205,50 +208,52 @@ public class UserPageController {
 		List<Userpage_cocomment> cocomentList = userpageService.selectcocomentAll();
 
 		model.addAttribute("cocomentList", cocomentList);
-
+		
 	}
 
 
-	//	@RequestMapping(value="/userpage/good", method=RequestMethod.GET)
-	//	public String recommend(int content_no, HttpSession session, Model model, Good good) {
-	//		
-	//		logger.info("좋아요 폼_좋아요 UP AND DOWN");
-	//		String member_id = (String) session.getAttribute("loginid");
-	//		
-	//		logger.info(member_id);
-	//		
-	//		memberService.saveGoodId( member_id, content_no);
-	//		
-	//		int goodnum = memberService.saveGoodCount(content_no);
-	//
-	//		
-	//		model.addAttribute("good_no", goodnum);
-	//		
-	//		good.setContent_no(content_no);
-	//		good.setMember_id(member_id);
-	//		
-	//		int goodcheck = memberService.goodCheck(good);
-	//
-	//		model.addAttribute("goodcheck", goodcheck);
-	//		return "/userpage/good";
-	//	}
-	//	
-	//	@RequestMapping(value="/userpage/goodbtn", method=RequestMethod.GET)
-	//	public String recobtn(int content_no, HttpSession session, Model model, Good good) {
-	//		logger.info("좋아요 폼_ 버튼이름 '좋아요' OR '좋아요취소'");
-	//		String userid = (String) session.getAttribute("loginid");
-	//		
-	//		good.setContent_no(content_no);
-	//		good.setMember_id(userid);
-	//		
-	//		int goodcheck = memberService.goodCheck(good);
-	//		logger.info(good.toString());
-	//		
-	//		model.addAttribute("goodcheck", goodcheck);
-	//		
-	//		
-	//		return "/userpage/goodbtn";
-	//	}
+		@RequestMapping(value="/userpage/good", method=RequestMethod.GET)
+		public String recommend(int content_no, HttpSession session, Model model, Good good) {
+			
+			logger.info("좋아요 폼_좋아요 UP AND DOWN");
+			String member_id = (String) session.getAttribute("loginid");
+			
+			logger.info(member_id);
+			
+			memberService.saveGoodId( member_id, content_no);
+			
+			int goodnum = memberService.saveGoodCount(content_no);
+	
+			
+			model.addAttribute("good_no", goodnum);
+			
+			good.setContent_no(content_no);
+			good.setMember_id(member_id);
+			
+			int goodcheck = memberService.goodCheck(good);
+	
+			model.addAttribute("goodcheck", goodcheck);
+			return "/userpage/good";
+		}
+		
+		@RequestMapping(value="/userpage/goodbtn", method=RequestMethod.GET)
+		public String recobtn(int content_no, HttpSession session, Model model, Good good) {
+			logger.info("좋아요 폼_ 버튼이름 '좋아요' OR '좋아요취소'");
+			String userid = (String) session.getAttribute("loginid");
+			
+			
+			
+			good.setContent_no(content_no);
+			good.setMember_id(userid);
+			
+			logger.info(good.toString());
+			
+			int goodcheck = memberService.goodCheck(good);
+			
+			model.addAttribute("goodcheck", goodcheck);
+			
+			return "/userpage/goodbtn";
+		}
 
 
 

@@ -104,34 +104,34 @@
 		where member_code = #{member_code }
 	</select>
 
-<!-- 	<insert id="saveGoodId" -->
-<!-- 		parameterType="web.dto.Good"> -->
+	<insert id="saveGoodId"
+		parameterType="web.dto.Good">
 		
-<!-- 		insert into good(member_id, content_no) -->
-<!-- 		values ( #{member_id }, #{content_no } ) -->
-<!-- 	</insert> -->
+		insert into good(member_id, content_no)
+		values ( #{member_id }, #{content_no } )
+	</insert>
 	
-<!-- 	<select id="saveGoodcount" -->
-<!-- 		parameterType="int" -->
-<!-- 		resultType="int"> -->
+	<select id="saveGoodcount"
+		parameterType="int"
+		resultType="int">
 		
-<!-- 		select count(*) from good -->
-<!-- 		where content_no = #{content_no } -->
-<!-- 	</select> -->
+		select count(*) from good
+		where content_no = #{content_no }
+	</select>
 	
-<!-- 	<select id="saveGoodBlock" -->
-<!-- 		parameterType="web.dto.Good" -->
-<!-- 		resultType="int"> -->
+	<select id="saveGoodBlock"
+		parameterType="web.dto.Good"
+		resultType="int">
 		
-<!-- 		select count(*) from good -->
-<!-- 		where (member_id = #{member_id } and content_no = #{content_no }) -->
-<!-- 	</select> -->
+		select count(*) from good
+		where (member_id = #{member_id } and content_no = #{content_no })
+	</select>
 	
-<!-- 	<delete id="deleteGood" -->
-<!-- 		parameterType="String"> -->
+	<delete id="deleteGood"
+		parameterType="String">
 		
-<!-- 		delete from good where member_id = #{member_id }	 -->
-<!-- 	</delete> -->
+		delete from good where member_id = #{member_id }	
+	</delete>
 
 	<select id="selectSearchHeader"
 		resultType="web.dto.Member" parameterType="String">
