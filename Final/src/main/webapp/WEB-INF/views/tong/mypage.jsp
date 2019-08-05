@@ -239,16 +239,21 @@ img{
 <div id="STATICMENU">
 	<table class="table statictable">
 			<tr>
-				<th><a href="/admin/blacklist">게시물 </a></th>
+				<th><a href="/tong/mypage">게시물 </a></th>
 			</tr>
 			
 			<tr>
-				<th><a href="/admin/blacklist">태그 </a></th>
+				<th><a href="/userpage/write">글쓰기 </a></th>
 			</tr>
 			
 			<tr>
 				<th><a href="/answer/list">즐겨찾기</a></th>
 			</tr>
+			
+			<tr>
+				<th><a href="/calendar/calendar">캘린더</a></th>
+			</tr>
+
 	</table>
 </div>
 
@@ -261,21 +266,22 @@ img{
 		<td rowspan="2"><img src="${paceContext.request.contextPath}/resources/img/img4.jpg" id="myid"/>
 <!-- 		<input type="file" name="file" id="file"/></td> -->
 		<td>${loginid }</td>
-		<td><input type="button" value="정보수정" onclick="location.href='/member/updateInfo'"></td>
-		<td><input type="button" value="글쓰기" onclick="location.href='/tong/write'"></td>
+
+		<td><input type="button" value="정보수정" onclick="location.href='/member/updateInfo'" /></td>
+
 		<td><button type="button" id="fwg_List_btn">팔로잉 목록</button></td>
-		<td><button type="button" id="fwr_List_btn">팔로워 목록</button></td>
-		<td><a href="/calendar/calendar"><button type="button">캘린더</button></a></td>			
+		<td><button type="button" id="fwr_List_btn">팔로워 목록</button></td>			
 	</c:if>
 	
 	<c:if test="${bool == true }">
 		<td rowspan="2"><img src="/upload/${img.storedname }" id="myid"/></td>
 		<td>${loginid }</td>
-		<td><input type="button" value="정보수정" onclick="location.href='/member/updateInfo'"></td>
-		<td><input type="button" value="글쓰기" onclick="location.href='/tong/write'"></td>
+
+		<td><input type="button" value="정보수정" onclick="location.href='/member/updateInfo'" /></td>
+
 		<td><button type="button" id="fwg_List_btn">팔로잉 목록</button></td>
 		<td><button type="button" id="fwr_List_btn">팔로워 목록</button></td>		
-		<td><a href="/calendar/calendar"><button type="button">캘린더</button></a></td>
+<!-- 		<input type="button" value="글쓰기" onclick="location.href='/userpage/write'" /> -->
 	</c:if>
 </tr>
 
