@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import web.dto.Favorites;
 import web.dto.Following;
 import web.dto.Good;
 import web.dto.Member;
@@ -189,6 +190,15 @@ public class UserPageController {
 
 		model.addAttribute("cocomentList", cocomentList);
 		
+		Favorites fav = new Favorites();
+		
+		fav.setContent_no(userpage.getContent_no());
+		fav.setMember_id(member_id);
+		
+		int fav_check = userpageService.checkfavorites(fav);
+		
+		model.addAttribute("fav_check", fav_check);
+		
 	}
 
 
@@ -349,6 +359,22 @@ public class UserPageController {
 		userpageService.Following(fwg);
 		
 		int check = userpageService.checkFollowing(fwg);
+		
+		model.addAttribute("check", check);
+	}
+	
+	@RequestMapping(value = "/userpage/fav", method = RequestMethod.GET)
+	public void fav(int content_no, HttpSession session, Model model) {
+
+		String loginid = (String) session.getAttribute("loginid");
+		Favorites fav = new Favorites();
+		
+		fav.setContent_no(content_no);
+		fav.setMember_id(loginid);
+		
+		userpageService.favorites(fav);
+		
+		int check = userpageService.checkfavorites(fav);
 		
 		model.addAttribute("check", check);
 	}

@@ -32,6 +32,12 @@
    <td style="width: 80%"><input type="text" name="content_title" id="content_title" placeholder="내용을 입력해주세요" style="width: 498px;"/></td>
 </tr>
 <tr>
+   <td style="width: 20%">공개여부</td>
+   <td style="width: 80%"><input type="radio" value="0" name="blockSee" id="blockSee" checked="checked"/>공개
+   						  <input type="radio" value="1" name="blockSee" id="blockSee"/>비공개
+   	</td>
+</tr>
+<tr>
    <td>태그하기</td>
    <td><input type="text" name="tag" id="tag" placeholder="사람, 내용 태그" style="width: 498px;"/></td>
 </tr>

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import web.dao.face.UserPageDao;
+import web.dto.Favorites;
 import web.dto.Following;
 import web.dto.Member;
 import web.dto.UserImg;
@@ -141,5 +142,19 @@ public class UserPageServiceImpl  implements UserPageService{
 	@Override
 	public List<UserPage> getbestlist(Member member) {
 		return userpageDao.bestList(member) ;
+	}
+	@Override
+	public void favorites(Favorites fav) {
+		if(userpageDao.favoritesCheck(fav)>0) {
+			userpageDao.deletefavoritesDao(fav);
+		} else {
+			userpageDao.insertfavoritesDao(fav);
+		}
+		
+	}
+	@Override
+	public int checkfavorites(Favorites fav) {
+		// TODO Auto-generated method stub
+		return userpageDao.favoritesCheck(fav);
 	}
 }

@@ -368,4 +368,15 @@ public class TongController {
 		model.addAttribute("timeLine", timeLine);
 	}
 	
+	@RequestMapping(value = "/tong/favorites", method = RequestMethod.GET)
+	public void favorites(HttpSession session, Model model) {
+		String loginid = (String) session.getAttribute("loginid");
+		
+		List list = tongService.favContentNo(loginid);
+		logger.info(list.toString());
+		
+		List favList = tongService.getFavList(list);
+		
+		model.addAttribute("favList", favList);
+	}
 }

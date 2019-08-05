@@ -23,4 +23,8 @@ public interface TongService {
 	public int comment_Cnt( String loginid ) ;
 	
 	public int list_Cnt( int member_code ) ;
+	
+	public List favContentNo(String loginid);
+	
+	public List getFavList(List list);
 }

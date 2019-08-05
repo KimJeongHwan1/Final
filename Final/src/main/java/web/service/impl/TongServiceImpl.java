@@ -87,5 +87,30 @@ public class TongServiceImpl implements TongService {
 		// TODO Auto-generated method stub
 		return tongDao.listCnt(member_code) ;
 	}
+
+	@Override
+	public List favContentNo(String loginid) {
+		// TODO Auto-generated method stub
+		return tongDao.selectFavContentNo(loginid);
+	}
+
+	@Override
+	public List getFavList(List list) {
+		List sum = new ArrayList();
+		List sum2 = new ArrayList();
+		int m=0;
+		int n=0;
+		for(int i=0; i<list.size(); i++) {
+			n=(Integer)list.get(i);
+			sum = tongDao.selectFavList(n);
+			
+
+			sum2.add(m, sum.get(0));
+			m++;
+
+		}
+		
+		return sum2;
+	}
 	
 }

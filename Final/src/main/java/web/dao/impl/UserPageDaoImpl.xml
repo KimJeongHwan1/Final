@@ -9,26 +9,25 @@
 
 	<insert id="insertImg" parameterType="web.dto.UserPage">
 		insert into UserPage( content_no, content_title, content, member_code, hit,
-		good, tag, file_index, originname, storedname)
+		good, tag, file_index, originname, storedname, blockSee)
 		values( UserPage_seq.nextval, #{content_title }, #{content }, #{member_code
 		}, 0, 0, #{tag },
-		UserPage_seq.nextval, #{originname }, #{storedname })
+		UserPage_seq.nextval, #{originname }, #{storedname }, #{blockSee })
 
 	</insert>
 
 	<insert id="insertwriteInfo" parameterType="web.dto.UserPage">
 		insert into UserPage( content_no, content_title, content, member_code, hit,
-		good, tag, file_index, originname, storedname)
+		good, tag, file_index, originname, storedname, blockSee)
 		values( UserPage_seq.nextval, #{content_title }, #{content }, #{member_code
-		}, 0, 0, #{tag },
-		0, 0, 0)
+		}, 0, 0, #{tag }, 0, 0, 0 , #{blockSee })
 	</insert>
 
 	<select id="getwriteListDao" resultType="web.dto.UserPage"
 		parameterType="web.dto.Member">
 
 		select * from UserPage
-		where member_code = #{member_code }
+		where member_code = #{member_code } and blockSee = 0
 		order by content_no desc
 	</select>
 
@@ -97,14 +96,14 @@
 	<select id="selectTagDao"
 		resultType="web.dto.UserPage" parameterType="String">
 		select * from UserPage
-		where tag like '%'||#{tag }||'%'
+		where tag like '%'||#{tag }||'%' and blockSee = 0
 		order by content_no desc
 	</select>
 	
 	<select id="selectSearchHeader"
 		resultType="web.dto.UserPage" parameterType="String">
 		select * from UserPage
-		where content_title like '%'||#{text }||'%'
+		where content_title like '%'||#{text }||'%' and blockSee = 0
 		order by content_no desc
 	</select>
 	
@@ -137,10 +136,30 @@
 
 	<select id="hit" parameterType="web.dto.UserPage">
 	
-	update userpage
-	set hit = hit + 1
-	where content_no = #{content_no }
+		update userpage
+		set hit = hit + 1
+		where content_no = #{content_no }
 		
 	</select>
-
+	
+	<select id="favoritesCheck"
+		parameterType="web.dto.Favorites"
+		resultType="int">
+		
+		select count(*) from Favorites
+		where content_no = #{content_no } and member_id = #{member_id }
+	</select>
+	
+	<insert id="insertfavoritesDao"
+		parameterType="web.dto.Favorites">
+		insert into Favorites( fav_no, content_no, member_id)
+		values( favorites_seq.nextval, #{content_no }, #{member_id })
+	</insert>
+	
+	<delete id="deletefavoritesDao"
+		parameterType="web.dto.Favorites">
+	
+		delete from Favorites where content_no = #{content_no } and member_id = #{member_id }
+	</delete>
+	
 </mapper>
