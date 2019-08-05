@@ -63,5 +63,29 @@ public class TongServiceImpl implements TongService {
 		
 		return sum2;
 	}
+
+	@Override
+	public int following_Cnt(String loginid) {
+		// TODO Auto-generated method stub
+		return tongDao.followingCnt(loginid) ;
+	}
+
+	@Override
+	public int follower_Cnt(String loginid) {
+		// TODO Auto-generated method stub
+		return tongDao.followerCnt(loginid) ;
+	}
+
+	@Override
+	public int comment_Cnt(String loginid) {
+		// TODO Auto-generated method stub
+		return tongDao.commentCnt(loginid);
+	}
+
+	@Override
+	public int list_Cnt(int member_code) {
+		// TODO Auto-generated method stub
+		return tongDao.listCnt(member_code) ;
+	}
 	
 }

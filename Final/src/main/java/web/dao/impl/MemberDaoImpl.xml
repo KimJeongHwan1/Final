@@ -146,4 +146,6 @@
 <!-- 		where member_id like '%'||#{text }||'%' -->
 <!-- 		order by member_code -->
 <!-- 	</select> -->
+
+	
 </mapper>

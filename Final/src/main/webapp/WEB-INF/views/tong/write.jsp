@@ -25,7 +25,7 @@
 
 <div id="write_div">
 
-<form action="/userpage/write" method="post" enctype="multipart/form-data">
+<form action="/tong/write" method="post" enctype="multipart/form-data">
 <table style="width: 100%">
 <tr>
    <td style="width: 20%">제목</td>

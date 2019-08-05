@@ -40,26 +40,6 @@ public class UserPageController {
 	@Autowired MemberService memberService;
 	@Autowired UserPageService userpageService;
 
-	@RequestMapping(value = "/userpage/write", method = RequestMethod.GET)
-	public void write() {
-
-	}
-
-	@RequestMapping(value = "/userpage/write", method = RequestMethod.POST)
-	public void writeProc(HttpSession session, UserPage userpage,
-			@RequestParam(value="file")MultipartFile fileupload) {
-
-		String loginid = (String)session.getAttribute("loginid");
-
-		int member_code = memberService.getMember_code(loginid);
-		userpage.setMember_code(member_code);
-
-		if(fileupload.getOriginalFilename().equals("")) {
-			userpageService.insertwrite(userpage);
-		} else {
-			userpageService.imgsave(fileupload, context, userpage);
-		}
-	}
 
 	@RequestMapping(value = "/userpage/userpage", method = RequestMethod.GET)
 	public void userpage(Member member, Model model, HttpSession session) {
