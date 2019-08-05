@@ -183,7 +183,7 @@ $(document).ready(function() {
 			, data: { }
 			, dataType: "html"
 			, success: function( res ) {
-				$("#1").html(res);
+				$("#good_btn").html(res);
 				console.log("성공");
 			}
 			, error: function() {
@@ -400,12 +400,12 @@ $(document).ready(function() {
 
 
 <c:if test="${goodCheck == 1}">
-<button type="button" id="good_btn"><span id = "1" class="glyphicon glyphicon-star"></span></button>
+<button type="button" id="good_btn"><span class="glyphicon glyphicon-star"></span></button>
 </c:if>
 <c:if test="${goodCheck == 0}">
-<button type="button" id="good_btn"><span id = "1" class="glyphicon glyphicon-star-empty"></span></button>
+<button type="button" id="good_btn"><span class="glyphicon glyphicon-star-empty"></span></button>
 </c:if>
-<span id="good"><span id="good_span">좋아요${good_no }</span></span>
+<span id="good"><span id="good_span">${good_no }</span></span>
 
 
 <span id="kakao1"><script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
@@ -445,6 +445,32 @@ $(document).ready(function() {
 });
 </script>공유하기
  </span>
+
+<c:if test="${userpage.address != null }">
+<span id="map" class="glyphicon glyphicon-map-marker"></span>
+</c:if>
+
+
+
+<div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#map").click(function(){
+		var popUrl = "/userpage/map?content_no=${userpage.content_no }";	//팝업창에 출력될 페이지 URL
+	
+		var popOption = "width=500, height=400, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
+
+		window.open(popUrl,"",popOption);
+	});
+});
+</script>
+ 
+    
+
+</div>
+
+
 
 <br>
 <span>조회수</span> ${userpage.hit }<br>

@@ -3,6 +3,7 @@ package web.dao.face;
 import java.util.List;
 
 import web.dto.Following;
+import web.dto.MapAddress;
 import web.dto.Member;
 import web.dto.UserImg;
 import web.dto.UserPage;
@@ -44,4 +45,6 @@ public interface UserPageDao {
   
   public void hit(UserPage userpage);
   
+  public UserPage userpageSelectByContent_no(int content_no);
+
 }

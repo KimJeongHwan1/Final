@@ -15,6 +15,17 @@ public class UserPage {
 	private int file_index;
 	private String originname; 
 	private String storedname;
+	private int addno;
+	private String address;
+	private String x;
+	private String y;
+	@Override
+	public String toString() {
+		return "UserPage [content_no=" + content_no + ", content_title=" + content_title + ", content=" + content
+				+ ", member_code=" + member_code + ", hit=" + hit + ", good=" + good + ", write_date=" + write_date
+				+ ", tag=" + tag + ", file_index=" + file_index + ", originname=" + originname + ", storedname="
+				+ storedname + ", addno=" + addno + ", address=" + address + ", x=" + x + ", y=" + y + "]";
+	}
 	public int getContent_no() {
 		return content_no;
 	}
@@ -81,13 +92,31 @@ public class UserPage {
 	public void setStoredname(String storedname) {
 		this.storedname = storedname;
 	}
-	@Override
-	public String toString() {
-		return "UserPage [content_no=" + content_no + ", content_title=" + content_title + ", content=" + content
-				+ ", member_code=" + member_code + ", hit=" + hit + ", good=" + good + ", write_date=" + write_date
-				+ ", tag=" + tag + ", file_index=" + file_index + ", originname=" + originname + ", storedname="
-				+ storedname + "]";
+	public int getAddno() {
+		return addno;
 	}
+	public void setAddno(int addno) {
+		this.addno = addno;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getX() {
+		return x;
+	}
+	public void setX(String x) {
+		this.x = x;
+	}
+	public String getY() {
+		return y;
+	}
+	public void setY(String y) {
+		this.y = y;
+	}
+	
 	
 	
 	

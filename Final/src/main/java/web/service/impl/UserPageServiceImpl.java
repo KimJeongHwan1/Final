@@ -142,4 +142,9 @@ public class UserPageServiceImpl  implements UserPageService{
 	public List<UserPage> getbestlist(Member member) {
 		return userpageDao.bestList(member) ;
 	}
+	@Override
+	public UserPage selectByContent_no(int content_no) {
+		// TODO Auto-generated method stub
+		return userpageDao.userpageSelectByContent_no(content_no);
+	}
 }

@@ -209,15 +209,19 @@ public class TongController {
 
 
 		// 좋아요 기능
+		
+		good.setMember_id(id);
 
+		int goodCheck = memberService.goodCheck(good);
+		model.addAttribute("goodCheck", goodCheck);
+		
 		member_id = (String) session.getAttribute("loginid");
 
 		good.setMember_id(member_id);
-
-		//		int goodCheck = memberService.goodCheck(good);
-		//		model.addAttribute("goodCheck", goodCheck);
-
-
+		
+		int goodnum = memberService.saveGoodCount(userpage.getContent_no());
+		model.addAttribute("good_no", goodnum);
+		
 		List list = userpageService.selectComment(page_no);
 
 		//		logger.info(list.toString());
@@ -367,4 +371,16 @@ public class TongController {
 		
 		model.addAttribute("timeLine", timeLine);
 	}
+	
+	@RequestMapping(value = "/tong/map", method = RequestMethod.GET)
+	public void map(int content_no, Model model) {
+		
+		UserPage userpage = new UserPage();
+		
+		userpage = userpageService.selectByContent_no(content_no);
+		
+		model.addAttribute("map", userpage);
+	}	
+	
+	
 }

@@ -39,7 +39,7 @@ public class UserPageController {
 	@Autowired ServletContext context;
 	@Autowired MemberService memberService;
 	@Autowired UserPageService userpageService;
-
+	
 	@RequestMapping(value = "/userpage/write", method = RequestMethod.GET)
 	public void write() {
 
@@ -59,6 +59,9 @@ public class UserPageController {
 		} else {
 			userpageService.imgsave(fileupload, context, userpage);
 		}
+		
+		
+		
 	}
 
 	@RequestMapping(value = "/userpage/userpage", method = RequestMethod.GET)
@@ -208,6 +211,11 @@ public class UserPageController {
 		List<Userpage_cocomment> cocomentList = userpageService.selectcocomentAll();
 
 		model.addAttribute("cocomentList", cocomentList);
+		
+		
+		// 맵
+		
+		
 		
 	}
 
@@ -371,5 +379,15 @@ public class UserPageController {
 		int check = userpageService.checkFollowing(fwg);
 		
 		model.addAttribute("check", check);
+	}
+	
+	@RequestMapping(value = "/userpage/map", method = RequestMethod.GET)
+	public void map(int content_no, Model model) {
+		
+		UserPage userpage = new UserPage();
+		
+		userpage = userpageService.selectByContent_no(content_no);
+		
+		model.addAttribute("map", userpage);
 	}
 }

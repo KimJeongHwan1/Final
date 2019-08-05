@@ -8,7 +8,5 @@
 </head>
 <body>
 
-${good_no }
-
 </body>
 </html>

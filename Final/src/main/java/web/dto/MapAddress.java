@@ -7,7 +7,6 @@ public class MapAddress {
 	private String member_id;
 	private String x;
 	private String y;
-	
 	@Override
 	public String toString() {
 		return "MapAddress [addno=" + addno + ", address=" + address + ", member_id=" + member_id + ", x=" + x + ", y="
@@ -43,10 +42,5 @@ public class MapAddress {
 	public void setY(String y) {
 		this.y = y;
 	}
-	
-
-	
-	
-	
 	
 }

@@ -39,8 +39,10 @@ img{
 	margin: 0;
 	width: 100%;
 	height: 400px;
+	
 }
 #uploadImg{
+	margin-left: 0px;
 	width: 100%;
 	height: 400px;
 }
@@ -109,10 +111,27 @@ img{
 	width:6%;
 	
 }
+
+#declarationDiv{
+	position: fixed;
+	top: 100px;
+	left: 1250px;
+}
+
 </style>
 
 <script type="text/javascript">
 $(document).ready(function() {
+	
+	$('#declarationDiv').hide();
+	$('#declaration').click(function(){
+	    var state = $('#declarationDiv').css('display');
+	    if(state == 'none'){
+	        $('#declarationDiv').show();
+	    }else{
+	        $('#declarationDiv').hide();
+	    }
+	});
 	
 	$("#good_btn").click(function() {
 		
@@ -176,7 +195,9 @@ $(document).ready(function() {
 
 <div id="write_div">
 <div id="head_area">
-<span class="glyphicon glyphicon-user"> ${id }</span>
+<span style="font-size: 15px;" class="glyphicon glyphicon-user"> ${id }</span>
+<span style="font-size: 15px; margin-left: 20px;" class="glyphicon glyphicon-bullhorn" id="declaration" >신고하기</span>
+<span style="font-size: 15px; margin-left: 20px;" class="glyphicon glyphicon-ok">즐겨찾기</span>
 </div>
 <div id="tag_area">
 <c:if test="${tagList !=null }">
@@ -385,16 +406,16 @@ $(document).ready(function() {
 <img id="kakao" src="https://developers.kakao.com/sdk/js/resources/story/icon_small.png"/>
 </a>
 <script type='text/javascript'>
-  //<![CDATA[
-    // 사용할 앱의 JavaScript 키를 설정해 주세요.
-    Kakao.init('YOUR APP KEY');
-    function shareStory() {
-      Kakao.Story.share({
-        url: 'http://localhost:8088/userpage/view?content_no=1',
-        text: '게시물 공유 #개발테스트 #공유 :)'
-      });
-    }
-  //]]>
+//   <![CDATA[
+//     // 사용할 앱의 JavaScript 키를 설정해 주세요.
+//     Kakao.init('YOUR APP KEY');
+//     function shareStory() {
+//       Kakao.Story.share({
+//         url: 'http://localhost:8088/userpage/view?content_no=1',
+//         text: '게시물 공유 #개발테스트 #공유 :)'
+//       });
+//     }
+//   //]]>
 </script>
 <script type="text/javascript">
 $(document).ready(function() {
@@ -418,6 +439,33 @@ $(document).ready(function() {
 </script>공유하기
  </span>
 
+<c:if test="${userpage.address != null }">
+<span id="map" class="glyphicon glyphicon-map-marker"></span>
+</c:if>
+
+
+
+<div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#map").click(function(){
+		var popUrl = "/userpage/map?content_no=${userpage.content_no }";	//팝업창에 출력될 페이지 URL
+	
+		var popOption = "width=500, height=400, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
+
+		window.open(popUrl,"",popOption);
+	});
+});
+</script>
+ 
+</div>
+
+
+
+
+
+
 <br>
 <span>조회수</span> ${userpage.hit }<br>
 <span>작성일</span> <fmt:formatDate value="${userpage.write_date }" pattern="yyyy년 MM월 dd일 hh:mm:ss" /><br>
@@ -434,6 +482,16 @@ $(document).ready(function() {
 
 </div>
 
+<div id="declarationDiv" style="background-color: #E0F2F7; width: 300px; height: 100px;" >
+
+
+<form action="/userpage/declaration" method="get">
+
+	<input type="text" id="decl" name="decl">
+	<button>신고</button>
+</form>
+
+</div>
 
 </body>
 </html>

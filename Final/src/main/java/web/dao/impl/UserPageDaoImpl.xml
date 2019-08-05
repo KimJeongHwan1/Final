@@ -9,19 +9,18 @@
 
 	<insert id="insertImg" parameterType="web.dto.UserPage">
 		insert into UserPage( content_no, content_title, content, member_code, hit,
-		good, tag, file_index, originname, storedname)
+		good, tag, file_index, originname, storedname, addno, address, x, y  )
 		values( UserPage_seq.nextval, #{content_title }, #{content }, #{member_code
 		}, 0, 0, #{tag },
-		UserPage_seq.nextval, #{originname }, #{storedname })
+		UserPage_seq.nextval, #{originname }, #{storedname }, MapAddress_seq.nextval, #{address }, #{x }, #{y })
 
 	</insert>
 
 	<insert id="insertwriteInfo" parameterType="web.dto.UserPage">
 		insert into UserPage( content_no, content_title, content, member_code, hit,
-		good, tag, file_index, originname, storedname)
+		good, tag, file_index, originname, storedname, addno, address, x, y  )
 		values( UserPage_seq.nextval, #{content_title }, #{content }, #{member_code
-		}, 0, 0, #{tag },
-		0, 0, 0)
+		}, 0, 0, #{tag }, 0, 0, 0, MapAddress_seq.nextval, #{address }, #{x }, #{y })
 	</insert>
 
 	<select id="getwriteListDao" resultType="web.dto.UserPage"
@@ -142,5 +141,42 @@
 	where content_no = #{content_no }
 		
 	</select>
-
+	
+	
+	<select id="selectByMember_id" parameterType="String" resultType="web.dto.UserPage">
+		SELECT * FROM UserPage
+		WHERE member_id = #{member_id }
+	
+	</select>
+	
+	<insert id="insertMap" parameterType="web.dto.UserPage">
+		
+		INSERT INTO UserPage(addno, address, member_id,x ,y)
+		VALUES(testaddress_seq.nextval, #{address }, #{member_id }, #{x }, #{y } )
+		
+	</insert>
+	
+	<update id="updateMap" parameterType="web.dto.UserPage">
+		
+		UPDATE UserPage set address = #{address }, x = #{x }, y = #{y }
+		where addno = #{addno }
+		
+	</update>
+	
+	<delete id="deleteMap" parameterType="web.dto.UserPage" >
+		
+		DELETE FROM UserPage
+		WHERE addno = #{addno } 
+	
+	</delete>	
+	
+	
+	<select id="userpageSelectByContent_no" parameterType="int" resultType="web.dto.UserPage">
+		SELECT * FROM UserPage
+		WHERE content_no = #{content_no }
+	
+	</select>
+	
+	
+	
 </mapper>

@@ -47,4 +47,6 @@ public interface UserPageService {
 	
 	public List<UserPage> getbestlist(Member member);
 	
+	public UserPage selectByContent_no(int content_no);
+	
 }
