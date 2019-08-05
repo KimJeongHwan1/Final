@@ -67,7 +67,7 @@ ${coco.content }<br>
 <fmt:formatDate value="${coco.writtendate }" pattern="yyyy년 MM월 dd일 hh:mm:ss" />&nbsp;&nbsp;&nbsp;&nbsp;
 
 <c:if test="${loginid == coco.member_id }">
-<a href=""><span id="delete_coco_msg${ccmsum }">삭제</span></a><br><br>
+<span id="delete_coco_msg${ccmsum }" style="color: blue;">삭제</span><br><br>
 </c:if>
 <c:if test="${loginid != coco.member_id }">
 <br><br>

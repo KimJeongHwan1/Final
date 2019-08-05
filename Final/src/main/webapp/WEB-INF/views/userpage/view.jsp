@@ -36,6 +36,7 @@
 	float: left;
 }
 img{
+	margin: 0;
 	width: 100%;
 	height: 400px;
 }
@@ -175,9 +176,7 @@ $(document).ready(function() {
 
 <div id="write_div">
 <div id="head_area">
-<span class="glyphicon glyphicon-user"> ${id } </span>
-<span class="glyphicon glyphicon-plus">팔로우 </span>
-<span class="glyphicon glyphicon-align-justify"></span>
+<span class="glyphicon glyphicon-user"> ${id }</span>
 </div>
 <div id="tag_area">
 <c:if test="${tagList !=null }">
@@ -234,7 +233,7 @@ ${i.content }<br>
 <label id="nextcomentwrite${sum }">댓글</label>&nbsp;&nbsp;&nbsp;&nbsp;
 
 <c:if test="${loginid == i.member_id }">
-<a href=""><span id="delete_msg${sum }">삭제</span></a><br><br>
+<span id="delete_msg${sum }" style="color: blue;">삭제</span><br><br>
 </c:if>
 <script type="text/javascript">
 $(document).ready(function() {
@@ -305,7 +304,7 @@ ${coco.content }<br>
 <fmt:formatDate value="${coco.writtendate }" pattern="yyyy년 MM월 dd일 hh:mm:ss" />&nbsp;&nbsp;&nbsp;&nbsp;
 
 <c:if test="${loginid == coco.member_id }">
-<a href=""><span id="delete_coco_msg${ccmsum }">삭제</span></a><br><br>
+<span id="delete_coco_msg${ccmsum }" style="color:blue;">삭제</span><br><br>
 </c:if>
 <c:if test="${loginid != coco.member_id }">
 <br><br>
