@@ -317,7 +317,7 @@ img{
 			</c:if>
 			<c:if test="${check == 0 }">
 				<button id="follow_btn" type="button"><span id="follow_msg">언팔로우</span></button>
-			</c:if>s
+			</c:if>
 		</td>
 	</c:if>
 </tr>

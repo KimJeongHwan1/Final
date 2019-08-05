@@ -2,6 +2,8 @@ package web.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,9 @@ public class FooterController {
 	public void search() {
 		
 	}
+	
+
+	
 	@RequestMapping(value = "/layout/search", method = RequestMethod.POST)
 	public void searchProc(String text, Model model) {
 		logger.info(text);

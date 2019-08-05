@@ -266,7 +266,9 @@ img{
 		<td rowspan="2"><img src="${paceContext.request.contextPath}/resources/img/img4.jpg" id="myid"/>
 <!-- 		<input type="file" name="file" id="file"/></td> -->
 		<td>${loginid }</td>
+
 		<td><input type="button" value="정보수정" onclick="location.href='/member/updateInfo'" /></td>
+
 		<td><button type="button" id="fwg_List_btn">팔로잉 목록</button></td>
 		<td><button type="button" id="fwr_List_btn">팔로워 목록</button></td>			
 	</c:if>
@@ -274,7 +276,9 @@ img{
 	<c:if test="${bool == true }">
 		<td rowspan="2"><img src="/upload/${img.storedname }" id="myid"/></td>
 		<td>${loginid }</td>
+
 		<td><input type="button" value="정보수정" onclick="location.href='/member/updateInfo'" /></td>
+
 		<td><button type="button" id="fwg_List_btn">팔로잉 목록</button></td>
 		<td><button type="button" id="fwr_List_btn">팔로워 목록</button></td>		
 <!-- 		<input type="button" value="글쓰기" onclick="location.href='/userpage/write'" /> -->

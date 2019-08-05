@@ -24,7 +24,7 @@
 
 <a href="/tong/timeLinePage">타임라인페이지</a><br><br>
 
-<a href="/userpage/write">글쓰기</a><br><br>
+<a href="/tong/write">글쓰기</a><br><br>
 
 
 <a href="/black/list">블랙리스트</a><br><br>

@@ -11,13 +11,14 @@
       google.charts.load("current", {packages:["corechart"]});
       google.charts.setOnLoadCallback(drawChart);
       function drawChart() {
+    	  
         var data = google.visualization.arrayToDataTable([
           ['수', 'Log'],
-          ['작성 댓글', 11],
-          ['작성 게시물', 50],
+          ['작성 댓글', ${comment}],
+          ['작성 게시물', ${list}],
           ['즐겨찾기', 2],
-          ['팔로잉' , 5],
-          ['팔로워' , 5]
+          ['팔로잉' , ${follower }],
+          ['팔로워' , ${following }]
         ]);
 
         var options = {

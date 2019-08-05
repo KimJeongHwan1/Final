@@ -16,4 +16,13 @@ public interface TongDao {
 	
 	public List selectUserpageInfo(int content_no);
 	
+	public int followingCnt( String loginid ) ;
+	
+	public int followerCnt( String loginid ) ;
+	
+	public int commentCnt( String loginid ) ;
+	
+	public int listCnt( int member_code ) ;
+ 	
+	
 }
