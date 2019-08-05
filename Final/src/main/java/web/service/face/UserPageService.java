@@ -6,6 +6,7 @@ import javax.servlet.ServletContext;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import web.dto.Favorites;
 import web.dto.Following;
 import web.dto.Member;
 import web.dto.UserImg;
@@ -47,4 +48,7 @@ public interface UserPageService {
 	
 	public List<UserPage> getbestlist(Member member);
 	
+	public void favorites(Favorites fav);
+	
+	public int checkfavorites(Favorites fav);
 }

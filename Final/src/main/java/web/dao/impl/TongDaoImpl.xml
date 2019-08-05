@@ -49,7 +49,7 @@
 		parameterType="int">
 
 		select * from UserPage
-		where content_no = #{content_no }
+		where content_no = #{content_no } and blockSee = 0
 	</select>
 	
 	<select id="followingCnt"
@@ -82,5 +82,23 @@
 		
 		select count(*) from userpage
 		where member_code = #{member_code}
+	</select>
+	
+	<select id="selectFavContentNo" 
+		resultType="int"
+		parameterType="String">
+
+		select content_no from Favorites
+		where member_id = #{loginid }
+		order by content_no desc
+		
+	</select>
+	
+	<select id="selectFavList" 
+		resultType="web.dto.UserPage"
+		parameterType="int">
+
+		select * from UserPage
+		where content_no = #{content_no } and blockSee = 0
 	</select>
 </mapper>

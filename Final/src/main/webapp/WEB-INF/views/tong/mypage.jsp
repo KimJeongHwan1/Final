@@ -247,7 +247,7 @@ img{
 			</tr>
 			
 			<tr>
-				<th><a href="/answer/list">즐겨찾기</a></th>
+				<th><a href="/tong/favorites">즐겨찾기</a></th>
 			</tr>
 			
 			<tr>

@@ -9,9 +9,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<!-- <!-- jQuery 2.2.4 --> -->
-<!-- <script type="text/javascript" -->
-<!--  src="http://code.jquery.com/jquery-2.2.4.min.js"></script> -->
+<!-- jQuery 2.2.4 -->
+<script type="text/javascript"
+ src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
 
 <!-- Bootstrap 3 -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
@@ -123,16 +123,16 @@ img{
 <img src="https://developers.kakao.com/sdk/js/resources/story/icon_small.png"/>
 </a>
 <script type='text/javascript'>
-  <![CDATA[
+//   <![CDATA[
 //     사용할 앱의 JavaScript 키를 설정해 주세요.
-    Kakao.init('b737021ce8920b6a7fdac62cfcfc837d');
-    function shareStory() {
-      Kakao.Story.share({
-        url: 'http://15.164.204.55:8080/tong/mypage',
-        text: '요리통 사이트로 놀러오세요! #개발자 #카카오 :)'
-      });
-    }
-  ]]>
+//     Kakao.init('b737021ce8920b6a7fdac62cfcfc837d');
+//     function shareStory() {
+//       Kakao.Story.share({
+//         url: 'http://15.164.204.55:8080/tong/mypage',
+//         text: '요리통 사이트로 놀러오세요! #개발자 #카카오 :)'
+//       });
+//     }
+//   ]]>
 </script>
 
 <script type="text/javascript">
@@ -190,6 +190,25 @@ $(document).ready(function() {
 	});
 });
 </script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#fav").click(function() {
+		$.ajax({
+			type: "get"
+			, url: "/userpage/fav?content_no=${userpage.content_no}"
+			, data:  { } 
+			, dataType: "html"
+			, success: function( res ) {
+				$("#fav_msg").html(res);
+				console.log("성공");
+			}
+			, error: function() {
+				console.log("실패");
+			}
+		});
+	});
+});
+</script>
 <body>
 
 
@@ -200,7 +219,15 @@ $(document).ready(function() {
 
 <div id="write_div">
 <div id="head_area">
-<span class="glyphicon glyphicon-user"> ${id }</span>
+<span class="glyphicon glyphicon-user" style="margin-left: 20px; font-size: 15px;"> ${id }</span>
+<span class="glyphicon glyphicon-bullhorn" style="margin-left: 20px; font-size: 15px;"> 신고하기</span>
+<c:if test="${fav_check == 1 }">
+	<span id="fav" class="glyphicon glyphicon-ok" style="margin-left: 20px; font-size: 15px;"> <span id="fav_msg">즐겨찾기취소</span></span>
+</c:if>
+<c:if test="${fav_check == 0 }">
+	<span id="fav" class="glyphicon glyphicon-ok" style="margin-left: 20px; font-size: 15px;"> <span id="fav_msg">즐겨찾기추가</span></span>
+</c:if>
+
 </div>
 <div id="tag_area">
 <c:if test="${tagList !=null }">
@@ -403,44 +430,23 @@ $(document).ready(function() {
 </c:if>
 <span id="good"><span id="good_span">${good_no }</span></span>&nbsp;&nbsp;&nbsp;
 
-<!-- <!-- kakao --> -->
+<!-- kakao -->
 <!-- <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script> -->
 <!-- <div id="kakaostory-share-button"></div> -->
 <!-- <img src="https://developers.kakao.com/sdk/js/resources/story/icon_small.png"/> -->
-<!-- <script type='text/javascript'> -->
-//   //<![CDATA[
+<script type='text/javascript'>
+//    <![CDATA[
 	  
-//     // 사용할 앱의 JavaScript 키를 설정해 주세요.
-//     Kakao.init('b737021ce8920b6a7fdac62cfcfc837d');
-//     // 스토리 공유 버튼을 생성합니다.
-//     Kakao.Story.createShareButton({
-//       container: '#kakaostory-share-button',
-//       url: 'http://15.164.204.55:8080/main',
-//       text: '카카오 개발자 사이트로 놀러오세요! #개발자 #카카오 :)'
-//     });
-//   //]]>
-<!-- </script> -->
-
-<script type="text/javascript">
-$(document).ready(function() {
-	$("#write_btn").click(function() {
-		$.ajax({
-			type: "get"
-			, url: "/userpage/viewComment?content_no=${userpage.content_no}"
-			, data:  $("#comment") 
-			, dataType: "html"
-			, success: function( res ) {
-				$("#userscomment").html(res);
-				console.log("성공");
-			}
-			, error: function() {
-				console.log("실패");
-			}
-		});
-		$('#comment').val('');
-	});
-});
-
+//       사용할 앱의 JavaScript 키를 설정해 주세요.
+//      Kakao.init('b737021ce8920b6a7fdac62cfcfc837d');
+//       스토리 공유 버튼을 생성합니다.
+//      Kakao.Story.createShareButton({
+//        container: '#kakaostory-share-button',
+//        url: 'http://15.164.204.55:8080/main',
+//        text: '카카오 개발자 사이트로 놀러오세요! #개발자 #카카오 :)'
+//      });
+// ]]>
+</script>
 
 <br>
 <span>조회수</span> ${userpage.hit }<br>

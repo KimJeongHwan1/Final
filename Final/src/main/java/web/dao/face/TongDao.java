@@ -24,5 +24,9 @@ public interface TongDao {
 	
 	public int listCnt( int member_code ) ;
  	
+	public List selectFavContentNo(String loginid);
+	
+	public List selectFavList(int content_no);
+	
 	
 }

@@ -15,7 +15,7 @@ public class EchoHandler extends TextWebSocketHandler {
 	
 	private static final Logger logger = LoggerFactory.getLogger(EchoHandler.class);
 
-	List<WebSocketSession> sessionList = new ArrayList<>();
+	List<WebSocketSession> sessionList = new ArrayList<WebSocketSession>();
 
 	
 	
