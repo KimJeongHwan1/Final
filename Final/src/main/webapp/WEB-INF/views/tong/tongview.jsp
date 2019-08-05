@@ -3,10 +3,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-
-<!-- jQuery 2.2.4 -->
-<!-- <script type="text/javascript" -->
-<!--  src="http://code.jquery.com/jquery-2.2.4.min.js"></script> -->
+<script type="text/javascript"
+ src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
 
 <!-- Bootstrap 3 -->
 <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"> -->
@@ -34,6 +32,7 @@ $(document).ready(function() {
 	});
 });
 </script>
+
 
 <style type="text/css">
 
@@ -157,6 +156,31 @@ img{
  }
 
 </style>
+
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
+<title>KakaoStory Share Button Demo - Kakao JavaScript SDK</title>
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+
+</head>
+<body>
+<a href="javascript:shareStory()">
+<img src="https://developers.kakao.com/sdk/js/resources/story/icon_small.png"/>
+</a>
+<script type='text/javascript'>
+  <![CDATA[
+//     사용할 앱의 JavaScript 키를 설정해 주세요.
+    Kakao.init('b737021ce8920b6a7fdac62cfcfc837d');
+    function shareStory() {
+      Kakao.Story.share({
+        url: 'http://15.164.204.55:8080/tong/mypage',
+        text: '요리통 사이트로 놀러오세요! #개발자 #카카오 :)'
+      });
+    }
+  ]]>
+</script>
 
 <script type="text/javascript">
 $(document).ready(function() {
@@ -408,22 +432,8 @@ $(document).ready(function() {
 <span id="good"><span id="good_span">좋아요${good_no }</span></span>
 
 
-<span id="kakao1"><script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-<a href="javascript:shareStory()">
-<img id="kakao" src="https://developers.kakao.com/sdk/js/resources/story/icon_small.png"/>
-</a>
-<script type='text/javascript'>
-//   //<![CDATA[
-//     // 사용할 앱의 JavaScript 키를 설정해 주세요.
-//     Kakao.init('b737021ce8920b6a7fdac62cfcfc837d');
-//     function shareStory() {
-//       Kakao.Story.share({
-//         url: 'http://localhost:8088/userpage/view?content_no=1',
-//         text: '게시물 공유 #개발테스트 #공유 :)'
-//       });
-//     }
-//   //]]>
-</script>
+<span id="kakao1"><span id="kakao_span">공유하기</span></span>
+
 <script type="text/javascript">
 $(document).ready(function() {
 	$("#write_btn").click(function() {
@@ -443,8 +453,8 @@ $(document).ready(function() {
 		$('#comment').val('');
 	});
 });
-</script>공유하기
- </span>
+</script>
+
 
 <br>
 <span>조회수</span> ${userpage.hit }<br>
