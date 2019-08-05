@@ -15,4 +15,12 @@ public interface TongService {
 	public List getcontent_no(int member_code);
 	
 	public List getTimeLine(List list);
+	
+	public int following_Cnt( String loginid ) ;
+	
+	public int follower_Cnt( String loginid ) ;
+	
+	public int comment_Cnt( String loginid ) ;
+	
+	public int list_Cnt( int member_code ) ;
 }

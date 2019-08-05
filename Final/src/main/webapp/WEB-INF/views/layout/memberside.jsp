@@ -47,5 +47,4 @@
 <div style="width: 100%"><a href="/member/mypage"><label>마이페이지</label></a></div>
 <div style="width: 100%"><a href="/member/updateInfo"><label>프로필 편집</label></a></div>
 <div style="width: 100%"><a href="/member/updatePw"><label>비밀번호 변경</label></a></div>
-<div style="width: 100%"><a href=""><label>댓글 필터링</label></a></div>
 </div>

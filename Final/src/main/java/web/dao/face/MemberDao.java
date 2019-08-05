@@ -52,4 +52,5 @@ public interface MemberDao {
 	
 	public List selectSearchHeader(String text);
 //	public List selectSearchImgHeader(String text);
+	
 }

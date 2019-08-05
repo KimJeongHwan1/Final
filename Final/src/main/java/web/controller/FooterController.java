@@ -33,8 +33,7 @@ public class FooterController {
 		
 	}
 	
-	
-	
+<
 	
 	@RequestMapping(value = "/layout/search", method = RequestMethod.POST)
 	public void searchProc(String text, Model model) {

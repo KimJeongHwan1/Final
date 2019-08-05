@@ -52,4 +52,35 @@
 		where content_no = #{content_no }
 	</select>
 	
+	<select id="followingCnt"
+		resultType="int"
+		parameterType="String">
+		
+		select count(*) from following
+		where fwg_you_id = #{loginid }
+	</select>
+	
+	<select id="followerCnt"
+		resultType="int"
+		parameterType="String">
+		
+		select count(*) from following
+		where fwg_user_id = #{loginid }
+	</select>
+	
+	<select id="commentCnt"
+		resultType="int"
+		parameterType="String">
+		
+		select count(*) from userpage_comment 
+		where member_id = #{loginid } 
+	</select>
+	
+	<select id="listCnt"
+		resultType="int"
+		parameterType="int">
+		
+		select count(*) from userpage
+		where member_code = #{member_code}
+	</select>
 </mapper>
