@@ -8,7 +8,7 @@
 </head>
 <body>
 
-좋아요${good_no }
+${good_no }
 
 </body>
 </html>
