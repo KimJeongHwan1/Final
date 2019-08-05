@@ -111,7 +111,7 @@
     
 </script>
 <body>
-    <button type="button" id="btn" name="btn">글쓰기</button><br>
+    
     <div id="calendar"></div>
 
 

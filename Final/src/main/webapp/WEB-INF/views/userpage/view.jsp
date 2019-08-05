@@ -417,6 +417,7 @@ $(document).ready(function() {
 });
 </script>공유하기
  </span>
+ <span>즐겨찾기</span>
 
 <br>
 <span>조회수</span> ${userpage.hit }<br>

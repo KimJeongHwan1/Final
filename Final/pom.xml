@@ -27,6 +27,17 @@
 
 	<dependencies>
 	
+	
+	<!-- 웹소켓 -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-websocket</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+	
+	
+	
+	
 	<!-- 카카오 로그인 -->
 	<!-- httpcore(카카오) -->
         <dependency>
