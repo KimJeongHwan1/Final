@@ -66,6 +66,8 @@ public class UserPageServiceImpl  implements UserPageService{
 	@Override
 	public UserPage selectUserpage(UserPage userpage) {
 		
+		userpageDao.hit(userpage);
+		
 		return userpageDao.selectByContentno(userpage);
 	}
 	@Override

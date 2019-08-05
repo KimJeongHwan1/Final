@@ -40,4 +40,8 @@ public interface UserPageDao {
 	public void deleteFollowingDao(Following fwg);
   
   public List<UserPage> bestList(Member member) ;
+  
+  
+  public void hit(UserPage userpage);
+  
 }
