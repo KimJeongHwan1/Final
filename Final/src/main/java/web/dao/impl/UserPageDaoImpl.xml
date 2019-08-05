@@ -135,4 +135,12 @@
 		order by good desc
 	</select> 
 
+	<select id="hit" parameterType="web.dto.UserPage">
+	
+	update userpage
+	set hit = hit + 1
+	where content_no = #{content_no }
+		
+	</select>
+
 </mapper>

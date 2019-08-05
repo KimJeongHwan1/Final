@@ -264,7 +264,8 @@ img{
 		<td><button> <a href="/member/updateInfo">정보수정</a></button></td>
 		<td><button> <a href="/tong/write">글쓰기</a></button></td>
 		<td><button type="button" id="fwg_List_btn">팔로잉 목록</button></td>
-		<td><button type="button" id="fwr_List_btn">팔로워 목록</button></td>			
+		<td><button type="button" id="fwr_List_btn">팔로워 목록</button></td>
+		<td><a href="/calendar/calendar"><button type="button">캘린더</button></a></td>			
 	</c:if>
 	
 	<c:if test="${bool == true }">
@@ -274,6 +275,7 @@ img{
 		<td><button> <a href="/tong/write">글쓰기</a></button></td>
 		<td><button type="button" id="fwg_List_btn">팔로잉 목록</button></td>
 		<td><button type="button" id="fwr_List_btn">팔로워 목록</button></td>		
+		<td><a href="/calendar/calendar"><button type="button">캘린더</button></a></td>
 	</c:if>
 </tr>
 
