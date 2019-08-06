@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import web.dao.face.TongDao;
 import web.dto.Following;
 import web.dto.Good;
 import web.dto.Member;
@@ -119,6 +120,30 @@ public class TongController {
 			userpageService.insertwrite(userpage);
 		} else {
 			userpageService.imgsave(fileupload, context, userpage);
+		}
+		
+		return "redirect:"+"/tong/mypage";
+	}
+	
+	@RequestMapping(value = "/tong/update", method = RequestMethod.GET)
+	public void update(HttpSession session, Model model, UserPage userpage, int content_no ) {
+		UserPage userPage = userpageService.selectUserpage(userpage);
+		model.addAttribute("userpage", userPage);
+	}
+	
+	@RequestMapping(value = "/tong/update", method = RequestMethod.POST)
+	public String updateProc(HttpSession session, UserPage userpage,
+			@RequestParam(value="file")MultipartFile fileupload  ) {
+		
+		String loginid = (String)session.getAttribute("loginid");
+		
+		int member_code = memberService.getMember_code(loginid);
+		userpage.setMember_code(member_code);
+		
+		if(fileupload.getOriginalFilename().equals("")) {
+			userpageService.updatewrite(userpage);
+		} else {
+			userpageService.imgupdate(fileupload, context, userpage);
 		}
 		
 		return "redirect:"+"/tong/mypage";
@@ -379,4 +404,14 @@ public class TongController {
 		
 		model.addAttribute("favList", favList);
 	}
+	
+	@RequestMapping(value = "/tong/delete", method = RequestMethod.GET)
+	public String deleteList(HttpSession session , int content_no) {
+		
+		tongService.deleteList(content_no);
+		
+		return "redirect:/tong/mypage" ;
+		
+	}
+	
 }

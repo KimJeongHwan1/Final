@@ -159,10 +159,49 @@ public class UserPageServiceImpl  implements UserPageService{
 		// TODO Auto-generated method stub
 		return userpageDao.favoritesCheck(fav);
 	}
+
+	@Override
+	public void imgupdate(MultipartFile file, ServletContext context, UserPage userpage) {
+		//파일이 저장될 경로
+				String storedPath = context.getRealPath("uppage");
+
+				//UUID
+				String uId = UUID.randomUUID().toString().split("-")[4];
+
+				//저장될 파일의 이름( 원본이름 + UUID)
+				String name = file.getOriginalFilename()+"_"+uId;
+
+				//저장될 파일 객체
+				File dest = new File(storedPath, name);
+
+				//파일저장
+				try {
+					file.transferTo(dest); //실제 저장
+				} catch (IllegalStateException e) {
+					e.printStackTrace();
+
+				} catch (IOException e) {
+					e.printStackTrace();
+
+				}
+
+				//DB에 저장(업로드 정보 기록)
+				userpage.setOriginname(file.getOriginalFilename());
+				userpage.setStoredname(name);
+				
+				userpageDao.updateImg(userpage);
+		
+	}
+	@Override
+	public void updatewrite(UserPage userPage) {
+		userpageDao.updatewriteInfo(userPage);
+		
+
 	
 	@Override
 	public UserPage selectByContent_no(int content_no) {
 		// TODO Auto-generated method stub
 		return userpageDao.userpageSelectByContent_no(content_no);
+
 	}
 }

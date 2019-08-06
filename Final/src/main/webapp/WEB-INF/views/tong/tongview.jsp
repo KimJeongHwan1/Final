@@ -164,6 +164,18 @@ img{
 <title>KakaoStory Share Button Demo - Kakao JavaScript SDK</title>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 
+<script type="text/javascript">
+
+function button_event(){
+	if (confirm("정말 삭제하시겠습니까??") == true){    //확인
+	$(location).attr("href", "/tong/delete?content_no=${userpage.content_no}");
+	}else {   //취소
+	    return ;
+	}
+}
+
+</script>
+
 </head>
 <body>
 <a href="javascript:shareStory()">
@@ -433,6 +445,11 @@ $(document).ready(function() {
 
 
 <span id="kakao1"><span id="kakao_span">공유하기</span></span>
+
+
+<!-- 게시글 삭제하기 -->
+<input type="button" id="deleteBtn" value="삭제" onclick="button_event();"/>
+<input type="button" id="deleteBtn" value="수정" onclick="location.href='/tong/update?content_no=${userpage.content_no }'"/>
 
 <script type="text/javascript">
 $(document).ready(function() {
