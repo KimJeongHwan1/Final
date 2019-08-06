@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <script type="text/javascript" src="/resources/ckeditor/ckeditor.js"></script>
 <c:import url="/WEB-INF/views/layout/header.jsp" />
 
@@ -21,21 +22,30 @@
 
 <div id="write_div">
 
-<form action="/tong/write" method="post" enctype="multipart/form-data">
+<form action="/tong/update" method="post" enctype="multipart/form-data">
+<input type="hidden" id="content_no" name="content_no" value="${userpage.content_no }">
 <table style="width: 100%">
 <tr>
    <td style="width: 20%">제목</td>
-   <td style="width: 80%"><input type="text" name="content_title" id="content_title" placeholder="내용을 입력해주세요" style="width: 498px;"/></td>
+   <td style="width: 80%"><input type="text" name="content_title" id="content_title" value="${userpage.content_title }" style="width: 498px;"/></td>
 </tr>
 <tr>
    <td style="width: 20%">공개여부</td>
-   <td style="width: 80%"><input type="radio" value="0" name="blockSee" id="blockSee" checked="checked"/>공개
-   						  <input type="radio" value="1" name="blockSee" id="blockSee"/>비공개
+   <td style="width: 80%">
+   		<c:if test="${userpage.blockSee == 0 }">
+   			<input type="radio" value="0" name="blockSee" id="blockSee" checked="checked"/>공개
+   			<input type="radio" value="1" name="blockSee" id="blockSee"/>비공개
+   		</c:if>
+   		<c:if test="${userpage.blockSee == 1 }">
+   			<input type="radio" value="0" name="blockSee" id="blockSee"/>공개
+   			<input type="radio" value="1" name="blockSee" id="blockSee" checked="checked" />비공개
+   		</c:if>
+   			
    	</td>
 </tr>
 <tr>
    <td>태그하기</td>
-   <td><input type="text" name="tag" id="tag" placeholder="사람, 내용 태그" style="width: 498px;"/></td>
+   <td><input type="text" name="tag" id="tag" value="${userpage.tag }" style="width: 498px;"/></td>
 </tr>
 
 <tr>
@@ -44,7 +54,7 @@
 </tr>
 <tr>
    <td>사진선택</td>
-   <td><input type="file" name="file" placeholder="내용을 입력해주세요" style="width: 498px;"/></td>
+   <td><input type="file" name="file" style="width: 498px;"/></td>
 </tr>
 <tr>
    <td>내용</td>
@@ -52,7 +62,7 @@
 <tr>
    <td colspan="2">
       <!-- <textarea  rows="20" cols="100" name="content"></textarea> -->
-      <textarea class="form-control" id="editor1" name="content"></textarea>
+      <textarea class="form-control" id="editor1" name="content">${userpage.content_title }</textarea>
       <script>      
       CKEDITOR.replace('editor1' );
       </script>
@@ -68,4 +78,5 @@
 </div>
 
 </body>
+
 <c:import url="/WEB-INF/views/layout/footer.jsp" />

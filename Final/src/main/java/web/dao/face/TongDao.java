@@ -3,6 +3,7 @@ package web.dao.face;
 import java.util.List;
 
 import web.dto.Following;
+import web.dto.UserPage;
 
 public interface TongDao {
 	
@@ -29,5 +30,8 @@ public interface TongDao {
 	public List selectFavList(int content_no);
 	
 	public void deleteList( int content_no ) ;
+	
+	public void updateList( UserPage userPage ) ;
+
 
 }

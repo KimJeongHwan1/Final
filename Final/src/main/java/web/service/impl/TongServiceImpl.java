@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import web.dao.face.TongDao;
+import web.dto.UserPage;
 import web.service.face.TongService;
 
 @Service
@@ -116,6 +117,12 @@ public class TongServiceImpl implements TongService {
 	@Override
 	public void deleteList(int content_no) {
 		tongDao.deleteList(content_no);
+		
+	}
+
+	@Override
+	public void updateList(UserPage userPage) {
+		tongDao.updateList(userPage);
 		
 	}
 	

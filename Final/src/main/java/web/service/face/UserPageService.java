@@ -51,4 +51,8 @@ public interface UserPageService {
 	public void favorites(Favorites fav);
 	
 	public int checkfavorites(Favorites fav);
+	
+	public void imgupdate(MultipartFile file, ServletContext context, UserPage userpage);
+	public void updatewrite(UserPage userPage);
+	
 }

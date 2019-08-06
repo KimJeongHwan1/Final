@@ -48,5 +48,7 @@ public interface UserPageDao {
 	public void insertfavoritesDao(Favorites fav);
 	public void deletefavoritesDao(Favorites fav);
 	
+	public void updateImg(UserPage userpage);
+	public void updatewriteInfo(UserPage userpage);
 	
 }
