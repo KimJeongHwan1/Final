@@ -1,6 +1,6 @@
 package web.dto;
 
-public class websocket {
+public class Websocket {
 	private String sender;
 	private String receiver;
 	private String websocketsession;

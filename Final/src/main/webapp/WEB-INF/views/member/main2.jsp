@@ -33,6 +33,9 @@
 
 <a href="/best/list">베스트 게시판</a><br><br>
 
+
+
+
 <div id="useridList">
 <span>유저 페이지</span>
 <table>

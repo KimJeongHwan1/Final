@@ -74,12 +74,14 @@ public class UserPageServiceImpl  implements UserPageService{
 	@Override
 	public void insertComment(Userpage_comment userComm) {
 		userpageDao.insertCommentDao(userComm);
+		userpageDao.insertCommentCountDao(userComm.getPage_no());
 		
 	}
 	@Override
 	public List<Userpage_comment> selectComment(int page_no) {
 		
 		return userpageDao.selectCommentDao(page_no);
+		
 	}
 	@Override
 	public List<UserImg> selectUserImgAll() {
@@ -103,9 +105,9 @@ public class UserPageServiceImpl  implements UserPageService{
 	
 	@Override
 	public void deletecomment(Userpage_comment comment) {
-		System.out.println(comment);
 		userpageDao.deleteCommentDao(comment);
 		
+		userpageDao.deleteCommentCountDao(comment.getPage_no());
 	}
 	@Override
 	public void deletecoComment(int cocomment_no) {

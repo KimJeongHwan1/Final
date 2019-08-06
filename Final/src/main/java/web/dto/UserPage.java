@@ -17,16 +17,19 @@ public class UserPage {
 	private String storedname;
 	private int blockSee;
 	private int comm_count;
+
 	private int addno;
 	private String address;
 	private String x;
 	private String y;
+
 	
 	@Override
 	public String toString() {
 		return "UserPage [content_no=" + content_no + ", content_title=" + content_title + ", content=" + content
 				+ ", member_code=" + member_code + ", hit=" + hit + ", good=" + good + ", write_date=" + write_date
 				+ ", tag=" + tag + ", file_index=" + file_index + ", originname=" + originname + ", storedname="
+
 				+ storedname + ", blockSee=" + blockSee + ", comm_count=" + comm_count + ", addno=" + addno
 				+ ", address=" + address + ", x=" + x + ", y=" + y + "]";
 	}
@@ -168,5 +171,6 @@ public class UserPage {
 	}
 
 	
+
 
 }

@@ -101,4 +101,17 @@
 		select * from UserPage
 		where content_no = #{content_no } and blockSee = 0
 	</select>
+	
+	<delete id="deleteList"
+		parameterType="int">
+		delete from UserPage
+		where content_no = #{content_no}
+	</delete>
+	
+	<delete id="deleteList"
+		parameterType="int">
+		delete from UserPage
+		where content_no = #{content_no}
+	</delete>
+	
 </mapper>

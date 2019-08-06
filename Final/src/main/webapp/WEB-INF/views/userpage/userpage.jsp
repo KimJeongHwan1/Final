@@ -1,5 +1,3 @@
-<%@page import="web.dto.UserPage"%>
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
@@ -28,35 +26,6 @@ $(document).ready(function() {
 		});   
 	});
   }); 
-// ////////////////////////네비게이션 바 //////////////////////////
-// var stmnLEFT = 10; // 오른쪽 여백 
-// var stmnGAP1 = 0; // 위쪽 여백 
-// var stmnGAP2 = 250; // 스크롤시 브라우저 위쪽과 떨어지는 거리 
-// var stmnBASE = 200; // 스크롤 시작위치 
-// var stmnActivateSpeed = 35; //스크롤을 인식하는 딜레이 (숫자가 클수록 느리게 인식)
-// var stmnScrollSpeed = 20; //스크롤 속도 (클수록 느림)
-// var stmnTimer; 
-
-// function RefreshStaticMenu() { 
-// var stmnStartPoint, stmnEndPoint; 
-// stmnStartPoint = parseInt(document.getElementById('STATICMENU').style.top, 10); 
-// stmnEndPoint = Math.max(document.documentElement.scrollTop, document.body.scrollTop) + stmnGAP2; 
-// 	if (stmnEndPoint < stmnGAP1) stmnEndPoint = stmnGAP1; 
-// 	if (stmnStartPoint != stmnEndPoint) { 
-// 		stmnScrollAmount = Math.ceil( Math.abs( stmnEndPoint - stmnStartPoint ) / 15 ); 
-// 		document.getElementById('STATICMENU').style.top = parseInt(document.getElementById('STATICMENU').style.top, 10) + ( ( stmnEndPoint<stmnStartPoint ) ? -stmnScrollAmount : stmnScrollAmount ) + 'px'; 
-// 		stmnRefreshTimer = stmnScrollSpeed; 
-// 	}
-// 	stmnTimer = setTimeout("RefreshStaticMenu();", stmnActivateSpeed); 
-// }
-
-// function InitializeStaticMenu() {
-// 	document.getElementById('STATICMENU').style.right = stmnLEFT + 'px';  //처음에 오른쪽에 위치. left로 바꿔도.
-// 	document.getElementById('STATICMENU').style.top = document.body.scrollTop + stmnBASE + 'px'; 
-// 	RefreshStaticMenu();
-// }
-
-//----------------------
 
 //윈도우 팝업
 function wrapWindowByMask(){
@@ -268,30 +237,12 @@ img{
     
     overflow: scroll;
  }
-
+#content {
+	height: 200px;
+	width: 250px;
+}
 
 </style>
-
-
-<!-- <div id="STATICMENU"> -->
-<!-- 	<table class="table statictable"> -->
-<!-- 			<tr> -->
-<!-- 				<th><a href="/admin/blacklist">게시물 </a></th> -->
-<!-- 			</tr> -->
-			
-<!-- 			<tr> -->
-<!-- 				<th><a href="/admin/blacklist">태그 </a></th> -->
-<!-- 			</tr> -->
-			
-<!-- 			<tr> -->
-<!-- 				<th><a href="/admin/board_1to1">그룹</a></th> -->
-<!-- 			</tr> -->
-			
-<!-- 			<tr> -->
-<!-- 				<th><a href="/answer/list">즐겨찾기</a></th> -->
-<!-- 			</tr> -->
-<!-- 	</table> -->
-<!-- </div> -->
 
 <div id="see_menu_menu2">
 <form action="/member/updateInfo" method="post" enctype="multipart/form-data">
@@ -303,9 +254,12 @@ img{
 		<td>${user_id }
 			<c:if test="${check == 1 }">
 				<button id="follow_btn" type="button"><span id="follow_msg">팔로우</span></button>
+				<td><a href="/socket/chat?userid=${user_id }">채팅하기</a><br><br></td>
 			</c:if>
 			<c:if test="${check == 0 }">
 				<button id="follow_btn" type="button"><span id="follow_msg">언팔로우</span></button>
+				
+				<td><a href="/socket/chat?userid=${user_id }">채팅하기</a><br><br></td>
 			</c:if>
 		</td>
 	</c:if>	
@@ -314,13 +268,19 @@ img{
 		<td>${user_id }
 			<c:if test="${check == 1 }">
 				<button id="follow_btn" type="button"><span id="follow_msg">팔로우</span></button>
+				<td><a href="/socket/chat?userid=${user_id }">채팅하기</a><br><br></td>
 			</c:if>
 			<c:if test="${check == 0 }">
 				<button id="follow_btn" type="button"><span id="follow_msg">언팔로우</span></button>
+				<td><a href="/socket/chat?userid=${user_id }">채팅하기</a><br><br></td>
 			</c:if>
 		</td>
 	</c:if>
 </tr>
+
+
+
+
 
 </table>
 <table>
@@ -349,10 +309,16 @@ img{
 <c:forEach items="${write }" var="i">
 <c:set var="sum" value="${n + m }"/>
 <div id="user_write_list">
+
+<c:if test="${i.storedname != '0' }">
 <a href="/userpage/view?content_no=${i.content_no }" class="openMask"><img src="/uppage/${i.storedname }" id="file_img${sum }" class="list_img"></a><br>
+</c:if>
+<c:if test="${i.storedname eq '0' }">
+<a href="/userpage/view?content_no=${i.content_no }" class="openMask"	><div id="content">${i.content_title }<p>${i.content }</div></a><br>
+</c:if>
 
 <span id="" class="glyphicon glyphicon-heart-empty"> ${i.hit } </span>
-<span id="" class="glyphicon glyphicon-pencil"> 댓글수 </span>
+<span id="" class="glyphicon glyphicon-pencil"> ${i.comm_count } </span>
 <span id="" class="glyphicon glyphicon-star-empty"> ${i.good }  </span>
 </div>
 <c:set var="n" value="${sum }"/>
@@ -362,9 +328,6 @@ img{
 <div id ="container">
 <div id="mask"></div>
 <div class="window">
-<%-- 	<c:param name="boast_board_no" value="${i.boast_board_no }"/> --%>
-<%-- <c:import url="/board/boast/view"> --%>
-<%-- </c:import> --%>
    <p style="text-align:center; background:#ffffff; padding:20px;"><a href="#" class="close">닫기X</a></p>
 </div>
 </div>
