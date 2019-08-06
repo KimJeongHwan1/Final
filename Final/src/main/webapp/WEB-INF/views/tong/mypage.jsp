@@ -3,6 +3,9 @@
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<link href="https://fonts.googleapis.com/css?family=Jua&display=swap&subset=korean" rel="stylesheet">
+
 <c:import url="/WEB-INF/views/layout/header.jsp" />
 <script type="text/javascript">
 $(document).ready(function() {
@@ -75,16 +78,18 @@ function InitializeStaticMenu() {
 </script>
 
 <style type="text/css">
+
 /* 메뉴 네비게이션바 */
 
 #STATICMENU {
 	width: 200px;
-	margin: 0pt;
+	margin-left: 40px;
 	width: 200px;
 	padding: 0pt;  
 	position: absolute; 
 	left: 50px;
 	top: 0px;
+	
 }
 /* 네비게이션바 테이블 */
 table {
@@ -93,30 +98,34 @@ table {
 /* 	border-bottom: 3px solid black; */
 	width:auto;
 	text-align : center;
+	font-family: 'Jua', sans-serif;
+	font-size:25px;
 }
 .table th, td{
 /*  	border: 1px solid #ddd; */
  	padding: 10px;
  	text-align:center;
+ 	border-radius: 1px; 
 }
-
+/* #282c37 */
 th{
-	background-color : #282c37;
-	color : #282c37;
+	background-color : #FFFFFF;
+	font-color : #FFFFFF;
 }
 .table th:hover{
-	background: #F2F2F2;
+	background: #FFFFFF;
 }
 .table th:first-child, td:first-child{
  	border-left: 0;
- 	background-color:#d9e1e8;
+ 	background-color:#E6E6E6;
 }
 .table th:last-child, td:last-child{
  	border-right: 0;
 }
 .statictable{
-	font-size: 13px;
- 	color: #ccc; 
+	font-size: 17px;
+ 	font-family: 'Jua', sans-serif;
+ 	
 }
 /* 네비게이션바 테이블 */
 
@@ -135,6 +144,7 @@ th{
 	font-weight: bold;
 	margin-top: 10px;
 	margin-left: 15px;
+
 }
 img{
 	margin-right: 50px;
@@ -151,11 +161,13 @@ img{
 
 #see_menu_menu2{
 
-	margin-left : 300px;
+	margin-left : 400px;
 	text-align : center;
 }
 #see_menu_table2 td{
 	text-align : center;
+	margin-left : 400px;
+
 }
 /* #see_menu_table tr{ */
 /* 	margin-top: 30px; */
@@ -188,6 +200,10 @@ img{
 	float: left;
 	margin-left: 50px;
 	margin-bottom: 50px;
+	margin-top:15px;
+}
+#hr{
+	width:70%;
 }
 
 
@@ -233,6 +249,26 @@ img{
 	top: 190px;
 	left: 860px;
 }
+#prev, #next {
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	margin-right:-4px;
+	border: 1px solid white;
+	background-color: white;
+	color: black;
+	padding: 5px;
+	font-family: 'Jua', sans-serif;
+}
+
+#prev:hover, #next:hover{
+    color: white;
+    background-color: black;
+    border: 1px solid black;
+    font-family: 'Jua', sans-serif;
+}
+
 
 </style>
 
@@ -243,7 +279,7 @@ img{
 			</tr>
 			
 			<tr>
-				<th><a href="/userpage/write">글쓰기 </a></th>
+				<th><a href="/tong/write">글쓰기 </a></th>
 			</tr>
 			
 			<tr>
@@ -258,7 +294,6 @@ img{
 </div>
 
 <div id="see_menu_menu2">
-<form action="/member/updateInfo" method="post" enctype="multipart/form-data">
 <table id="see_menu_table2" style="margin-top: 50px;">
 
 <tr>
@@ -267,21 +302,19 @@ img{
 <!-- 		<input type="file" name="file" id="file"/></td> -->
 		<td>${loginid }</td>
 
-		<td><input type="button" value="정보수정" onclick="location.href='/member/updateInfo'" /></td>
-
-		<td><button type="button" id="fwg_List_btn">팔로잉 목록</button></td>
-		<td><button type="button" id="fwr_List_btn">팔로워 목록</button></td>			
+<td><label><button id="prev" name="prev" type="button" id="fwg_List_btn" onclick="location.href='/member/updateInfo'">정보수정</button></label></td>
+		<td><label><button id="prev" name="prev" type="button" id="fwg_List_btn">팔로잉 목록</button></label>&nbsp;&nbsp;&nbsp;</td>
+		<td><label><button id="prev" name="prev" type="button" id="fwr_List_btn">팔로워 목록</button></label></td>			
 	</c:if>
 	
 	<c:if test="${bool == true }">
 		<td rowspan="2"><img src="/upload/${img.storedname }" id="myid"/></td>
 		<td>${loginid }</td>
 
-		<td><input type="button" value="정보수정" onclick="location.href='/member/updateInfo'" /></td>
+		<td><label><button id="prev" name="prev" type="button" id="fwg_List_btn" onclick="location.href='/member/updateInfo'">정보수정</button></label></td>
+		<td><label><button id="prev" name="prev" type="button" id="fwg_List_btn">팔로잉 목록</button></label>&nbsp;&nbsp;&nbsp;</td>
+		<td><label><button id="prev" name="prev" type="button" id="fwr_List_btn">팔로워 목록</button></label></td>	
 
-		<td><button type="button" id="fwg_List_btn">팔로잉 목록</button></td>
-		<td><button type="button" id="fwr_List_btn">팔로워 목록</button></td>		
-<!-- 		<input type="button" value="글쓰기" onclick="location.href='/userpage/write'" /> -->
 	</c:if>
 </tr>
 
@@ -300,9 +333,9 @@ img{
 
 </table>
 
-</form>
 </div>
 <hr>
+<hr id="hr">
 
 
 <!-- <div id ="container"> -->
