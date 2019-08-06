@@ -151,7 +151,9 @@ public class UserPageController {
 		logger.info(id);
 
 		model.addAttribute("id", id);
-
+		model.addAttribute("member_code", member_code);
+		
+		
 		if(memberService.selectImgCheck(member_code)) {
 			UserImg userImg = memberService.selectImg(member_code);
 			logger.info(userImg.toString());
@@ -377,5 +379,15 @@ public class UserPageController {
 		int check = userpageService.checkfavorites(fav);
 		
 		model.addAttribute("check", check);
+	}
+	
+	@RequestMapping(value = "/userpage/map", method = RequestMethod.GET)
+	public void map(int content_no, Model model) {
+		
+		UserPage userpage = new UserPage();
+		
+		userpage = userpageService.selectByContent_no(content_no);
+		
+		model.addAttribute("map", userpage);
 	}
 }

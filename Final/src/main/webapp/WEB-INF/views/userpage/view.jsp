@@ -103,11 +103,17 @@ img{
 #userface{
 	font-size: 40px;
 }
+#declarationDiv{
+	position: fixed;
+	top: 100px;
+	left: 1050px;
+}
 #kakao{
 	height:6%;
 	width:6%;
 	
 }
+
 </style>
 
 <head>
@@ -137,6 +143,16 @@ img{
 
 <script type="text/javascript">
 $(document).ready(function() {
+	
+	$('#declarationDiv').hide();
+	$('#declaration').click(function(){
+	    var state = $('#declarationDiv').css('display');
+	    if(state == 'none'){
+	        $('#declarationDiv').show();
+	    }else{
+	        $('#declarationDiv').hide();
+	    }
+	});
 	
 	$("#good_btn").click(function() {
 		
@@ -209,6 +225,26 @@ $(document).ready(function() {
 	});
 });
 </script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#decl_btn").click(function() {
+		$.ajax({
+			type: "get"
+			, url: "/black/insert?id=${id }&&content_no=${userpage.content_no }"
+			, data:  $("#decl")
+			, dataType: "html"
+			, success: function( res ) {
+				console.log("성공");
+			}
+			, error: function() {
+				console.log("실패");
+			}
+		});
+		$('#decl').val('');
+		$('#declarationDiv').hide();
+	});
+});
+</script>
 <body>
 
 
@@ -220,7 +256,7 @@ $(document).ready(function() {
 <div id="write_div">
 <div id="head_area">
 <span class="glyphicon glyphicon-user" style="margin-left: 20px; font-size: 15px;"> ${id }</span>
-<span class="glyphicon glyphicon-bullhorn" style="margin-left: 20px; font-size: 15px;"> 신고하기</span>
+<span id="declaration" class="glyphicon glyphicon-bullhorn" style="margin-left: 20px; font-size: 15px;"> 신고하기</span>
 <c:if test="${fav_check == 1 }">
 	<span id="fav" class="glyphicon glyphicon-ok" style="margin-left: 20px; font-size: 15px;"> <span id="fav_msg">즐겨찾기취소</span></span>
 </c:if>
@@ -448,6 +484,26 @@ $(document).ready(function() {
 // ]]>
 </script>
 
+<c:if test="${userpage.address != null }">
+<span id="map" class="glyphicon glyphicon-map-marker"></span>
+</c:if>
+
+<div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#map").click(function(){
+		var popUrl = "/userpage/map?content_no=${userpage.content_no }";	//팝업창에 출력될 페이지 URL
+	
+		var popOption = "width=500, height=400, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
+
+		window.open(popUrl,"",popOption);
+	});
+});
+</script>
+ 
+</div>
+
 <br>
 <span>조회수</span> ${userpage.hit }<br>
 <span>작성일</span> <fmt:formatDate value="${userpage.write_date }" pattern="yyyy년 MM월 dd일 hh:mm:ss" /><br>
@@ -464,6 +520,12 @@ $(document).ready(function() {
 
 </div>
 
-
+<div id="declarationDiv" style="background-color: #E0F2F7; width: 400px; height: 300px;" >
+	
+	<textarea rows="10" cols="40" id="decl" name="decl" placeholder="신고사유를 작성해 주세요"
+		style="margin-left: 50px; margin-top: 50px;"></textarea>
+	
+	<button id="decl_btn" style="margin-left: 170px;">신고</button>
+</div>
 </body>
 </html>

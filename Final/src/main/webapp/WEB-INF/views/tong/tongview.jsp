@@ -456,6 +456,27 @@ $(document).ready(function() {
 </script>
 
 
+<c:if test="${userpage.address != null }">
+<span id="map" class="glyphicon glyphicon-map-marker"></span>
+</c:if>
+
+<div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#map").click(function(){
+		var popUrl = "/userpage/map?content_no=${userpage.content_no }";	//팝업창에 출력될 페이지 URL
+	
+		var popOption = "width=500, height=400, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
+
+		window.open(popUrl,"",popOption);
+	});
+});
+</script>
+ 
+</div>
+
+
 <br>
 <span>조회수</span> ${userpage.hit }<br>
 <span>작성일</span> <fmt:formatDate value="${userpage.write_date }" pattern="yyyy년 MM월 dd일 hh:mm:ss" /><br>

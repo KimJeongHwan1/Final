@@ -56,6 +56,11 @@ public class BlackListServiceImpl implements BlackListService {
 		
 	}
 
+	@Override
+	public void insertBlackList(BlackList blacklist) {
+		blacklistDao.insertBlackList(blacklist);
+		
+	}
 
 
 }

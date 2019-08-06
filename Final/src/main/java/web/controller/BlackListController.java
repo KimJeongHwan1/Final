@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import web.dto.BlackList;
+import web.dto.UserPage;
 import web.service.face.BlackListService;
+import web.service.face.MemberService;
 import web.util.BlackListPaging;
 
 
@@ -29,6 +31,7 @@ public class BlackListController {
 	
 	//서비스객체
 	@Autowired BlackListService blacklistService;
+	@Autowired MemberService memberService;
 	
 	@RequestMapping(value="/black/list", method=RequestMethod.GET)
 	
@@ -75,7 +78,36 @@ public class BlackListController {
 		
 		return "redirect:/black/list";
 	}		
+
+	@RequestMapping(value="/black/insert", method=RequestMethod.GET)
 	
-	
+	public void blackInsertProc(  HttpSession session, String decl, String id, int content_no ) {
+		
+		logger.info("블랙리스트  인서트 처리 폼");
+
+		String loginid = (String)session.getAttribute("loginid");
+		int member_code = memberService.getMember_code(id);
+		
+		BlackList blacklist = new BlackList();
+		
+		// 신고자
+		blacklist.setBlack_reporter(loginid);
+		
+		// 신고내용
+		blacklist.setBlack_content(decl);
+		// 신고당한 사람 ( 신고 받은사람 )					
+		blacklist.setBlack_perpetrator(id);
+		// 신고당한 사람코드 ( 신고 받은사람코드 )					
+		blacklist.setMember_code(member_code);
+		// 신고당한 글번호 ( 신고당한 글번호 )	
+		blacklist.setContent_no(content_no);
+		
+		logger.info(blacklist.toString());		
+				
+		blacklistService.insertBlackList(blacklist);
+		
+		
+		
+	}	
 	
 }

@@ -10,11 +10,12 @@ public class BlackList {
 	private String black_content;
 	private Date black_report_date;
 	private int member_code;
+	private int content_no;
 	@Override
 	public String toString() {
 		return "BlackList [black_no=" + black_no + ", black_reporter=" + black_reporter + ", black_perpetrator="
 				+ black_perpetrator + ", black_content=" + black_content + ", black_report_date=" + black_report_date
-				+ ", member_code=" + member_code + "]";
+				+ ", member_code=" + member_code + ", content_no=" + content_no + "]";
 	}
 	public int getBlack_no() {
 		return black_no;
@@ -51,6 +52,12 @@ public class BlackList {
 	}
 	public void setMember_code(int member_code) {
 		this.member_code = member_code;
+	}
+	public int getContent_no() {
+		return content_no;
+	}
+	public void setContent_no(int content_no) {
+		this.content_no = content_no;
 	}
 	
 	

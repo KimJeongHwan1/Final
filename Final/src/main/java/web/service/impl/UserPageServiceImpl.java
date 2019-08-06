@@ -157,4 +157,10 @@ public class UserPageServiceImpl  implements UserPageService{
 		// TODO Auto-generated method stub
 		return userpageDao.favoritesCheck(fav);
 	}
+	
+	@Override
+	public UserPage selectByContent_no(int content_no) {
+		// TODO Auto-generated method stub
+		return userpageDao.userpageSelectByContent_no(content_no);
+	}
 }
