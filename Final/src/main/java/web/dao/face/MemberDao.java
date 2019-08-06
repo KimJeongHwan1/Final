@@ -50,6 +50,9 @@ public interface MemberDao {
 	public void deleteGood(String member_id);
 	public void saveGoodId(Good good);
 	
+	public void userpageGoodMin(int content_no);
+	public void userpageGoodPls(int content_no);
+	
 	public List selectSearchHeader(String text);
 //	public List selectSearchImgHeader(String text);
 	
