@@ -10,8 +10,8 @@
 	<insert id="chatinsert"
 		parameterType="web.dto.Websocket">
 	
-	insert into websocket(sender, receiver, content, websocketsession) values
-	(#{sender } , #{receiver }, #{content }, #{websocketsession} )
+	insert into websocket(chatno, sender, receiver, content, websocketsession) values
+	( websocket_seq.nextval , #{sender } , #{receiver }, #{content }, #{websocketsession} )
 	
 	
 	</insert>
@@ -31,6 +31,7 @@
 		sender = #{receiver }
 		AND receiver = #{sender } 
 		)
+		order by chatno asc
 		</select>
 
 

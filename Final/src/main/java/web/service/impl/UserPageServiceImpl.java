@@ -197,7 +197,7 @@ public class UserPageServiceImpl  implements UserPageService{
 		userpageDao.updatewriteInfo(userPage);
 	}
 		
-
+	}
 	
 	@Override
 	public UserPage selectByContent_no(int content_no) {

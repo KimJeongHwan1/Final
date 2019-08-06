@@ -27,6 +27,39 @@ $(document).ready(function() {
 	});
   }); 
 
+
+// 채팅
+$(document).ready(function() {
+
+	$("#chat").click(function(e){
+	
+		$.ajax({
+			type : "get"
+			, url : "/socket/chat?userid=${userid}"
+			, data :{}
+			, dataType : "html"
+			, success : function ( res ) {
+				$("#chatarea").html(res)
+				console.log("성공");
+				
+			}			
+			, error : function() {
+				console.log("실패");
+			}
+			
+		});
+		
+		
+		
+		
+	});
+	
+	
+});
+
+
+
+
 //윈도우 팝업
 function wrapWindowByMask(){
 	 
@@ -254,12 +287,12 @@ img{
 		<td>${user_id }
 			<c:if test="${check == 1 }">
 				<button id="follow_btn" type="button"><span id="follow_msg">팔로우</span></button>
-				<td><a href="/socket/chat?userid=${user_id }">채팅하기</a><br><br></td>
+				<td ><a id="chat">채팅하기</a><br><br></td>
 			</c:if>
 			<c:if test="${check == 0 }">
 				<button id="follow_btn" type="button"><span id="follow_msg">언팔로우</span></button>
 				
-				<td><a href="/socket/chat?userid=${user_id }">채팅하기</a><br><br></td>
+				<td><a id="chat">채팅하기</a><br><br></td>
 			</c:if>
 		</td>
 	</c:if>	
@@ -268,11 +301,11 @@ img{
 		<td>${user_id }
 			<c:if test="${check == 1 }">
 				<button id="follow_btn" type="button"><span id="follow_msg">팔로우</span></button>
-				<td><a href="/socket/chat?userid=${user_id }">채팅하기</a><br><br></td>
+				<td><a href="/socket/chat?userid=${user_id }" class="chat">채팅하기</a><br><br></td>
 			</c:if>
 			<c:if test="${check == 0 }">
 				<button id="follow_btn" type="button"><span id="follow_msg">언팔로우</span></button>
-				<td><a href="/socket/chat?userid=${user_id }">채팅하기</a><br><br></td>
+				<td><a href="/socket/chat?userid=${user_id }" class="chat">채팅하기</a><br><br></td>
 			</c:if>
 		</td>
 	</c:if>
@@ -303,6 +336,7 @@ img{
 
 <hr>
 
+<div style = "overflow:scroll;" >
 <div id="user_write_div">
 <c:set var="n" value="0"/>
 <c:set var="m" value="1"/>
@@ -324,6 +358,8 @@ img{
 <c:set var="n" value="${sum }"/>
 </c:forEach>
 
+<div id="chatarea">채팅창</div>
+</div>
 
 <div id ="container">
 <div id="mask"></div>
@@ -333,4 +369,5 @@ img{
 </div>
 
 </div>
+
 <c:import url="/WEB-INF/views/layout/footer.jsp" />
