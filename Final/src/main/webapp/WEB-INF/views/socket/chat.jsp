@@ -3,21 +3,34 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>    
-<c:import url="/WEB-INF/views/layout/header.jsp" />
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+
 
 <style>
 .chatarea {
 
+	/* margin-left : 20%; */
 	margin : auto;
-	width : 500px;
-	height : 500px;
+	width : 80%;
+	height : 80%;
+	
+	font-size : 20px;
 	
 	overflow : scroll;
 	
 	
 }
 .chatbtn {
-	margin : auto;
+	margin-left :35%;
+	
+	
 }
 </style>
 
@@ -30,8 +43,9 @@
 <body>
 
 
-<div>
-	<ul class="list-group list-group-flush chatarea" id="data">
+
+<div class="form-control chatarea">
+	<ul class="list-group list-group-flush " id="data">
 	
 	<c:forEach items="${view }" var="i">
 	${i.sender} : ${i.content }<br>
@@ -41,17 +55,20 @@
 	
 	</ul>
 </div>
+<br><br><br>
 
-
-<div class="input-group mb-3 chatbtn">
-  <span id="id">${myid }</span>
+<div class="chatbtn" >
+  <div id="id" style="width :10%; float:left; ">내아이디 : ${myid }</div>
   
-  <input type="text" id="message" class="form-control" placeholder="Message">
-  <div class="input-group-append" style="padding: 0px;">
-    <button id="sendBtn" class="btn btn-outline-secondary" type="button">Send</button>
+<div class="input-group mb-3" >
+  <input type="text" id="message" class="form-control" placeholder="Message" style=" width : 300px; float:left;">&nbsp;&nbsp;
+  <div class="input-group-append " style="padding: 0px; margin-left: 20px; width:15%; float: left;">
+    <button id="sendBtn" class="btn btn-outline-secondary " type="button" >Send</button>
   
   </div>
 </div>
+</div>
+
 <script type="text/javascript">
 $(document).ready(function() {
        $("#sendBtn").click(function() {
@@ -97,5 +114,5 @@ function sendMessage() {
 </script>
 
 
-<c:import url="/WEB-INF/views/layout/footer.jsp" />
-
+</body>
+</html>
