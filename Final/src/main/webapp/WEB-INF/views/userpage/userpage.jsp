@@ -306,9 +306,12 @@ img{
 		<td>${user_id }
 			<c:if test="${check == 1 }">
 				<button id="follow_btn" type="button"><span id="follow_msg">팔로우</span></button>
+				<td><a href="/socket/chat?userid=${user_id }">채팅하기</a><br><br></td>
 			</c:if>
 			<c:if test="${check == 0 }">
 				<button id="follow_btn" type="button"><span id="follow_msg">언팔로우</span></button>
+				
+				<td><a href="/socket/chat?userid=${user_id }">채팅하기</a><br><br></td>
 			</c:if>
 		</td>
 	</c:if>	
@@ -317,13 +320,19 @@ img{
 		<td>${user_id }
 			<c:if test="${check == 1 }">
 				<button id="follow_btn" type="button"><span id="follow_msg">팔로우</span></button>
+				<td><a href="/socket/chat?userid=${user_id }">채팅하기</a><br><br></td>
 			</c:if>
 			<c:if test="${check == 0 }">
 				<button id="follow_btn" type="button"><span id="follow_msg">언팔로우</span></button>
+				<td><a href="/socket/chat?userid=${user_id }">채팅하기</a><br><br></td>
 			</c:if>
 		</td>
 	</c:if>
 </tr>
+
+
+
+
 
 </table>
 <table>
