@@ -17,8 +17,10 @@ public interface UserPageDao {
 	public List<UserPage> getwriteListDao(Member member);
 
 	public UserPage selectByContentno(UserPage userpage);
+	
 	public void insertCommentDao(Userpage_comment userComm);
-
+	public void insertCommentCountDao(int page_no);
+	
 	public List<Userpage_comment> selectCommentDao(int page_no);
 
 	public List<UserImg> selectUserImgAllDao();
@@ -29,7 +31,8 @@ public interface UserPageDao {
 	public List<Userpage_cocomment> selectcocomentAllDao();
 
 	public void deleteCommentDao(Userpage_comment cocoment);
-
+	public void deleteCommentCountDao(int page_no);
+	
 	public void deletecoCommentDao(int cocomment_no);
 
 	public List selectTagDao(String tag);

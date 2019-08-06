@@ -130,7 +130,7 @@
 <a href="/userpage/view?content_no=${i.content_no }" class="openMask"><img src="/uppage/${i.storedname }" id="file_img${sum }" class="list_img"></a><br>
 
 <span id="spanmsg1${sum }" class="glyphicon glyphicon-heart-empty"> ${i.hit } </span>
-<span id="spanmsg2${sum }" class="glyphicon glyphicon-pencil"> 댓글수 </span>
+<span id="spanmsg2${sum }" class="glyphicon glyphicon-pencil"> ${i.comm_count } </span>
 <span id="spanmsg3${sum }" class="glyphicon glyphicon-star-empty"> ${i.good }  </span>
 </div>
 <c:set var="n" value="${sum }"/>
