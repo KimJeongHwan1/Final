@@ -1,69 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<script type="text/javascript" src="/resources/ckeditor/ckeditor.js"></script>
-<c:import url="/WEB-INF/views/layout/header.jsp" />
-
-
-
+    
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>Insert title here</title>
 </head>
-<style>
-#write_div{
-   margin: 0 auto;
-   width: 1100px;
-}
-</style>
 <body>
 
-
-<h1>게시글 쓰기</h1>
-<hr>
-
-<div id="write_div">
-
-<form action="/tong/write" method="post" enctype="multipart/form-data">
-<table style="width: 100%">
-<tr>
-   <td style="width: 20%">제목</td>
-   <td style="width: 80%"><input type="text" name="content_title" id="content_title" placeholder="내용을 입력해주세요" style="width: 498px;"/></td>
-</tr>
-<tr>
-   <td style="width: 20%">공개여부</td>
-   <td style="width: 80%"><input type="radio" value="0" name="blockSee" id="blockSee" checked="checked"/>공개
-   						  <input type="radio" value="1" name="blockSee" id="blockSee"/>비공개
-   	</td>
-</tr>
-<tr>
-   <td>태그하기</td>
-   <td><input type="text" name="tag" id="tag" placeholder="사람, 내용 태그" style="width: 498px;"/></td>
-</tr>
-
-<tr>
-   <td>위치</td>
-   <td><input type="text" name="address" id="address" value="${map.address }">
-	<input type="text" name="x" id="x" value="${map.x }">
-	<input type="text" name="y" id="y" value="${map.y }">
-	<input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"></td>
-</tr>
-<tr>
-   <td>사진선택</td>
-   <td><input type="file" name="file" placeholder="내용을 입력해주세요" style="width: 498px;"/></td>
-</tr>
-<tr>
-   <td>내용</td>
-</tr>
-<tr>
-   <td colspan="2">
-      <!-- <textarea  rows="20" cols="100" name="content"></textarea> -->
-      <textarea class="form-control" id="editor1" name="content"></textarea>
-      <script>      
-      CKEDITOR.replace('editor1' );
-      </script>
-      
-   </td>
-</tr>
-</table>
-
+<input type="text" id="sample5_address" placeholder="주소">
+<input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
 <div id="map" style="width:300px;height:300px;margin-top:10px;"></div>
  
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
@@ -109,7 +56,7 @@
                 }
  
                 // 주소 정보를 해당 필드에 넣는다.
-//                 document.getElementById("sample5_address").value = fullAddr;
+                document.getElementById("sample5_address").value = fullAddr;
                 
                 document.getElementById("address").value = fullAddr;
                 
@@ -140,11 +87,19 @@
     }
 </script>
 
-<button>작성</button>
-<button type="button" onclick="location.href='/member/main2'">취소</button>
-</form>
+	<div>
+	<form action="/map/mapInsert" method="post">
+	
+	<input type="text" name="address" id="address" value="${map.address }">
+	<input type="text" name="x" id="x" value="${map.x }">
+	<input type="text" name="y" id="y" value="${map.y }">
+	
+	<button>저장</button> 
+	
+	</form>
+	
+	</div>
 
-</div>
 
 </body>
-<c:import url="/WEB-INF/views/layout/footer.jsp" />
+</html>

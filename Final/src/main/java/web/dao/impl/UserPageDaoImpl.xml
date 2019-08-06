@@ -9,18 +9,21 @@
 
 	<insert id="insertImg" parameterType="web.dto.UserPage">
 		insert into UserPage( content_no, content_title, content, member_code, hit,
-		good, tag, file_index, originname, storedname, blockSee)
-		values( UserPage_seq.nextval, #{content_title }, #{content }, #{member_code
-		}, 0, 0, #{tag },
-		UserPage_seq.nextval, #{originname }, #{storedname }, #{blockSee })
+
+		good, tag, file_index, originname, storedname, blockSee, comm_count, addno, address, x, y)
+		values( UserPage_seq.nextval, #{content_title }, #{content }, #{member_code}, 0, 0, #{tag },
+		UserPage_seq.nextval, #{originname }, #{storedname }, #{blockSee }, 0, MapAddress_seq.nextval, #{address }, #{x }, #{y })
+
 
 	</insert>
 
 	<insert id="insertwriteInfo" parameterType="web.dto.UserPage">
 		insert into UserPage( content_no, content_title, content, member_code, hit,
-		good, tag, file_index, originname, storedname, blockSee)
+
+		good, tag, file_index, originname, storedname, blockSee, comm_count, addno, address, x, y)
 		values( UserPage_seq.nextval, #{content_title }, #{content }, #{member_code
-		}, 0, 0, #{tag }, 0, 0, 0 , #{blockSee })
+		}, 0, 0, #{tag }, 0, 0, 0 , #{blockSee }, 0, MapAddress_seq.nextval, #{address }, #{x }, #{y }))
+
 	</insert>
 
 	<select id="getwriteListDao" resultType="web.dto.UserPage"
@@ -39,6 +42,13 @@
 
 	</select>
 
+	<update id="insertCommentCountDao"
+		parameterType="web.dto.Userpage_comment">
+		update userpage
+		set comm_count = comm_count + 1
+		where content_no = #{page_no }
+	</update>
+	
 	<insert id="insertCommentDao"
 		parameterType="web.dto.Userpage_comment">
 		insert into Userpage_comment( comment_no, content, member_code, member_id,
@@ -86,6 +96,13 @@
 	
 		delete from Userpage_comment where 1=1 and page_no = #{page_no } and member_id = #{member_id }  and comment_no = #{comment_no } 
 	</delete>
+	<update id="deleteCommentCountDao"
+		parameterType="web.dto.UserPage">
+		update userpage
+		set comm_count = comm_count - 1
+		where content_no = #{page_no }
+	</update>
+	
 	
 	<delete id="deletecoCommentDao"
 		parameterType="int">
@@ -162,6 +179,7 @@
 		delete from Favorites where content_no = #{content_no } and member_id = #{member_id }
 	</delete>
 	
+
 	<update id="updateImg" parameterType="web.dto.UserPage">
 	
 		update userpage set content_title = #{content_title} , content = #{content} ,
@@ -174,5 +192,12 @@
 		 tag = #{tag} , blockSee = #{blockSee}
 		 where content_no = #{content_no }
 	</update>
+
+	<select id="userpageSelectByContent_no" parameterType="int" resultType="web.dto.UserPage">
+		SELECT * FROM UserPage
+		WHERE content_no = #{content_no }
+	
+	</select>
+
 	
 </mapper>

@@ -27,6 +27,7 @@ import web.dto.UserPage;
 import web.dto.Userpage_cocomment;
 import web.dto.Userpage_comment;
 import web.service.face.MemberService;
+import web.service.face.TongService;
 import web.service.face.UserPageService;
 
 /**
@@ -40,16 +41,15 @@ public class UserPageController {
 	@Autowired ServletContext context;
 	@Autowired MemberService memberService;
 	@Autowired UserPageService userpageService;
-
-
+	@Autowired TongService tongService;
+	
 	@RequestMapping(value = "/userpage/userpage", method = RequestMethod.GET)
 	public void userpage(Member member, Model model, HttpSession session) {
-		logger.info(member.toString());
 
 		member = memberService.getMember(member);
-
+		
 		model.addAttribute("member", member);
-
+		
 		List<UserPage> writeList = userpageService.getwriteList(member);
 
 		model.addAttribute("write", writeList);
@@ -62,7 +62,6 @@ public class UserPageController {
 
 		if(memberService.selectImgCheck(member_code)) {
 			UserImg userImg = memberService.selectImg(member_code);
-			logger.info(userImg.toString());
 			model.addAttribute("img", userImg);
 		} 
 
@@ -81,11 +80,8 @@ public class UserPageController {
 
 	@RequestMapping(value = "/userpage/view", method = RequestMethod.GET)
 	public void view(UserPage userpage, Model model, Good good, String member_id, HttpSession session) {
-		logger.info(userpage.toString());
 
 		UserPage userPage = userpageService.selectUserpage(userpage);
-
-		logger.info(userPage.toString());
 
 		model.addAttribute("userpage", userPage);
 		
@@ -99,7 +95,6 @@ public class UserPageController {
 			String[] str2=new String[tag.length()];
 			char chr=0;
 			char chr2=0;
-			logger.info("가져온 태그"+tag);
 			for(int i=0; i<tag.length(); i++) {
 				chr = tag.charAt(i);
 				num = (int) chr;
@@ -130,38 +125,33 @@ public class UserPageController {
 			}
 			String[] str3 = new String[check2];
 			for(int i=0; i<check2; i++) {
-				logger.info("i번쨰"+str2[i]);
 			}
 			for(int i=0; i<check2; i++) {
 				str3[i] = str2[i];
-				logger.info("i번쨰"+str3[i]);
 			}
 			List<String> tagList = new ArrayList<String>();
 			for(int i=0; i<check2; i++) {
 				tagList.add(str3[i]);
 			}
 			model.addAttribute("tagList", tagList);
-			logger.info(tagList.toString());
 		}
 		
 		int member_code = userPage.getMember_code();
 
 		String id = memberService.getmember_id(member_code);
 
-		logger.info(id);
-
 		model.addAttribute("id", id);
-
+		model.addAttribute("member_code", member_code);
+		
+		
 		if(memberService.selectImgCheck(member_code)) {
 			UserImg userImg = memberService.selectImg(member_code);
-			logger.info(userImg.toString());
 			model.addAttribute("img", userImg);
 		} 
 
 		model.addAttribute("bool", memberService.selectImgCheck(member_code));
 
 		int page_no = userPage.getContent_no();
-
 
 		// 좋아요 기능
 
@@ -205,10 +195,7 @@ public class UserPageController {
 		@RequestMapping(value="/userpage/good", method=RequestMethod.GET)
 		public String recommend(int content_no, HttpSession session, Model model, Good good) {
 			
-			logger.info("좋아요 폼_좋아요 UP AND DOWN");
 			String member_id = (String) session.getAttribute("loginid");
-			
-			logger.info(member_id);
 			
 			memberService.saveGoodId( member_id, content_no);
 			
@@ -228,15 +215,10 @@ public class UserPageController {
 		
 		@RequestMapping(value="/userpage/goodbtn", method=RequestMethod.GET)
 		public String recobtn(int content_no, HttpSession session, Model model, Good good) {
-			logger.info("좋아요 폼_ 버튼이름 '좋아요' OR '좋아요취소'");
 			String userid = (String) session.getAttribute("loginid");
-			
-			
 			
 			good.setContent_no(content_no);
 			good.setMember_id(userid);
-			
-			logger.info(good.toString());
 			
 			int goodcheck = memberService.goodCheck(good);
 			
@@ -249,9 +231,7 @@ public class UserPageController {
 
 	@RequestMapping(value = "/userpage/viewComment", method = RequestMethod.GET)
 	public void viewComment(String comment, HttpSession session, int content_no, Model model) {
-		logger.info(comment);
 		String id = (String) session.getAttribute("loginid");
-
 
 		Userpage_comment userComm = new Userpage_comment();
 		int member_code = memberService.getMember_code(id);
@@ -297,8 +277,6 @@ public class UserPageController {
 
 		List<Userpage_cocomment> cocomentList = userpageService.selectcocoment(comment_no);
 
-		logger.info(cocoment.toString());
-
 		model.addAttribute("cocomentList", cocomentList);
 
 		List userImg = userpageService.selectUserImgAll();
@@ -322,7 +300,6 @@ public class UserPageController {
 
 	@RequestMapping(value = "/userpage/cocommDelete", method = RequestMethod.GET)
 	public void cocommDelete(int cocomment_no, HttpSession session, Model model) {
-		logger.info("댓글-댓글 삭제폼");
 		String id = (String) session.getAttribute("loginid");
 
 		userpageService.deletecoComment(cocomment_no);
@@ -332,18 +309,13 @@ public class UserPageController {
 	@RequestMapping(value = "/userpage/tag", method = RequestMethod.GET)
 	public void tag(String tag, Model model) {
 
-		logger.info(tag);
 		List list = userpageService.selectTag(tag);
-
-		logger.info(list.toString());
 
 		model.addAttribute("list", list);
 	}
 	
 	@RequestMapping(value = "/userpage/following", method = RequestMethod.GET)
 	public void following(String user_id, HttpSession session, Model model) {
-//		logger.info(user_id);
-		
 		String loginid = (String) session.getAttribute("loginid");
 		
 		int fwg_user_code = memberService.getMember_code(user_id);
@@ -377,5 +349,15 @@ public class UserPageController {
 		int check = userpageService.checkfavorites(fav);
 		
 		model.addAttribute("check", check);
+	}
+	
+	@RequestMapping(value = "/userpage/map", method = RequestMethod.GET)
+	public void map(int content_no, Model model) {
+		
+		UserPage userpage = new UserPage();
+		
+		userpage = userpageService.selectByContent_no(content_no);
+		
+		model.addAttribute("map", userpage);
 	}
 }

@@ -74,12 +74,14 @@ public class UserPageServiceImpl  implements UserPageService{
 	@Override
 	public void insertComment(Userpage_comment userComm) {
 		userpageDao.insertCommentDao(userComm);
+		userpageDao.insertCommentCountDao(userComm.getPage_no());
 		
 	}
 	@Override
 	public List<Userpage_comment> selectComment(int page_no) {
 		
 		return userpageDao.selectCommentDao(page_no);
+		
 	}
 	@Override
 	public List<UserImg> selectUserImgAll() {
@@ -103,9 +105,9 @@ public class UserPageServiceImpl  implements UserPageService{
 	
 	@Override
 	public void deletecomment(Userpage_comment comment) {
-		System.out.println(comment);
 		userpageDao.deleteCommentDao(comment);
 		
+		userpageDao.deleteCommentCountDao(comment.getPage_no());
 	}
 	@Override
 	public void deletecoComment(int cocomment_no) {
@@ -157,6 +159,7 @@ public class UserPageServiceImpl  implements UserPageService{
 		// TODO Auto-generated method stub
 		return userpageDao.favoritesCheck(fav);
 	}
+
 	@Override
 	public void imgupdate(MultipartFile file, ServletContext context, UserPage userpage) {
 		//파일이 저장될 경로
@@ -193,5 +196,12 @@ public class UserPageServiceImpl  implements UserPageService{
 	public void updatewrite(UserPage userPage) {
 		userpageDao.updatewriteInfo(userPage);
 		
+
+	
+	@Override
+	public UserPage selectByContent_no(int content_no) {
+		// TODO Auto-generated method stub
+		return userpageDao.userpageSelectByContent_no(content_no);
+
 	}
 }

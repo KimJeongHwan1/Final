@@ -20,7 +20,7 @@ public interface BlackListDao {
 	
 	public void blackDeleteByMember_code(int member_code);
 	
-	
+	public void insertBlackList(BlackList blacklist);
 
 	
 }

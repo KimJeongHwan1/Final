@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 마이바티스 3 Mapper DOCTYPE -->
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="web.dao.face.ChatDao">
+	
+	<insert id="chatinsert"
+		parameterType="web.dto.Websocket">
+	
+	insert into websocket(sender, receiver, content, websocketsession) values
+	(#{sender } , #{receiver }, #{content }, #{websocketsession} )
+	
+	
+	</insert>
+
+	
+	<select id="view" resultType="web.dto.Websocket"
+		parameterType="web.dto.Websocket">
+		
+		select * from websocket
+		where 
+		(
+		sender = #{sender } 
+		AND receiver = #{receiver }
+		) 
+		OR 
+		(
+		sender = #{receiver }
+		AND receiver = #{sender } 
+		)
+		</select>
+
+
+</mapper>
+    
+    
+    
+    
+    

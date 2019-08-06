@@ -133,6 +133,22 @@
 		delete from good where member_id = #{member_id }	
 	</delete>
 
+	<update id="userpageGoodMin"
+		parameterType="int">
+		
+		update userpage
+		set good = good - 1
+		where content_no = #{content_no }	
+	</update>
+	
+	<update id="userpageGoodPls"
+		parameterType="int">
+		
+		update userpage
+		set good = good + 1
+		where content_no = #{content_no }
+	</update>
+
 	<select id="selectSearchHeader"
 		resultType="web.dto.Member" parameterType="String">
 		select * from member

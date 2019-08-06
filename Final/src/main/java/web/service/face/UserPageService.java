@@ -52,7 +52,11 @@ public interface UserPageService {
 	
 	public int checkfavorites(Favorites fav);
 	
+
 	public void imgupdate(MultipartFile file, ServletContext context, UserPage userpage);
 	public void updatewrite(UserPage userPage);
 	
+
+	public UserPage selectByContent_no(int content_no);
+
 }
