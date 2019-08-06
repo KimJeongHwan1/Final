@@ -211,11 +211,11 @@ $(document).ready(function() {
 </script>
 <body>
 
-
+<c:if test="${userpage.storedname != '0' }">
 <div id="main_div">
 <img src="/uppage/${userpage.storedname }" id="uploadImg"/>
-
 </div>
+</c:if>
 
 <div id="write_div">
 <div id="head_area">

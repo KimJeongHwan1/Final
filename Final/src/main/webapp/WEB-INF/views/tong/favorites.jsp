@@ -121,6 +121,12 @@
     
     overflow: scroll;
  }
+ 
+ #content {
+	height: 200px;
+	width: 250px;
+}
+ 
 </style>
 
 <div id="user_write_div">
@@ -129,7 +135,12 @@
 <c:forEach items="${favList }" var="i">
 <c:set var="sum" value="${n + m }"/>
 <div id="user_write_list">
+<c:if test="${i.storedname != '0' }">
 <a href="/userpage/view?content_no=${i.content_no }" class="openMask"><img src="/uppage/${i.storedname }" id="file_img${sum }" class="list_img"></a><br>
+</c:if>
+<c:if test="${i.storedname eq '0' }">
+<a href="/userpage/view?content_no=${i.content_no }" class="openMask"><div id="content">${i.content_title }<p>${i.content }</div></a><br>
+</c:if>
 
 <span id="spanmsg1${sum }" class="glyphicon glyphicon-heart-empty"> ${i.hit } </span>
 <span id="spanmsg2${sum }" class="glyphicon glyphicon-pencil"> 댓글수 </span>

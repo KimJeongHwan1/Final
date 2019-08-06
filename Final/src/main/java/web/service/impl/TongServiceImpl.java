@@ -112,5 +112,11 @@ public class TongServiceImpl implements TongService {
 		
 		return sum2;
 	}
+
+	@Override
+	public void deleteList(int content_no) {
+		tongDao.deleteList(content_no);
+		
+	}
 	
 }
