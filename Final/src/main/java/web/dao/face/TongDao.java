@@ -28,5 +28,6 @@ public interface TongDao {
 	
 	public List selectFavList(int content_no);
 	
-	
+	public void deleteList( int content_no ) ;
+
 }

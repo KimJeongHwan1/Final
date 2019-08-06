@@ -27,4 +27,6 @@ public interface TongService {
 	public List favContentNo(String loginid);
 	
 	public List getFavList(List list);
+	
+	public void deleteList( int content_no ) ;
 }
