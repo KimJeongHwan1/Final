@@ -2,14 +2,26 @@
     pageEncoding="UTF-8"%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
-    
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>    
+<c:import url="/WEB-INF/views/layout/header.jsp" />
 
-<script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+<style>
+.chatarea {
+
+	margin : auto;
+	width : 500px;
+	height : 500px;
+	
+	overflow : scroll;
+	
+	
+}
+.chatbtn {
+	margin : auto;
+}
+</style>
+
+
 
 <!-- WebSocket : sock.js CDN -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.3.0/sockjs.js"></script>
@@ -18,15 +30,27 @@
 <body>
 
 
+<div>
+	<ul class="list-group list-group-flush chatarea" id="data">
+	
+	<c:forEach items="${view }" var="i">
+	${i.sender} : ${i.content }<br>
+	
+	</c:forEach>
+	
+	
+	</ul>
+</div>
 
-<div class="input-group mb-3">
+
+<div class="input-group mb-3 chatbtn">
+  <span id="id">${myid }</span>
+  
   <input type="text" id="message" class="form-control" placeholder="Message">
   <div class="input-group-append" style="padding: 0px;">
     <button id="sendBtn" class="btn btn-outline-secondary" type="button">Send</button>
+  
   </div>
-</div>
-<div>
-	<ul class="list-group list-group-flush" id="data"></ul>
 </div>
 <script type="text/javascript">
 $(document).ready(function() {
@@ -73,6 +97,5 @@ function sendMessage() {
 </script>
 
 
+<c:import url="/WEB-INF/views/layout/footer.jsp" />
 
-</body>
-</html>
