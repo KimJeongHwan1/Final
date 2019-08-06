@@ -51,4 +51,6 @@ public interface UserPageService {
 	public void favorites(Favorites fav);
 	
 	public int checkfavorites(Favorites fav);
+	
+	public UserPage selectByContent_no(int content_no);
 }

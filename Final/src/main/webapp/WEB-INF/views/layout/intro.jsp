@@ -1,79 +1,83 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<c:import url="/WEB-INF/views/layout/beforeheader.jsp" />
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-
-<!-- Bootstrap 3 -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-
+<c:import url="/WEB-INF/views/layout/header.jsp" />
 
 <style type="text/css">
+
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+
+
+#title {
+
+	margin-left: 100px;
+	margin-right: 300px;
+	width: 1500px;
+
+	 
+}
+
 
 
 </style>
 
-
 </head>
 <body>
 
+<div id="title">	
+	<h3> 서비스 소개 </h3>
+	<hr>
+</div>	
+	
+	 
+<div id="content"> 
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
-<div id="intro" class="site-padding">
-<div class="container">
-	<div class="row">
-	<div class="col-sm-7">	
-		<div>
-			<div class="title">
-			<h1>요리통Tong 소개</h1>
-			</div>
-			<h3>요리통은 이런 웹사이트입니다.<br></h3>
-						
-						<p>
-						원대하고, 끓는 우는 뭇 든 이것이야말로 봄바람을 있는가? 우리 찾아 대고, 그것은 것이다. 그들에게 이는
-						많이 아니다. 역사를 아름답고 예가 크고 때문이다. 대중을 구하지 위하여 구할 장식하는 불어 끓는 철환하였는가?
-						이상의 품고 일월과 풀이 쓸쓸하랴? 그들은 것이 작고 얼마나 찾아 싸인 바이며, 든 이것은 이것이다. 열매를 찬미를
-						있는 교향악이다. 청춘의 창공에 시들어 꽃 피부가 이성은 힘있다. 무엇이 튼튼하며, 노래하며 지혜는 과실이 영락과
-						뿐이다. 뛰노는 두기 살았으며, 품었기 사라지지 불러 가는 넣는 사막이다. 남는 하는 못하다 있으랴? 그와 싶이
-						미묘한 곳으로 그들은 만물은 역사를 어디 보이는 이것이다. 싹이 불어 거선의 되려니와, 이상 크고 위하여서. 뭇
-						구하지 과실이 철환하였는가? 보내는 있을 청춘이 철환하였는가? 피가 이상의 수 것이다. 따뜻한 방지하는 속에서
-						기쁘며, 청춘의 새가 투명하되 봄바람이다. 이상의 끓는 쓸쓸한 것은 이것이다. 끝에 불러 불어 투명하되 것은 되는
-						그것은 천하를 위하여서. 얼마나 희망의 얼음과 온갖 품었기 가치를 봄바람이다. 작고 무엇이 인간의 우리 눈이 예가
-						가치를 미묘한 철환하였는가? 인생에 가진 같은 피가 인간의 보이는 되는 끓는다. 사랑의 천하를 위하여 것이다.
-						것이다.보라, 것은 목숨이 것이다. 만천하의 이상 두기 우리 수 힘있다. 목숨을 그들을 구할 그들의 일월과 뿐이다.
-						생의 이것을 않는 그러므로 위하여서 가는 끓는 철환하였는가?
-						</p>
-			</div>	
-			</div>
 
-<div class="col-sm-5">
-<div class="intro_image"><img src="/resources/img/main_01.jpg" style="width:400px; height:400px;"/></div>
+<pre style="font-family: 'Hanna', serif; text-align: center; font-size: larger;">
+어느 날, 갑자기 시간이 생겨서
+뭘 할까 고민하다가
+ 
 
-		</div>
-	</div>
+평소에 관심있던  
+요리/사진 수업을 찾아보기로 한다
+  
+
+막상 인터넷을 뒤지다 보면
+요리레시피, 카메라 정보만 가득..
+ 
+
+한참 고생만하다 멘붕에 빠진다...
+ 
+
+어디 이런 요리 관련 정보를,
+한 곳에 모아놓은 곳은 없나?
+ 
+
+그래서 여러 요리 정보를
+차곡차곡 모아봤습니다
+이제 요리통에서 찾아보세요
+ 
+
+
+매일 반복되는 지루한 일상 새로운 요리통 사이트를 방문해 보시는건 어떨까요?
+
+이제 두려움 없이  평소 관심있던 요리 커뮤니티에 방문해서 많은 정보를 교류하세요!! 
+새로운 요리통 사이트를 발견되는 순간, 일상이 즐거움으로 물들어 갑니다
+
+일상에 특별한 하루를 선물해보세요!!
+
+
+</pre>
 </div>
-</div>
-
-</body>
-</html>
 
 
+
+<br><br><br><br><br><br>
+	
+	
+	
 <c:import url="/WEB-INF/views/layout/footer.jsp" />

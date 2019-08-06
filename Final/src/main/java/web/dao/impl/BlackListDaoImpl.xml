@@ -26,7 +26,12 @@
 		SELECT * FROM blacklist
 		WHERE black_no = #{black_no }
 	</select>
-
+	
+	<delete id="insertBlackList" parameterType="web.dto.BlackList">
+		INSERT INTO blacklist(black_no, black_reporter, black_perpetrator, black_content, black_report_date, member_code,  content_no)
+		VALUES(blacklist_seq.nextval, #{black_reporter }, #{black_perpetrator }, #{black_content }, sysdate, #{member_code }, #{content_no })
+	</delete>
+	
 	<delete id="deleteBlackList" parameterType="int">
 		DELETE FROM blacklist
 		WHERE black_no = #{black_no }

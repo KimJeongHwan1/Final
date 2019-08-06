@@ -33,7 +33,8 @@
 		<th style="width: 10%; text-align: center;">번호</th>
 		<th style="width: 10%; text-align: center;">신고자</th>		
 		<th style="width: 10%; text-align: center;">블랙리스트</th>
-		<th style="width: 60%; ">내용</th>
+		<th style="width: 10%; text-align: center;">글번호</th>
+		<th style="width: 50%; ">내용</th>
 		<th style="width: 10%; ">신고 날짜</th>
 	</tr>
 </thead>
@@ -50,6 +51,7 @@
 		<td><c:set var="sum" value="${i+l }"/>${sum }</td>
 		<td>${b.black_reporter }</td>
 		<td>${b.black_perpetrator }</td>
+		<td>${b.content_no }</td>
 		<td style="text-align:left; ">${b.black_content }</td>
 		<td style="text-align:left;" ><fmt:formatDate value="${b.black_report_date }" pattern="yyyy-MM-dd" /></td>
 		<td><button class="btn btn-info" id="btnDelete"  type="button" onclick="location.href='/black/delete?black_no=${b.black_no }'">목록제거</button></td>

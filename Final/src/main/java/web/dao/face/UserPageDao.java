@@ -51,5 +51,5 @@ public interface UserPageDao {
 	public void insertfavoritesDao(Favorites fav);
 	public void deletefavoritesDao(Favorites fav);
 	
-	
+	public UserPage userpageSelectByContent_no(int content_no);
 }
