@@ -50,10 +50,7 @@ $(document).ready(function() {
 	margin: 0;
 	float: left;
 }
-img{
-	width: 100%;
-	height: 400px;
-}
+
 #uploadImg{
 	width: 100%;
 	height: 400px;
@@ -239,8 +236,7 @@ $(document).ready(function() {
 <div id="write_div">
 <div id="head_area">
 <span class="glyphicon glyphicon-user"> ${id } </span>
-<span class="glyphicon glyphicon-plus">팔로우 </span>
-<span class="glyphicon glyphicon-align-justify"></span>
+<span id="open_click_menu" class="glyphicon glyphicon-align-justify"></span>
 </div>
 <div id="tag_area">
 <c:if test="${tagList !=null }">
