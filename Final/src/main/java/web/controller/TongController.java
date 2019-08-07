@@ -241,8 +241,12 @@ public class TongController {
 
 		good.setMember_id(member_id);
 
-		//		int goodCheck = memberService.goodCheck(good);
-		//		model.addAttribute("goodCheck", goodCheck);
+		int goodCheck = memberService.goodCheck(good);
+		model.addAttribute("goodCheck", goodCheck);
+				
+		int goodnum = memberService.saveGoodCount(userpage.getContent_no());
+						
+		model.addAttribute("good_no", goodnum);
 
 
 		List list = userpageService.selectComment(page_no);
@@ -446,5 +450,41 @@ public class TongController {
 		return "redirect:/tong/mypage" ;
 		
 	}
+	
+	@RequestMapping(value="/tong/good", method=RequestMethod.GET)
+	public String recommend(int content_no, HttpSession session, Model model, Good good) {
+		
+		String member_id = (String) session.getAttribute("loginid");
+		
+		memberService.saveGoodId( member_id, content_no);
+		
+		int goodnum = memberService.saveGoodCount(content_no);
+
+		
+		model.addAttribute("good_no", goodnum);
+		
+		good.setContent_no(content_no);
+		good.setMember_id(member_id);
+		
+		int goodcheck = memberService.goodCheck(good);
+
+		model.addAttribute("goodcheck", goodcheck);
+		return "/tong/good";
+	}
+	
+	@RequestMapping(value="/tong/goodbtn", method=RequestMethod.GET)
+	public String recobtn(int content_no, HttpSession session, Model model, Good good) {
+		String userid = (String) session.getAttribute("loginid");
+		
+		good.setContent_no(content_no);
+		good.setMember_id(userid);
+		
+		int goodcheck = memberService.goodCheck(good);
+		
+		model.addAttribute("goodcheck", goodcheck);
+		
+		return "/tong/goodbtn";
+	}	
+	
 	
 }

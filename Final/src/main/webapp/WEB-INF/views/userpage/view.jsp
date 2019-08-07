@@ -484,6 +484,8 @@ $(document).ready(function() {
 // ]]>
 </script>
 
+<br>
+&nbsp;${userpage.address }
 <c:if test="${userpage.address != null }">
 <span id="map" class="glyphicon glyphicon-map-marker"></span>
 </c:if>
