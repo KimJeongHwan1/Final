@@ -40,9 +40,9 @@
 
 <tr>
    <td>위치</td>
-   <td><input type="text" name="address" id="address" value="${map.address }">
-	<input type="text" name="x" id="x" value="${map.x }">
-	<input type="text" name="y" id="y" value="${map.y }">
+   <td><input type="text" name="address" id="address" value="${userpage.address }">
+	<input type="text" name="x" id="x" value="${userpage.x }">
+	<input type="text" name="y" id="y" value="${userpage.y }">
 	<input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"></td>
 </tr>
 <tr>

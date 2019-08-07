@@ -183,13 +183,13 @@
 	<update id="updateImg" parameterType="web.dto.UserPage">
 	
 		update userpage set content_title = #{content_title} , content = #{content} ,
-		 tag = #{tag} , originname = #{originname} , storedname = #{storedname} , blockSee = #{blockSee}
+		 tag = #{tag} , originname = #{originname} , storedname = #{storedname} , blockSee = #{blockSee}, address = #{address }, x = #{x }, y = #{y }
 		where content_no = #{content_no }
 	</update>
 	
 	<update id="updatewriteInfo" parameterType="web.dto.UserPage">
 		update userpage set content_title = #{content_title} , content = #{content} ,
-		 tag = #{tag} , blockSee = #{blockSee}
+		 tag = #{tag} , blockSee = #{blockSee}, address = #{address }, x = #{x }, y = #{y }
 		 where content_no = #{content_no }
 	</update>
 
