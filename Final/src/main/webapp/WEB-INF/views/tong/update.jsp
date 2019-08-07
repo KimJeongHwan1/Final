@@ -17,7 +17,7 @@
 <body>
 
 
-<h1>게시글 쓰기</h1>
+<h1>게시글 수정</h1>
 <hr>
 
 <div id="write_div">

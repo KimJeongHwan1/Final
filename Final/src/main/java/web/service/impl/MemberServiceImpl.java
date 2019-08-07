@@ -203,6 +203,8 @@ public class MemberServiceImpl implements MemberService {
 		return memberDao.selectSearchHeader(text);
 	}
 
+
+
 //	@Override
 //	public List headerSearchMemberImg(String text) {
 //		// TODO Auto-generated method stub

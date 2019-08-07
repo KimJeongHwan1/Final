@@ -74,10 +74,11 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li ><a href="#">Link1<span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Link2</a></li>
-       	 <li><a href="#">Link3</a></li>
-       	  <li><a href="#">Link4</a></li>
+        <li ><a href="#">베스트게시판<span class="sr-only">(current)</span></a></li>
+        
+        <c:if test="${mem.member_type != 1 }" >
+        <li><a href="/black/list">블랙리스트</a></li>
+        </c:if>
       </ul>
 
      

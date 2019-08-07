@@ -7,6 +7,8 @@
 <h1>테스트</h1>
 <hr>
 
+멤버 타입 : ${mem }
+
 로그인 아이디 : ${loginid }<br><br>
 <a href="/member/login">로그인</a><br>
 
