@@ -208,12 +208,6 @@ th{
 	margin-left: 15px;
 
 }
-img{
-	margin-right: 50px;
-	width: 100px;
-	height: 100px;
-	margin-left : 50px;
-}
 #myid{
 	margin-right: 50px;
 	width: 100px;

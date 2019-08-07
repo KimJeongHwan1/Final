@@ -116,4 +116,19 @@
 		
 	</update>
 	
+	<select id="getWriteListDao" resultType="web.dto.UserPage"
+		parameterType="web.dto.Member">
+
+		select * from UserPage
+		where member_code = #{member_code }
+		order by content_no desc
+	</select>
+	
+	<update id="updateBlockSeeDao"
+		parameterType="web.dto.UserPage">
+		
+		update userpage set blockSee = #{blockSee}
+		where content_no = #{content_no }
+	</update>
+	
 </mapper>

@@ -42,14 +42,14 @@ public class UserPageController {
 	@Autowired MemberService memberService;
 	@Autowired UserPageService userpageService;
 	@Autowired TongService tongService;
-	
+
 	@RequestMapping(value = "/userpage/userpage", method = RequestMethod.GET)
 	public void userpage(Member member, Model model, HttpSession session) {
 
 		member = memberService.getMember(member);
-		
+
 		model.addAttribute("member", member);
-		
+
 		List<UserPage> writeList = userpageService.getwriteList(member);
 
 		model.addAttribute("write", writeList);
@@ -66,15 +66,15 @@ public class UserPageController {
 		} 
 
 		model.addAttribute("bool", memberService.selectImgCheck(member_code));
-		
-		
+
+
 		String loginid = (String) session.getAttribute("loginid");
 		Following fwg = new Following();
 		fwg.setFwg_user_id(id);
 		fwg.setFwg_you_id(loginid);
-		
+
 		int check = userpageService.checkFollowing(fwg);
-		
+
 		model.addAttribute("check", check);
 	}
 
@@ -84,7 +84,7 @@ public class UserPageController {
 		UserPage userPage = userpageService.selectUserpage(userpage);
 
 		model.addAttribute("userpage", userPage);
-		
+
 		String tag = userPage.getTag();
 		if(tag != null) {
 			int num=0;
@@ -98,7 +98,7 @@ public class UserPageController {
 			for(int i=0; i<tag.length(); i++) {
 				chr = tag.charAt(i);
 				num = (int) chr;
-				
+
 				if(num == 32) {
 					str = tag.substring(check, i);
 					chr2 = tag.charAt(check);
@@ -107,7 +107,7 @@ public class UserPageController {
 						str = tag.substring(check+1, i);
 					}
 					str2[check2] = str;
-					
+
 					check=i+1;
 					check2++;
 				}
@@ -121,7 +121,7 @@ public class UserPageController {
 					str2[check2] = str;
 					check2++;
 				}
-				
+
 			}
 			String[] str3 = new String[check2];
 			for(int i=0; i<check2; i++) {
@@ -135,15 +135,15 @@ public class UserPageController {
 			}
 			model.addAttribute("tagList", tagList);
 		}
-		
+
 		int member_code = userPage.getMember_code();
 
 		String id = memberService.getmember_id(member_code);
 
 		model.addAttribute("id", id);
 		model.addAttribute("member_code", member_code);
-		
-		
+
+
 		if(memberService.selectImgCheck(member_code)) {
 			UserImg userImg = memberService.selectImg(member_code);
 			model.addAttribute("img", userImg);
@@ -161,11 +161,11 @@ public class UserPageController {
 
 		int goodCheck = memberService.goodCheck(good);
 		model.addAttribute("goodCheck", goodCheck);
-		
+
 		int goodnum = memberService.saveGoodCount(userpage.getContent_no());
-				
+
 		model.addAttribute("good_no", goodnum);
-		
+
 		List list = userpageService.selectComment(page_no);
 
 		//		logger.info(list.toString());
@@ -179,53 +179,52 @@ public class UserPageController {
 		List<Userpage_cocomment> cocomentList = userpageService.selectcocomentAll();
 
 		model.addAttribute("cocomentList", cocomentList);
-		
+
 		Favorites fav = new Favorites();
-		
+
 		fav.setContent_no(userpage.getContent_no());
 		fav.setMember_id(member_id);
-		
+
 		int fav_check = userpageService.checkfavorites(fav);
-		
+
 		model.addAttribute("fav_check", fav_check);
-		
+
 	}
 
+	@RequestMapping(value="/userpage/good", method=RequestMethod.GET)
+	public String recommend(int content_no, HttpSession session, Model model, Good good) {
 
-		@RequestMapping(value="/userpage/good", method=RequestMethod.GET)
-		public String recommend(int content_no, HttpSession session, Model model, Good good) {
-			
-			String member_id = (String) session.getAttribute("loginid");
-			
-			memberService.saveGoodId( member_id, content_no);
-			
-			int goodnum = memberService.saveGoodCount(content_no);
-	
-			
-			model.addAttribute("good_no", goodnum);
-			
-			good.setContent_no(content_no);
-			good.setMember_id(member_id);
-			
-			int goodcheck = memberService.goodCheck(good);
-	
-			model.addAttribute("goodcheck", goodcheck);
-			return "/userpage/good";
-		}
-		
-		@RequestMapping(value="/userpage/goodbtn", method=RequestMethod.GET)
-		public String recobtn(int content_no, HttpSession session, Model model, Good good) {
-			String userid = (String) session.getAttribute("loginid");
-			
-			good.setContent_no(content_no);
-			good.setMember_id(userid);
-			
-			int goodcheck = memberService.goodCheck(good);
-			
-			model.addAttribute("goodcheck", goodcheck);
-			
-			return "/userpage/goodbtn";
-		}
+		String member_id = (String) session.getAttribute("loginid");
+
+		memberService.saveGoodId( member_id, content_no);
+
+		int goodnum = memberService.saveGoodCount(content_no);
+
+
+		model.addAttribute("good_no", goodnum);
+
+		good.setContent_no(content_no);
+		good.setMember_id(member_id);
+
+		int goodcheck = memberService.goodCheck(good);
+
+		model.addAttribute("goodcheck", goodcheck);
+		return "/userpage/good";
+	}
+
+	@RequestMapping(value="/userpage/goodbtn", method=RequestMethod.GET)
+	public String recobtn(int content_no, HttpSession session, Model model, Good good) {
+		String userid = (String) session.getAttribute("loginid");
+
+		good.setContent_no(content_no);
+		good.setMember_id(userid);
+
+		int goodcheck = memberService.goodCheck(good);
+
+		model.addAttribute("goodcheck", goodcheck);
+
+		return "/userpage/goodbtn";
+	}
 
 
 
@@ -283,7 +282,7 @@ public class UserPageController {
 
 		model.addAttribute("userImg", userImg);
 	}
-	
+
 	@RequestMapping(value = "/userpage/commDelete", method = RequestMethod.GET)
 	public void commDelete(int page_no, HttpSession session, int comment_no, Model model) {
 
@@ -313,51 +312,51 @@ public class UserPageController {
 
 		model.addAttribute("list", list);
 	}
-	
+
 	@RequestMapping(value = "/userpage/following", method = RequestMethod.GET)
 	public void following(String user_id, HttpSession session, Model model) {
 		String loginid = (String) session.getAttribute("loginid");
-		
+
 		int fwg_user_code = memberService.getMember_code(user_id);
 		int fwg_you_code = memberService.getMember_code(loginid);
-		
+
 		Following fwg = new Following();
 		fwg.setFwg_user_code(fwg_user_code);
 		fwg.setFwg_user_id(user_id);
-		
+
 		fwg.setFwg_you_code(fwg_you_code);
 		fwg.setFwg_you_id(loginid);
-		
+
 		userpageService.Following(fwg);
-		
+
 		int check = userpageService.checkFollowing(fwg);
-		
+
 		model.addAttribute("check", check);
 	}
-	
+
 	@RequestMapping(value = "/userpage/fav", method = RequestMethod.GET)
 	public void fav(int content_no, HttpSession session, Model model) {
 
 		String loginid = (String) session.getAttribute("loginid");
 		Favorites fav = new Favorites();
-		
+
 		fav.setContent_no(content_no);
 		fav.setMember_id(loginid);
-		
+
 		userpageService.favorites(fav);
-		
+
 		int check = userpageService.checkfavorites(fav);
-		
+
 		model.addAttribute("check", check);
 	}
-	
+
 	@RequestMapping(value = "/userpage/map", method = RequestMethod.GET)
 	public void map(int content_no, Model model) {
-		
+
 		UserPage userpage = new UserPage();
-		
+
 		userpage = userpageService.selectByContent_no(content_no);
-		
+
 		model.addAttribute("map", userpage);
 	}
 }

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import web.dao.face.TongDao;
 import web.dto.Following;
 import web.dto.Good;
 import web.dto.Member;
@@ -29,7 +27,6 @@ import web.service.face.MemberService;
 import web.service.face.MyPageService;
 import web.service.face.TongService;
 import web.service.face.UserPageService;
-import web.util.Paging;
 
 /**
  * Handles requests for the application home page.
@@ -54,12 +51,11 @@ public class TongController {
 		member.setMember_id(loginid);
 		
 		member = memberService.getMember(member);
-		logger.info(member.toString());
-		
 		model.addAttribute("member", member);
 		
-		List<UserPage> writeList = userpageService.getwriteList(member);
-
+		List<UserPage> writeList = tongService.getWriteList(member);
+		
+		
 		model.addAttribute("write", writeList);
 		
 		int member_code = memberService.getMember_code(loginid);
@@ -486,5 +482,23 @@ public class TongController {
 		return "/tong/goodbtn";
 	}	
 	
+	@RequestMapping(value="/tong/blockSee", method=RequestMethod.GET)
+	public void blocksee(HttpSession session, Model model, UserPage userpage) {
+		
+		userpage = userpageService.selectUserpage(userpage);
+		
+		int blockSee = userpage.getBlockSee();
+		
+		if(blockSee==0) {
+			blockSee = 1;
+		} else if(blockSee==1) {
+			blockSee = 0;
+		}
+		userpage.setBlockSee(blockSee);
+
+		tongService.updateBlockSee(userpage);
+		
+		model.addAttribute("blockSee", blockSee);
+	}	
 	
 }

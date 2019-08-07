@@ -34,11 +34,6 @@
 	margin: 0;
 	float: left;
 }
-img{
-	margin: 0;
-	width: 100%;
-	height: 400px;
-}
 #uploadImg{
 	width: 100%;
 	height: 400px;
@@ -276,7 +271,7 @@ $(document).ready(function() {
 <div id="comment_area_see">
 
 <div id="content_area">
-<table>
+<table id="content_area_table">
 <c:if test="${bool == false }">
 <tr>
 	<td rowspan="2"><img id="userimg" src="${paceContext.request.contextPath}/resources/img/img4.jpg"/></td>

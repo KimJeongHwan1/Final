@@ -3,13 +3,10 @@
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <c:import url="/WEB-INF/views/layout/header.jsp" />
-
-
 <script type="text/javascript">
 $(document).ready(function() {
-	/* InitializeStaticMenu(); */
-	
 	$("#follow_btn").click(function(e){ 
 		$.ajax({
 			type: "get"
@@ -26,7 +23,6 @@ $(document).ready(function() {
 		});   
 	});
   }); 
-
 
 // 채팅
 $(document).ready(function() {
@@ -125,17 +121,6 @@ $("#mask").click(function () {
 </script>
 
 <style type="text/css">
-/* 메뉴 네비게이션바 */
-
-#STATICMENU {
-	width: 200px;
-	margin: 0pt;
-	width: 200px;
-	padding: 0pt;  
-	position: absolute; 
-	left: 50px;
-	top: 0px;
-}
 /* 네비게이션바 테이블 */
 table {
 	border-collapse: collapse;
@@ -143,53 +128,29 @@ table {
 /* 	border-bottom: 3px solid black; */
 	width:auto;
 	text-align : center;
+	font-family: 'Jua', sans-serif;
+	font-size:25px;
 }
 .table th, td{
 /*  	border: 1px solid #ddd; */
  	padding: 10px;
  	text-align:center;
+ 	border-radius: 1px; 
 }
-
+/* #282c37 */
 th{
-	background-color : #282c37;
-	color : #282c37;
+	background-color : #FFFFFF;
+	font-color : #FFFFFF;
 }
 .table th:hover{
-	background: #F2F2F2;
+	background: #FFFFFF;
 }
 .table th:first-child, td:first-child{
  	border-left: 0;
- 	background-color:#d9e1e8;
+ 	background-color:#E6E6E6;
 }
 .table th:last-child, td:last-child{
  	border-right: 0;
-}
-.statictable{
-	font-size: 13px;
- 	color: #ccc; 
-}
-/* 네비게이션바 테이블 */
-
-.reservestep {
-	margin: 0 5% 5% 230px;
-	width: auto;
-	text-align: left;
-/* 	height: 60%; */
-}
-#choose_menu div{
-	height: 5px;
-}
-#choose_menu label{
-	font-size: 20px;
-	font-weight: bold;
-	margin-top: 10px;
-	margin-left: 15px;
-}
-img{
-	margin-right: 50px;
-	width: 100px;
-	height: 100px;
-	margin-left : 50px;
 }
 #userprofilimg{
 	margin-right: 50px;
@@ -198,19 +159,12 @@ img{
 	margin-left : 50px;
 }
 #see_menu_menu2{
-
 	margin-left : 300px;
 	text-align : center;
 }
 #see_menu_table2 td{
 	text-align : center;
 }
-/* #see_menu_table tr{ */
-/* 	margin-top: 30px; */
-/* } */
-/* #see_menu_table2 tr{ */
-/* 	margin-top: 30px; */
-/* } */
 #btn_div{
 	text-align: center;
 }
@@ -278,62 +232,48 @@ img{
 </style>
 
 <div id="see_menu_menu2">
-<form action="/member/updateInfo" method="post" enctype="multipart/form-data">
 <table id="see_menu_table2" style="margin-top: 50px;">
-
 <tr>
 	<c:if test="${bool == false }">
-		<td rowspan="2"><img src="${paceContext.request.contextPath}/resources/img/img4.jpg" id="userprofilimg"/></td>
+		<td rowspan="2" style="padding: 10px;"><img src="${paceContext.request.contextPath}/resources/img/img4.jpg" id="userprofilimg"/></td>
 		<td>${user_id }
 			<c:if test="${check == 1 }">
 				<button id="follow_btn" type="button"><span id="follow_msg">팔로우</span></button>
-				<td ><a id="chat">채팅하기</a><br><br></td>
 			</c:if>
 			<c:if test="${check == 0 }">
 				<button id="follow_btn" type="button"><span id="follow_msg">언팔로우</span></button>
-				
-				<td><a id="chat">채팅하기</a><br><br></td>
 			</c:if>
 		</td>
+		<td><a id="chat">채팅하기</a></td>
 	</c:if>	
 	<c:if test="${bool == true }">
-		<td rowspan="2"><img src="/upload/${img.storedname }" id="userprofilimg"/></td>
+		<td rowspan="2" style="padding: 10px;"><img src="/upload/${img.storedname }" id="userprofilimg"/></td>
 		<td>${user_id }
 			<c:if test="${check == 1 }">
 				<button id="follow_btn" type="button"><span id="follow_msg">팔로우</span></button>
-				<td><a href="/socket/chat?userid=${user_id }" class="chat">채팅하기</a><br><br></td>
 			</c:if>
 			<c:if test="${check == 0 }">
 				<button id="follow_btn" type="button"><span id="follow_msg">언팔로우</span></button>
-				<td><a href="/socket/chat?userid=${user_id }" class="chat">채팅하기</a><br><br></td>
 			</c:if>
 		</td>
+		<td ><a id="chat">채팅하기</a></td>
 	</c:if>
 </tr>
-
-
-
-
-
 </table>
 <table>
 <tr>
-	<td><label style="width: 200px;font-size: 15px; font-weight: 50;">이름</label> </td>
-	<td>${member.member_name }</td>
+	<td style="padding: 10px;"><label style="width: 200px;font-size: 15px; font-weight: 50;">이름</label> </td>
+	<td style="padding: 10px;">${member.member_name }</td>
 </tr>
 
 
 <tr>
-	<td><label style="width: 200px; font-size: 15px; font-weight: 50;">이메일</label> </td>
-	<td>${member.member_email }</td>
+	<td style="padding: 10px;"><label style="width: 200px; font-size: 15px; font-weight: 50;">이메일</label> </td>
+	<td style="padding: 10px;">${member.member_email }</td>
 </tr>
 
 </table>
-
-</form>
 </div>
-
-
 <hr>
 
 <div style = "overflow:scroll;" >
@@ -357,6 +297,8 @@ img{
 </div>
 <c:set var="n" value="${sum }"/>
 </c:forEach>
+
+<div id="block" style="width: 100%; clear: both;"></div>
 
 <div id="chatarea">채팅창</div>
 </div>
