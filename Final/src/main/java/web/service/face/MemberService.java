@@ -52,4 +52,6 @@ public interface MemberService {
 	public int goodCheck(Good good);
 	public List headerSearchMember(String text);
 //	public List headerSearchMemberImg(String text);
+	
+	
 }

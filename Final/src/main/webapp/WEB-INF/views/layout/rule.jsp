@@ -4,11 +4,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
-<c:import url="/WEB-INF/views/layout/header.jsp" />
+<c:import url="/WEB-INF/views/layout/beforeheader.jsp" />
 
 <style type="text/css">
 
-#title {
+#title3 {
 
 	margin-left: 100px;
 	margin-right: 300px;
@@ -57,7 +57,7 @@
 <body>
 
 
-<div id="title">
+<div id="title3">
 	<h3>개인정보 보호 정책 </h3>
 	<hr>
 </div>

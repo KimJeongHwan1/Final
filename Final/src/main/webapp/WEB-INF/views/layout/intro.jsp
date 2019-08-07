@@ -2,16 +2,15 @@
     pageEncoding="UTF-8"%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-
-<c:import url="/WEB-INF/views/layout/header.jsp" />
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>    
+<c:import url="/WEB-INF/views/layout/beforeheader.jsp" />
 
 <style type="text/css">
 
 @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
 
 
-#title {
+#title2 {
 
 	margin-left: 100px;
 	margin-right: 300px;
@@ -27,7 +26,7 @@
 </head>
 <body>
 
-<div id="title">	
+<div id="title2">	
 	<h3> 서비스 소개 </h3>
 	<hr>
 </div>	

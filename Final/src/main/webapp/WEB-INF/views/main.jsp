@@ -15,7 +15,7 @@
 	margin-left: 0px;
 		
 	width: 100%;
-	height: 900px;
+	height: 990px;
 } 
 
 
@@ -32,7 +32,7 @@
 	color: white;
 	
 	top: 240px;
-	left: 600px;
+	left: 700px;
 	width: 100%;
 	margin: 0 auto;
 	width: 650px;
@@ -50,7 +50,7 @@
 	color: white;
 	
 	top: 450px;
-	left: 450px;
+	left: 625px;
 	
 	margin: 0 auto;
 	
@@ -130,7 +130,7 @@ $(function(){
 
 <div id="imageText" style="text-align: center;">
 	<div><h1> 참신한 생각이 필요하세요 ? </h1></div>
-	<div><span> 요리통 커뮤니티에 참여하여 수백억 개의 사진과 2백만개의 그룹을 만나보세요. </span></div>
+	<div><span> 요리통 커뮤니티에 참여하여 수 많은 사진과 각종 정보들을 만나보세요. </span></div>
 	<div><h1><button type="button" onclick="location.href='/member/join'">가입</button></h1></div>
 </div>
 
