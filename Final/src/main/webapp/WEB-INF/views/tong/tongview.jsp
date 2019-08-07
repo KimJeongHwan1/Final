@@ -33,9 +33,7 @@ $(document).ready(function() {
 });
 </script>
 
-
 <style type="text/css">
-
 #main_div{
 	width: 60%;
 	border: 1px solid black;
@@ -151,7 +149,6 @@ $(document).ready(function() {
     
     overflow: scroll;
  }
-
 </style>
 
 <head>
@@ -224,6 +221,23 @@ $(document).ready(function() {
 				console.log("실패");
 			}
 		})
+	});
+	
+	$("#blockSee").click(function() {
+			
+		$.ajax({
+			type: "get"
+			, url: "/tong/blockSee?content_no=${userpage.content_no }"
+			, data: {}
+			, dataType: "html"
+			, success: function( res ) {
+				$("#blockSee_msg").html(res);
+				console.log("성공");
+			}
+			, error: function() {
+				console.log("실패");
+			}
+		})
 	});	
 });
 </script>
@@ -236,8 +250,16 @@ $(document).ready(function() {
 
 <div id="write_div">
 <div id="head_area">
-<span class="glyphicon glyphicon-user"> ${id } </span>
-<span id="open_click_menu" class="glyphicon glyphicon-align-justify"></span>
+<span class="glyphicon glyphicon-user" style="margin-left: 20px; font-size: 15px;"> ${id } </span>
+<span style="margin-left: 20px; font-size: 15px;">공개여부 : </span>
+<c:if test="${userpage.blockSee == 0 }">
+<span id="blockSee" style="color: blue;"><span id="blockSee_msg">공개</span></span>
+</c:if>
+<c:if test="${userpage.blockSee == 1 }">
+<span id="blockSee" style="color: red;"><span id="blockSee_msg">비공개</span></span>
+</c:if>
+<span>(클릭시 변경)</span>
+<span class="glyphicon glyphicon-align-justify" style="margin-left: 20px; font-size: 15px;"></span>
 </div>
 <div id="tag_area">
 <c:if test="${tagList !=null }">

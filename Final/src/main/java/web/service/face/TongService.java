@@ -2,6 +2,7 @@ package web.service.face;
 
 import java.util.List;
 
+import web.dto.Member;
 import web.dto.UserPage;
 
 public interface TongService {
@@ -31,5 +32,10 @@ public interface TongService {
 	public void deleteList( int content_no ) ;
 	
 	public void updateList( UserPage userPage ) ;
+	
+	public List getWriteList(Member member);
+	
+	public void updateBlockSee(UserPage userPage);
+	
 	
 }

@@ -2,7 +2,7 @@ package web.dao.face;
 
 import java.util.List;
 
-import web.dto.Following;
+import web.dto.Member;
 import web.dto.UserPage;
 
 public interface TongDao {
@@ -33,5 +33,9 @@ public interface TongDao {
 	
 	public void updateList( UserPage userPage ) ;
 
-
+	public List getWriteListDao(Member member);
+	
+	public void updateBlockSeeDao(UserPage userPage);
+	
+	
 }
