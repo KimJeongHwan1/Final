@@ -28,7 +28,7 @@ $(document).ready(function() {
 	})
 	
 	$('#following_list').hide();
-	$('#fwg_List_btn').click(function(){
+	$('.fwg_List_btn').click(function(){
 	    var state = $('#following_list').css('display');
 	    if(state == 'none'){
 	        $('#following_list').show();
@@ -38,14 +38,76 @@ $(document).ready(function() {
 	});
 
 	$('#follower_list').hide();
-	$('#fwr_List_btn').click(function(){
+	$('.fwr_List_btn').click(function(){
 	    var state = $('#follower_list').css('display');
 	    if(state == 'none'){
 	        $('#follower_list').show();
 	    }else{
 	        $('#follower_list').hide();
 	    }
+	});	
+});
+
+//윈도우 팝업
+function wrapWindowByMask() {
+
+	//화면의 높이와 너비를 구한다.
+	var maskHeight = $(document).height();
+	var maskWidth = $(window).width();
+
+	//마스크의 높이와 너비를 화면 것으로 만들어 전체 화면을 채운다.
+	$("#mask").css({
+		"width" : maskWidth,
+		"height" : maskHeight
 	});
+
+	//애니메이션 효과 - 일단 0초동안 까맣게 됐다가 60% 불투명도로 간다.
+
+	$("#mask").fadeIn(0);
+	$("#mask").fadeTo("slow", 0.5);
+
+	//윈도우 같은 거 띄운다.
+	$(".window").show();
+
+}
+$(document).ready(function() {
+	//검은 막 띄우기
+	$(".openMask").click(function(e) {
+		e.preventDefault();
+
+		console.log($(this))
+		console.log($(this).attr("href"))
+
+		$.ajax({
+			type : "get",
+			url : $(this).attr("href"),
+			dataType : "html",
+			success : function(h) {
+				console.log("s")
+				$(".window").html(h);
+			},
+			error : function() {
+				console.log("e")
+			}
+		});
+
+		wrapWindowByMask();
+	});
+
+	//닫기 버튼을 눌렀을 때
+	$(".window .close").click(function(e) {
+		//링크 기본동작은 작동하지 않도록 한다.
+		e.preventDefault();
+		$("#mask, .window").hide();
+	});
+
+	//검은 막을 눌렀을 때
+	$("#mask").click(function() {
+		$(this).hide();
+		$(".window").hide();
+
+	});
+
 });
 
 //////////////////////////네비게이션 바 //////////////////////////
@@ -242,12 +304,12 @@ img{
 #following_list{
 	position: fixed;
 	top: 190px;
-	left: 750px;
+	left: 800px;
 }
 #follower_list{
 	position: fixed;
 	top: 190px;
-	left: 860px;
+	left: 970px;
 }
 #prev, #next {
 	border-top-left-radius: 5px;
@@ -268,7 +330,10 @@ img{
     border: 1px solid black;
     font-family: 'Jua', sans-serif;
 }
-
+#content {
+	height: 200px;
+	width: 250px;
+}
 
 </style>
 
@@ -302,18 +367,18 @@ img{
 <!-- 		<input type="file" name="file" id="file"/></td> -->
 		<td>${loginid }</td>
 
-<td><label><button id="prev" name="prev" type="button" id="fwg_List_btn" onclick="location.href='/member/updateInfo'">정보수정</button></label></td>
-		<td><label><button id="prev" name="prev" type="button" id="fwg_List_btn">팔로잉 목록</button></label>&nbsp;&nbsp;&nbsp;</td>
-		<td><label><button id="prev" name="prev" type="button" id="fwr_List_btn">팔로워 목록</button></label></td>			
+		<td><label><button id="prev" name="prev" type="button" onclick="location.href='/member/updateInfo'">정보수정</button></label></td>
+		<td><label><button id="prev" name="prev" type="button" class="fwg_List_btn">팔로잉 목록</button></label>&nbsp;&nbsp;&nbsp;</td>
+		<td><label><button id="prev" name="prev" type="button" class="fwr_List_btn">팔로워 목록</button></label></td>			
 	</c:if>
 	
 	<c:if test="${bool == true }">
 		<td rowspan="2"><img src="/upload/${img.storedname }" id="myid"/></td>
 		<td>${loginid }</td>
 
-		<td><label><button id="prev" name="prev" type="button" id="fwg_List_btn" onclick="location.href='/member/updateInfo'">정보수정</button></label></td>
-		<td><label><button id="prev" name="prev" type="button" id="fwg_List_btn">팔로잉 목록</button></label>&nbsp;&nbsp;&nbsp;</td>
-		<td><label><button id="prev" name="prev" type="button" id="fwr_List_btn">팔로워 목록</button></label></td>	
+		<td><label><button id="prev" name="prev" type="button" onclick="location.href='/member/updateInfo'">정보수정</button></label></td>
+		<td><label><button id="prev" name="prev" type="button" class="fwg_List_btn">팔로잉 목록</button></label>&nbsp;&nbsp;&nbsp;</td>
+		<td><label><button id="prev" name="prev" type="button" class="fwr_List_btn">팔로워 목록</button></label></td>	
 
 	</c:if>
 </tr>
@@ -369,11 +434,38 @@ img{
 </table>
 </div>
 
+<div style = "overflow:scroll;" >
 <div id="user_write_div">
+<c:set var="n" value="0"/>
+<c:set var="m" value="1"/>
+<c:forEach items="${write }" var="i">
+<c:set var="sum" value="${n + m }"/>
 
+<div id="user_write_list">
+<c:if test="${i.storedname != '0' }">
+<a href="/tong/tongview?content_no=${i.content_no }" class="openMask"	><img src="/uppage/${i.storedname }" id="file_img${sum }" class="list_img"></a><br>
+</c:if>
+<c:if test="${i.storedname eq '0' }">
+<a href="/tong/tongview?content_no=${i.content_no }" class="openMask"	><div id="content">${i.content_title }<p>${i.content }</div></a><br>
+</c:if>
+
+<span id="" class="glyphicon glyphicon-heart-empty"> ${i.hit } </span>
+<span id="" class="glyphicon glyphicon-pencil"> ${i.comm_count } </span>
+<span id="" class="glyphicon glyphicon-star-empty"> ${i.good }  </span>
+<c:set var="n" value="${sum }"/>
+</div>
+</c:forEach>
+
+<div id ="container">
+<div id="mask"></div>
+<div class="window">
+   <p style="text-align:center; background:#ffffff; padding:20px;"><a href="#" class="close">닫기X</a></p>
+</div>
+</div>
+</div>
 
 </div>
 
 
-<c:import url="/WEB-INF/views/layout/infiScroll.jsp" />
+<%-- <c:import url="/WEB-INF/views/layout/infiScroll.jsp" /> --%>
 <c:import url="/WEB-INF/views/layout/footer.jsp" />

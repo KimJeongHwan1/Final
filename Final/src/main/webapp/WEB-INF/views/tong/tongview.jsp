@@ -182,16 +182,16 @@ function button_event(){
 <img src="https://developers.kakao.com/sdk/js/resources/story/icon_small.png"/>
 </a>
 <script type='text/javascript'>
-  <![CDATA[
+//   <![CDATA[
 //     사용할 앱의 JavaScript 키를 설정해 주세요.
-    Kakao.init('b737021ce8920b6a7fdac62cfcfc837d');
-    function shareStory() {
-      Kakao.Story.share({
-        url: 'http://15.164.204.55:8080/tong/mypage',
-        text: '요리통 사이트로 놀러오세요! #개발자 #카카오 :)'
-      });
-    }
-  ]]>
+//     Kakao.init('b737021ce8920b6a7fdac62cfcfc837d');
+//     function shareStory() {
+//       Kakao.Story.share({
+//         url: 'http://15.164.204.55:8080/tong/mypage',
+//         text: '요리통 사이트로 놀러오세요! #개발자 #카카오 :)'
+//       });
+//     }
+//   ]]>
 </script>
 
 <script type="text/javascript">

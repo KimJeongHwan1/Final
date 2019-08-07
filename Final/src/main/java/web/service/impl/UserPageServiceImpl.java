@@ -26,6 +26,7 @@ public class UserPageServiceImpl  implements UserPageService{
 	@Autowired UserPageDao userpageDao;
 	@Override
 	public void imgsave(MultipartFile file, ServletContext context, UserPage userpage) {
+		
 		//파일이 저장될 경로
 		String storedPath = context.getRealPath("uppage");
 
@@ -164,7 +165,7 @@ public class UserPageServiceImpl  implements UserPageService{
 	public void imgupdate(MultipartFile file, ServletContext context, UserPage userpage) {
 		//파일이 저장될 경로
 				String storedPath = context.getRealPath("uppage");
-
+				
 				//UUID
 				String uId = UUID.randomUUID().toString().split("-")[4];
 
@@ -197,7 +198,6 @@ public class UserPageServiceImpl  implements UserPageService{
 		userpageDao.updatewriteInfo(userPage);
 	}
 		
-	}
 	
 	@Override
 	public UserPage selectByContent_no(int content_no) {
