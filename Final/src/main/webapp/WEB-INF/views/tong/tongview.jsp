@@ -183,7 +183,8 @@ function button_event(){
 </a>
 <script type='text/javascript'>
 //   <![CDATA[
-// //     사용할 앱의 JavaScript 키를 설정해 주세요.
+
+//     사용할 앱의 JavaScript 키를 설정해 주세요.
 //     Kakao.init('b737021ce8920b6a7fdac62cfcfc837d');
 //     function shareStory() {
 //       Kakao.Story.share({

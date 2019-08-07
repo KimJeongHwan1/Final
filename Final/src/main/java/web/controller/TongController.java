@@ -58,6 +58,10 @@ public class TongController {
 		
 		model.addAttribute("member", member);
 		
+		List<UserPage> writeList = userpageService.getwriteList(member);
+
+		model.addAttribute("write", writeList);
+		
 		int member_code = memberService.getMember_code(loginid);
 		
 		if(memberService.selectImgCheck(member_code)) {
@@ -80,27 +84,25 @@ public class TongController {
 		
 	}
 	
-	@RequestMapping(value = "/tong/appendlist", method = RequestMethod.GET)
-	public void appendlist(HttpSession session, Model model, HttpServletRequest req, Member member) {
-		
-		String loginid = (String)session.getAttribute("loginid");
-		
-		member.setMember_id(loginid);
-		
-		member = memberService.getMember(member);
-		
-		Paging paging = mypageService.CurPage(req);
-		
-		req.setAttribute("paging", paging);
-		
-		
-		List<UserPage> MyPageList = mypageService.MyPageList(member);
-		
-//		logger.info(MyPageList.toString());
-		
-		model.addAttribute("mypagelist", MyPageList);
-		
-	}
+//	@RequestMapping(value = "/tong/appendlist", method = RequestMethod.GET)
+//	public void appendlist(HttpSession session, Model model, HttpServletRequest req, Member member) {
+//		
+//		String loginid = (String)session.getAttribute("loginid");
+//		
+//		member.setMember_id(loginid);
+//		
+//		member = memberService.getMember(member);
+//		
+//		Paging paging = mypageService.CurPage(req);
+//		
+//		req.setAttribute("paging", paging);
+//		
+//		
+//		List<UserPage> MyPageList = mypageService.MyPageList(member);
+//		
+//		model.addAttribute("mypagelist", MyPageList);
+//		
+//	}
 	
 	@RequestMapping(value = "/tong/write", method = RequestMethod.GET)
 	public void write() {
@@ -399,7 +401,38 @@ public class TongController {
 	
 	@RequestMapping(value = "/tong/favorites", method = RequestMethod.GET)
 	public void favorites(HttpSession session, Model model) {
+		logger.info("+ + + + + + 즐겨찾기 폼 + + + + + +");
 		String loginid = (String) session.getAttribute("loginid");
+		
+		Member member = new Member();
+		member.setMember_id(loginid);
+		
+		member = memberService.getMember(member);
+		
+		logger.info("+ + + + + + 맴버 정보 + + + + + +");
+		logger.info(member.toString());
+		
+		model.addAttribute("member", member);
+		
+		int member_code = memberService.getMember_code(loginid);
+
+		if(memberService.selectImgCheck(member_code)) {
+			UserImg userImg = memberService.selectImg(member_code);
+			model.addAttribute("img", userImg);
+		} 
+
+		model.addAttribute("bool", memberService.selectImgCheck(member_code));
+		
+		List fwgList = tongService.selectListFwg(loginid);
+		
+		model.addAttribute("fwgList", fwgList);
+		logger.info(fwgList.toString());
+		
+		List fwrList = tongService.selectListFwr(loginid);
+		
+		model.addAttribute("fwrList", fwrList);
+		logger.info(fwrList.toString());
+		
 		
 		List list = tongService.favContentNo(loginid);
 		logger.info(list.toString());
