@@ -76,7 +76,7 @@
       <ul class="nav navbar-nav">
         <li ><a href="#">베스트게시판<span class="sr-only">(current)</span></a></li>
         
-        <c:if test="${mem.member_type != 1 }" >
+        <c:if test="${mem.member_type eq 2 }" >
         <li><a href="/black/list">블랙리스트</a></li>
         </c:if>
       </ul>

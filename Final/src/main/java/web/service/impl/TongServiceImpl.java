@@ -137,5 +137,11 @@ public class TongServiceImpl implements TongService {
 		
 		tongDao.updateBlockSeeDao(userPage);
 	}
+
+	@Override
+	public int favorite_Cnt(String loginid) {
+		// TODO Auto-generated method stub
+		return tongDao.favoriteCnt(loginid) ;
+	}
 	
 }

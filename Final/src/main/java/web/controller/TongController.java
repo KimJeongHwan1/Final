@@ -76,7 +76,12 @@ public class TongController {
 		
 		model.addAttribute("fwrList", fwrList);
 		logger.info(fwrList.toString());
-
+		
+		// 헤더 import문제로 코드추가
+		member.setMember_id(loginid);
+	    member = memberService.getMember(member);   
+	    model.addAttribute("mem", member);
+		
 		
 	}
 	
@@ -101,13 +106,20 @@ public class TongController {
 //	}
 	
 	@RequestMapping(value = "/tong/write", method = RequestMethod.GET)
-	public void write() {
+	public void write(Member member, Model model, HttpSession session) {
+		
+		// 헤더 import문제로 코드추가
+		String loginid = (String)session.getAttribute("loginid");
+		
+		member.setMember_id(loginid);
+	    member = memberService.getMember(member);   
+	    model.addAttribute("mem", member);
 		
 	}
 	
 	@RequestMapping(value = "/tong/write", method = RequestMethod.POST)
 	public String writeProc(HttpSession session, UserPage userpage,
-			@RequestParam(value="file")MultipartFile fileupload) {
+			@RequestParam(value="file")MultipartFile fileupload, Member member, Model model) {
 		
 		String loginid = (String)session.getAttribute("loginid");
 		
@@ -119,6 +131,11 @@ public class TongController {
 		} else {
 			userpageService.imgsave(fileupload, context, userpage);
 		}
+		
+		// 헤더 import문제로 코드추가
+		member.setMember_id(loginid);
+	    member = memberService.getMember(member);   
+	    model.addAttribute("mem", member);
 		
 		return "redirect:"+"/tong/mypage";
 	}
@@ -367,7 +384,7 @@ public class TongController {
 	}
 	
 	@RequestMapping(value = "/tong/timeLinePage", method = RequestMethod.GET)
-	public void timeLinePage(HttpSession session, Model model) {
+	public void timeLinePage(HttpSession session, Model model, Member member) {
 		
 		String loginid = (String) session.getAttribute("loginid");
 		
@@ -393,6 +410,14 @@ public class TongController {
 		List timeLine = tongService.getTimeLine(sum2);
 		
 		model.addAttribute("timeLine", timeLine);
+		
+		// 헤더 import문제로 코드추가
+		member.setMember_id(loginid);
+	    member = memberService.getMember(member);   
+	    model.addAttribute("mem", member);
+				
+		
+		
 	}
 	
 	@RequestMapping(value = "/tong/favorites", method = RequestMethod.GET)
@@ -436,6 +461,12 @@ public class TongController {
 		List favList = tongService.getFavList(list);
 		
 		model.addAttribute("favList", favList);
+		
+		// 헤더 import문제로 코드추가
+		member.setMember_id(loginid);
+	    member = memberService.getMember(member);   
+	    model.addAttribute("mem", member);
+		
 	}
 	
 	@RequestMapping(value = "/tong/delete", method = RequestMethod.GET)

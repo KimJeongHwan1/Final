@@ -38,15 +38,22 @@ public class BestController {
 	@Autowired UserPageService userpageService;
 	
 	@RequestMapping(value = "/best/list", method = RequestMethod.GET)
-	public void bestlist( Member member, Model model ) {
+	public void bestlist( Member member, Model model , HttpSession session) {
 		
 		List<UserPage> bestList = userpageService.getbestlist(member) ;
 		
 		model.addAttribute( "list" , bestList ) ; 
+		
+		// 헤더 import문제로 코드추가
+		String loginid = (String)session.getAttribute("loginid");
+		member.setMember_id(loginid);
+	    member = memberService.getMember(member);   
+	    model.addAttribute("mem", member);
+		
 	}
 	
 	@RequestMapping(value = "/best/view", method = RequestMethod.GET)
-	public void view(UserPage userpage, Model model, Good good, String member_id, HttpSession session) {
+	public void view(UserPage userpage, Model model, Good good, String member_id, HttpSession session, Member member) {
 		logger.info(userpage.toString());
 
 		UserPage userPage = userpageService.selectUserpage(userpage);
@@ -152,7 +159,13 @@ public class BestController {
 		List<Userpage_cocomment> cocomentList = userpageService.selectcocomentAll();
 
 		model.addAttribute("cocomentList", cocomentList);
-
+		
+		// 헤더 import문제로 코드추가
+		String loginid = (String)session.getAttribute("loginid");
+		member.setMember_id(loginid);
+	    member = memberService.getMember(member);   
+	    model.addAttribute("mem", member);
+		
 	}
 	
 	}

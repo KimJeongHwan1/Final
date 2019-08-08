@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import web.dto.BlackList;
+import web.dto.Member;
 import web.dto.UserPage;
 import web.service.face.BlackListService;
 import web.service.face.MemberService;
@@ -36,7 +37,7 @@ public class BlackListController {
 	@RequestMapping(value="/black/list", method=RequestMethod.GET)
 	
 	public void blackList(
-			@RequestParam(defaultValue="1") int curPage,Model model, BlackList blacklist) {
+			@RequestParam(defaultValue="1") int curPage, Model model, BlackList blacklist, Member member, HttpSession session) {
 		
 		logger.info("블랙리스트 폼");
 		
@@ -50,6 +51,12 @@ public class BlackListController {
 		List blist = blacklistService.getBlackList(paging);
 		
 		model.addAttribute("blacklist", blist);
+		
+		// 헤더 import문제로 코드추가
+		String loginid = (String)session.getAttribute("loginid");
+		member.setMember_id(loginid);
+	    member = memberService.getMember(member);   
+	    model.addAttribute("mem", member);
 		
 	}
 	

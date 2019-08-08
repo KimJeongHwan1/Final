@@ -24,7 +24,7 @@ public class HeaderController {
 	@Autowired UserPageService userpageService;
 	
 	@RequestMapping(value="/layout/header", method=RequestMethod.GET)
-	public void header(HttpSession session, Model model, Member member) {
+	public void header(HttpSession session, Model model, Member member ) {
 		
 		String loginid = (String)session.getAttribute("loginid");
 		logger.info(loginid);

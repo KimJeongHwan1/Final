@@ -76,6 +76,12 @@ public class UserPageController {
 		int check = userpageService.checkFollowing(fwg);
 
 		model.addAttribute("check", check);
+		
+		// 헤더 import문제로 코드추가
+		member.setMember_id(loginid);
+	    member = memberService.getMember(member);   
+	    model.addAttribute("mem", member);
+		
 	}
 
 	@RequestMapping(value = "/userpage/view", method = RequestMethod.GET)
