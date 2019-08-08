@@ -4,9 +4,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<!-- <link href="https://fonts.googleapis.com/css?family=Jua&display=swap&subset=korean" rel="stylesheet"> -->
-
 <c:import url="/WEB-INF/views/layout/header.jsp" />
+
+<link href="https://fonts.googleapis.com/css?family=Jua&display=swap&subset=korean" rel="stylesheet">
+
 <script type="text/javascript">
 $(document).ready(function() {
 	InitializeStaticMenu();
@@ -140,10 +141,6 @@ function InitializeStaticMenu() {
 </script>
 
 <style type="text/css">
-#background{
-	background-color:white;
-
-}
 /* 메뉴 네비게이션바 */
 
 #STATICMENU {
@@ -163,6 +160,7 @@ table {
 /* 	border-bottom: 3px solid black; */
 	width:auto;
 	text-align : center;
+	font-family: 'Jua', sans-serif;
 	font-size:25px;
 }
 .table th, td{
@@ -189,7 +187,7 @@ th{
 }
 .statictable{
 	font-size: 20px;
-/*  	font-family: 'Jua', sans-serif; */
+  	font-family: 'Jua', sans-serif;
  	
 }
 
@@ -269,19 +267,20 @@ th{
 	border: 1px solid black;
 }
 #hr{
-	width:60%;]
+	width:60%;
 	margin-left:20px;
 }
 a:link , a:visited , a:active , a:hover {
    color: black ;
 }
-a:hover { text-decoration:none ; }
+a:hover { text-decoration:none ; 
+}
+
 /* 윈도우 마스크 */
 .container {
 	border-left : 1px solid #eee;
 	border-right : 1px solid #eee;
 }
-
 
 /* 마스크 뛰우기 */
 #mask {  
@@ -328,15 +327,14 @@ a:hover { text-decoration:none ; }
 	background-color: white;
 	color: black;
 	padding: 5px;
-
-
+	font-family: 'Jua', sans-serif;
 }
 
 #prev:hover, #next:hover{
     color: white;
     background-color: #e85a71;
     border: 1px solid #e85a71;
-/*     font-family: 'Jua', sans-serif; */
+    font-family: 'Jua', sans-serif;
 }
 #content {
 	height: 200px;
@@ -366,7 +364,6 @@ a:hover { text-decoration:none ; }
 	</table>
 </div>
 
-<body id="background">
 <div id="see_menu_menu2">
 <table id="see_menu_table2" style="margin-top: 50px; color: black;">
 
@@ -409,7 +406,6 @@ a:hover { text-decoration:none ; }
 
 </div>
 
-<hr>
 <hr id="hr">
 
 
@@ -476,6 +472,5 @@ a:hover { text-decoration:none ; }
 
 </div>
 
-</body>
 <%-- <c:import url="/WEB-INF/views/layout/infiScroll.jsp" /> --%>
 <c:import url="/WEB-INF/views/layout/footer.jsp" />

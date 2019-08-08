@@ -5,6 +5,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <c:import url="/WEB-INF/views/layout/header.jsp" />
+<link href="https://fonts.googleapis.com/css?family=Jua&display=swap&subset=korean" rel="stylesheet">
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.3.0/sockjs.js"></script>
 
 <script type="text/javascript">
@@ -205,7 +207,8 @@ th{
 }
 .table th:first-child, td:first-child{
  	border-left: 0;
- 	background-color:#E6E6E6;
+ 	background-color:#d8e9ef;
+ 	font-color:black;
 }
 .table th:last-child, td:last-child{
  	border-right: 0;
@@ -308,6 +311,33 @@ th{
 	height : 450px;
 	background-color: #F2F2F2;
 }
+#follow_btn {
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	margin-right:-4px;
+	border: 1px solid white;
+	background-color: white;
+	color: black;
+	padding: 5px;
+	font-family: 'Jua', sans-serif;
+}
+
+#follow_btn:hover{
+    color: white;
+    background-color: #e85a71;
+    border: 1px solid #e85a71;
+/*     font-family: 'Jua', sans-serif; */
+}
+#hr{
+	width:60%;
+	margin-left:20%;
+}
+a:link , a:visited , a:active , a:hover {
+   color: black ;
+}
+a:hover { text-decoration:none ; }
 </style>
 
 <div id="see_menu_menu2">
@@ -317,10 +347,10 @@ th{
 		<td rowspan="2" style="padding: 10px;"><img src="${paceContext.request.contextPath}/resources/img/img4.jpg" id="userprofilimg"/></td>
 		<td>${user_id }
 			<c:if test="${check == 1 }">
-				<button id="follow_btn" type="button"><span id="follow_msg">팔로우</span></button>
+				<button id="follow_btn" type="button"><span id="follow_msg">팔로우</span></button>				
 			</c:if>
 			<c:if test="${check == 0 }">
-				<button id="follow_btn" type="button"><span id="follow_msg">언팔로우</span></button>
+				<button id="follow_btn" type="button"><span id="follow_msg">언팔로우</span></button>			
 			</c:if>
 		</td>
 		<td><a id="chat">채팅하기</a></td>
@@ -353,7 +383,9 @@ th{
 
 </table>
 </div>
+
 <hr>
+<hr id="hr">
 
 <div  >
 <div id="user_write_div">
