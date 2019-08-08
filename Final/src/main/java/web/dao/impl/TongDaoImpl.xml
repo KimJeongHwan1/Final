@@ -131,4 +131,12 @@
 		where content_no = #{content_no }
 	</update>
 	
+	<select id="favoriteCnt"
+		resultType="int"
+		parameterType="String">
+		
+		select count(*) from favorites
+		where member_id = #{loginid } 
+	</select>
+	
 </mapper>

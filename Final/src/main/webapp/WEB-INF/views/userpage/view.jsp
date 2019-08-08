@@ -517,10 +517,10 @@ $(document).ready(function(){
 
 </div>
 
-<div id="declarationDiv" style="background-color: #E0F2F7; width: 400px; height: 300px;" >
+<div id="declarationDiv" style="background-color: #E0F2F7; width: 400px; height: 290px;" >
 	
 	<textarea rows="10" cols="40" id="decl" name="decl" placeholder="신고사유를 작성해 주세요"
-		style="margin-left: 50px; margin-top: 50px;"></textarea>
+		style="margin-left: 50px; margin-top: 35px;"></textarea>
 	
 	<button id="decl_btn" style="margin-left: 170px;">신고</button>
 </div>

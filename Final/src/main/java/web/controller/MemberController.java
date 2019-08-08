@@ -106,13 +106,18 @@ public class MemberController {
 
 	// 일반 로그인 했을때
 	@RequestMapping(value = "/member/main2", method = RequestMethod.GET) 
-	public void main2(HttpSession session, Model model) { 
+	public void main2(HttpSession session, Model model , Member member) { 
 		
 		String loginid = (String) session.getAttribute("loginid");
 		
 		List<Member> list = memberService.getUseridList(loginid);
 		
 		model.addAttribute("list", list);
+		
+		// 헤더 import문제로 코드추가
+		member.setMember_id(loginid);
+		member = memberService.getMember(member);	
+		model.addAttribute("mem", member);
 		
 	}
 
@@ -121,13 +126,22 @@ public class MemberController {
 
 		memberService.join(member); //회원가입 처리
 		logger.info("회원가입 : " + member.toString() ) ;
+		
 		return "redirect:/member/login"; //main2페이지로 리다이렉트
 
 	}
 	
 	@RequestMapping(value="/member/join", method=RequestMethod.GET)
-	public void join() { 
+	public void join(Member member, Model model, HttpSession session) { 
 		logger.info("회원가입 폼");
+		
+		// 헤더 import문제로 코드추가
+		String loginid = (String) session.getAttribute("loginid");
+		
+		member.setMember_id(loginid);
+	    member = memberService.getMember(member);   
+	    model.addAttribute("mem", member);
+		
 	}
 	
 	@RequestMapping(value="/member/idCheck", method=RequestMethod.GET)
@@ -226,6 +240,12 @@ public class MemberController {
 		} 
 
 		model.addAttribute("bool", memberService.selectImgCheck(member_code));
+		
+		// 헤더 import문제로 코드추가
+		member.setMember_id(loginid);
+	    member = memberService.getMember(member);   
+	    model.addAttribute("mem", member);
+		
 	}
 
 	@RequestMapping(value="/member/updateInfo", method=RequestMethod.POST)
@@ -252,7 +272,7 @@ public class MemberController {
 
 
 	@RequestMapping(value="/member/updatePw", method=RequestMethod.GET)
-	public void updatePw(HttpSession session, Model model) {
+	public void updatePw(HttpSession session, Model model, Member member) {
 
 		String loginid = (String)session.getAttribute("loginid");
 
@@ -265,6 +285,12 @@ public class MemberController {
 		} 
 
 		model.addAttribute("bool", memberService.selectImgCheck(member_code));
+		
+		// 헤더 import문제로 코드추가
+		member.setMember_id(loginid);
+	    member = memberService.getMember(member);   
+	    model.addAttribute("mem", member);
+		
 	}
 
 	@RequestMapping(value="/member/pwChange", method=RequestMethod.GET)
@@ -296,11 +322,16 @@ public class MemberController {
 
 
 	@RequestMapping(value="/member/delete", method=RequestMethod.GET)
-	public void delete(HttpSession session, Model model) {
+	public void delete(HttpSession session, Model model, Member member) {
 		String loginid = (String) session.getAttribute("loginid");
 
 		String loginpw = memberService.pwCheck(loginid);
 		model.addAttribute("logpw", loginpw);
+		
+		// 헤더 import문제로 코드추가
+		member.setMember_id(loginid);
+	    member = memberService.getMember(member);   
+	    model.addAttribute("mem", member);
 	}
 
 	@RequestMapping(value="/member/resultdelete", method=RequestMethod.POST)
@@ -390,6 +421,15 @@ public class MemberController {
 		
 		int list = tongService.list_Cnt(member_code) ;
 		model.addAttribute( "list" , list ) ;
+		
+		int favorite = tongService.favorite_Cnt(loginid);
+		model.addAttribute( "favorite" , favorite ) ;
+		
+		// 헤더 import문제로 코드추가
+		member.setMember_id(loginid);
+	    member = memberService.getMember(member);   
+	    model.addAttribute("mem", member);
+		
 		
 	}	
 

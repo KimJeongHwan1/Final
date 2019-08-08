@@ -37,5 +37,7 @@ public interface TongDao {
 	
 	public void updateBlockSeeDao(UserPage userPage);
 	
+	public int favoriteCnt( String loginid ) ;
+	
 	
 }

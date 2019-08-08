@@ -76,14 +76,14 @@
       <ul class="nav navbar-nav">
         <li ><a href="#">베스트게시판<span class="sr-only">(current)</span></a></li>
         
-        <c:if test="${mem.member_type != 1 }" >
+        <c:if test="${mem.member_type eq 2 }" >
         <li><a href="/black/list">블랙리스트</a></li>
         </c:if>
       </ul>
 
      
       <ul class="nav navbar-nav navbar-right" id="ssnav">
-        <li><a href="/userpage/write"><span class="glyphicon glyphicon-cloud-upload" id="cloud"></span></a></li>
+        <li><a href="/tong/write"><span class="glyphicon glyphicon-cloud-upload" id="cloud"></span></a></li>
         
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-bell" id="bell"></span></a>

@@ -11,18 +11,25 @@
 #write_div{
    margin: 0 auto;
    width: 1100px;
+}   
+#h1{
+	margin-left: 21% ;
+
+}
+#hr{
+	width: 60%
 }
 </style>
 <body>
 
+<h1 id="h1">게시글 쓰기</h1>
+<hr id="hr">
 
-<h1>게시글 쓰기</h1>
-<hr>
 
 <div id="write_div">
 
-<form action="/tong/write" method="post" enctype="multipart/form-data">
-<table style="width: 100%">
+<form action="/tong/write" method="post" enctype="multipart/form-data" style="height: 100%;">
+<table style="width: 100%;">
 <tr>
    <td style="width: 20%">제목</td>
    <td style="width: 80%"><input type="text" name="content_title" id="content_title" placeholder="내용을 입력해주세요" style="width: 498px;"/></td>
