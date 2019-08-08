@@ -83,7 +83,7 @@
 
      
       <ul class="nav navbar-nav navbar-right" id="ssnav">
-        <li><a href="/userpage/write"><span class="glyphicon glyphicon-cloud-upload" id="cloud"></span></a></li>
+        <li><a href="/tong/write"><span class="glyphicon glyphicon-cloud-upload" id="cloud"></span></a></li>
         
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-bell" id="bell"></span></a>

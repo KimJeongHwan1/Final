@@ -112,20 +112,20 @@
 </style>
 
 <head>
-<meta charset="utf-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
-<title>KakaoStory Share Button Demo - Kakao JavaScript SDK</title>
-<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+<!-- <meta charset="utf-8"/> -->
+<!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"/> -->
+<!-- <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/> -->
+<!-- <title>KakaoStory Share Button Demo - Kakao JavaScript SDK</title> -->
+<!-- <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script> -->
 
-</head>
-<body>
-<a href="javascript:shareStory()">
-<img src="https://developers.kakao.com/sdk/js/resources/story/icon_small.png"/>
-</a>
-<script type='text/javascript'>
+<!-- </head> -->
+<!-- <body> -->
+<!-- <a href="javascript:shareStory()"> -->
+<!-- <img src="https://developers.kakao.com/sdk/js/resources/story/icon_small.png"/> -->
+<!-- </a> -->
+<!-- <script type='text/javascript'> -->
 //   <![CDATA[
-//     사용할 앱의 JavaScript 키를 설정해 주세요.
+//   //  사용할 앱의 JavaScript 키를 설정해 주세요.
 //     Kakao.init('b737021ce8920b6a7fdac62cfcfc837d');
 //     function shareStory() {
 //       Kakao.Story.share({
@@ -134,7 +134,7 @@
 //       });
 //     }
 //   ]]>
-</script>
+<!-- </script> -->
 
 <script type="text/javascript">
 $(document).ready(function() {
