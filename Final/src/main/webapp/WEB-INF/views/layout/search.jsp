@@ -70,7 +70,14 @@
 	});
 </script>
 
-<style>
+<style type="text/css">
+#background{
+	background-image:url('/resources/img/doma.jpg');
+	position:absolute;
+	width:100%;
+	height:100%;
+	background-size:cover;
+}
 .list_img{
 	width: 250px;
 	height: 200px;
@@ -161,13 +168,19 @@ $(document).ready(function(){
 <div id="block" style="width: 100%; height: 2px; border: 1px solid black; clear: both;"></div>
 
 <h3>게시물</h3>
+<body id="background">
 <div id="user_write_div">
 <c:set var="n" value="0"/>
 <c:set var="m" value="1"/>
 <c:forEach items="${userpageList }" var="i">
 <c:set var="sum" value="${n + m }"/>
 <div id="user_write_list">
-<a href="/userpage/view?content_no=${i.content_no }" class="openMask"><img src="/uppage/${i.storedname }" id="file_img${sum }" class="list_img"></a><br>
+<c:if test="${i.originname != null }">
+<a href="/userpage/view?content_no=${i.content_no }" class="openMask"><img src="/uppage/${i.storedname }" id="file_img${sum }" class="list_img"/></a><br>
+</c:if>
+<c:if test="${i.originname eq null }">
+<a href="/userpage/view?content_no=${i.content_no }" class="openMask"><img src="${paceContext.request.contextPath}/resources/img/NoImg.png"class="list_img"/></a><br>
+</c:if>
 
 <span id="spanmsg1${sum }" class="glyphicon glyphicon-heart-empty"> ${i.hit } </span>
 <span id="spanmsg2${sum }" class="glyphicon glyphicon-pencil"> ${i.comm_count } </span>
@@ -187,4 +200,5 @@ $(document).ready(function(){
 </div>
 
 </div>
+</body>
 <c:import url="/WEB-INF/views/layout/footer.jsp" />

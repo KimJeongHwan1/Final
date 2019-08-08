@@ -68,25 +68,36 @@
 
 	});
 </script>
-<style>
+<style type="text/css">
+#background{
+	background-image:url('/resources/img/tong1.jpg');
+	position:absolute;
+	width:100%;
+	height:100%;
+	background-size:cover;
+}
 .list_img{
-	width: 250px;
-	height: 200px;
+	width: 300px;
+	height: 250px;
 	margin: 0 auto;
 	margin-bottom: 10px;
 	margin-top: 10px;
+	border-radius: 10px;
+	background
 }
 #user_write_div{
-	margin-left: 300px;
-	width: 1000px;
+	margin-left: 25%;
+	width: 1400px;
 }
 #user_write_list{
-	width: 280px;
+	width: 320px;
 	text-align: center;
-	border: 1px solid black;
 	float: left;
 	margin-left: 50px;
 	margin-bottom: 50px;
+	border-radius: 10px;
+	margin-top:70px;
+	background-color: #FFEEE4;
 }
 /* 윈도우 마스크 */
 .container {
@@ -125,18 +136,19 @@
 	width: 250px;
 }
 </style>
-
+<!--  style="background-color: #d8e9ef; -->
+<body id="background">
 <div id="user_write_div">
 <c:set var="n" value="0"/>
 <c:set var="m" value="1"/>
 <c:forEach items="${timeLine }" var="i">
 <c:set var="sum" value="${n + m }"/>
 <div id="user_write_list">
-<c:if test="${i.storedname != '0' }">
-<a href="/userpage/view?content_no=${i.content_no }" class="openMask"><img src="/uppage/${i.storedname }" id="file_img${sum }" class="list_img"></a><br>
+<c:if test="${i.originname != null }">
+<a href="/userpage/view?content_no=${i.content_no }" class="openMask"><img src="/uppage/${i.storedname }" id="file_img${sum }" class="list_img"/></a><br>
 </c:if>
-<c:if test="${i.storedname eq '0' }">
-<a href="/userpage/view?content_no=${i.content_no }" class="openMask"><div id="content">${i.content_title }<p>${i.content }</div></a><br>
+<c:if test="${i.originname eq null }">
+<a href="/userpage/view?content_no=${i.content_no }" class="openMask"><img src="${paceContext.request.contextPath}/resources/img/NoImg.png"class="list_img"/></a><br>
 </c:if>
 <span id="spanmsg1${sum }" class="glyphicon glyphicon-heart-empty"> ${i.hit } </span>
 <span id="spanmsg2${sum }" class="glyphicon glyphicon-pencil"> ${i.comm_count } </span>
@@ -156,4 +168,5 @@
 </div>
 
 </div>
+</body>
 <c:import url="/WEB-INF/views/layout/footer.jsp" />

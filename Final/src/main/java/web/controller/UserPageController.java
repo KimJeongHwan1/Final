@@ -82,9 +82,7 @@ public class UserPageController {
 		int check = userpageService.checkFollowing(fwg);
 
 		model.addAttribute("check", check);
-		
-		
-		//---------
+
 		
 		String myid = (String) session.getAttribute("loginid");
 		model.addAttribute("myid", myid);
@@ -103,7 +101,12 @@ public class UserPageController {
 		
 		model.addAttribute("view", view);
 		
-		
+
+		// 헤더 import문제로 코드추가
+		member.setMember_id(loginid);
+	    member = memberService.getMember(member);   
+	    model.addAttribute("mem", member);
+
 		
 	}
 

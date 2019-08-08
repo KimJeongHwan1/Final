@@ -37,5 +37,6 @@ public interface TongService {
 	
 	public void updateBlockSee(UserPage userPage);
 	
+	public int favorite_Cnt( String loginid ) ;
 	
 }
