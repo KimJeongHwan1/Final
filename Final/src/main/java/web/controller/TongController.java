@@ -114,7 +114,7 @@ public class TongController {
 		int member_code = memberService.getMember_code(loginid);
 		userpage.setMember_code(member_code);
 		
-		if(fileupload.getOriginalFilename().equals("")) {
+		if(fileupload.getOriginalFilename().equals("0")) {
 			userpageService.insertwrite(userpage);
 		} else {
 			userpageService.imgsave(fileupload, context, userpage);

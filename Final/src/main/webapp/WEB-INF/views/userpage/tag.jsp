@@ -129,7 +129,12 @@
 <c:forEach items="${list }" var="i">
 <c:set var="sum" value="${n + m }"/>
 <div id="user_write_list">
-<a href="/userpage/view?content_no=${i.content_no }" class="openMask"><img src="/uppage/${i.storedname }" id="file_img${sum }" class="list_img"></a><br>
+<c:if test="${i.originname != null }">
+<a href="/userpage/view?content_no=${i.content_no }" class="openMask"><img src="/uppage/${i.storedname }" id="file_img${sum }" class="list_img"/></a><br>
+</c:if>
+<c:if test="${i.originname eq null }">
+<a href="/userpage/view?content_no=${i.content_no }" class="openMask"><img src="${paceContext.request.contextPath}/resources/img/NoImg.png"class="list_img"/></a><br>
+</c:if>
 
 <span id="spanmsg1${sum }" class="glyphicon glyphicon-heart-empty"> ${i.hit } </span>
 <span id="spanmsg2${sum }" class="glyphicon glyphicon-pencil"> ${i.comm_count } </span>
