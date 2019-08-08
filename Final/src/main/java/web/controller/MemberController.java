@@ -135,13 +135,6 @@ public class MemberController {
 	public void join(Member member, Model model, HttpSession session) { 
 		logger.info("회원가입 폼");
 		
-		// 헤더 import문제로 코드추가
-		String loginid = (String) session.getAttribute("loginid");
-		
-		member.setMember_id(loginid);
-	    member = memberService.getMember(member);   
-	    model.addAttribute("mem", member);
-		
 	}
 	
 	@RequestMapping(value="/member/idCheck", method=RequestMethod.GET)
@@ -199,7 +192,7 @@ public class MemberController {
 			session.setMaxInactiveInterval(20 * 60);
 
 			//리다이렉트 URL 지정
-			redirectUrl = "/member/main2";
+			redirectUrl = "/tong/timeLinePage";
 
 		} else {
 			//로그인 실패

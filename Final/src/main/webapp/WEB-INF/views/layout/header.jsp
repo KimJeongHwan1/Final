@@ -66,7 +66,7 @@
       <a class="navbar-brand" href="/main" id="title">요리Tong</a>
       </c:if>
       <c:if test="${login }">
-      <a class="navbar-brand" href="/member/main2" id="title">요리Tong</a>
+      <a class="navbar-brand" href="/tong/timeLinePage" id="title">요리Tong</a>
       </c:if>
  
     </div>
@@ -74,7 +74,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li ><a href="#">베스트게시판<span class="sr-only">(current)</span></a></li>
+        <li ><a href="/best/list">베스트게시판<span class="sr-only">(current)</span></a></li>
         
         <c:if test="${mem.member_type eq 2 }" >
         <li><a href="/black/list">블랙리스트</a></li>
@@ -85,16 +85,6 @@
       <ul class="nav navbar-nav navbar-right" id="ssnav">
         <li><a href="/tong/write"><span class="glyphicon glyphicon-cloud-upload" id="cloud"></span></a></li>
         
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-bell" id="bell"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li class="divider"></li>
-            <li><a href="#">4</a></li>
-          </ul>
-        </li>
       
       
         <li class="dropdown">
@@ -115,7 +105,7 @@
 			
 			</table>
             <li class="divider"></li>
-            <li><a href="/tong/mypage">타임라인</a></li>
+            <li><a href="/tong/mypage">마이페이지</a></li>
             <li class="divider"></li>
             <li><a href="/member/mypage">정보수정</a></li>
             <li><a href="/member/logout">로그아웃</a></li>

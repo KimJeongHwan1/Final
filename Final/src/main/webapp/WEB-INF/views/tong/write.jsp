@@ -6,7 +6,6 @@
 
 
 
-</head>
 <style>
 #write_div{
    margin: 0 auto;
@@ -20,7 +19,6 @@
 	width: 60%
 }
 </style>
-<body>
 
 <h1 id="h1">게시글 쓰기</h1>
 <hr id="hr">
@@ -153,5 +151,4 @@
 
 </div>
 
-</body>
 <c:import url="/WEB-INF/views/layout/footer.jsp" />

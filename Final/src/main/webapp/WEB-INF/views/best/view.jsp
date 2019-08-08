@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:import url="/WEB-INF/views/layout/header.jsp" />
 
 <!-- jQuery 2.2.4 -->
@@ -14,7 +13,6 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
-</head>
 <style>
 
 #main_div{
@@ -30,10 +28,6 @@
 	border: 1px solid blue;
 	margin: 0;
 	float: left;
-}
-img{
-	width: 100%;
-	height: 400px;
 }
 #uploadImg{
 	width: 100%;
@@ -99,15 +93,31 @@ img{
 #userface{
 	font-size: 40px;
 }
+#declarationDiv{
+	position: fixed;
+	top: 100px;
+	left: 1050px;
+}
 #kakao{
 	height:6%;
 	width:6%;
 	
 }
+
 </style>
 
 <script type="text/javascript">
 $(document).ready(function() {
+	
+	$('#declarationDiv').hide();
+	$('#declaration').click(function(){
+	    var state = $('#declarationDiv').css('display');
+	    if(state == 'none'){
+	        $('#declarationDiv').show();
+	    }else{
+	        $('#declarationDiv').hide();
+	    }
+	});
 	
 	$("#good_btn").click(function() {
 		
@@ -131,7 +141,7 @@ $(document).ready(function() {
 			, data: { }
 			, dataType: "html"
 			, success: function( res ) {
-				$("#1").html(res);
+				$("#good_btn").html(res);
 				console.log("성공");
 			}
 			, error: function() {
@@ -161,19 +171,63 @@ $(document).ready(function() {
 	});
 });
 </script>
-<body>
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#fav").click(function() {
+		$.ajax({
+			type: "get"
+			, url: "/userpage/fav?content_no=${userpage.content_no}"
+			, data:  { } 
+			, dataType: "html"
+			, success: function( res ) {
+				$("#fav_msg").html(res);
+				console.log("성공");
+			}
+			, error: function() {
+				console.log("실패");
+			}
+		});
+	});
+});
+</script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#decl_btn").click(function() {
+		$.ajax({
+			type: "get"
+			, url: "/black/insert?id=${id }&&content_no=${userpage.content_no }"
+			, data:  $("#decl")
+			, dataType: "html"
+			, success: function( res ) {
+				console.log("성공");
+			}
+			, error: function() {
+				console.log("실패");
+			}
+		});
+		$('#decl').val('');
+		$('#declarationDiv').hide();
+	});
+});
+</script>
 
-
+<c:if test="${userpage.storedname != '0' }">
 <div id="main_div">
 <img src="/uppage/${userpage.storedname }" id="uploadImg"/>
-
 </div>
+</c:if>
 
 <div id="write_div">
 <div id="head_area">
-<span class="glyphicon glyphicon-user"> ${id } </span>
-<span class="glyphicon glyphicon-plus">팔로우 </span>
-<span class="glyphicon glyphicon-align-justify"></span>
+<span class="glyphicon glyphicon-user" style="margin-left: 20px; font-size: 15px;"> ${id }</span>
+<span id="declaration" class="glyphicon glyphicon-bullhorn" style="margin-left: 20px; font-size: 15px;"> 신고하기</span>
+<c:if test="${fav_check == 1 }">
+	<span id="fav" class="glyphicon glyphicon-ok" style="margin-left: 20px; font-size: 15px;"> <span id="fav_msg">즐겨찾기취소</span></span>
+</c:if>
+<c:if test="${fav_check == 0 }">
+	<span id="fav" class="glyphicon glyphicon-ok" style="margin-left: 20px; font-size: 15px;"> <span id="fav_msg">즐겨찾기추가</span></span>
+</c:if>
+
 </div>
 <div id="tag_area">
 <c:if test="${tagList !=null }">
@@ -186,7 +240,7 @@ $(document).ready(function() {
 <div id="comment_area_see">
 
 <div id="content_area">
-<table>
+<table id="content_area_table">
 <c:if test="${bool == false }">
 <tr>
 	<td rowspan="2"><img id="userimg" src="${paceContext.request.contextPath}/resources/img/img4.jpg"/></td>
@@ -230,7 +284,7 @@ ${i.content }<br>
 <label id="nextcomentwrite${sum }">댓글</label>&nbsp;&nbsp;&nbsp;&nbsp;
 
 <c:if test="${loginid == i.member_id }">
-<a href=""><span id="delete_msg${sum }">삭제</span></a><br><br>
+<span id="delete_msg${sum }" style="color: blue;">삭제</span><br><br>
 </c:if>
 <script type="text/javascript">
 $(document).ready(function() {
@@ -301,7 +355,7 @@ ${coco.content }<br>
 <fmt:formatDate value="${coco.writtendate }" pattern="yyyy년 MM월 dd일 hh:mm:ss" />&nbsp;&nbsp;&nbsp;&nbsp;
 
 <c:if test="${loginid == coco.member_id }">
-<a href=""><span id="delete_coco_msg${ccmsum }">삭제</span></a><br><br>
+<span id="delete_coco_msg${ccmsum }" style="color:blue;">삭제</span><br><br>
 </c:if>
 <c:if test="${loginid != coco.member_id }">
 <br><br>
@@ -369,51 +423,36 @@ $(document).ready(function() {
 
 
 <c:if test="${goodCheck == 1}">
-<button type="button" id="good_btn"><span id = "1" class="glyphicon glyphicon-star"></span></button>
+<button type="button" id="good_btn"><span class="glyphicon glyphicon-star"></span></button>
 </c:if>
 <c:if test="${goodCheck == 0}">
-<button type="button" id="good_btn"><span id = "1" class="glyphicon glyphicon-star-empty"></span></button>
+<button type="button" id="good_btn"><span class="glyphicon glyphicon-star-empty"></span></button>
 </c:if>
-<span id="good"><span id="good_span">좋아요${good_no }</span></span>
+<span id="good"><span id="good_span">${good_no }</span></span>&nbsp;&nbsp;&nbsp;
 
-
-<span id="kakao1"><script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-<a href="javascript:shareStory()">
-<img id="kakao" src="https://developers.kakao.com/sdk/js/resources/story/icon_small.png"/>
-</a>
 <script type='text/javascript'>
-  //<![CDATA[
-    // 사용할 앱의 JavaScript 키를 설정해 주세요.
-    Kakao.init('YOUR APP KEY');
-    function shareStory() {
-      Kakao.Story.share({
-        url: 'http://localhost:8088/userpage/view?content_no=1',
-        text: '게시물 공유 #개발테스트 #공유 :)'
-      });
-    }
-  //]]>
-</script>
+
+<br>
+&nbsp;${userpage.address }
+<c:if test="${userpage.address != null }">
+<span id="map" class="glyphicon glyphicon-map-marker"></span>
+</c:if>
+
+<div>
+
 <script type="text/javascript">
-$(document).ready(function() {
-	$("#write_btn").click(function() {
-		$.ajax({
-			type: "get"
-			, url: "/userpage/viewComment?content_no=${userpage.content_no}"
-			, data:  $("#comment") 
-			, dataType: "html"
-			, success: function( res ) {
-				$("#userscomment").html(res);
-				console.log("성공");
-			}
-			, error: function() {
-				console.log("실패");
-			}
-		});
-		$('#comment').val('');
+$(document).ready(function(){
+	$("#map").click(function(){
+		var popUrl = "/userpage/map?content_no=${userpage.content_no }";	//팝업창에 출력될 페이지 URL
+	
+		var popOption = "width=500, height=400, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
+
+		window.open(popUrl,"",popOption);
 	});
 });
-</script>공유하기
- </span>
+</script>
+ 
+</div>
 
 <br>
 <span>조회수</span> ${userpage.hit }<br>
@@ -430,5 +469,14 @@ $(document).ready(function() {
 </div>
 
 </div>
+
+<div id="declarationDiv" style="background-color: #E0F2F7; width: 400px; height: 290px;" >
+	
+	<textarea rows="10" cols="40" id="decl" name="decl" placeholder="신고사유를 작성해 주세요"
+		style="margin-left: 50px; margin-top: 35px;"></textarea>
+	
+	<button id="decl_btn" style="margin-left: 170px;">신고</button>
+</div>
+
 
 <c:import url="/WEB-INF/views/layout/footer.jsp" />

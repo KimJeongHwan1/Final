@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-<c:import url="/WEB-INF/views/layout/header.jsp" />
+<c:import url="/WEB-INF/views/layout/beforeheader.jsp" />
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
 function sample6_execDaumPostcode() {

@@ -30,8 +30,8 @@
 <div id="list">
 	<div id="img">
 	<img src="${paceContext.request.contextPath}/uppage/${i.storedname }" alt="htImg" width="70px;" height="70px;"></div>
-	<div id="content"><a href="/best/view?content_no=${i.content_no }">내용1</a><br><br>
-	상세내용</div><div style="clear: both;"></div>
+	<div id="content"><a href="/best/view?content_no=${i.content_no }">${i.content_title}</a><br><br>
+	${i.content}</div><div style="clear: both;"></div>
 	<hr style="width: 40%; margin-left: 30%;">
 </div>
 <c:set var="n" value="${sum }"/>
