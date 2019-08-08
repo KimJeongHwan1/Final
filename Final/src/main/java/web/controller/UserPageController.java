@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import web.dao.face.ChatDao;
 import web.dto.Favorites;
 import web.dto.Following;
 import web.dto.Good;
@@ -26,6 +27,7 @@ import web.dto.UserImg;
 import web.dto.UserPage;
 import web.dto.Userpage_cocomment;
 import web.dto.Userpage_comment;
+import web.dto.Websocket;
 import web.service.face.MemberService;
 import web.service.face.TongService;
 import web.service.face.UserPageService;
@@ -43,8 +45,12 @@ public class UserPageController {
 	@Autowired UserPageService userpageService;
 	@Autowired TongService tongService;
 
+	@Autowired ChatDao chatDao;
+	
+	
+	
 	@RequestMapping(value = "/userpage/userpage", method = RequestMethod.GET)
-	public void userpage(Member member, Model model, HttpSession session) {
+	public void userpage(HttpSession session, Member member, Model model) {
 
 		member = memberService.getMember(member);
 
@@ -76,11 +82,31 @@ public class UserPageController {
 		int check = userpageService.checkFollowing(fwg);
 
 		model.addAttribute("check", check);
+
 		
+		String myid = (String) session.getAttribute("loginid");
+		model.addAttribute("myid", myid);
+		String userid = member.getMember_id();
+		System.out.println(userid + "유저아이디닷");
+		
+		Websocket websocket = new Websocket();
+		
+		websocket.setSender(myid);
+		websocket.setReceiver(userid);
+		
+		
+		
+		// 
+		List view = chatDao.view(websocket);
+		
+		model.addAttribute("view", view);
+		
+
 		// 헤더 import문제로 코드추가
 		member.setMember_id(loginid);
 	    member = memberService.getMember(member);   
 	    model.addAttribute("mem", member);
+
 		
 	}
 

@@ -5,6 +5,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <c:import url="/WEB-INF/views/layout/header.jsp" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.3.0/sockjs.js"></script>
+
 <script type="text/javascript">
 $(document).ready(function() {
 	$("#follow_btn").click(function(e){ 
@@ -16,6 +18,7 @@ $(document).ready(function() {
 			, success: function( res ) {
 				$("#follow_msg").html(res);
 				console.log("성공");
+			
 			}
 			, error: function() {
 				console.log("실패");
@@ -26,32 +29,87 @@ $(document).ready(function() {
 
 // 채팅
 $(document).ready(function() {
-
-	$("#chat").click(function(e){
 	
+	$('#area').hide();
+	$('#chat').click(function(){
 		$.ajax({
 			type : "get"
-			, url : "/socket/chat?userid=${userid}"
+			, url : "/socket/chat?userid=${user_id}"
 			, data :{}
 			, dataType : "html"
 			, success : function ( res ) {
-				$("#chatarea").html(res)
+				$("#data").html(res);
 				console.log("성공");
-				
-			}			
+			}		
 			, error : function() {
 				console.log("실패");
 			}
-			
 		});
-		
-		
-		
-		
+
+	    var state = $('#area').css('display');
+	    if(state == 'none'){
+	        $('#area').show();
+	    }else{
+	        $('#area').hide();
+	    }
+
 	});
 	
+// 	$("#sendBtn").click(function(e){
 	
+//      sendMessage(); 
+//      $('#message').val('')
+//      $("#message").focus()
+// // 		$.ajax({
+// // 			type : "get"
+// // 			, url : "/socket/chat?userid=${user_id}"
+// // 			, data :{}
+// // 			, dataType : "html"
+// // 			, success : function ( res ) {
+// // 				$("#data").html(res);
+// // 				console.log("성공");
+// // 			}		
+// // 			, error : function() {
+// // 				console.log("실패");
+// // 			}
+// // 		});
+// 	});
+//     $("#message").keydown(function(key) {
+//         if (key.keyCode == 13) {// 엔터
+//                sendMessage();
+//                $('#message').val('')
+//         }
+//         $("#message").focus()
+
+// 	});
 });
+
+// var ws = new SockJS("<c:url value='/echo'/>"); //SockJs 사용
+// ws.onopen = onOpen;
+// ws.onmessage = onMessage;
+// ws.onclose = onClose;
+
+// function onOpen(){
+// 	console.log('websocket opened');
+// }
+
+// // 서버로부터 메시지를 받았을 때
+// function onMessage(msg) {
+//        var data = msg.data;
+//        $("#data").append(data + "<br>");
+// }
+
+// // 서버와 연결을 끊었을 때
+// function onClose(evt) {
+//        $("#data").append("연결 끊김");
+// }
+
+// //메시지 전송
+// function sendMessage() {
+//     ws.send($("#message").val());
+// }
+
+
 
 
 
@@ -229,6 +287,27 @@ th{
 	width: 250px;
 }
 
+.chatarea {
+	/* margin-left : 20%; */
+	margin : auto;
+	width : 80%;
+	height : 330px;
+	
+	font-size : 20px;
+	overflow: scroll;
+}
+.chatbtn {
+	margin : auto;
+}
+#area {
+	border: 1px solid black;
+	position: fixed;
+	top: 500px;
+	right: 50px;
+	width : 420px;
+	height : 450px;
+	background-color: #F2F2F2;
+}
 </style>
 
 <div id="see_menu_menu2">
@@ -276,7 +355,7 @@ th{
 </div>
 <hr>
 
-<div style = "overflow:scroll;" >
+<div  >
 <div id="user_write_div">
 <c:set var="n" value="0"/>
 <c:set var="m" value="1"/>
@@ -300,9 +379,43 @@ th{
 
 <div id="block" style="width: 100%; clear: both;"></div>
 
-<div id="chatarea">채팅창</div>
+<div id="area">
+
+<div id="chatarea"></div>
+
+
+<div class="form-control chatarea" style="margin-top: 15px;">
+	<ul class="list-group list-group-flush " id="data">
+	
+	<c:forEach items="${view }" var="i">
+	${i.sender} : ${i.content }<br>
+	
+	</c:forEach>
+	
+	
+	</ul>
+</div>
+<br><br><br>
+
+<div class="chatbtn" style="margin: 0 auto; margin-bottom: 15px;">
+  <span id="id" style="float: left; font-size: 20px;">${myid }</span>
+  
+  <input type="text" id="message" class="form-control" placeholder="Message" style=" margin-left: 10px; width : 200px; float: left;">
+  
+<!-- <div class="input-group mb-3" > -->
+  
+  <span class="input-group-append " style="padding: 0px; margin-left: 20px; width:25%;">
+    <button id="sendBtn" class="btn btn-outline-secondary " type="button" >Send</button>
+  
+<!--   </div> -->
+  
+  
+</span>
 </div>
 
+
+</div>
+</div>
 <div id ="container">
 <div id="mask"></div>
 <div class="window">
