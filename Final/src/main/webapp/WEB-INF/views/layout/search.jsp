@@ -70,7 +70,14 @@
 	});
 </script>
 
-<style>
+<style type="text/css">
+#background{
+	background-image:url('/resources/img/doma.jpg');
+	position:absolute;
+	width:100%;
+	height:100%;
+	background-size:cover;
+}
 .list_img{
 	width: 250px;
 	height: 200px;
@@ -161,6 +168,7 @@ $(document).ready(function(){
 <div id="block" style="width: 100%; height: 2px; border: 1px solid black; clear: both;"></div>
 
 <h3>게시물</h3>
+<body id="background">
 <div id="user_write_div">
 <c:set var="n" value="0"/>
 <c:set var="m" value="1"/>
@@ -192,4 +200,5 @@ $(document).ready(function(){
 </div>
 
 </div>
+</body>
 <c:import url="/WEB-INF/views/layout/footer.jsp" />

@@ -113,9 +113,9 @@ $(document).ready(function() {
 #userface{
 	font-size: 40px;
 }
-#kakao{
-	height:6%;
-	width:6%;
+#kakao{ 
+ 	height:6%; 
+ 	width:6%; 
 	
 }
 /* 윈도우 마스크 */
@@ -173,12 +173,12 @@ function button_event(){
 </head>
 <body>
 <a href="javascript:shareStory()">
-<img src="https://developers.kakao.com/sdk/js/resources/story/icon_small.png"/>
+<!-- <img src="https://developers.kakao.com/sdk/js/resources/story/icon_small.png"/> -->
 </a>
 <script type='text/javascript'>
 //   <![CDATA[
 
-//     사용할 앱의 JavaScript 키를 설정해 주세요.
+// //     사용할 앱의 JavaScript 키를 설정해 주세요.
 //     Kakao.init('b737021ce8920b6a7fdac62cfcfc837d');
 //     function shareStory() {
 //       Kakao.Story.share({

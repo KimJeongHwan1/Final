@@ -4,7 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<link href="https://fonts.googleapis.com/css?family=Jua&display=swap&subset=korean" rel="stylesheet">
+<!-- <link href="https://fonts.googleapis.com/css?family=Jua&display=swap&subset=korean" rel="stylesheet"> -->
 
 <c:import url="/WEB-INF/views/layout/header.jsp" />
 <script type="text/javascript">
@@ -140,7 +140,10 @@ function InitializeStaticMenu() {
 </script>
 
 <style type="text/css">
+#background{
+	background-color:white;
 
+}
 /* 메뉴 네비게이션바 */
 
 #STATICMENU {
@@ -160,7 +163,6 @@ table {
 /* 	border-bottom: 3px solid black; */
 	width:auto;
 	text-align : center;
-	font-family: 'Jua', sans-serif;
 	font-size:25px;
 }
 .table th, td{
@@ -172,23 +174,25 @@ table {
 /* #282c37 */
 th{
 	background-color : #FFFFFF;
-	font-color : #FFFFFF;
+	font-color : black;
 }
 .table th:hover{
 	background: #FFFFFF;
 }
 .table th:first-child, td:first-child{
  	border-left: 0;
- 	background-color:#E6E6E6;
+ 	background-color:#d8e9ef;
+ 	font-color:black;
 }
 .table th:last-child, td:last-child{
  	border-right: 0;
 }
 .statictable{
-	font-size: 17px;
- 	font-family: 'Jua', sans-serif;
+	font-size: 20px;
+/*  	font-family: 'Jua', sans-serif; */
  	
 }
+
 /* 네비게이션바 테이블 */
 
 .reservestep {
@@ -217,8 +221,11 @@ th{
 
 #see_menu_menu2{
 
-	margin-left : 400px;
+	margin-left : 450px;
 	text-align : center;
+}
+.see_menu_menu2{
+	font-color:black;
 }
 #see_menu_table2 td{
 	text-align : center;
@@ -239,30 +246,36 @@ th{
 	height: 30px;
 }
 .list_img{
-	width: 250px;
-	height: 200px;
+	width: 280px;
+	height: 220px;
 	margin: 0 auto;
 	margin-bottom: 10px;
 	margin-top: 10px;
+
 }
 #user_write_div{
 	margin-left: 300px;
-	width: 1000px;
+	width: 1500px;
 }
 #user_write_list{
-	width: 280px;
+	width: 300px;
 	text-align: center;
-	border: 1px solid black;
+/* 	border: 1px solid white; */
 	float: left;
-	margin-left: 50px;
-	margin-bottom: 50px;
+	margin-left: 150px;
+	margin-bottom: 100px;
 	margin-top:15px;
+	background-color: white;
+	border: 1px solid black;
 }
 #hr{
-	width:70%;
+	width:60%;]
+	margin-left:20px;
 }
-
-
+a:link , a:visited , a:active , a:hover {
+   color: black ;
+}
+a:hover { text-decoration:none ; }
 /* 윈도우 마스크 */
 .container {
 	border-left : 1px solid #eee;
@@ -298,12 +311,12 @@ th{
 #following_list{
 	position: fixed;
 	top: 190px;
-	left: 800px;
+	left: 1060px;
 }
 #follower_list{
 	position: fixed;
 	top: 190px;
-	left: 970px;
+	left: 1237px;
 }
 #prev, #next {
 	border-top-left-radius: 5px;
@@ -315,14 +328,15 @@ th{
 	background-color: white;
 	color: black;
 	padding: 5px;
-	font-family: 'Jua', sans-serif;
+
+
 }
 
 #prev:hover, #next:hover{
     color: white;
-    background-color: black;
-    border: 1px solid black;
-    font-family: 'Jua', sans-serif;
+    background-color: #e85a71;
+    border: 1px solid #e85a71;
+/*     font-family: 'Jua', sans-serif; */
 }
 #content {
 	height: 200px;
@@ -352,8 +366,9 @@ th{
 	</table>
 </div>
 
+<body id="background">
 <div id="see_menu_menu2">
-<table id="see_menu_table2" style="margin-top: 50px;">
+<table id="see_menu_table2" style="margin-top: 50px; color: black;">
 
 <tr>
 	<c:if test="${bool == false }">
@@ -378,7 +393,7 @@ th{
 </tr>
 
 </table>
-<table>
+<table style="color: black; font-size:25px;">
 <tr>
 	<td><label style="width: 200px;font-size: 15px; font-weight: 50;">이름</label> </td>
 	<td>${member.member_name }</td>
@@ -393,6 +408,7 @@ th{
 </table>
 
 </div>
+
 <hr>
 <hr id="hr">
 
@@ -460,6 +476,6 @@ th{
 
 </div>
 
-
+</body>
 <%-- <c:import url="/WEB-INF/views/layout/infiScroll.jsp" /> --%>
 <c:import url="/WEB-INF/views/layout/footer.jsp" />
