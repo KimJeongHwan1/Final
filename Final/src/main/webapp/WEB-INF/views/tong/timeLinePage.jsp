@@ -83,7 +83,6 @@
 	margin-bottom: 10px;
 	margin-top: 10px;
 	border-radius: 10px;
-	background
 }
 #user_write_div{
 	margin-left: 25%;

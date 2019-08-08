@@ -4,9 +4,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<link href="https://fonts.googleapis.com/css?family=Jua&display=swap&subset=korean" rel="stylesheet">
-
 <c:import url="/WEB-INF/views/layout/header.jsp" />
+
+<link href="https://fonts.googleapis.com/css?family=Jua&display=swap&subset=korean" rel="stylesheet">
 
 <script type="text/javascript">
 	//윈도우 팝업
@@ -176,20 +176,21 @@ table {
 /* #282c37 */
 th{
 	background-color : #FFFFFF;
-	font-color : #FFFFFF;
+	font-color : black;
 }
 .table th:hover{
 	background: #FFFFFF;
 }
 .table th:first-child, td:first-child{
  	border-left: 0;
- 	background-color:#E6E6E6;
+ 	background-color:#d8e9ef;
+ 	font-color:black;
 }
 .table th:last-child, td:last-child{
  	border-right: 0;
 }
 .statictable{
-	font-size: 17px;
+	font-size: 20px;
  	font-family: 'Jua', sans-serif;
  	
 }
@@ -227,8 +228,11 @@ img{
 
 #see_menu_menu2{
 
-	margin-left : 400px;
+	margin-left : 450px;
 	text-align : center;
+}
+.see_menu_menu2{
+	font-color:black;
 }
 #see_menu_table2 td{
 	text-align : center;
@@ -249,53 +253,60 @@ img{
 	height: 30px;
 }
 .list_img{
-	width: 250px;
-	height: 200px;
+	width: 280px;
+	height: 220px;;
 	margin: 0 auto;
 	margin-bottom: 10px;
 	margin-top: 10px;
 }
 #user_write_div{
 	margin-left: 300px;
-	width: 1000px;
+	width: 1500px;
 }
 #user_write_list{
-	width: 280px;
+	width: 300px;
 	text-align: center;
 	border: 1px solid black;
 	float: left;
-	margin-left: 50px;
-	margin-bottom: 50px;
+	margin-left: 150px;
+	margin-bottom: 100px;
 	margin-top:15px;
+	background-color: white;
+	border: 1px solid black;
 }
 #hr{
 	width:70%;
+	margin-left:20px;
 }
-.list_img{
-	width: 250px;
-	height: 200px;
-	margin: 0 auto;
-	margin-bottom: 10px;
-	margin-top: 10px;
+a:link , a:visited , a:active , a:hover {
+   color: black ;
 }
-#user_write_div{
-	margin-left: 300px;
-	width: 1000px;
+a:hover { text-decoration:none ; 
 }
-#user_write_list{
-	width: 280px;
-	text-align: center;
-	border: 1px solid black;
-	float: left;
-	margin-left: 50px;
-	margin-bottom: 50px;
-}
+/* .list_img{ */
+/* 	width: 250px; */
+/* 	height: 200px; */
+/* 	margin: 0 auto; */
+/* 	margin-bottom: 10px; */
+/* 	margin-top: 10px; */
+/* } */
+/* #user_write_div{ */
+/* 	margin-left: 300px; */
+/* 	width: 1000px; */
+/* } */
+/* #user_write_list{ */
+/* 	width: 280px; */
+/* 	text-align: center; */
+/* 	border: 1px solid black; */
+/* 	float: left; */
+/* 	margin-left: 50px; */
+/* 	margin-bottom: 50px; */
+/* } */
 /* 윈도우 마스크 */
 .container {
 	border-left : 1px solid #eee;
 	border-right : 1px solid #eee;
 }
-
 
 /* 마스크 뛰우기 */
 #mask {  
@@ -351,8 +362,8 @@ img{
 
 #prev:hover, #next:hover{
     color: white;
-    background-color: black;
-    border: 1px solid black;
+    background-color: #e85a71;
+    border: 1px solid #e85a71;
     font-family: 'Jua', sans-serif;
 }
 </style>
@@ -419,6 +430,7 @@ img{
 </table>
 
 </div>
+
 <hr>
 <hr id="hr">
 
