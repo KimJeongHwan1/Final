@@ -41,10 +41,23 @@
 	width: 100px;
 	height: 30px;
 }
+#delete {
+	text-align: center;
+	margin-top: 8% ;
+	margin-right: 55% ;
+}
+
+#pw_check_div {
+	text-align: center;
+}
+#pw {
+	height: 30px ;
+}
 </style>
 <br>
 <div id="choose_menu">
-<div style="width: 100%"><a href="/member/mypage"><label>마이페이지</label></a></div>
+<div style="width: 100%"><a href="/member/mypage"><label>내 정보보기</label></a></div>
 <div style="width: 100%"><a href="/member/updateInfo"><label>프로필 편집</label></a></div>
 <div style="width: 100%"><a href="/member/updatePw"><label>비밀번호 변경</label></a></div>
+<div style="width: 100%"><a href="/member/delete"><label>회원 탈퇴</label></a></div>
 </div>

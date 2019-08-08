@@ -4,15 +4,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <c:import url="/WEB-INF/views/layout/header.jsp" />
-<style>
-#delete {
-	text-align: center;
-}
+<c:import url="/WEB-INF/views/layout/memberside.jsp" />
 
-#pw_check_div {
-	text-align: center;
-}
-</style>
 <script type="text/javascript">
 $(document).ready(function() {
 	$("#logpw_span").hide();
@@ -34,6 +27,8 @@ $(document).ready(function() {
 	});
 });
 </script>
+<div id="see_menu">
+<div id="see_menu_menu">
 <div id="delete">
 	<input type="text" id="logpw_span" value="${logpw }" />
 	<h1>
@@ -56,7 +51,8 @@ $(document).ready(function() {
 			onclick="location.href='/member/main2'">탈퇴취소</button>
 		<br>
 	</form>
-
+</div>
+</div>
 </div>
 
 

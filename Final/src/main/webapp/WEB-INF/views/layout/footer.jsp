@@ -13,9 +13,9 @@
 }
 
 </style>
-</head>
 
-<body>
+</body>
+<footer>
 <nav class="navbar navbar-inverse navbar-fixed-bottom">
   <div class="container-fluid">
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -29,3 +29,4 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+</footer>

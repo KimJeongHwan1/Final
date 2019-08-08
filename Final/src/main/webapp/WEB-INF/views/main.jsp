@@ -118,8 +118,8 @@ $(function(){
 
 </script>
 
-</head>
-<body style="margin: 0px;">
+
+<div style="margin: 0px;">
 	
 <div id="imagedisplay">
     <div class="slider_item active" ><img src="/resources/img/main_01.jpg"/></div>
@@ -131,7 +131,7 @@ $(function(){
 <div id="imageText" style="text-align: center;">
 	<div><h1> 참신한 생각이 필요하세요 ? </h1></div>
 	<div><span> 요리통 커뮤니티에 참여하여 수 많은 사진과 각종 정보들을 만나보세요. </span></div>
-	<div><h1><button type="button" onclick="location.href='/member/join'">가입</button></h1></div>
+	<div><h1><button type="button" onclick="location.href='/member/login'">시작하기</button></h1></div>
 </div>
-
+</div>
 <c:import url="/WEB-INF/views/layout/footer.jsp" />

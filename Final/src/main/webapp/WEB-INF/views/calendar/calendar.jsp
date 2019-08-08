@@ -6,7 +6,7 @@
 <c:import url="/WEB-INF/views/layout/header.jsp" />
 
 <style type="text/css">
-    body {
+   #calendar {
         margin :40px 10px;
         padding : 0;
         font-family : "Lucida Grande", Helvetica, Arial, Verdana,sans-serif;
@@ -110,7 +110,6 @@
     
     
 </script>
-<body>
     
     <div id="calendar"></div>
 

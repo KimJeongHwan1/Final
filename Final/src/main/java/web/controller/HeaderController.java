@@ -38,15 +38,8 @@ public class HeaderController {
 		member.setMember_code(member_code);
 		
 		logger.info(member.toString());
-		
-		model.addAttribute("mem", member);
-		
-
-		
-		
+			
 	}
 
-	
-	
 	
 }
