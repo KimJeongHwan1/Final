@@ -284,11 +284,13 @@ a:link , a:visited , a:active , a:hover {
 a:hover { text-decoration:none ; 
 }
 
+
 /* 윈도우 마스크 */
 .container {
-   border-left : 1px solid #eee;
-   border-right : 1px solid #eee;
+	border-left : 1px solid #eee;
+	border-right : 1px solid #eee;
 }
+
 
 /* 마스크 뛰우기 */
 #mask {  
@@ -308,11 +310,11 @@ a:hover { text-decoration:none ;
     top:50px;
     margin-left: -500px;
     width:1500px;
-    height:800px;
+    height:620px;
     background-color:#FFF;
     z-index:10000;
     
-    overflow: scroll;
+    overflow: hidden;
  }
 
 #following_list{
@@ -459,15 +461,19 @@ a:hover { text-decoration:none ;
 
 <div id="user_write_list">
 <c:if test="${i.originname != null }">
-<a href="/userpage/view?content_no=${i.content_no }" class="openMask"><img src="/uppage/${i.storedname }" id="file_img${sum }" class="list_img"/></a><br>
+<a href="/tong/tongview?content_no=${i.content_no }" class="openMask"><img src="/uppage/${i.multimainstoredname }" id="file_img${sum }" class="list_img"/></a><br>
 </c:if>
 <c:if test="${i.originname eq null }">
-<a href="/userpage/view?content_no=${i.content_no }" class="openMask"><img src="${paceContext.request.contextPath}/resources/img/NoImg.png"class="list_img"/></a><br>
+<a href="/tong/tongview?content_no=${i.content_no }" class="openMask"><img src="${paceContext.request.contextPath}/resources/img/NoImg.png"class="list_img"/></a><br>
 </c:if>
 
 <span id="" class="glyphicon glyphicon-heart-empty"> ${i.hit } </span>
 <span id="" class="glyphicon glyphicon-pencil"> ${i.comm_count } </span>
 <span id="" class="glyphicon glyphicon-star-empty"> ${i.good }  </span>
+<c:if test="${i.storedname != i.multimainstoredname }">
+<span class="glyphicon glyphicon-book"> 멀티파일</span>
+</c:if>
+
 <c:set var="n" value="${sum }"/>
 </div>
 </c:forEach>

@@ -57,7 +57,7 @@ public class UserPageController {
 		model.addAttribute("member", member);
 
 		List<UserPage> writeList = userpageService.getwriteList(member);
-
+		
 		model.addAttribute("write", writeList);
 
 		String id = member.getMember_id();
@@ -116,7 +116,26 @@ public class UserPageController {
 		UserPage userPage = userpageService.selectUserpage(userpage);
 
 		model.addAttribute("userpage", userPage);
-
+		
+		String stdname = userPage.getStoredname();
+		List stdList = new ArrayList();
+		
+		if(userPage.getOriginname() != null) {
+			int stdcheck=0;
+			int stdcheck2=0;
+			for(int i=1; i<=stdname.length(); i++) {
+				if(stdname.substring(i-1, i).equals(" ")) {
+					stdList.add(stdcheck, stdname.substring(stdcheck2, i-1));
+					stdcheck2= i;
+					stdcheck++;
+				} else if(i == stdname.length()) {
+					stdList.add(stdcheck, stdname.substring(stdcheck2, i));
+				}
+			}
+			model.addAttribute("multiImgSize", stdcheck2);
+		}
+		model.addAttribute("multiImg", stdList);
+		
 		String tag = userPage.getTag();
 		if(tag != null) {
 			int num=0;

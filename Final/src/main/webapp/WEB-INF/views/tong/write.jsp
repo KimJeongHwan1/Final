@@ -52,7 +52,7 @@
 </tr>
 <tr>
    <td>사진선택</td>
-   <td><input type="file" name="file" placeholder="내용을 입력해주세요" style="width: 498px;"/></td>
+   <td><input multiple="multiple" type="file" name="file" style="width: 498px;"/></td>
 </tr>
 <tr>
    <td>내용</td>

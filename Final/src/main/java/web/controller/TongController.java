@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import web.dto.Following;
 import web.dto.Good;
@@ -119,17 +120,17 @@ public class TongController {
 	
 	@RequestMapping(value = "/tong/write", method = RequestMethod.POST)
 	public String writeProc(HttpSession session, UserPage userpage,
-			@RequestParam(value="file")MultipartFile fileupload, Member member, Model model) {
+			MultipartHttpServletRequest mtfRequest, Member member, Model model){
 		
 		String loginid = (String)session.getAttribute("loginid");
 		
 		int member_code = memberService.getMember_code(loginid);
 		userpage.setMember_code(member_code);
 		
-		if(fileupload.getOriginalFilename().equals("0")) {
+		if(mtfRequest == null) {
 			userpageService.insertwrite(userpage);
 		} else {
-			userpageService.imgsave(fileupload, context, userpage);
+			userpageService.imgsave(context, userpage, mtfRequest);
 		}
 		
 		// 헤더 import문제로 코드추가
@@ -171,7 +172,27 @@ public class TongController {
 		UserPage userPage = userpageService.selectUserpage(userpage);
 
 		logger.info(userPage.toString());
-
+		
+		String stdname = userPage.getStoredname();
+		List stdList = new ArrayList();
+		
+		if(userPage.getOriginname() != null) {
+			int stdcheck=0;
+			int stdcheck2=0;
+			for(int i=1; i<=stdname.length(); i++) {
+				if(stdname.substring(i-1, i).equals(" ")) {
+					stdList.add(stdcheck, stdname.substring(stdcheck2, i-1));
+					stdcheck2= i;
+					stdcheck++;
+				} else if(i == stdname.length()) {
+					stdList.add(stdcheck, stdname.substring(stdcheck2, i));
+				}
+			}
+			stdcheck2++;
+			model.addAttribute("multiImgSize", stdcheck2);
+		}
+		model.addAttribute("multiImg", stdList);
+		
 		model.addAttribute("userpage", userPage);
 		
 		String tag = userPage.getTag();
