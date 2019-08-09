@@ -10,9 +10,9 @@
 	<insert id="insertImg" parameterType="web.dto.UserPage">
 		insert into UserPage( content_no, content_title, content, member_code, hit,
 
-		good, tag, file_index, originname, storedname, blockSee, comm_count, addno, address, x, y)
+		good, tag, file_index, originname, storedname, multimainstoredname, blockSee, comm_count, addno, address, x, y)
 		values( UserPage_seq.nextval, #{content_title }, #{content }, #{member_code}, 0, 0, #{tag },
-		UserPage_seq.nextval, #{originname }, #{storedname }, #{blockSee }, 0, MapAddress_seq.nextval, #{address }, #{x }, #{y })
+		UserPage_seq.nextval, #{originname }, #{storedname }, #{multimainstoredname }, #{blockSee }, 0, MapAddress_seq.nextval, #{address }, #{x }, #{y })
 
 
 	</insert>
@@ -20,9 +20,9 @@
 	<insert id="insertwriteInfo" parameterType="web.dto.UserPage">
 		insert into UserPage( content_no, content_title, content, member_code, hit,
 
-		good, tag, file_index, originname, storedname, blockSee, comm_count, addno, address, x, y)
+		good, tag, file_index, originname, storedname, multimainstoredname, blockSee, comm_count, addno, address, x, y)
 		values( UserPage_seq.nextval, #{content_title }, #{content }, #{member_code
-		}, 0, 0, #{tag }, 0, 0, 0 , #{blockSee }, 0, MapAddress_seq.nextval, #{address }, #{x }, #{y }))
+		}, 0, 0, #{tag }, 0, 0, 0 , 0, #{blockSee }, 0, MapAddress_seq.nextval, #{address }, #{x }, #{y }))
 
 	</insert>
 

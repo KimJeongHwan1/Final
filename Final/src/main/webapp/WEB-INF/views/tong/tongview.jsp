@@ -42,7 +42,7 @@ $(document).ready(function() {
 }
 
 #write_div{
-	width: 39%;
+	width: 40%;
 	
 	border: 1px solid blue;
 	margin: 0;
@@ -51,7 +51,7 @@ $(document).ready(function() {
 
 #uploadImg{
 	width: 100%;
-	height: 400px;
+	height: 620px;
 }
 
 #title_area{
@@ -74,7 +74,7 @@ $(document).ready(function() {
 }
 #comment_area_see{
 	width: 100%;
-	height: 300px;
+	height: 325px;
 	border-bottom: 1px solid black;
 	overflow: scroll;
 }
@@ -113,11 +113,7 @@ $(document).ready(function() {
 #userface{
 	font-size: 40px;
 }
-#kakao{ 
- 	height:6%; 
- 	width:6%; 
-	
-}
+
 /* 윈도우 마스크 */
 .container {
 	border-left : 1px solid #eee;
@@ -143,21 +139,29 @@ $(document).ready(function() {
     top:50px;
     margin-left: -500px;
     width:1500px;
-    height:800px;
+    height:620px;
     background-color:#FFF;
     z-index:10000;
     
-    overflow: scroll;
+    overflow: hidden;
  }
+#imagedisplay div img { 
+	
+	padding-left: 0px;
+	margin-left: 0px;
+		
+	width: 100%;
+	height: 620px;
+} 
+
+
+#imagedisplay{
+
+	position: relative;
+}
 </style>
 
 <head>
-<meta charset="utf-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
-<title>KakaoStory Share Button Demo - Kakao JavaScript SDK</title>
-<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-
 <script type="text/javascript">
 
 function button_event(){
@@ -172,22 +176,6 @@ function button_event(){
 
 </head>
 <body>
-<a href="javascript:shareStory()">
-<!-- <img src="https://developers.kakao.com/sdk/js/resources/story/icon_small.png"/> -->
-</a>
-<script type='text/javascript'>
-//   <![CDATA[
-
-// //     사용할 앱의 JavaScript 키를 설정해 주세요.
-//     Kakao.init('b737021ce8920b6a7fdac62cfcfc837d');
-//     function shareStory() {
-//       Kakao.Story.share({
-//         url: 'http://15.164.204.55:8080/tong/mypage',
-//         text: '요리통 사이트로 놀러오세요! #개발자 #카카오 :)'
-//       });
-//     }
-//   ]]>
-</script>
 
 <script type="text/javascript">
 $(document).ready(function() {
@@ -242,11 +230,67 @@ $(document).ready(function() {
 });
 </script>
 
-<c:if test="${userpage.storedname != '0' }">
-<div id="main_div">
-<img src="/uppage/${userpage.storedname }" id="uploadImg"/>
+<script type="text/javascript">
+
+$(function(){
+	 var cur = 0;
+	 var count = $('.slider_item').length;
+
+	 $('.slider_item').hide();
+	 $('.slider_item').eq(0).show();
+
+	 setInterval(function() {    
+	  $('.slider_item').eq(cur).fadeOut(function () {
+	   $(this).removeClass('active');
+	   cur = (cur + 1) % count;
+	   $('.slider_item').eq(cur).addClass('active').fadeIn();
+	  });
+	 }, 3000); 
+});
+</script>
+
+<div id="main_div" class="multiple-items">
+<c:if test="${userpage.originname !=  null}">
+<div class="swiper-container">
+	<c:if test="${multiImgSize > 1 }">
+		<div id="imagedisplay">
+		<c:set var="slideA" value="0" />
+		<c:set var="slideB" value="1" />
+		<c:forEach items="${multiImg }" var="i">
+			<c:set var="slideSum" value="${slideA + slideB }" />
+			<c:if test="${slideSum == 1 }">
+				<div class="slider_item active">
+					<img src="/uppage/${i }" id="uploadImg" />
+				</div>
+			</c:if>
+			<c:if test="${slideSum > 1 && slideSum < multiImgSize }">
+				<div class="slider_item">
+					<img src="/uppage/${i }" id="uploadImg" />
+				</div>
+			</c:if>
+			<c:if test="${slideSum == multiImgSize }">
+				<div class="slider_item last">
+					<img src="/uppage/${i }" id="uploadImg" />
+				</div>
+			</c:if>
+			<c:set var="slideA" value="${slideSum }" />
+		</c:forEach>
+		</div>
+	</c:if>
+
+	<c:if test="${multiImgSize == 1 }">
+		<c:forEach items="${multiImg }" var="i">
+			<img src="/uppage/${i }" id="uploadImg" />
+		</c:forEach>
+	</c:if>
 </div>
 </c:if>
+
+<c:if test="${userpage.originname ==  null}">
+<img src="${paceContext.request.contextPath}/resources/img/NoImg.png" id="uploadImg"/>
+</c:if>
+
+</div>
 
 <div id="write_div">
 <div id="head_area">

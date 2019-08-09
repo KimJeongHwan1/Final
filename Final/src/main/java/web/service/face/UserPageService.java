@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.ServletContext;
 
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import web.dto.Favorites;
 import web.dto.Following;
@@ -15,7 +16,7 @@ import web.dto.Userpage_cocomment;
 import web.dto.Userpage_comment;
 
 public interface UserPageService {
-	public void imgsave(MultipartFile file, ServletContext context, UserPage userpage);
+	public void imgsave(ServletContext context, UserPage userpage, MultipartHttpServletRequest mtfRequest);
 	public void insertwrite(UserPage userPage);
 	
 	public List<UserPage> getwriteList(Member member);
