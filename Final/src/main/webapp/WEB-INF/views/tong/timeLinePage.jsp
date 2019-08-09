@@ -74,8 +74,9 @@
 	position:absolute;
 	width:100%;
 	height:100%;
-	background-size:cover;
+	background-size:100%;
 }
+
 .list_img{
 	width: 300px;
 	height: 250px;
@@ -85,14 +86,14 @@
 	border-radius: 10px;
 }
 #user_write_div{
-	margin-left: 25%;
-	width: 1400px;
+	margin-left: 7%;
+	width: 1500px;
 }
 #user_write_list{
 	width: 320px;
 	text-align: center;
 	float: left;
-	margin-left: 50px;
+	margin-left: 150px;
 	margin-bottom: 50px;
 	border-radius: 10px;
 	margin-top:70px;

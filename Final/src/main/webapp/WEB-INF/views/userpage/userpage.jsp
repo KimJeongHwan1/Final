@@ -220,7 +220,7 @@ th{
 	margin-left : 50px;
 }
 #see_menu_menu2{
-	margin-left : 300px;
+	margin-left : 400px;
 	text-align : center;
 }
 #see_menu_table2 td{
@@ -234,23 +234,24 @@ th{
 	height: 30px;
 }
 .list_img{
-	width: 250px;
-	height: 200px;
+	width: 280px;
+	height: 220px;
 	margin: 0 auto;
 	margin-bottom: 10px;
 	margin-top: 10px;
 }
 #user_write_div{
-	margin-left: 300px;
-	width: 1000px;
+	margin-left: 350px;
+	width: 1200px;
 }
 #user_write_list{
-	width: 280px;
+	width: 300px;
 	text-align: center;
-	border: 1px solid black;
 	float: left;
 	margin-left: 50px;
-	margin-bottom: 50px;
+	margin-bottom: 100px;
+	margin-top:15px;
+	border: 1px solid black;
 }
 
 
@@ -331,8 +332,8 @@ th{
 /*     font-family: 'Jua', sans-serif; */
 }
 #hr{
-	width:60%;
-	margin-left:20%;
+	width:70%;
+	margin-left:15%;
 }
 a:link , a:visited , a:active , a:hover {
    color: black ;
@@ -384,7 +385,7 @@ a:hover { text-decoration:none ; }
 </table>
 </div>
 
-<hr>
+
 <hr id="hr">
 
 <div  >

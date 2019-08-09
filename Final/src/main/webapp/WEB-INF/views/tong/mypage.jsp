@@ -274,9 +274,8 @@ th{
    border: 1px solid black;
 }
 #hr{
-
 	width:60%;
-	margin-left:20px;
+	margin-left:30%;
 
 }
 a:link , a:visited , a:active , a:hover {
