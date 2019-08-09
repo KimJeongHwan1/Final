@@ -92,13 +92,14 @@
           <ul class="dropdown-menu" role="menu">
 			<tr>
 				<c:if test="${bool == false }">
-					<td rowspan="2"><img src="/resources/img/img4.jpg"/>
+<!-- 					<td rowspan="2"><img src="/resources/img/img4.jpg"/> -->
 			<!-- 		<input type="file" name="file" id="file"/></td> -->
 					<td>${loginid }</td>	
+					
 				</c:if>
 				
 				<c:if test="${bool == true }">
-					<td rowspan="2"><img src="/upload/${img.storedname }"/></td>
+<%-- 					<td rowspan="2"><img src="/upload/${img.storedname }"/></td> --%>
 					<td>${loginid }</td>
 				</c:if>
 			</tr>

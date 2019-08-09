@@ -71,24 +71,34 @@
 </script>
 
 <style>
+#background{
+	background-image:url('/resources/img/cook.jpg');
+	position:absolute;
+	width:100%;
+	height:70%;
+	background-size:100%;
+}
 .list_img{
-	width: 250px;
-	height: 200px;
+	width: 300px;
+	height: 250px;
 	margin: 0 auto;
 	margin-bottom: 10px;
 	margin-top: 10px;
+	border-radius: 10px;
 }
 #user_write_div{
 	margin-left: 300px;
-	width: 1000px;
+	width: 1200px;
 }
 #user_write_list{
-	width: 280px;
+	width: 320px;
 	text-align: center;
-	border: 1px solid black;
 	float: left;
 	margin-left: 50px;
+	margin-top:70px;
 	margin-bottom: 50px;
+	border-radius: 10px;
+	background-color: #FFEEE4;	
 }
 /* 윈도우 마스크 */
 .container {
@@ -122,7 +132,7 @@
     overflow: scroll;
  }
 </style>
-
+<body id="background">
 <div id="user_write_div">
 <c:set var="n" value="0"/>
 <c:set var="m" value="1"/>
@@ -155,4 +165,5 @@
 </div>
 
 </div>
+</body>
 <c:import url="/WEB-INF/views/layout/footer.jsp" />
