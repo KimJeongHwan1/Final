@@ -318,12 +318,12 @@ a:hover { text-decoration:none ;
 #following_list{
    position: fixed;
    top: 190px;
-   left: 1060px;
+   left: 870px;
 }
 #follower_list{
    position: fixed;
    top: 190px;
-   left: 1237px;
+   left: 1037px;
 }
 #prev, #next {
 

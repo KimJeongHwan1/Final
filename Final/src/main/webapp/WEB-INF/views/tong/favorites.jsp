@@ -275,8 +275,8 @@ img{
 	border: 1px solid black;
 }
 #hr{
-	width:70%;
-	margin-left:20px;
+	width:60%;
+	margin-left:30%;
 }
 a:link , a:visited , a:active , a:hover {
    color: black ;
@@ -340,12 +340,12 @@ a:hover { text-decoration:none ;
  #following_list{
 	position: fixed;
 	top: 190px;
-	left: 800px;
+	left: 870px;
 }
 #follower_list{
 	position: fixed;
 	top: 190px;
-	left: 970px;
+	left: 1040px;
 }
 #prev, #next {
 	border-top-left-radius: 5px;
@@ -431,7 +431,6 @@ a:hover { text-decoration:none ;
 
 </div>
 
-<hr>
 <hr id="hr">
 
 <div id="user_write_div">
