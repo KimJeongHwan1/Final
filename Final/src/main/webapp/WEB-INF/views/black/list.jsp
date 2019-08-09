@@ -51,7 +51,7 @@
 		<td><c:set var="sum" value="${i+l }"/>${sum }</td>
 		<td>${b.black_reporter }</td>
 		<td>${b.black_perpetrator }</td>
-		<td>${b.content_no }</td>
+		<td><a href="/userpage/view?content_no=${b.content_no }">${b.content_no }</a></td>
 		<td style="text-align:left; ">${b.black_content }</td>
 		<td style="text-align:left;" ><fmt:formatDate value="${b.black_report_date }" pattern="yyyy-MM-dd" /></td>
 		<td><button class="btn btn-info" id="btnDelete"  type="button" onclick="location.href='/black/delete?black_no=${b.black_no }'">목록제거</button></td>
@@ -65,7 +65,6 @@
 </table>
 
 </div>
-
 
 
 <c:import url="/WEB-INF/views/layout/BlackListPaging.jsp" />

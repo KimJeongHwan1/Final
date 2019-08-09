@@ -88,14 +88,18 @@
 #user_write_div{
 	margin-left: 300px;
 	width: 1000px;
+	background-color: white;
 }
 #user_write_list{
 	width: 280px;
 	text-align: center;
-	border: 1px solid black;
+	border: 1px solid white;
 	float: left;
 	margin-left: 50px;
 	margin-bottom: 50px;
+	background-color: #FFEEE4;
+	border-radius: 10px;
+	
 }
 /* 윈도우 마스크 */
 .container {
@@ -128,19 +132,19 @@
     
     overflow: scroll;
  }
-</style>
-<h3>사람</h3>
+</style><br>
+<h3 style="color: white; font-weight: bold; margin-left: 30px;">사람</h3>
 <div id="user_write_div">
 <c:set var="n" value="0"/>
 <c:set var="m" value="1"/>
 <c:forEach items="${memberList }" var="i">
 <c:set var="sum" value="${n + m }"/>
-<div id="user_write_list${sum }" style="width: 280px; text-align: center; border: 1px solid black; float: left;	margin-left: 50px; margin-bottom: 50px;">
+<div id="user_write_list${sum }" style="width: 280px; text-align: center; border-style: double; ; font-weight:bold;
+	border-color: blue; float: left;	margin-left: 50px; margin-bottom: 50px; background-color: #EFFBEF; border-radius: 10px;">
 <%-- <img src="/uppage/${i.storedname }" id="file_img${sum }" class="list_img"><br> --%>
 
 <span>${i.member_id }</span><br>
 <span>${i.member_name }</span><br>
-<span>${i.member_gender }</span>
 
 </div>
 <script type="text/javascript">
@@ -165,9 +169,10 @@ $(document).ready(function(){
 
 </div>
 
-<div id="block" style="width: 100%; height: 2px; border: 1px solid black; clear: both;"></div>
+<div id="block" style="width: 100%; height: 2px; border: 3px solid white; clear: both;"></div>
+<br>
 
-<h3>게시물</h3>
+<h3 style="color: white; font-weight: bold; margin-left: 30px;">게시물</h3>
 <body id="background">
 <div id="user_write_div">
 <c:set var="n" value="0"/>
@@ -176,10 +181,14 @@ $(document).ready(function(){
 <c:set var="sum" value="${n + m }"/>
 <div id="user_write_list">
 <c:if test="${i.originname != null }">
-<a href="/userpage/view?content_no=${i.content_no }" class="openMask"><img src="/uppage/${i.storedname }" id="file_img${sum }" class="list_img"/></a><br>
+<a href="/userpage/view?content_no=${i.content_no }" class="openMask"><img src="/uppage/
+
+${i.storedname }" id="file_img${sum }" class="list_img"/></a><br>
 </c:if>
 <c:if test="${i.originname eq null }">
-<a href="/userpage/view?content_no=${i.content_no }" class="openMask"><img src="${paceContext.request.contextPath}/resources/img/NoImg.png"class="list_img"/></a><br>
+<a href="/userpage/view?content_no=${i.content_no }" class="openMask"><img 
+
+src="${paceContext.request.contextPath}/resources/img/NoImg.png"class="list_img"/></a><br>
 </c:if>
 
 <span id="spanmsg1${sum }" class="glyphicon glyphicon-heart-empty"> ${i.hit } </span>
@@ -195,7 +204,9 @@ $(document).ready(function(){
 <%-- 	<c:param name="boast_board_no" value="${i.boast_board_no }"/> --%>
 <%-- <c:import url="/board/boast/view"> --%>
 <%-- </c:import> --%>
-   <p style="text-align:center; background:#ffffff; padding:20px;"><a href="#" class="close">닫기X</a></p>
+   <p style="text-align:center; background:#ffffff; padding:20px;"><a href="#" 
+
+class="close">닫기X</a></p>
 </div>
 </div>
 
