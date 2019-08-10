@@ -501,7 +501,7 @@ $(document).ready(function() {
 <c:if test="${goodCheck == 0}">
 <button type="button" id="good_btn"><span class="glyphicon glyphicon-star-empty"></span></button>
 </c:if>
-<span id="good"><span id="good_span">${good_no }</span></span>&nbsp;&nbsp;&nbsp;
+<span id="good"><span id="good_span">${userpage.good }</span></span>&nbsp;&nbsp;&nbsp;
 
 
 <!-- 게시글 삭제하기 -->
@@ -558,16 +558,16 @@ $(document).ready(function(){
 <span>조회수</span> ${userpage.hit }<br>
 <span>작성일</span> <fmt:formatDate value="${userpage.write_date }" pattern="yyyy년 MM월 dd일 hh:mm:ss" /><br>
 </div>
-
+<form>
 <div id="comment_area">
 
 <textarea rows="4" style="width: 100%; resize: none;" name="comment" id="comment" placeholder="댓글입력"></textarea>
 
 <button id="write_btn">작성</button>
-<button id="no_btn">취소</button>
+<input type="reset" value="취소">
 
 </div>
-
+</form>
 </div>
 
 

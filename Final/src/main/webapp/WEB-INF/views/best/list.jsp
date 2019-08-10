@@ -33,7 +33,7 @@ a:link , a:visited , a:active , a:hover {
 <div id="list">
 	<div id="img">
 	<a href="/best/view?content_no=${i.content_no }">
-	<img src="${paceContext.request.contextPath}/uppage/${i.storedname }" alt="htImg" width="70px;" height="70px;">
+	<img src="${paceContext.request.contextPath}/uppage/${i.multimainstoredname }" alt="htImg" width="70px;" height="70px;">
 	</a></div>
 	<div id="content"><a href="/best/view?content_no=${i.content_no }">${i.content_title}</a><br><br>
 	<a href="/best/view?content_no=${i.content_no }">${i.content}</a></div><div style="clear: both;"></div>

@@ -17,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import web.dto.Favorites;
 import web.dto.Following;
 import web.dto.Good;
 import web.dto.Member;
@@ -55,119 +56,140 @@ public class BestController {
 	}
 	
 	@RequestMapping(value = "/best/view", method = RequestMethod.GET)
-	public void view(UserPage userpage, Model model, Good good, String member_id, HttpSession session, Member member) {
-		logger.info(userpage.toString());
+	public void view(UserPage userpage, Model model, Good good, String member_id, HttpSession session) {
+			
+	UserPage userPage = userpageService.selectUserpage(userpage);
 
-		UserPage userPage = userpageService.selectUserpage(userpage);
-
-		logger.info(userPage.toString());
-
-		model.addAttribute("userpage", userPage);
-		
-		String tag = userPage.getTag();
-		if(tag != null) {
-			int num=0;
-			int num2=0;
-			int check=0;
-			int check2=0;
-			String str=null;
-			String[] str2=new String[tag.length()];
-			char chr=0;
-			char chr2=0;
-			logger.info("가져온 태그"+tag);
-			for(int i=0; i<tag.length(); i++) {
-				chr = tag.charAt(i);
-				num = (int) chr;
-				
-				if(num == 32) {
-					str = tag.substring(check, i);
-					chr2 = tag.charAt(check);
-					num2 = (int) chr2;
-					if(num2 == 35) {
-						str = tag.substring(check+1, i);
-					}
-					str2[check2] = str;
-					
-					check=i+1;
-					check2++;
-				}
-				if(i==tag.length()-1) {
-					str = tag.substring(check, i+1);
-					chr2 = tag.charAt(check);
-					num2 = (int) chr2;
-					if(num2 == 35) {
-						str = tag.substring(check+1, i+1);
-					}
-					str2[check2] = str;
-					check2++;
-				}
-				
+	model.addAttribute("userpage", userPage);
+	
+	String stdname = userPage.getStoredname();
+	List stdList = new ArrayList();
+	
+	if(userPage.getOriginname() != null) {
+		int stdcheck=0;
+		int stdcheck2=0;
+		for(int i=1; i<=stdname.length(); i++) {
+			if(stdname.substring(i-1, i).equals(" ")) {
+				stdList.add(stdcheck, stdname.substring(stdcheck2, i-1));
+				stdcheck2= i;
+				stdcheck++;
+			} else if(i == stdname.length()) {
+				stdList.add(stdcheck, stdname.substring(stdcheck2, i));
 			}
-			String[] str3 = new String[check2];
-			for(int i=0; i<check2; i++) {
-				logger.info("i번쨰"+str2[i]);
-			}
-			for(int i=0; i<check2; i++) {
-				str3[i] = str2[i];
-				logger.info("i번쨰"+str3[i]);
-			}
-			List<String> tagList = new ArrayList<String>();
-			for(int i=0; i<check2; i++) {
-				tagList.add(str3[i]);
-			}
-			model.addAttribute("tagList", tagList);
-			logger.info(tagList.toString());
 		}
-		
-		int member_code = userPage.getMember_code();
+		stdcheck2++;
+		model.addAttribute("multiImgSize", stdcheck2);
+	}
+	model.addAttribute("multiImg", stdList);
+	
+	String tag = userPage.getTag();
+	if(tag != null) {
+		int num=0;
+		int num2=0;
+		int check=0;
+		int check2=0;
+		String str=null;
+		String[] str2=new String[tag.length()];
+		char chr=0;
+		char chr2=0;
+		for(int i=0; i<tag.length(); i++) {
+			chr = tag.charAt(i);
+			num = (int) chr;
 
-		String id = memberService.getmember_id(member_code);
+			if(num == 32) {
+				str = tag.substring(check, i);
+				chr2 = tag.charAt(check);
+				num2 = (int) chr2;
+				if(num2 == 35) {
+					str = tag.substring(check+1, i);
+				}
+				str2[check2] = str;
 
-		logger.info(id);
+				check=i+1;
+				check2++;
+			}
+			if(i==tag.length()-1) {
+				str = tag.substring(check, i+1);
+				chr2 = tag.charAt(check);
+				num2 = (int) chr2;
+				if(num2 == 35) {
+					str = tag.substring(check+1, i+1);
+				}
+				str2[check2] = str;
+				check2++;
+			}
 
-		model.addAttribute("id", id);
+		}
+		String[] str3 = new String[check2];
+		for(int i=0; i<check2; i++) {
+		}
+		for(int i=0; i<check2; i++) {
+			str3[i] = str2[i];
+		}
+		List<String> tagList = new ArrayList<String>();
+		for(int i=0; i<check2; i++) {
+			tagList.add(str3[i]);
+		}
+		model.addAttribute("tagList", tagList);
+	}
 
-		if(memberService.selectImgCheck(member_code)) {
-			UserImg userImg = memberService.selectImg(member_code);
-			logger.info(userImg.toString());
-			model.addAttribute("img", userImg);
-		} 
+	int member_code = userPage.getMember_code();
 
-		model.addAttribute("bool", memberService.selectImgCheck(member_code));
+	String id = memberService.getmember_id(member_code);
 
-		int page_no = userPage.getContent_no();
+	model.addAttribute("id", id);
+	model.addAttribute("member_code", member_code);
 
 
-		// 좋아요 기능
+	if(memberService.selectImgCheck(member_code)) {
+		UserImg userImg = memberService.selectImg(member_code);
+		model.addAttribute("img", userImg);
+	} 
 
-		member_id = (String) session.getAttribute("loginid");
+	model.addAttribute("bool", memberService.selectImgCheck(member_code));
 
-		good.setMember_id(member_id);
+	int page_no = userPage.getContent_no();
 
-		//		int goodCheck = memberService.goodCheck(good);
-		//		model.addAttribute("goodCheck", goodCheck);
+	// 좋아요 기능
 
+	member_id = (String) session.getAttribute("loginid");
 
-		List list = userpageService.selectComment(page_no);
+	good.setMember_id(member_id);
 
-		//		logger.info(list.toString());
+	int goodCheck = memberService.goodCheck(good);
+	model.addAttribute("goodCheck", goodCheck);
 
-		model.addAttribute("list", list);
+	int goodnum = memberService.saveGoodCount(userpage.getContent_no());
 
-		List userImg = userpageService.selectUserImgAll();
+	model.addAttribute("good_no", goodnum);
 
-		model.addAttribute("userImg", userImg);
+	List list = userpageService.selectComment(page_no);
 
-		List<Userpage_cocomment> cocomentList = userpageService.selectcocomentAll();
+	//		logger.info(list.toString());
 
-		model.addAttribute("cocomentList", cocomentList);
+	model.addAttribute("list", list);
+
+	List userImg = userpageService.selectUserImgAll();
+
+	model.addAttribute("userImg", userImg);
+
+	List<Userpage_cocomment> cocomentList = userpageService.selectcocomentAll();
+
+	model.addAttribute("cocomentList", cocomentList);
+
+	Favorites fav = new Favorites();
+
+	fav.setContent_no(userpage.getContent_no());
+	fav.setMember_id(member_id);
+
+	int fav_check = userpageService.checkfavorites(fav);
+
+	model.addAttribute("fav_check", fav_check);
+
 		
 		// 헤더 import문제로 코드추가
 		String loginid = (String)session.getAttribute("loginid");
-		member.setMember_id(loginid);
-	    member = memberService.getMember(member);   
-	    model.addAttribute("mem", member);
-		
+
 	}
 	
 	}
