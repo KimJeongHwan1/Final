@@ -146,7 +146,7 @@
 </script>
 
 <button>작성</button>
-<button type="button" onclick="location.href='/member/main2'">취소</button>
+<button type="button" onclick="history.back()">취소</button>
 </form>
 
 </div>

@@ -91,7 +91,7 @@
       
        <form class="navbar-form" role="search" >
         <div class="form-group" style="margin-left: 60px;" >
-          <input type="text" class="form-control" placeholder="사진 인물 또는 그룹" id="searchsize"/>
+          <input type="text" class="form-control" placeholder="사진 인물 또는 태그" id="searchsize"/>
           
         </div>
         <button type="submit" class="btn btn-default">검색</button>
