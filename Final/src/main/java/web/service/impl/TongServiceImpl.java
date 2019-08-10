@@ -106,8 +106,9 @@ public class TongServiceImpl implements TongService {
 			n=(Integer)list.get(i);
 			sum = tongDao.selectFavList(n);
 			
-
+			if( sum.size()!=0) {
 			sum2.add(m, sum.get(0));
+			}
 			m++;
 
 		}

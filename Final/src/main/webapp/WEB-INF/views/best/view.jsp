@@ -4,17 +4,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:import url="/WEB-INF/views/layout/header.jsp" />
 
-<!-- jQuery 2.2.4 -->
-<script type="text/javascript"
- src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
-
-<!-- Bootstrap 3 -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<!-- .slide 태그 CSS에서 슬라이드 변경 -->
+<!-- slide back , next CSS에서 버튼 수정 -->
 
 <style>
-
 #main_div{
 	width: 60%;
 	border: 1px solid black;
@@ -23,15 +16,16 @@
 }
 
 #write_div{
-	width: 39%;
+	width: 40%;
 	
 	border: 1px solid blue;
 	margin: 0;
 	float: left;
 }
+
 #uploadImg{
-	width: 100%;
-	height: 400px;
+	width: 900px;
+	height: 620px;
 }
 
 #title_area{
@@ -54,7 +48,7 @@
 }
 #comment_area_see{
 	width: 100%;
-	height: 300px;
+	height: 352px;
 	border-bottom: 1px solid black;
 	overflow: scroll;
 }
@@ -94,18 +88,85 @@
 	font-size: 40px;
 }
 #declarationDiv{
-	position: fixed;
-	top: 100px;
-	left: 1050px;
+   position: fixed;
+   top: 100px;
+   left: 1050px;
 }
-#kakao{
-	height:6%;
-	width:6%;
-	
+/* 윈도우 마스크 */
+.container {
+	border-left : 1px solid #eee;
+	border-right : 1px solid #eee;
 }
 
+
+/* 마스크 뛰우기 */
+#mask {  
+    position:absolute;  
+    z-index:9000;  
+    background-color:#000;  
+    display:none;  
+    left:0;
+    top:0;
+} 
+/* 팝업으로 뜨는 윈도우 css  */ 
+
+.window{
+    display: none;
+    position:absolute;  
+    left:36.5%;
+    top:50px;
+    margin-left: -500px;
+    width:1500px;
+    height:620px;
+    background-color:#FFF;
+    z-index:10000;
+    
+    overflow: hidden;
+ }
+.slide {
+ 	width: 900px;
+ 	position: relative;
+	height: 620px;
+	overflow: hidden;
+	margin: 0px;
+}
+
+#multi_ul {
+	height: 620px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	font-size: 0;
+	margin: 0px;
+	padding: 0px;
+	display: inline-block;
+	list-style: none;
+}
+
+#multi_li {
+	display: inline-block;
+	margin: 0px;
+	padding: 0px;
+}
+
+#multi_back {
+	position: absolute;
+	top: 250px;
+	left: 0;
+	cursor: pointer;
+	z-index: 1;
+}
+
+#multi_next {
+	position: absolute;
+	top: 250px;
+	right: 0;
+	cursor: pointer;
+	z-index: 1;
+}
 </style>
 
+<head>
 <script type="text/javascript">
 $(document).ready(function() {
 	
@@ -171,25 +232,7 @@ $(document).ready(function() {
 	});
 });
 </script>
-<script type="text/javascript">
-$(document).ready(function() {
-	$("#fav").click(function() {
-		$.ajax({
-			type: "get"
-			, url: "/userpage/fav?content_no=${userpage.content_no}"
-			, data:  { } 
-			, dataType: "html"
-			, success: function( res ) {
-				$("#fav_msg").html(res);
-				console.log("성공");
-			}
-			, error: function() {
-				console.log("실패");
-			}
-		});
-	});
-});
-</script>
+
 <script type="text/javascript">
 $(document).ready(function() {
 	$("#decl_btn").click(function() {
@@ -210,23 +253,74 @@ $(document).ready(function() {
 	});
 });
 </script>
+<body>
 
-<c:if test="${userpage.storedname != '0' }">
-<div id="main_div">
-<img src="/uppage/${userpage.storedname }" id="uploadImg"/>
-</div>
+<script type="text/javascript">
+    $(document).ready(function(){
+      var imgs;
+      var img_count;
+      var img_position = 1;
+
+      imgs = $("#multi_ul");
+      img_count = imgs.children().length;
+      //버튼을 클릭했을 때 함수 실행
+      $('#multi_back').click(function () {
+        back();
+      });
+      $('#multi_next').click(function () {
+        next();
+      });
+
+      function back() {
+        if(1<img_position){
+          imgs.animate({
+            left:'+=900px'
+          });
+          img_position--;
+        }
+      }
+      function next() {
+        if(img_count>img_position){
+          imgs.animate({
+            left:'-=900px'
+          });
+          img_position++;
+        }
+      }
+
+    });
+</script>
+
+<div id="main_div" class="multiple-items">
+<c:if test="${userpage.originname !=  null}">
+<c:if test="${multiImgSize > 1 }">
+	<div class="slide">
+		<img width="100" id="multi_back" alt="" src="${paceContext.request.contextPath}/resources/img/back.png">
+		<ul id="multi_ul">
+			<c:forEach items="${multiImg }" var="i">
+				<li id="multi_li"><img src="/uppage/${i }" id="uploadImg" /></li>
+			</c:forEach>
+		</ul>
+		<img width="100" id="multi_next" alt="" src="${paceContext.request.contextPath}/resources/img/next.png">
+	</div>
 </c:if>
+<c:if test="${multiImgSize == 1 }">
+	<c:forEach items="${multiImg }" var="i">
+		<li id="multi_li"><img src="/uppage/${i }" id="uploadImg" /></li>
+	</c:forEach>
+</c:if>
+</c:if>
+
+<c:if test="${userpage.originname ==  null}">
+<img src="${paceContext.request.contextPath}/resources/img/NoImg.png" id="uploadImg"/>
+</c:if>
+
+</div>
 
 <div id="write_div">
 <div id="head_area">
 <span class="glyphicon glyphicon-user" style="margin-left: 20px; font-size: 15px;"> ${id }</span>
 <span id="declaration" class="glyphicon glyphicon-bullhorn" style="margin-left: 20px; font-size: 15px;"> 신고하기</span>
-<c:if test="${fav_check == 1 }">
-	<span id="fav" class="glyphicon glyphicon-ok" style="margin-left: 20px; font-size: 15px;"> <span id="fav_msg">즐겨찾기취소</span></span>
-</c:if>
-<c:if test="${fav_check == 0 }">
-	<span id="fav" class="glyphicon glyphicon-ok" style="margin-left: 20px; font-size: 15px;"> <span id="fav_msg">즐겨찾기추가</span></span>
-</c:if>
 
 </div>
 <div id="tag_area">
@@ -430,8 +524,6 @@ $(document).ready(function() {
 </c:if>
 <span id="good"><span id="good_span">${good_no }</span></span>&nbsp;&nbsp;&nbsp;
 
-<script type='text/javascript'>
-
 <br>
 &nbsp;${userpage.address }
 <c:if test="${userpage.address != null }">
@@ -459,14 +551,16 @@ $(document).ready(function(){
 <span>작성일</span> <fmt:formatDate value="${userpage.write_date }" pattern="yyyy년 MM월 dd일 hh:mm:ss" /><br>
 </div>
 
+
 <div id="comment_area">
 
 <textarea rows="4" style="width: 100%; resize: none;" name="comment" id="comment" placeholder="댓글입력"></textarea>
 
 <button id="write_btn">작성</button>
-<button id="no_btn">취소</button>
+<input type="reset" value="취소">
 
 </div>
+
 
 </div>
 
@@ -477,6 +571,5 @@ $(document).ready(function(){
 	
 	<button id="decl_btn" style="margin-left: 170px;">신고</button>
 </div>
-
 
 <c:import url="/WEB-INF/views/layout/footer.jsp" />
