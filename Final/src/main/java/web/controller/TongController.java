@@ -149,17 +149,17 @@ public class TongController {
 	
 	@RequestMapping(value = "/tong/update", method = RequestMethod.POST)
 	public String updateProc(HttpSession session, UserPage userpage,
-			@RequestParam(value="file")MultipartFile fileupload  ) {
+			MultipartHttpServletRequest mtfRequest){
 		
 		String loginid = (String)session.getAttribute("loginid");
 		
 		int member_code = memberService.getMember_code(loginid);
 		userpage.setMember_code(member_code);
 		
-		if(fileupload.getOriginalFilename().equals("")) {
+		if(mtfRequest == null) {
 			userpageService.updatewrite(userpage);
 		} else {
-			userpageService.imgupdate(fileupload, context, userpage);
+			userpageService.imgupdate(mtfRequest, context, userpage);
 		}
 		
 		return "redirect:"+"/tong/mypage";

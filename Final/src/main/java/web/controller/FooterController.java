@@ -34,8 +34,12 @@ public class FooterController {
 	}
 	
 	@RequestMapping(value = "/layout/search", method = RequestMethod.POST)
-	public void searchProc(String text, Model model) {
+	public void searchProc(String text, Model model, HttpSession session) {
 		logger.info(text);
+		
+		String loginid = (String)session.getAttribute("loginid");
+		int member_code = memberService.getMember_code(loginid);
+		model.addAttribute("member_code", member_code);
 		
 		List memberList = memberService.headerSearchMember(text);
 //		List memberImgList = memberService.headerSearchMemberImg(text);
