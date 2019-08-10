@@ -431,7 +431,7 @@ public class TongController {
 		List timeLine = tongService.getTimeLine(sum2);
 		
 		model.addAttribute("timeLine", timeLine);
-		
+		logger.info(timeLine.toString());
 		// 헤더 import문제로 코드추가
 		member.setMember_id(loginid);
 	    member = memberService.getMember(member);   

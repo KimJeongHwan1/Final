@@ -35,7 +35,7 @@
 }
 
 #uploadImg{
-	width: 100%;
+	width: 900px;
 	height: 620px;
 }
 
@@ -134,21 +134,47 @@
     
     overflow: hidden;
  }
-#imagedisplay div img { 
-	
-	padding-left: 0px;
-	margin-left: 0px;
-		
-	width: 100%;
+.slide {
+ 	width: 900px;
+ 	position: relative;
 	height: 620px;
-} 
-
-
-#imagedisplay{
-
-	position: relative;
+	overflow: hidden;
+	margin: 0px;
 }
 
+#multi_ul {
+	height: 620px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	font-size: 0;
+	margin: 0px;
+	padding: 0px;
+	display: inline-block;
+	list-style: none;
+}
+
+#multi_li {
+	display: inline-block;
+	margin: 0px;
+	padding: 0px;
+}
+
+#multi_back {
+	position: absolute;
+	top: 250px;
+	left: 0;
+	cursor: pointer;
+	z-index: 1;
+}
+
+#multi_next {
+	position: absolute;
+	top: 250px;
+	right: 0;
+	cursor: pointer;
+	z-index: 1;
+}
 </style>
 
 <head>
@@ -259,59 +285,59 @@ $(document).ready(function() {
 <body>
 
 <script type="text/javascript">
+    $(document).ready(function(){
+      var imgs;
+      var img_count;
+      var img_position = 1;
 
-$(function(){
-	 var cur = 0;
-	 var count = $('.slider_item').length;
+      imgs = $("#multi_ul");
+      img_count = imgs.children().length;
+      //버튼을 클릭했을 때 함수 실행
+      $('#multi_back').click(function () {
+        back();
+      });
+      $('#multi_next').click(function () {
+        next();
+      });
 
-	 $('.slider_item').hide();
-	 $('.slider_item').eq(0).show();
+      function back() {
+        if(1<img_position){
+          imgs.animate({
+            left:'+=900px'
+          });
+          img_position--;
+        }
+      }
+      function next() {
+        if(img_count>img_position){
+          imgs.animate({
+            left:'-=900px'
+          });
+          img_position++;
+        }
+      }
 
-	 setInterval(function() {    
-	  $('.slider_item').eq(cur).fadeOut(function () {
-	   $(this).removeClass('active');
-	   cur = (cur + 1) % count;
-	   $('.slider_item').eq(cur).addClass('active').fadeIn();
-	  });
-	 }, 3000); 
-});
+    });
 </script>
 
 <div id="main_div" class="multiple-items">
 <c:if test="${userpage.originname !=  null}">
-<div class="swiper-container">
-	<c:if test="${multiImgSize > 1 }">
-		<div id="imagedisplay">
-		<c:set var="slideA" value="0" />
-		<c:set var="slideB" value="1" />
-		<c:forEach items="${multiImg }" var="i">
-			<c:set var="slideSum" value="${slideA + slideB }" />
-			<c:if test="${slideSum == 1 }">
-				<div class="slider_item active">
-					<img src="/uppage/${i }" id="uploadImg" />
-				</div>
-			</c:if>
-			<c:if test="${slideSum > 1 && slideSum < multiImgSize }">
-				<div class="slider_item">
-					<img src="/uppage/${i }" id="uploadImg" />
-				</div>
-			</c:if>
-			<c:if test="${slideSum == multiImgSize }">
-				<div class="slider_item last">
-					<img src="/uppage/${i }" id="uploadImg" />
-				</div>
-			</c:if>
-			<c:set var="slideA" value="${slideSum }" />
-		</c:forEach>
-		</div>
-	</c:if>
-
-	<c:if test="${multiImgSize == 1 }">
-		<c:forEach items="${multiImg }" var="i">
-			<img src="/uppage/${i }" id="uploadImg" />
-		</c:forEach>
-	</c:if>
-</div>
+<c:if test="${multiImgSize > 1 }">
+	<div class="slide">
+		<img width="100" id="multi_back" alt="" src="${paceContext.request.contextPath}/resources/img/back.png">
+		<ul id="multi_ul">
+			<c:forEach items="${multiImg }" var="i">
+				<li id="multi_li"><img src="/uppage/${i }" id="uploadImg" /></li>
+			</c:forEach>
+		</ul>
+		<img width="100" id="multi_next" alt="" src="${paceContext.request.contextPath}/resources/img/next.png">
+	</div>
+</c:if>
+<c:if test="${multiImgSize == 1 }">
+	<c:forEach items="${multiImg }" var="i">
+		<li id="multi_li"><img src="/uppage/${i }" id="uploadImg" /></li>
+	</c:forEach>
+</c:if>
 </c:if>
 
 <c:if test="${userpage.originname ==  null}">
