@@ -34,144 +34,174 @@ $(document).ready(function() {
 </script>
 
 <style type="text/css">
-#main_div{
+#main_div {
 	width: 60%;
 	border: 1px solid black;
 	margin: 0;
 	float: left;
 }
 
-#write_div{
+#write_div {
 	width: 40%;
-	
 	border: 1px solid blue;
 	margin: 0;
 	float: left;
 }
 
-#uploadImg{
-	width: 100%;
+#uploadImg {
+	width: 900px;
 	height: 620px;
 }
 
-#title_area{
+#title_area {
 	width: 100%;
 }
-#content_area{
+
+#content_area {
 	width: 100%;
 }
-#head_area{
-	width: 100%;
-	height: 100%;
-	border-bottom: 1px solid black;
-	text-align: center;
-}
-#tag_area{
+
+#head_area {
 	width: 100%;
 	height: 100%;
 	border-bottom: 1px solid black;
 	text-align: center;
 }
-#comment_area_see{
+
+#tag_area {
+	width: 100%;
+	height: 100%;
+	border-bottom: 1px solid black;
+	text-align: center;
+}
+
+#comment_area_see {
 	width: 100%;
 	height: 325px;
 	border-bottom: 1px solid black;
 	overflow: scroll;
 }
-#hit_like_area{
+
+#hit_like_area {
 	width: 100%;
 	height: 100%;
 	border-bottom: 1px solid black;
 }
-#comment_area{
+
+#comment_area {
 	width: 100%;
 	height: 100%;
 	border-bottom: 1px solid black;
 }
-#comment_area button{
+
+#comment_area button {
 	margin-bottom: 5px;
 	margin-left: 10px;
 }
-#userimg{
+
+#userimg {
 	width: 40px;
 	height: 40px;
-	
 	border-radius: 40px;
 	margin-left: 5px;
 	margin-right: 15px;
 	margin-top: 5px;
 }
-#usercommimg{
+
+#usercommimg {
 	width: 40px;
 	height: 40px;
 	border-radius: 40px;
-	
 	margin-left: 5px;
 	margin-right: 15px;
 	margin-top: 5px;
 }
-#userface{
+
+#userface {
 	font-size: 40px;
 }
 
 /* 윈도우 마스크 */
 .container {
-	border-left : 1px solid #eee;
-	border-right : 1px solid #eee;
+	border-left: 1px solid #eee;
+	border-right: 1px solid #eee;
 }
 
-
 /* 마스크 뛰우기 */
-#mask {  
-    position:absolute;  
-    z-index:9000;  
-    background-color:#000;  
-    display:none;  
-    left:0;
-    top:0;
-} 
-/* 팝업으로 뜨는 윈도우 css  */ 
-
-.window{
-    display: none;
-    position:absolute;  
-    left:36.5%;
-    top:50px;
-    margin-left: -500px;
-    width:1500px;
-    height:620px;
-    background-color:#FFF;
-    z-index:10000;
-    
-    overflow: hidden;
- }
-#imagedisplay div img { 
-	
-	padding-left: 0px;
-	margin-left: 0px;
-		
-	width: 100%;
+#mask {
+	position: absolute;
+	z-index: 9000;
+	background-color: #000;
+	display: none;
+	left: 0;
+	top: 0;
+}
+/* 팝업으로 뜨는 윈도우 css  */
+.window {
+	display: none;
+	position: absolute;
+	left: 36.5%;
+	top: 50px;
+	margin-left: -500px;
+	width: 1500px;
 	height: 620px;
-} 
+	background-color: #FFF;
+	z-index: 10000;
+	overflow: hidden;
+}
+.slide {
+ 	width: 900px;
+ 	position: relative;
+	height: 620px;
+	overflow: hidden;
+	margin: 0px;
+}
 
+#multi_ul {
+	height: 620px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	font-size: 0;
+	margin: 0px;
+	padding: 0px;
+	display: inline-block;
+	list-style: none;
+}
 
-#imagedisplay{
+#multi_li {
+	display: inline-block;
+	margin: 0px;
+	padding: 0px;
+}
 
-	position: relative;
+#multi_back {
+	position: absolute;
+	top: 250px;
+	left: 0;
+	cursor: pointer;
+	z-index: 1;
+}
+
+#multi_next {
+	position: absolute;
+	top: 250px;
+	right: 0;
+	cursor: pointer;
+	z-index: 1;
 }
 </style>
 
 <head>
 <script type="text/javascript">
-
-function button_event(){
-	if (confirm("정말 삭제하시겠습니까??") == true){    //확인
-	$(location).attr("href", "/tong/delete?content_no=${userpage.content_no}");
-	}else {   //취소
-	    return ;
+	function button_event() {
+		if (confirm("정말 삭제하시겠습니까??") == true) { //확인
+			$(location).attr("href",
+					"/tong/delete?content_no=${userpage.content_no}");
+		} else { //취소
+			return;
+		}
 	}
-}
-
 </script>
 
 </head>
@@ -231,59 +261,59 @@ $(document).ready(function() {
 </script>
 
 <script type="text/javascript">
+    $(document).ready(function(){
+      var imgs;
+      var img_count;
+      var img_position = 1;
 
-$(function(){
-	 var cur = 0;
-	 var count = $('.slider_item').length;
+      imgs = $("#multi_ul");
+      img_count = imgs.children().length;
+      //버튼을 클릭했을 때 함수 실행
+      $('#multi_back').click(function () {
+        back();
+      });
+      $('#multi_next').click(function () {
+        next();
+      });
 
-	 $('.slider_item').hide();
-	 $('.slider_item').eq(0).show();
+      function back() {
+        if(1<img_position){
+          imgs.animate({
+            left:'+=900px'
+          });
+          img_position--;
+        }
+      }
+      function next() {
+        if(img_count>img_position){
+          imgs.animate({
+            left:'-=900px'
+          });
+          img_position++;
+        }
+      }
 
-	 setInterval(function() {    
-	  $('.slider_item').eq(cur).fadeOut(function () {
-	   $(this).removeClass('active');
-	   cur = (cur + 1) % count;
-	   $('.slider_item').eq(cur).addClass('active').fadeIn();
-	  });
-	 }, 3000); 
-});
+    });
 </script>
 
 <div id="main_div" class="multiple-items">
 <c:if test="${userpage.originname !=  null}">
-<div class="swiper-container">
-	<c:if test="${multiImgSize > 1 }">
-		<div id="imagedisplay">
-		<c:set var="slideA" value="0" />
-		<c:set var="slideB" value="1" />
-		<c:forEach items="${multiImg }" var="i">
-			<c:set var="slideSum" value="${slideA + slideB }" />
-			<c:if test="${slideSum == 1 }">
-				<div class="slider_item active">
-					<img src="/uppage/${i }" id="uploadImg" />
-				</div>
-			</c:if>
-			<c:if test="${slideSum > 1 && slideSum < multiImgSize }">
-				<div class="slider_item">
-					<img src="/uppage/${i }" id="uploadImg" />
-				</div>
-			</c:if>
-			<c:if test="${slideSum == multiImgSize }">
-				<div class="slider_item last">
-					<img src="/uppage/${i }" id="uploadImg" />
-				</div>
-			</c:if>
-			<c:set var="slideA" value="${slideSum }" />
-		</c:forEach>
-		</div>
-	</c:if>
-
-	<c:if test="${multiImgSize == 1 }">
-		<c:forEach items="${multiImg }" var="i">
-			<img src="/uppage/${i }" id="uploadImg" />
-		</c:forEach>
-	</c:if>
-</div>
+<c:if test="${multiImgSize > 1 }">
+	<div class="slide">
+		<img width="100" id="multi_back" alt="" src="${paceContext.request.contextPath}/resources/img/back.png">
+		<ul id="multi_ul">
+			<c:forEach items="${multiImg }" var="i">
+				<li id="multi_li"><img src="/uppage/${i }" id="uploadImg" /></li>
+			</c:forEach>
+		</ul>
+		<img width="100" id="multi_next" alt="" src="${paceContext.request.contextPath}/resources/img/next.png">
+	</div>
+</c:if>
+<c:if test="${multiImgSize == 1 }">
+	<c:forEach items="${multiImg }" var="i">
+		<li id="multi_li"><img src="/uppage/${i }" id="uploadImg" /></li>
+	</c:forEach>
+</c:if>
 </c:if>
 
 <c:if test="${userpage.originname ==  null}">

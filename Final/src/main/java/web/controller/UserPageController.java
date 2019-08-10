@@ -132,6 +132,7 @@ public class UserPageController {
 					stdList.add(stdcheck, stdname.substring(stdcheck2, i));
 				}
 			}
+			stdcheck2++;
 			model.addAttribute("multiImgSize", stdcheck2);
 		}
 		model.addAttribute("multiImg", stdList);
