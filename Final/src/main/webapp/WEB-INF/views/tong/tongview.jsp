@@ -368,7 +368,7 @@ ${i.content }<br>
 <label id="nextcomentwrite${sum }">댓글</label>&nbsp;&nbsp;&nbsp;&nbsp;
 
 <c:if test="${loginid == i.member_id }">
-<a href=""><span id="delete_msg${sum }">삭제</span></a><br><br>
+<span id="delete_msg${sum }">삭제</span><br><br>
 </c:if>
 <script type="text/javascript">
 $(document).ready(function() {
@@ -439,7 +439,7 @@ ${coco.content }<br>
 <fmt:formatDate value="${coco.writtendate }" pattern="yyyy년 MM월 dd일 hh:mm:ss" />&nbsp;&nbsp;&nbsp;&nbsp;
 
 <c:if test="${loginid == coco.member_id }">
-<a href=""><span id="delete_coco_msg${ccmsum }">삭제</span></a><br><br>
+<span id="delete_coco_msg${ccmsum }">삭제</span><br><br>
 </c:if>
 <c:if test="${loginid != coco.member_id }">
 <br><br>
@@ -491,42 +491,10 @@ $(document).ready(function() {
 		});
 		$('#cocomment_content${sum }').val('');
 	});
-	
-	
-	$("#good_btn").click(function() {
-		
-		$.ajax({
-			type: "get"
-			, url: "/tong/good?content_no=${userpage.content_no}"
-			, data: { }
-			, dataType: "html"
-			, success: function( res ) {
-				$("#good_span").html(res);
-				console.log("성공");
-			}
-			, error: function() {
-				console.log("실패");
-			}
-		})
-		
-		$.ajax({
-			type: "get"
-			, url: "/tong/goodbtn?content_no=${userpage.content_no}"
-			, data: { }
-			, dataType: "html"
-			, success: function( res ) {
-				$("#good_btn").html(res);
-				console.log("성공");
-			}
-			, error: function() {
-				console.log("실패");
-			}
-		})
-	});		
-	
-	
 });
 </script>
+
+	
 <c:set  var="n" value="${sum }"/>
 </c:forEach>
 </div>

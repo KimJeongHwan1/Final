@@ -13,9 +13,9 @@
 <!--  src="http://code.jquery.com/jquery-2.2.4.min.js"></script> -->
 
 <!-- Bootstrap 3 -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"> -->
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"> -->
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> -->
 
 
 <style>
@@ -63,7 +63,7 @@ ${i.content }<br>
 <label id="nextcomentwrite${sum }">댓글</label>&nbsp;&nbsp;&nbsp;&nbsp;
 
 <c:if test="${loginid == i.member_id }">
-<a href=""><span id="delete_msg${sum }">삭제</span></a><br><br>
+<span id="delete_msg${sum }">삭제</span><br><br>
 </c:if>
 <script type="text/javascript">
 $(document).ready(function() {
@@ -133,7 +133,7 @@ ${coco.content }<br>
 <fmt:formatDate value="${coco.writtendate }" pattern="yyyy년 MM월 dd일 hh:mm:ss" />&nbsp;&nbsp;&nbsp;&nbsp;
 
 <c:if test="${loginid == coco.member_id }">
-<a href=""><span id="delete_coco_msg${ccmsum }">삭제</span></a><br><br>
+<span id="delete_coco_msg${ccmsum }">삭제</span><br><br>
 </c:if>
 <c:if test="${loginid != coco.member_id }">
 <br><br>
