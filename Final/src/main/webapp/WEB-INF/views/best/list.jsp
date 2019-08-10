@@ -16,6 +16,9 @@
 	margin-left: 40px ;
 	margin-top: 10px ;
 }
+a:link , a:visited , a:active , a:hover {
+   color: black ;
+}
 </style>
 
 <div style="width: 40%; text-align: center; margin-left: 30%;">
@@ -29,9 +32,11 @@
 <c:set var="sum" value="${n + m }"/>
 <div id="list">
 	<div id="img">
-	<img src="${paceContext.request.contextPath}/uppage/${i.storedname }" alt="htImg" width="70px;" height="70px;"></div>
+	<a href="/best/view?content_no=${i.content_no }">
+	<img src="${paceContext.request.contextPath}/uppage/${i.storedname }" alt="htImg" width="70px;" height="70px;">
+	</a></div>
 	<div id="content"><a href="/best/view?content_no=${i.content_no }">${i.content_title}</a><br><br>
-	${i.content}</div><div style="clear: both;"></div>
+	<a href="/best/view?content_no=${i.content_no }">${i.content}</a></div><div style="clear: both;"></div>
 	<hr style="width: 40%; margin-left: 30%;">
 </div>
 <c:set var="n" value="${sum }"/>

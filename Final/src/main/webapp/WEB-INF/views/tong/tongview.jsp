@@ -232,21 +232,22 @@ $(document).ready(function() {
 
 <script type="text/javascript">
 
-$(function(){
+  $(function(){
 	 var cur = 0;
 	 var count = $('.slider_item').length;
 
 	 $('.slider_item').hide();
 	 $('.slider_item').eq(0).show();
 
-	 setInterval(function() {    
+	  setInterval(function() {    
 	  $('.slider_item').eq(cur).fadeOut(function () {
 	   $(this).removeClass('active');
 	   cur = (cur + 1) % count;
 	   $('.slider_item').eq(cur).addClass('active').fadeIn();
 	  });
-	 }, 3000); 
-});
+	 }, 3000);  
+
+
 </script>
 
 <div id="main_div" class="multiple-items">

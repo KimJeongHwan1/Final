@@ -13,16 +13,21 @@
    margin: 0 auto;
    width: 1100px;
 }
+#h1{
+	margin-left: 21% ;
+
+}
+#hr{
+	width: 60%
+}
 </style>
-<body>
 
-
-<h1>게시글 수정</h1>
-<hr>
+<h1 id="h1">게시글 수정</h1>
+<hr id="hr">
 
 <div id="write_div">
 
-<form action="/tong/update" method="post" enctype="multipart/form-data">
+<form action="/tong/update" method="post" enctype="multipart/form-data" style="height: 100%;">
 <input type="hidden" id="content_no" name="content_no" value="${userpage.content_no }">
 <table style="width: 100%">
 <tr>
@@ -75,8 +80,7 @@
 </tr>
 </table>
 
-<button>작성</button>
-<button type="button" onclick="location.href='/member/main2'">취소</button>
+
 
 
 <br>
@@ -90,7 +94,7 @@
 <script>
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div
         mapOption = {
-            center: new daum.maps.LatLng(${userpage.y }, ${userpage.x }), // 지도의 중심좌표
+            center: new daum.maps.LatLng(${userpage.y }, ${userpage.x }), 
             level: 5 // 지도의 확대 레벨
         };
  
@@ -159,15 +163,9 @@
     }
 </script>
 	
-
+<button>작성</button>
+<button type="button" onclick="history.back()">취소</button>
 </form>
 
 </div>
-
-
-
-
-
-</body>
-
 <c:import url="/WEB-INF/views/layout/footer.jsp" />
