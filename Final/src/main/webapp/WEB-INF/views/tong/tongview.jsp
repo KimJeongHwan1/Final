@@ -3,14 +3,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<script type="text/javascript"
- src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
-
-<!-- Bootstrap 3 -->
-<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"> -->
-<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"> -->
-<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> -->
-
 <style type="text/css">
 #main_div {
 	width: 60%;
@@ -170,7 +162,6 @@
 }
 </style>
 
-<head>
 <script type="text/javascript">
 	function button_event() {
 		if (confirm("정말 삭제하시겠습니까??") == true) { //확인
@@ -181,9 +172,6 @@
 		}
 	}
 </script>
-
-</head>
-<body>
 
 <script type="text/javascript">
 $(document).ready(function() {

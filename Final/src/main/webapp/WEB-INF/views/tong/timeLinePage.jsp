@@ -200,6 +200,7 @@
 <c:if test="${timeLine eq '[]' }">
 <link href="https://fonts.googleapis.com/css?family=Jua&display=swap&subset=korean" rel="stylesheet">
 <!-- 기본으로 보이는 문구 -->
+<link href="https://fonts.googleapis.com/css?family=Jua&display=swap&subset=korean" rel="stylesheet">
 <div style="background-color: white;">
 	<div id="img1"><img src="/resources/img/TimeLineImg1.jpg" style="width: 400px; height: 400px;" /></div>
 	<div id="img2"><img src="/resources/img/TimeLineImg2.jpg" style="width: 400px; height: 400px;" /></div>

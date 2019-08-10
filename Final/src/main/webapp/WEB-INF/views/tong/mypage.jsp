@@ -483,8 +483,6 @@ a:hover { text-decoration:none ;
 </div>
 </div>
 </div>
-
 </div>
 
-<%-- <c:import url="/WEB-INF/views/layout/infiScroll.jsp" /> --%>
 <c:import url="/WEB-INF/views/layout/footer.jsp" />
