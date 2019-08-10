@@ -11,28 +11,6 @@
 <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"> -->
 <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> -->
 
-<script type="text/javascript">
-$(document).ready(function() {
-	InitializeStaticMenu();
-	
-	$("#follow_btn").click(function(e){ 
-		$.ajax({
-			type: "get"
-			, url: "/userpage/following?user_id=${user_id }"
-			, data:	{}
-			, dataType: "html"
-			, success: function( res ) {
-				$("#follow_msg").html(res);
-				console.log("성공");
-			}
-			, error: function() {
-				console.log("실패");
-			}
-		});   
-	});
-});
-</script>
-
 <style type="text/css">
 #main_div {
 	width: 60%;
@@ -338,7 +316,7 @@ $(document).ready(function() {
 <div id="tag_area">
 <c:if test="${tagList !=null }">
 <c:forEach items="${tagList }" var="tag">
-	<a href="/userpage/tag?tag=${tag }"><span>#</span>${tag }</a>
+	<a href="/userpage/tag?tag=${tag }"><span style="color: blue;">#${tag }</span></a>
 </c:forEach>
 </c:if>
 </div>
@@ -568,9 +546,6 @@ $(document).ready(function() {
 <button type="button" id="good_btn"><span class="glyphicon glyphicon-star-empty"></span></button>
 </c:if>
 <span id="good"><span id="good_span">${good_no }</span></span>&nbsp;&nbsp;&nbsp;
-
-
-<span id="kakao1"><span id="kakao_span">공유하기</span></span>
 
 
 <!-- 게시글 삭제하기 -->

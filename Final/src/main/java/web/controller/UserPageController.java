@@ -358,8 +358,12 @@ public class UserPageController {
 	}
 
 	@RequestMapping(value = "/userpage/tag", method = RequestMethod.GET)
-	public void tag(String tag, Model model) {
-
+	public void tag(String tag, Model model, HttpSession session) {
+		
+		String loginid = (String)session.getAttribute("loginid");
+		int member_code = memberService.getMember_code(loginid);
+		model.addAttribute("member_code", member_code);
+		
 		List list = userpageService.selectTag(tag);
 
 		model.addAttribute("list", list);

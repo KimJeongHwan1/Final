@@ -180,11 +180,23 @@ $(document).ready(function(){
 <c:forEach items="${userpageList }" var="i">
 <c:set var="sum" value="${n + m }"/>
 <div id="user_write_list">
-<c:if test="${i.originname != null }">
-<a href="/userpage/view?content_no=${i.content_no }" class="openMask"><img src="/uppage/${i.multimainstoredname }" id="file_img${sum }" class="list_img"/></a><br>
+
+<c:if test="${member_code == i.member_code }">
+	<c:if test="${i.originname != null }">
+	<a href="/tong/tongview?content_no=${i.content_no }" class="openMask"><img src="/uppage/${i.multimainstoredname }" id="file_img${sum }" class="list_img"/></a><br>
+	</c:if>
+	<c:if test="${i.originname eq null }">
+	<a href="/tong/tongview?content_no=${i.content_no }" class="openMask"><img src="${paceContext.request.contextPath}/resources/img/NoImg.png"class="list_img"/></a><br>
+	</c:if>
 </c:if>
-<c:if test="${i.originname eq null }">
-<a href="/userpage/view?content_no=${i.content_no }" class="openMask"><img src="${paceContext.request.contextPath}/resources/img/NoImg.png"class="list_img"/></a><br>
+
+<c:if test="${member_code != i.member_code }">
+	<c:if test="${i.originname != null }">
+	<a href="/userpage/view?content_no=${i.content_no }" class="openMask"><img src="/uppage/${i.multimainstoredname }" id="file_img${sum }" class="list_img"/></a><br>
+	</c:if>
+	<c:if test="${i.originname eq null }">
+	<a href="/userpage/view?content_no=${i.content_no }" class="openMask"><img src="${paceContext.request.contextPath}/resources/img/NoImg.png"class="list_img"/></a><br>
+	</c:if>
 </c:if>
 
 <span id="spanmsg1${sum }" class="glyphicon glyphicon-heart-empty"> ${i.hit } </span>
