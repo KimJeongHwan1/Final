@@ -461,7 +461,7 @@ a:hover { text-decoration:none ;
 
 <div id="user_write_list">
 <c:if test="${i.originname != null }">
-<a href="/tong/tongview?content_no=${i.content_no }" class="openMask"><img src="/uppage/${i.multimainstoredname }" id="file_img${sum }" class="list_img"/></a><br>
+<a href="/tong/tongview?content_no=${i.content_no }" class="openMask"><img src="/uppage/${i.multimainstoredname}" id="file_img${sum }" class="list_img"/></a><br>
 </c:if>
 <c:if test="${i.originname eq null }">
 <a href="/tong/tongview?content_no=${i.content_no }" class="openMask"><img src="${paceContext.request.contextPath}/resources/img/NoImg.png"class="list_img"/></a><br>
@@ -470,9 +470,7 @@ a:hover { text-decoration:none ;
 <span id="" class="glyphicon glyphicon-heart-empty"> ${i.hit } </span>
 <span id="" class="glyphicon glyphicon-pencil"> ${i.comm_count } </span>
 <span id="" class="glyphicon glyphicon-star-empty"> ${i.good }  </span>
-<c:if test="${i.storedname != i.multimainstoredname }">
-<span class="glyphicon glyphicon-book"> 멀티파일</span>
-</c:if>
+
 
 <c:set var="n" value="${sum }"/>
 </div>

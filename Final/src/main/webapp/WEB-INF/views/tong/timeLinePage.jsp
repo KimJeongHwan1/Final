@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<link href="https://fonts.googleapis.com/css?family=Jua&display=swap&subset=korean" rel="stylesheet">
 <c:import url="/WEB-INF/views/layout/header.jsp" />
 <script type="text/javascript">
 	//윈도우 팝업
@@ -135,6 +135,32 @@
 	height: 200px;
 	width: 250px;
 }
+
+#img1 {
+	float:left;
+	margin-left: 9% ;
+}
+#img2 {
+	float: left ;
+	margin-left: 9% ;
+}
+#img3 {
+	float: left ;
+	margin-left: 9% ;
+}
+#text2{
+	border-radius:10px;
+	border:1px solid #ccc ;
+	align-content: center;
+	text-align: center;
+	color: white;
+	margin-top:100px ;
+	padding: 10px ;
+	font-size: 30px ;
+	width: 50%;
+	margin-left: 25% ;
+	font-family: 'Jua', sans-serif;
+}
 </style>
 <!--  style="background-color: #d8e9ef; -->
 <body id="background">
@@ -169,7 +195,16 @@
    <p style="text-align:center; background:#ffffff; padding:20px;"><a href="#" class="close">닫기X</a></p>
 </div>
 </div>
-
 </div>
-</body>
+
+<c:if test="${timeLine eq '[]' }">
+<!-- 기본으로 보이는 문구 -->
+<div style="background-color: white;">
+	<div id="img1"><img src="/resources/img/TimeLineImg1.jpg" style="width: 400px; height: 400px;" /></div>
+	<div id="img2"><img src="/resources/img/TimeLineImg2.jpg" style="width: 400px; height: 400px;" /></div>
+	<div id="img3"><img src="/resources/img/TimeLineImg3.jpg" style="width: 400px; height: 400px;"/></div>
+</div><div style="clear: both;"></div>
+<div id="text2"><font>관심있는 항목을 검색하여 팔로우하면 게시물을 받아볼 수 있습니다</font></div>
+<!-- 기본으로 보이는 문구 끝 -->
+</c:if>
 <c:import url="/WEB-INF/views/layout/footer.jsp" />
