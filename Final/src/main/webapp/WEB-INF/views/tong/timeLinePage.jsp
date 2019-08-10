@@ -198,6 +198,7 @@
 </div>
 
 <c:if test="${timeLine eq '[]' }">
+<link href="https://fonts.googleapis.com/css?family=Jua&display=swap&subset=korean" rel="stylesheet">
 <!-- 기본으로 보이는 문구 -->
 <link href="https://fonts.googleapis.com/css?family=Jua&display=swap&subset=korean" rel="stylesheet">
 <div style="background-color: white;">

@@ -178,7 +178,7 @@ public class MemberServiceImpl implements MemberService {
 		good.setMember_id(member_id);
 		
 		if(memberDao.saveGoodBlock(good)>0) {
-			memberDao.deleteGood(member_id);
+			memberDao.deleteGood(good);
 			memberDao.userpageGoodMin(content_no);
 		} else {
 			memberDao.saveGoodId(good);

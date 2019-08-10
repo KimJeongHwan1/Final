@@ -47,7 +47,7 @@ public interface MemberDao {
 	// 좋아요 
 	public int saveGoodBlock(Good good);
 	public int saveGoodcount(int content_no);
-	public void deleteGood(String member_id);
+	public void deleteGood(Good good);
 	public void saveGoodId(Good good);
 	
 	public void userpageGoodMin(int content_no);

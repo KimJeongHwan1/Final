@@ -128,9 +128,9 @@
 	</select>
 	
 	<delete id="deleteGood"
-		parameterType="String">
+		parameterType="web.dto.Good">
 		
-		delete from good where member_id = #{member_id }	
+		delete from good where member_id = #{member_id } and content_no = #{content_no }
 	</delete>
 
 	<update id="userpageGoodMin"
