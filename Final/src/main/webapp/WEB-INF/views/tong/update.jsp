@@ -162,9 +162,10 @@
         }).open();
     }
 </script>
+<br>
 	
-<button>작성</button>
-<button type="button" onclick="history.back()">취소</button>
+<button class="btn btn-success">작성</button>
+<button type="button" onclick="history.back()" class="btn btn-danger">취소</button>
 </form>
 
 </div>

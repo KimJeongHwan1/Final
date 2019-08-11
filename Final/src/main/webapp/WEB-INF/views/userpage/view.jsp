@@ -88,7 +88,7 @@
 #declarationDiv{
    position: fixed;
    top: 100px;
-   left: 1050px;
+   left: 1260px;
 }
 /* 윈도우 마스크 */
 .container {
@@ -115,7 +115,7 @@
     top:50px;
     margin-left: -500px;
     width:1500px;
-    height:620px;
+    height:650px;
     background-color:#FFF;
     z-index:10000;
     
