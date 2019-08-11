@@ -10,12 +10,12 @@
 </head>
 <body>
 
-<c:if test="${check == 1 }">
+<c:if test="${check == 0 }">
 팔로우
 </c:if>
 
 
-<c:if test="${check == 0 }">
+<c:if test="${check == 1 }">
 언팔로우
 </c:if>
 

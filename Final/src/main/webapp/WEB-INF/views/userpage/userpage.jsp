@@ -346,10 +346,10 @@ a:hover { text-decoration:none ; }
 	<c:if test="${bool == false }">
 		<td rowspan="2" style="padding: 10px;"><img src="${paceContext.request.contextPath}/resources/img/img4.jpg" id="userprofilimg"/></td>
 		<td>${user_id }
-			<c:if test="${check == 1 }">
+			<c:if test="${check == 0 }">
 				<button id="follow_btn" type="button"><span id="follow_msg">팔로우</span></button>				
 			</c:if>
-			<c:if test="${check == 0 }">
+			<c:if test="${check == 1 }">
 				<button id="follow_btn" type="button"><span id="follow_msg">언팔로우</span></button>			
 			</c:if>
 		</td>

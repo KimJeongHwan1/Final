@@ -189,7 +189,7 @@ public class MemberController {
 			session.setAttribute("login", true);
 			session.setAttribute("loginid", member.getMember_id());
 			session.setAttribute("nick", member.getMember_name());
-			session.setMaxInactiveInterval(20 * 60);
+			session.setMaxInactiveInterval(60 * 60);
 
 			//리다이렉트 URL 지정
 			redirectUrl = "/tong/timeLinePage";
