@@ -66,7 +66,8 @@ $(document).ready(function() {
 </table>
 
 <div id="btn_div" style= "margin-top: 40px;">
-<button type="button" id="change_pw">변경</button>
+<button type="button" id="change_pw" class="btn btn-success">변경</button>
+<button class="btn btn-danger" onclick="location.href='/member/mypage'">취소</button>
 </div>
 
 <div id="pw_check_div" style= "margin-top: 40px;">

@@ -46,9 +46,9 @@ $(document).ready(function() {
 			<span id="pw_check_msg"></span>
 		</div>
 		<br>
-		<button id="delete_btn">탈퇴완료</button>
+		<button id="delete_btn" class="btn btn-success">탈퇴완료</button>
 		<button type="button" id="back_btn"
-			onclick="location.href='/member/main2'">탈퇴취소</button>
+			onclick="location.href='/tong/timeLinePage'" class="btn btn-danger">탈퇴취소</button>
 		<br>
 	</form>
 </div>

@@ -100,7 +100,8 @@ $(document).ready(function(){
 		<input type="text" id="member_addressnum" name="member_addressnum" placeholder="우편번호" style="width: 400px; margin-top: 30px;" value="${member.member_addressnum }"><br>
 	 	<input type="text" id="member_address" name="member_address" placeholder="상세주소" style="width: 400px; margin-top: 10px;" value="${member.member_address }">
 	</td>
-	<td><button type="button" id="btnAddr" style="width: 45px; margin-top: 18px; margin-left: 10px; height: 35px;">검색</button></td>
+	<td><button type="button" id="btnAddr" style="width: 53px; margin-top: 18px; margin-left: 10px;
+	 	height: 35px; text-align: center;" class="btn btn-primary" >검색</button></td>
 </tr>
 <tr>
 	<td><label style="width: 200px; margin-top: 30px; font-size: 25px; font-weight: 100;">전화번호</label> </td>
@@ -110,8 +111,8 @@ $(document).ready(function(){
 
 </table>
 <div id="btn_div" style= "margin-top: 40px;">
-<button>작성</button>
-<button>취소</button>
+<button class="btn btn-success">작성</button>
+<button class="btn btn-danger" onclick="location.href='/member/mypage'">취소</button>
 </div>
 </form>
 </div>

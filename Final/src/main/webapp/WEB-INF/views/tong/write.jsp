@@ -48,11 +48,12 @@
    <td><input type="text" name="address" id="address" value="${userpage.address }">
 	<input type="text" name="x" id="x" value="${userpage.x }">
 	<input type="text" name="y" id="y" value="${userpage.y }">
-	<input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"></td>
+	<input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색" class="btn btn-primary"
+		style="margin-bottom: 5px;" ></td>
 </tr>
 <tr>
    <td>사진선택</td>
-   <td><input multiple="multiple" type="file" name="file" style="width: 498px;"/></td>
+   <td><input multiple="multiple" type="file" name="file" style="width: 498px;" /></td>
 </tr>
 <tr>
    <td>내용</td>
@@ -144,9 +145,9 @@
         }).open();
     }
 </script>
-
-<button>작성</button>
-<button type="button" onclick="history.back()">취소</button>
+<br>
+<button class="btn btn-success" >작성</button>
+<button type="button" onclick="history.back()" class="btn btn-danger" >취소</button>
 </form>
 
 </div>

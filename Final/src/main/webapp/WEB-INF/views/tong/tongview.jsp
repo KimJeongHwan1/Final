@@ -496,17 +496,17 @@ $(document).ready(function() {
 <div id="hit_like_area">
 
 <c:if test="${goodCheck == 1}">
-<button type="button" id="good_btn"><span class="glyphicon glyphicon-star"></span></button>
+<button type="button" id="good_btn" class="btn btn-primary" ><span class="glyphicon glyphicon-star"></span></button>
 </c:if>
 <c:if test="${goodCheck == 0}">
-<button type="button" id="good_btn"><span class="glyphicon glyphicon-star-empty"></span></button>
+<button type="button" id="good_btn" class="btn btn-primary" ><span class="glyphicon glyphicon-star-empty" ></span></button>
 </c:if>
 <span id="good"><span id="good_span">${userpage.good }</span></span>&nbsp;&nbsp;&nbsp;
 
 
 <!-- 게시글 삭제하기 -->
-<input type="button" id="deleteBtn" value="삭제" onclick="button_event();"/>
-<input type="button" id="deleteBtn" value="수정" onclick="location.href='/tong/update?content_no=${userpage.content_no }'"/>
+<input type="button" id="deleteBtn" value="수정" onclick="location.href='/tong/update?content_no=${userpage.content_no }'" class="btn btn-info"/>
+<input type="button" id="deleteBtn" value="삭제" onclick="button_event();" class="btn btn-danger"/>
 
 <script type="text/javascript">
 $(document).ready(function() {
@@ -563,8 +563,8 @@ $(document).ready(function(){
 
 <textarea rows="4" style="width: 100%; resize: none;" name="comment" id="comment" placeholder="댓글입력"></textarea>
 
-<button id="write_btn">작성</button>
-<input type="reset" value="취소">
+<button id="write_btn" class="btn btn-success">작성</button>
+<input type="reset" value="취소" class="btn btn-danger" style="margin-bottom: 4px;">
 
 </div>
 </form>

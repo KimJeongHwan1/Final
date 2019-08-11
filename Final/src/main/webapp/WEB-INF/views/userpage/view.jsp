@@ -539,14 +539,14 @@ $(document).ready(function() {
 
 
 <c:if test="${goodCheck == 1}">
-<button type="button" id="good_btn"><span class="glyphicon glyphicon-star"></span></button>
+<button type="button" id="good_btn" class="btn btn-primary" ><span class="glyphicon glyphicon-star"></span></button>
 </c:if>
 <c:if test="${goodCheck == 0}">
-<button type="button" id="good_btn"><span class="glyphicon glyphicon-star-empty"></span></button>
+<button type="button" id="good_btn" class="btn btn-primary" ><span class="glyphicon glyphicon-star-empty"></span></button>
 </c:if>
 <span id="good"><span id="good_span">${good_no }</span></span>&nbsp;&nbsp;&nbsp;
 
-<br>
+<br><br>
 &nbsp;${userpage.address }
 <c:if test="${userpage.address != null }">
 <span id="map" class="glyphicon glyphicon-map-marker"></span>
@@ -577,8 +577,8 @@ $(document).ready(function(){
 
 <textarea rows="4" style="width: 100%; resize: none;" name="comment" id="comment" placeholder="댓글입력"></textarea>
 
-<button id="write_btn">작성</button>
-<input type="reset" value="취소">
+<button id="write_btn" class="btn btn-success">작성</button>
+<input type="reset" value="취소" class="btn btn-danger" style="margin-bottom: 4px;">
 
 </div>
 
