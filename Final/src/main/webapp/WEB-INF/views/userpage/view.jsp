@@ -16,14 +16,14 @@
 #write_div{
 	width: 40%;
 	
-	border: 1px solid blue;
+	border: 1px solid black;
 	margin: 0;
 	float: left;
 }
 
 #uploadImg{
 	width: 900px;
-	height: 620px;
+	height: 650px;
 }
 
 #title_area{
@@ -124,13 +124,13 @@
 .slide {
  	width: 900px;
  	position: relative;
-	height: 620px;
+	height: 650px;
 	overflow: hidden;
 	margin: 0px;
 }
 
 #multi_ul {
-	height: 620px;
+	height: 650px;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -338,17 +338,17 @@ $(document).ready(function() {
 <span class="glyphicon glyphicon-user" style="margin-left: 20px; font-size: 15px;"> ${id }</span>
 <span id="declaration" class="glyphicon glyphicon-bullhorn" style="margin-left: 20px; font-size: 15px;"> 신고하기</span>
 <c:if test="${fav_check == 1 }">
-	<span id="fav" class="glyphicon glyphicon-ok" style="margin-left: 20px; font-size: 15px;"> <span id="fav_msg">즐겨찾기취소</span></span>
+	<span id="fav" class="glyphicon glyphicon-ok" style="margin-left: 20px; font-size: 15px;"> <span id="fav_msg">즐겨찾기<span style="color: red;">취소</span></span></span>
 </c:if>
 <c:if test="${fav_check == 0 }">
-	<span id="fav" class="glyphicon glyphicon-ok" style="margin-left: 20px; font-size: 15px;"> <span id="fav_msg">즐겨찾기추가</span></span>
+	<span id="fav" class="glyphicon glyphicon-ok" style="margin-left: 20px; font-size: 15px;"> <span id="fav_msg">즐겨찾기<span style="color: blue;">추가</span></span></span>
 </c:if>
 
 </div>
 <div id="tag_area">
 <c:if test="${tagList !=null }">
 <c:forEach items="${tagList }" var="tag">
-	<a href="/userpage/tag?tag=${tag }"><span>#</span>${tag }</a>
+	<a href="/userpage/tag?tag=${tag }"><span style="color: blue;">#${tag }</span></a>
 </c:forEach>
 </c:if>
 </div>
@@ -503,7 +503,7 @@ $(document).ready(function() {
 
 
 <textarea rows="2" style="width: 100%; resize: none;" name="cocomment_content" id="cocomment_content${sum }" placeholder="댓글입력"></textarea>
-<button id="cocoment_write_btn${sum }">작성</button>
+<button id="cocoment_write_btn${sum }" class="btn btn-success">작성</button>
 </div>
 <script type="text/javascript">
 $(document).ready(function() {
@@ -578,7 +578,6 @@ $(document).ready(function(){
 <textarea rows="4" style="width: 100%; resize: none;" name="comment" id="comment" placeholder="댓글입력"></textarea>
 
 <button id="write_btn" class="btn btn-success">작성</button>
-<input type="reset" value="취소" class="btn btn-danger" style="margin-bottom: 4px;">
 
 </div>
 

@@ -59,7 +59,7 @@
 	<input type="text" name="x" id="x" value="${userpage.x }">
 	<input type="text" name="y" id="y" value="${userpage.y }">
 	<input type="hidden" id="sample5_address" placeholder="주소">
-	<input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"></td>
+	<input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색" class="btn btn-primary"></td>
 </tr>
 <tr>
    <td>사진선택</td>

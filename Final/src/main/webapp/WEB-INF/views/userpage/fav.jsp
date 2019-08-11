@@ -10,12 +10,13 @@
 </head>
 <body>
 <c:if test="${check == 1 }">
-즐겨찾기취소
+<span>즐겨찾기<span style="color: red;">취소</span></span>
 </c:if>
 
 
 <c:if test="${check == 0 }">
-즐겨찾기추가
+<span>즐겨찾기<span style="color: blue;">추가</span></span>
 </c:if>
+
 </body>
 </html>

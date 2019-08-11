@@ -164,7 +164,7 @@ $(document).ready(function() {
 
 
 <textarea rows="2" style="width: 100%; resize: none;" name="cocomment_content" id="cocomment_content${sum }" placeholder="댓글입력"></textarea>
-<button id="cocoment_write_btn${sum }">작성</button>
+<button id="cocoment_write_btn${sum }" class="btn btn-success">작성</button>
 </div>
 <script type="text/javascript">
 $(document).ready(function() {

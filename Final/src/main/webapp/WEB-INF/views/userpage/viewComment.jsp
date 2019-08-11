@@ -9,8 +9,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <!-- jQuery 2.2.4 -->
-<script type="text/javascript"
- src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+<!-- <script type="text/javascript" -->
+<!--  src="http://code.jquery.com/jquery-2.2.4.min.js"></script> -->
 
 <!-- Bootstrap 3 -->
 <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"> -->
@@ -164,7 +164,7 @@ $(document).ready(function() {
 
 
 <textarea rows="2" style="width: 100%; resize: none;" name="cocomment_content" id="cocomment_content${sum }" placeholder="댓글입력"></textarea>
-<button id="cocoment_write_btn${sum }">작성</button>
+<button id="cocoment_write_btn${sum }" class="btn btn-success">작성</button>
 </div>
 <script type="text/javascript">
 $(document).ready(function() {

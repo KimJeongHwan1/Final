@@ -299,7 +299,6 @@ $(document).ready(function() {
 <span id="blockSee" style="color: red;"><span id="blockSee_msg">비공개</span></span>
 </c:if>
 <span>(클릭시 변경)</span>
-<span class="glyphicon glyphicon-align-justify" style="margin-left: 20px; font-size: 15px;"></span>
 </div>
 <div id="tag_area">
 <c:if test="${tagList !=null }">
@@ -459,7 +458,7 @@ $(document).ready(function() {
 
 
 <textarea rows="2" style="width: 100%; resize: none;" name="cocomment_content" id="cocomment_content${sum }" placeholder="댓글입력"></textarea>
-<button id="cocoment_write_btn${sum }">작성</button>
+<button id="cocoment_write_btn${sum }" class="btn btn-success">작성</button>
 </div>
 <script type="text/javascript">
 $(document).ready(function() {
@@ -558,16 +557,13 @@ $(document).ready(function(){
 <span>조회수</span> ${userpage.hit }<br>
 <span>작성일</span> <fmt:formatDate value="${userpage.write_date }" pattern="yyyy년 MM월 dd일 hh:mm:ss" /><br>
 </div>
-<form>
 <div id="comment_area">
 
 <textarea rows="4" style="width: 100%; resize: none;" name="comment" id="comment" placeholder="댓글입력"></textarea>
 
 <button id="write_btn" class="btn btn-success">작성</button>
-<input type="reset" value="취소" class="btn btn-danger" style="margin-bottom: 4px;">
 
 </div>
-</form>
 </div>
 
 
