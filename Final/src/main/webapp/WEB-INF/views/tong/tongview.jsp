@@ -154,9 +154,9 @@
 }
 
 #multi_next {
-	position: absolute;
+ 	position: absolute;
 	top: 250px;
-	right: 0;
+	right:0px;
 	cursor: pointer;
 	z-index: 1;
 }

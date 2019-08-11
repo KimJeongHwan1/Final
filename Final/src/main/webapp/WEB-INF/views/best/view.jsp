@@ -3,13 +3,19 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:import url="/WEB-INF/views/layout/header.jsp" />
+<link href="https://fonts.googleapis.com/css?family=Jua&display=swap&subset=korean" rel="stylesheet">
 
 <!-- .slide 태그 CSS에서 슬라이드 변경 -->
 <!-- slide back , next CSS에서 버튼 수정 -->
 
 <style>
+#all_div{
+	margin-left:7%;
+	margin-top:10px;
+	margin-bottom:30px;
+}
 #main_div{
-	width: 60%;
+	width: 670px;
 	border: 1px solid black;
 	margin: 0;
 	float: left;
@@ -23,10 +29,10 @@
 	float: left;
 }
 
-#uploadImg{
-	width: 900px;
-	height: 620px;
-}
+#uploadImg{ 
+ 	width: 670px; 
+ 	height: 610px;
+ } 
 
 #title_area{
 	width: 100%;
@@ -132,7 +138,8 @@
 }
 
 #multi_ul {
-	height: 620px;
+	width:670px;
+	height: 50%;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -160,7 +167,7 @@
 #multi_next {
 	position: absolute;
 	top: 250px;
-	right: 0;
+	right:240px;
 	cursor: pointer;
 	z-index: 1;
 }
@@ -291,6 +298,7 @@ $(document).ready(function() {
     });
 </script>
 
+<div id="all_div">
 <div id="main_div" class="multiple-items">
 <c:if test="${userpage.originname !=  null}">
 <c:if test="${multiImgSize > 1 }">
@@ -571,5 +579,5 @@ $(document).ready(function(){
 	
 	<button id="decl_btn" style="margin-left: 170px;">신고</button>
 </div>
-
+</div>
 <c:import url="/WEB-INF/views/layout/footer.jsp" />

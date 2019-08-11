@@ -4,17 +4,20 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:import url="/WEB-INF/views/layout/header.jsp" />
+<link href="https://fonts.googleapis.com/css?family=Jua&display=swap&subset=korean" rel="stylesheet">
 
 <style>
 
 #img {
 	float: left;
-	margin-left: 700px ;
+	margin-left: 35% ;
 }
 #content{
 	float: left;
 	margin-left: 40px ;
 	margin-top: 10px ;
+	font-family: 'Jua', sans-serif;
+	
 }
 a:link , a:visited , a:active , a:hover {
    color: black ;
@@ -22,7 +25,7 @@ a:link , a:visited , a:active , a:hover {
 </style>
 
 <div style="width: 40%; text-align: center; margin-left: 30%;">
-<h1>베스트 게시판</h1>
+<h1 style="font-family: 'Jua', sans-serif">베스트 게시판</h1>
 <hr><br>
 </div>
 <div>
