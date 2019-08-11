@@ -615,7 +615,7 @@
 </div>
 
 
-<button id="prev"><a href="/main">이전으로</a></button>
+<button id="prev" class="btn btn-danger" onclick="location.href='/main'">이전으로</button>
 <br><br><br><br><br><br>
 	
 	
