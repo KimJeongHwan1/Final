@@ -119,27 +119,33 @@ public class TongController {
 	}
 	
 	@RequestMapping(value = "/tong/write", method = RequestMethod.POST)
-	public String writeProc(HttpSession session, UserPage userpage,
-			MultipartHttpServletRequest mtfRequest, Member member, Model model){
-		
-		String loginid = (String)session.getAttribute("loginid");
-		
-		int member_code = memberService.getMember_code(loginid);
-		userpage.setMember_code(member_code);
-		
-		if(mtfRequest == null) {
-			userpageService.insertwrite(userpage);
-		} else {
-			userpageService.imgsave(context, userpage, mtfRequest);
-		}
-		
-		// 헤더 import문제로 코드추가
-		member.setMember_id(loginid);
-	    member = memberService.getMember(member);   
-	    model.addAttribute("mem", member);
-		
-		return "redirect:"+"/tong/mypage";
-	}
+	   public String writeProc(HttpSession session, UserPage userpage,
+	         MultipartHttpServletRequest mtfRequest, Member member, Model model){
+	      logger.info(userpage.toString());
+	      String loginid = (String)session.getAttribute("loginid");
+	      
+	      int member_code = memberService.getMember_code(loginid);
+	      userpage.setMember_code(member_code);
+	      
+	      String tag = userpage.getTag();
+	      if(!tag.equals("")) {
+	         tag = tag.trim().replaceAll(" +", " ");
+	         userpage.setTag(tag);
+	      }
+	      userpage.setTag(tag);
+	      if(mtfRequest == null) {
+	         userpageService.insertwrite(userpage);
+	      } else {
+	         userpageService.imgsave(context, userpage, mtfRequest);
+	      }
+	      
+	      // 헤더 import문제로 코드추가
+	      member.setMember_id(loginid);
+	       member = memberService.getMember(member);   
+	       model.addAttribute("mem", member);
+	      
+	      return "redirect:"+"/tong/mypage";
+	   }
 	
 	@RequestMapping(value = "/tong/update", method = RequestMethod.GET)
 	public void update(HttpSession session, Model model, UserPage userpage, int content_no ) {

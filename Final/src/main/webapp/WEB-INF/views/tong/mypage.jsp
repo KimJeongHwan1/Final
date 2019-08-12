@@ -161,13 +161,13 @@ function InitializeStaticMenu() {
 }
 /* 네비게이션바 테이블 */
 table {
-	border-collapse: collapse;
-/* 	border-top: 3px solid black; */
-/* 	border-bottom: 3px solid black; */
-	width:auto;
-	text-align : center;
-	font-family: 'Jua', sans-serif;
-	font-size:25px;
+   border-collapse: collapse;
+/*    border-top: 3px solid black; */
+/*    border-bottom: 3px solid black; */
+   width:auto;
+   text-align : center;
+   font-family: 'Jua', sans-serif;
+   font-size:25px;
 }
 .table th, td{
 /*     border: 1px solid #ddd; */
@@ -193,9 +193,9 @@ th{
 }
 .statictable{
 
-	font-size: 20px;
-  	font-family: 'Jua', sans-serif;
- 	
+   font-size: 20px;
+     font-family: 'Jua', sans-serif;
+    
 }
 
 /* 네비게이션바 테이블 */
@@ -274,8 +274,8 @@ th{
    border: 1px solid black;
 }
 #hr{
-	width:60%;
-	margin-left:30%;
+   width:60%;
+   margin-left:30%;
 
 }
 a:link , a:visited , a:active , a:hover {
@@ -287,8 +287,8 @@ a:hover { text-decoration:none ;
 
 /* 윈도우 마스크 */
 .container {
-	border-left : 1px solid #eee;
-	border-right : 1px solid #eee;
+   border-left : 1px solid #eee;
+   border-right : 1px solid #eee;
 }
 
 
@@ -329,16 +329,16 @@ a:hover { text-decoration:none ;
 }
 #prev, #next {
 
-	border-top-left-radius: 5px;
-	border-top-right-radius: 5px;
-	border-bottom-left-radius: 5px;
-	border-bottom-right-radius: 5px;
-	margin-right:-4px;
-	border: 1px solid white;
-	background-color: white;
-	color: black;
-	padding: 5px;
-	font-family: 'Jua', sans-serif;
+   border-top-left-radius: 5px;
+   border-top-right-radius: 5px;
+   border-bottom-left-radius: 5px;
+   border-bottom-right-radius: 5px;
+   margin-right:-4px;
+   border: 1px solid white;
+   background-color: white;
+   color: black;
+   padding: 5px;
+   font-family: 'Jua', sans-serif;
 
 }
 
