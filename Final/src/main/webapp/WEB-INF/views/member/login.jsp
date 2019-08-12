@@ -30,7 +30,7 @@
 <form action="/member/login" method="post">
 
 <label><input type="text" name="member_id" placeholder=" 아이디" style="width: 200px; font-weight: lighter; border-radius: 10px;"/></label><br>
-<label><input type="text" name="member_pw" placeholder=" 비밀번호" style="width: 200px; font-weight: lighter; border-radius: 10px;"/></label><br><br>
+<label><input type="password" name="member_pw" placeholder=" 비밀번호" style="width: 200px; font-weight: lighter; border-radius: 10px;"/></label><br><br>
 
 <button id="login_btn">로그인</button>
 </form>

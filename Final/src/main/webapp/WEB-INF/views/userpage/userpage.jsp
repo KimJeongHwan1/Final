@@ -27,7 +27,7 @@ $(document).ready(function() {
 			}
 		});   
 	});
-  }); 
+}); 
 
 // 채팅
 $(document).ready(function() {
@@ -56,65 +56,7 @@ $(document).ready(function() {
 	    }
 
 	});
-	
-// 	$("#sendBtn").click(function(e){
-	
-//      sendMessage(); 
-//      $('#message').val('')
-//      $("#message").focus()
-// // 		$.ajax({
-// // 			type : "get"
-// // 			, url : "/socket/chat?userid=${user_id}"
-// // 			, data :{}
-// // 			, dataType : "html"
-// // 			, success : function ( res ) {
-// // 				$("#data").html(res);
-// // 				console.log("성공");
-// // 			}		
-// // 			, error : function() {
-// // 				console.log("실패");
-// // 			}
-// // 		});
-// 	});
-//     $("#message").keydown(function(key) {
-//         if (key.keyCode == 13) {// 엔터
-//                sendMessage();
-//                $('#message').val('')
-//         }
-//         $("#message").focus()
-
-// 	});
 });
-
-// var ws = new SockJS("<c:url value='/echo'/>"); //SockJs 사용
-// ws.onopen = onOpen;
-// ws.onmessage = onMessage;
-// ws.onclose = onClose;
-
-// function onOpen(){
-// 	console.log('websocket opened');
-// }
-
-// // 서버로부터 메시지를 받았을 때
-// function onMessage(msg) {
-//        var data = msg.data;
-//        $("#data").append(data + "<br>");
-// }
-
-// // 서버와 연결을 끊었을 때
-// function onClose(evt) {
-//        $("#data").append("연결 끊김");
-// }
-
-// //메시지 전송
-// function sendMessage() {
-//     ws.send($("#message").val());
-// }
-
-
-
-
-
 
 //윈도우 팝업
 function wrapWindowByMask(){
@@ -358,10 +300,10 @@ a:hover { text-decoration:none ; }
 	<c:if test="${bool == true }">
 		<td rowspan="2" style="padding: 10px;"><img src="/upload/${img.storedname }" id="userprofilimg"/></td>
 		<td>${user_id }
-			<c:if test="${check == 1 }">
+			<c:if test="${check == 0 }">
 				<button id="follow_btn" type="button"><span id="follow_msg">팔로우</span></button>
 			</c:if>
-			<c:if test="${check == 0 }">
+			<c:if test="${check == 1 }">
 				<button id="follow_btn" type="button"><span id="follow_msg">언팔로우</span></button>
 			</c:if>
 		</td>

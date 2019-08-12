@@ -53,15 +53,15 @@ $(document).ready(function() {
 <table style="margin-top: 20px;">
 <tr>
 	<td><label style="width: 200px; margin-top: 30px; font-size: 25px; font-weight: 100;">이전 비밀번호</label> </td>
-	<td><input type="text" name="member_pw0" id="member_pw0" style="width: 400px; height: 30px; margin-top: 24px;" value="${member.member_name }"/></td>
+	<td><input type="password" name="member_pw0" id="member_pw0" style="width: 400px; height: 30px; margin-top: 24px;" value="${member.member_name }"/></td>
 </tr>
 <tr>
 	<td><label style="width: 200px; margin-top: 30px; font-size: 25px; font-weight: 100;">새 비밀번호</label> </td>
-	<td><input type="text" name="member_pw1" id="member_pw1" style="width: 400px; height: 30px; margin-top: 24px;"/></td>
+	<td><input type="password" name="member_pw1" id="member_pw1" style="width: 400px; height: 30px; margin-top: 24px;"/></td>
 </tr>
 <tr>
 	<td><label style="width: 200px; margin-top: 30px; font-size: 25px; font-weight: 100;">새 비밀번호 확인</label> </td>
-	<td><input type="text" name="member_pw2" id="member_pw2" style="width: 400px; height: 30px; margin-top: 24px;"/></td>
+	<td><input type="password" name="member_pw2" id="member_pw2" style="width: 400px; height: 30px; margin-top: 24px;"/></td>
 </tr>
 </table>
 
